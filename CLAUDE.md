@@ -10,15 +10,21 @@ Site de documentation d'infrastructure (homelab Proxmox/Ansible), généré avec
 
 ## Structure
 
-- `hugo.toml` — configuration du site (langue, menu, titre)
+- `hugo.toml` — configuration du site (langue, menu, titre, thème, params PaperMod)
 - `content/` — pages et articles Markdown
   - `content/_index.md` — page d'accueil
   - `content/journal/` — notes datées (interventions, incidents, découvertes)
   - `content/projects/` — pages projets d'infrastructure
   - `content/about/` — page à propos
   - chaque section a un `_index.md` avec `title` et `description`
-- `layouts/` — templates Go (`_default/baseof.html`, `list.html`, `single.html`, `index.html`)
-- `assets/css/main.css` — feuille de style unique, traitée via Hugo Pipes
+- `themes/PaperMod/` — thème Hugo (submodule git, ne pas éditer directement)
+- `layouts-maison/` — sauvegarde inactive des anciens layouts custom
+  (`_default/baseof.html`, `list.html`, `single.html`, `index.html`) d'avant
+  l'installation de PaperMod. Hors du chemin de recherche de Hugo
+  (`layouts/` et `themes/<theme>/layouts/` uniquement) : ce dossier n'est
+  jamais lu au build. Conservé pour un retour en arrière éventuel.
+- `assets/css/main.css` — feuille de style unique custom, non chargée
+  actuellement (PaperMod utilise son propre CSS embarqué)
 
 ## Front matter des articles
 

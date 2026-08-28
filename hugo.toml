@@ -3,24 +3,24 @@
 # URL de base du site en production. À remplacer avant le premier déploiement.
 baseURL = "https://example.org/"
 
+defaultContentLanguage = "fr"
+
+# Titre affiché dans l'en-tête et les balises <title>.
+title = "Homelab & Infrastructure"
+
+# Thème PaperMod, installé en submodule dans themes/PaperMod.
+theme = ["PaperMod"]
+
+# Génère les brouillons dans `hugo server -D` mais pas dans un `hugo` classique.
+buildDrafts = false
+
 # Langue du contenu et locale utilisée pour le formatage (dates, etc.).
 [languages.fr]
   label = "Français"
   weight = 1
   locale = "fr-FR"
 
-defaultContentLanguage = "fr"
-
-# Titre affiché dans l'en-tête et les balises <title>.
-title = "Homelab & Infrastructure"
-
-# Pas de thème externe : les layouts vivent dans layouts/ à la racine du site.
-theme = []
-
-# Génère les brouillons dans `hugo server -D` mais pas dans un `hugo` classique.
-buildDrafts = false
-
-# Menu principal, affiché dans layouts/_default/baseof.html via site.Menus.main.
+# Menu principal, affiché par le partial header de PaperMod via site.Menus.main.
 [[menu.main]]
   name = "Journal"
   url = "/journal/"
@@ -35,3 +35,12 @@ buildDrafts = false
   name = "À propos"
   url = "/about/"
   weight = 30
+
+# Dark mode par défaut (bouton de bascule PaperMod toujours disponible).
+[params]
+  defaultTheme = "dark"
+  ShowReadingTime = true
+
+# Pagination des listes (journal, projects) via PaperMod.
+[pagination]
+  pagerSize = 10
