@@ -1,0 +1,37 @@
+# Configuration minimale — à adapter au fur et à mesure des besoins.
+
+# URL de base du site en production. À remplacer avant le premier déploiement.
+baseURL = "https://example.org/"
+
+# Langue du contenu et locale utilisée pour le formatage (dates, etc.).
+[languages.fr]
+  label = "Français"
+  weight = 1
+  locale = "fr-FR"
+
+defaultContentLanguage = "fr"
+
+# Titre affiché dans l'en-tête et les balises <title>.
+title = "Homelab & Infrastructure"
+
+# Pas de thème externe : les layouts vivent dans layouts/ à la racine du site.
+theme = []
+
+# Génère les brouillons dans `hugo server -D` mais pas dans un `hugo` classique.
+buildDrafts = false
+
+# Menu principal, affiché dans layouts/_default/baseof.html via site.Menus.main.
+[[menu.main]]
+  name = "Journal"
+  url = "/journal/"
+  weight = 10
+
+[[menu.main]]
+  name = "Projets"
+  url = "/projects/"
+  weight = 20
+
+[[menu.main]]
+  name = "À propos"
+  url = "/about/"
+  weight = 30

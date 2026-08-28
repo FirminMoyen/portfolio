@@ -1,0 +1,146 @@
+/* Feuille de style unique, sans framework. Pensée pour de la lecture
+   technique longue : largeur de ligne contenue, bonne lisibilité du code. */
+
+:root {
+  --color-text: #1a1a1a;
+  --color-bg: #ffffff;
+  --color-muted: #5f5f5f;
+  --color-border: #dddddd;
+  --color-link: #0055aa;
+  --color-code-bg: #f4f4f4;
+  --font-body: -apple-system, "Segoe UI", Helvetica, Arial, sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  --measure: 68ch;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-text: #e6e6e6;
+    --color-bg: #16181c;
+    --color-muted: #a0a0a0;
+    --color-border: #3a3d42;
+    --color-link: #6cb2ff;
+    --color-code-bg: #1f2226;
+  }
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  color: var(--color-text);
+  background: var(--color-bg);
+  font-family: var(--font-body);
+  font-size: 1.0625rem;
+  line-height: 1.6;
+}
+
+a {
+  color: var(--color-link);
+}
+
+.site-header,
+main,
+.site-footer {
+  max-width: var(--measure);
+  margin: 0 auto;
+  padding: 1.5rem 1rem;
+}
+
+.site-header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.site-title {
+  font-weight: 600;
+  text-decoration: none;
+  color: var(--color-text);
+}
+
+.site-header nav ul {
+  display: flex;
+  gap: 1.25rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.site-header nav a {
+  text-decoration: none;
+}
+
+.site-header nav a:hover {
+  text-decoration: underline;
+}
+
+main {
+  min-height: 60vh;
+}
+
+h1, h2, h3, h4 {
+  line-height: 1.25;
+}
+
+article header time,
+.page-list time {
+  display: block;
+  color: var(--color-muted);
+  font-size: 0.875rem;
+}
+
+.page-list {
+  list-style: none;
+  padding: 0;
+}
+
+.page-list li {
+  padding: 0.5rem 0;
+  border-bottom: 1px solid var(--color-border);
+}
+
+pre {
+  background: var(--color-code-bg);
+  padding: 1rem;
+  overflow-x: auto;
+  border-radius: 4px;
+}
+
+code {
+  font-family: var(--font-mono);
+  font-size: 0.9em;
+}
+
+pre code {
+  font-size: 0.875rem;
+}
+
+blockquote {
+  margin: 1rem 0;
+  padding-left: 1rem;
+  border-left: 3px solid var(--color-border);
+  color: var(--color-muted);
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+th, td {
+  border: 1px solid var(--color-border);
+  padding: 0.4rem 0.6rem;
+  text-align: left;
+}
+
+.site-footer {
+  color: var(--color-muted);
+  font-size: 0.875rem;
+  border-top: 1px solid var(--color-border);
+}
