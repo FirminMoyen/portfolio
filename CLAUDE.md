@@ -47,3 +47,10 @@ draft: false
 - Ne jamais créer de contenu dans `content/` — les articles sont écrits par l'utilisateur.
 - Un seul fichier CSS dans `assets/` (`assets/css/main.css`), pas de découpage en modules.
 - Toujours vérifier que `hugo --minify` passe sans erreur avant de considérer une tâche terminée.
+
+## Workflow git
+
+- Toujours partir de `main` à jour, jamais travailler directement dessus.
+- Une branche par tâche, nommée `feat/`, `fix/`, `chore/` ou `docs/`.
+- Commits en Conventional Commits.
+- Ouvrir une PR vers `main`, ne jamais merger soi-même.
