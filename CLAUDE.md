@@ -53,4 +53,6 @@ draft: false
 - Toujours partir de `main` à jour, jamais travailler directement dessus.
 - Une branche par tâche, nommée `feat/`, `fix/`, `chore/` ou `docs/`.
 - Commits en Conventional Commits.
-- Ouvrir une PR vers `main`, ne jamais merger soi-même.
+- Ne jamais ouvrir de PR sans autorisation explicite de l'utilisateur —
+  committer et pousser la branche, puis demander avant d'ouvrir la PR.
+- Ne jamais merger soi-même.
