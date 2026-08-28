@@ -22,6 +22,11 @@ buildDrafts = false
 
 # Menu principal, affiché par le partial header de PaperMod via site.Menus.main.
 [[menu.main]]
+  name = "Accueil"
+  url = "/"
+  weight = 5
+
+[[menu.main]]
   name = "Journal"
   url = "/journal/"
   weight = 10
