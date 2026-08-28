@@ -56,3 +56,4 @@ draft: false
 - Ne jamais ouvrir de PR sans autorisation explicite de l'utilisateur —
   committer et pousser la branche, puis demander avant d'ouvrir la PR.
 - Ne jamais merger soi-même.
+- Revenir sur `main` après l'ouverture de chaque PR.
