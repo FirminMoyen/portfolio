@@ -1,7 +1,7 @@
 # Configuration minimale — à adapter au fur et à mesure des besoins.
 
-# URL de base du site en production. À remplacer avant le premier déploiement.
-baseURL = "https://example.org/"
+# URL de base du site en production.
+baseURL = "https://firminmoyen.dev/"
 
 defaultContentLanguage = "fr"
 
