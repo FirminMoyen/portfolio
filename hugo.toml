@@ -14,37 +14,66 @@ theme = ["PaperMod"]
 # Génère les brouillons dans `hugo server -D` mais pas dans un `hugo` classique.
 buildDrafts = false
 
-# Langue du contenu et locale utilisée pour le formatage (dates, etc.).
+# Français : langue par défaut, servie à la racine du site (pas de préfixe /fr/).
 [languages.fr]
   label = "Français"
   weight = 1
   locale = "fr-FR"
 
-# Menu principal, affiché par le partial header de PaperMod via site.Menus.main.
-[[menu.main]]
-  name = "Accueil"
-  url = "/"
-  weight = 5
+  # Menu principal, affiché par le partial header de PaperMod via site.Menus.main.
+  [[languages.fr.menu.main]]
+    name = "Accueil"
+    url = "/"
+    weight = 5
 
-[[menu.main]]
-  name = "Journal"
-  url = "/journal/"
-  weight = 10
+  [[languages.fr.menu.main]]
+    name = "Journal"
+    url = "/journal/"
+    weight = 10
 
-[[menu.main]]
-  name = "Projets"
-  url = "/projects/"
-  weight = 20
+  [[languages.fr.menu.main]]
+    name = "Projets"
+    url = "/projects/"
+    weight = 20
 
-[[menu.main]]
-  name = "À propos"
-  url = "/about/"
-  weight = 30
+  [[languages.fr.menu.main]]
+    name = "À propos"
+    url = "/about/"
+    weight = 30
+
+# Anglais : servi sous /en/, activé par la présence de ce bloc.
+[languages.en]
+  label = "English"
+  weight = 2
+  locale = "en-US"
+
+  [[languages.en.menu.main]]
+    name = "Home"
+    url = "/"
+    weight = 5
+
+  [[languages.en.menu.main]]
+    name = "Journal"
+    url = "/journal/"
+    weight = 10
+
+  [[languages.en.menu.main]]
+    name = "Projects"
+    url = "/projects/"
+    weight = 20
+
+  [[languages.en.menu.main]]
+    name = "About"
+    url = "/about/"
+    weight = 30
 
 # Dark mode par défaut (bouton de bascule PaperMod toujours disponible).
+# displayFullLangName : affiche "Français"/"English" (label de chaque langue)
+# au lieu de "Fr"/"En" dans le toggle de langue de PaperMod.
 [params]
   defaultTheme = "dark"
   ShowReadingTime = true
+  displayFullLangName = true
 
 # Pagination des listes (journal, projects) via PaperMod.
 [pagination]

@@ -10,14 +10,26 @@ Site de documentation d'infrastructure (homelab Proxmox/Ansible), généré avec
 
 ## Structure
 
-- `hugo.toml` — configuration du site (langue, menu, titre, thème, params PaperMod)
-- `content/` — pages et articles Markdown
-  - `content/_index.md` — page d'accueil
+- `hugo.toml` — configuration du site (langues fr/en, menus par langue,
+  titre, thème, params PaperMod)
+- `content/` — pages et articles Markdown, en français et en anglais
+  - Site bilingue par suffixe de fichier : `xxx.fr.md` / `xxx.en.md` dans le
+    même dossier, appariés automatiquement par Hugo comme traductions
+    (même chemin, même nom de base). Le français est servi à la racine
+    (langue par défaut), l'anglais sous `/en/`.
+  - `content/_index.{fr,en}.md` — page d'accueil
   - `content/journal/` — notes datées (interventions, incidents, découvertes)
   - `content/projects/` — pages projets d'infrastructure
   - `content/about/` — page à propos
-  - chaque section a un `_index.md` avec `title` et `description`
+  - chaque section a un `_index.{fr,en}.md` avec `title` et `description`
+  - un article traduit peut avoir un `slug` différent en anglais (front
+    matter) tout en gardant le même nom de fichier de base pour rester
+    apparié à sa traduction
 - `themes/PaperMod/` — thème Hugo (submodule git, ne pas éditer directement)
+- `layouts/_partials/header.html` — surcharge du partial PaperMod : le
+  toggle de langue d'origine renvoie toujours vers la page d'accueil de
+  l'autre langue (`site.Home.Translations`) ; cette version utilise
+  `.Translations` pour renvoyer vers la page traduite équivalente
 - `layouts-maison/` — sauvegarde inactive des anciens layouts custom
   (`_default/baseof.html`, `list.html`, `single.html`, `index.html`) d'avant
   l'installation de PaperMod. Hors du chemin de recherche de Hugo
@@ -39,6 +51,9 @@ draft: false
 - `title` : requis
 - `date` : requis, format `AAAA-MM-JJ`
 - `draft` : `true`/`false`, requis (les brouillons n'apparaissent pas en build classique)
+- `slug` : optionnel, pour donner une URL différente à la version anglaise
+  d'un article (le nom de fichier de base doit rester identique entre
+  `xxx.fr.md` et `xxx.en.md` pour que Hugo les apparie comme traductions)
 
 ## Règles
 
