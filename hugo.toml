@@ -66,7 +66,7 @@ buildDrafts = false
 # Profil affiché sur l'accueil (architecture §5.1, §11.1). Valeurs fournies
 # par Firmin ; un champ vide masque le bouton correspondant.
 [params.profile]
-  name = "Firmin Moye"
+  name = "Firmin Moyen"
   github = "https://github.com/"
   linkedin = "https://www.linkedin.com/"
   [params.profile.cv]
