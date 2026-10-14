@@ -421,7 +421,7 @@ archetypes/
 hugo new content --kind devlog devlog/007-<slug>
 ```
 
-Le dossier est créé avec les deux fichiers en brouillon, selon les gabarits de l'Annexe A. Les archetypes sont des templates Go : ils NE DOIVENT PAS contenir d'appel de shortcode (`{{<`), que Hugo tenterait d'interpréter. Vérifier le comportement exact (archetype de dossier, choix par `--kind`) avec la version de Hugo épinglée.
+Le dossier est créé avec les deux fichiers en brouillon, selon les gabarits de l'Annexe A. La date est celle du jour ; le numéro (`week`, `pm`, `adr`) est lu dans le nom du dossier, zéros de tête retirés (`007-…` → 7). Les champs qu'un archetype ne peut pas connaître restent vides plutôt que de recevoir une valeur d'exemple : la validation (V8) bloque la publication tant qu'ils ne sont pas remplis. Les archetypes sont des templates Go : ils NE DOIVENT PAS contenir d'appel de shortcode (`{{<`), que Hugo tenterait d'interpréter. Vérifier le comportement exact (archetype de dossier, choix par `--kind`) avec la version de Hugo épinglée.
 
 ### 7.4 Liens internes
 
@@ -906,6 +906,7 @@ Le site dépend de comptes et de services extérieurs au repo. C'est là qu'est 
 | 2026-10-14 | v0.3 validée et commitée ; annexe B retirée (`CLAUDE.md` devient la source) ; `.claude/rules/` et permissions (§14.3, précisions sur `gh api` et `git push`) ; tableau du §11.3 corrigé ; `docs/structure.md` v0.1 ajouté | PR de l'étape 0.1 |
 | 2026-10-14 | D1 : `/` redirige vers `en`. Langues en sous-dossier ; anciennes URL redirigées par `static/`, `/tags/` et `/categories/` comprises ; pages `…/page/1/` et flux RSS en exception (`docs/structure.md` §3.6) ; `/404.html` racine fourni par `static/404.html` (P16) | PR de l'étape 1.1 |
 | 2026-10-14 | D2 : ancien article supprimé, ses URL redirigées. Arborescence de `docs/structure.md` §5 en brouillon ; menus dans le front matter ; taxonomies `tags` et `certifications` ; fil d'Ariane ; services tiers désactivés (`[privacy]`) | PR de l'étape 1.2 |
+| 2026-10-14 | Archetypes de dossier `devlog`, `postmortem`, `adr`, `services` ; numéro tiré du nom du dossier ; champs du post-mortem inconnus laissés vides (Annexe A.2) | PR de l'étape 1.3 |
 
 ---
 
@@ -923,7 +924,7 @@ Le site dépend de comptes et de services extérieurs au repo. C'est là qu'est 
 
 ## Annexe A — Gabarits
 
-Les gabarits ci-dessous montrent les fichiers tels que l'archetype les crée. L'archetype remplit la date et met `draft: true`. Les commentaires HTML guident la rédaction ; ils restent invisibles sur le site.
+Les gabarits ci-dessous montrent les fichiers tels que l'archetype les crée (`archetypes/`). L'archetype remplit la date et le numéro, et met `draft: true`. Les commentaires HTML guident la rédaction ; ils restent invisibles sur le site.
 
 ### A.1 Entrée devlog — `devlog/<nnn>-<slug>/index.fr.md`
 
@@ -966,9 +967,9 @@ date: 2026-11-05
 draft: true
 description: ""
 pm: 1
-incident_date: 2026-11-03
-severity: sev3
-impact_minutes: 0
+incident_date:         # AAAA-MM-JJ, début de l'incident / start of the incident
+severity:              # sev1 | sev2 | sev3
+impact_minutes:
 components: []
 tags: []
 ---

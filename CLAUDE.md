@@ -17,6 +17,8 @@ de structure, de template, de données, de CI ou d'outillage.
 - Développement : `hugo server` (`-D` pour voir les brouillons)
 - Build et validations : `hugo --minify`
 - Sortie du build : `public/` (généré, ignoré par git, ne pas éditer à la main)
+- Nouveau contenu : `hugo new content --kind <devlog|postmortem|adr|services> <chemin>`
+  (ex. `devlog/007-<slug>` ; crée FR et EN en brouillon)
 
 ## Invariants
 - Aucune invention : aucun fait absent des notes de Firmin ou du repo du lab. Information
