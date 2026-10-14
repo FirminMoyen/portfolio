@@ -1,0 +1,6 @@
+# EXEMPLE publié temporairement (site en construction)
+name: "Filtre DNS (ex.)"
+layer: service
+group: applications
+status: planned
+summary: {fr: "Composant d'exemple.", en: "Example component."}

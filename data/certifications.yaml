@@ -1,0 +1,7 @@
+# EXEMPLE publié temporairement (site en construction) : statuts fictifs
+- {id: lpic-1, name: "LPIC-1", status: passed, passed_on: 2026-06-15}
+- {id: ccna, name: "Cisco CCNA", status: preparing}
+- {id: rhcsa, name: "Red Hat RHCSA", status: preparing}
+- {id: rhce, name: "Red Hat RHCE", status: planned}
+- {id: terraform, name: "HashiCorp Terraform Associate", status: planned}
+- {id: cka, name: "CKA", status: planned}

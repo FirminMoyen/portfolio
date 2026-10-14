@@ -1,0 +1,6 @@
+# EXEMPLE publié temporairement (site en construction)
+name: "VPN maillé (ex.)"
+layer: infrastructure
+group: exemple-groupe-a
+status: building
+summary: {fr: "Composant d'exemple.", en: "Example component."}

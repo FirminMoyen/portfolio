@@ -6,7 +6,8 @@ menus:
     identifier: home
     name: "Home"
     weight: 10
+headline: "Systems and infrastructure administrator (example title)"
+availability: "Region (example) · Mobility: Belgium, Luxembourg, remote · French native, English C2 · Actively looking"
 ---
 
-Technical documentation of a homelab: Proxmox virtualization, provisioning and
-configuration via Ansible, observability setup (metrics, logs, alerting).
+Example text: two or three sentences about your experience, what the lab demonstrates (security, maintenance, availability) and the kind of role you are looking for.
