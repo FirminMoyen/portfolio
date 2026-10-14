@@ -6,3 +6,61 @@
     padding-top: 0;
     margin-top: calc(var(--gap) * -1);
 }
+
+/* --- Accueil (architecture §5.1) --- */
+.home-intro { margin-bottom: var(--gap); }
+.home-name { font-size: 40px; margin-bottom: 4px; }
+.home-headline { font-size: 20px; font-weight: 600; color: var(--primary); margin-bottom: 12px; }
+.home-pitch { color: var(--content); margin-bottom: 12px; }
+.home-pitch p { margin-bottom: 8px; }
+.home-availability { color: var(--secondary); font-size: 15px; margin-bottom: 16px; }
+.home-links { display: flex; flex-wrap: wrap; gap: 8px; }
+.home-links .button {
+    padding: 6px 14px; border: 1px solid var(--border); border-radius: 8px;
+    background: var(--entry); color: var(--primary); font-size: 15px;
+}
+.home-links .button:hover { border-color: var(--secondary); }
+
+.home-block {
+    margin-top: var(--gap); padding: 20px; border: 1px solid var(--border);
+    border-radius: var(--radius); background: var(--entry);
+}
+.home-block h2 { font-size: 22px; margin-bottom: 12px; }
+.home-block h3 { font-size: 15px; color: var(--secondary); margin-bottom: 6px; }
+.home-block a { box-shadow: 0 1px 0 var(--secondary); }
+.home-block ul { list-style: none; padding: 0; margin: 0; }
+.home-more { display: flex; flex-wrap: wrap; gap: 16px; margin-top: 12px; font-size: 15px; }
+
+.lab-diagram { display: block; position: relative; margin-bottom: 12px; box-shadow: none !important; }
+.lab-diagram img { width: 100%; border: 1px solid var(--border); border-radius: 8px; }
+.lab-diagram .badge { position: absolute; top: 8px; left: 8px; }
+.diagram-dark { display: none; }
+html[data-theme="dark"] .diagram-light { display: none; }
+html[data-theme="dark"] .diagram-dark { display: block; }
+.lab-status li { margin-bottom: 4px; }
+.lab-status .badge { margin-inline-start: 8px; }
+.lab-status .badge:first-child { margin-inline-start: 0; }
+
+.stack-groups { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 16px; }
+.stack-group li { margin-bottom: 4px; font-size: 15px; }
+
+.journal-list li { padding: 8px 0; border-bottom: 1px solid var(--border); }
+.journal-list li:last-child { border-bottom: none; }
+.journal-title { font-weight: 600; }
+.journal-number { color: var(--secondary); margin-inline-end: 6px; }
+.journal-date { display: block; color: var(--secondary); font-size: 13px; }
+.journal-list p { margin: 4px 0 0; font-size: 15px; }
+
+.cert-list li { margin-bottom: 6px; }
+
+/* Badges : le texte porte toujours le sens, la couleur ne fait qu'aider (§11.5). */
+.badge {
+    display: inline-block; padding: 1px 8px; border: 1px solid var(--border);
+    border-radius: 999px; font-size: 12px; line-height: 18px; color: var(--primary);
+    background: var(--theme); white-space: nowrap; vertical-align: middle;
+}
+.badge-running, .badge-passed { border-color: #3a8a4a; }
+.badge-building, .badge-preparing { border-color: #b07d1a; }
+.badge-planned { border-style: dashed; }
+.badge-postmortem { border-color: #b04a4a; }
+.badge-target { background: var(--entry); }

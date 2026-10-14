@@ -1,0 +1,10 @@
+{{- /* Lien vers un composant, seulement si sa page est publiée (§11.3) :
+       fiche pour un service, carte de la page de groupe pour l'infrastructure.
+       Entrée : dict "id" "c". Renvoie une URL ou "". */ -}}
+{{- $url := "" -}}
+{{- if eq .c.layer "service" -}}
+  {{- with site.GetPage (printf "/services/%s" .id) }}{{ $url = .RelPermalink }}{{ end -}}
+{{- else -}}
+  {{- with site.GetPage (printf "/infrastructure/%s" .c.group) }}{{ $url = printf "%s#%s" .RelPermalink $.id }}{{ end -}}
+{{- end -}}
+{{- return $url -}}

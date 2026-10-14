@@ -1,0 +1,23 @@
+{{- /* Bloc 5 — Certifications, depuis data/certifications.yaml. */ -}}
+{{- with hugo.Data.certifications }}
+<section class="home-block home-certifications">
+  <h2>{{ i18n "homeCertifications" }}</h2>
+  <ul class="cert-list">
+    {{- range . }}
+    {{- $term := site.GetPage (printf "/certifications/%s" .id) }}
+    <li>
+      {{ with $term }}<a href="{{ .RelPermalink }}">{{ end }}{{ .name }}{{ with $term }}</a>{{ end }}
+      {{- if eq .status "passed" }}
+      <span class="badge badge-passed">{{ i18n "certPassed" (dict "Date" (.passed_on | time.Format ":date_long")) }}</span>
+      {{- with .credential_url }} <a href="{{ . }}" rel="noopener">{{ i18n "certVerify" }}</a>{{ end }}
+      {{- else }}
+      <span class="badge badge-{{ .status }}">{{ i18n (printf "cert_%s" .status) }}</span>
+      {{- end }}
+    </li>
+    {{- end }}
+  </ul>
+  {{- with site.GetPage "/about" }}
+  <p class="home-more"><a href="{{ .RelPermalink }}">{{ i18n "homeBackground" }} →</a></p>
+  {{- end }}
+</section>
+{{- end }}

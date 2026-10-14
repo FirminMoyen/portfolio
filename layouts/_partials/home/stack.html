@@ -1,0 +1,47 @@
+{{- /* Bloc 3 — Stack : composants en service ou en construction, groupés par
+       domaine dans l'ordre de data/groups.yaml ; les prévus sont seulement
+       comptés (architecture §5.1). */ -}}
+{{- $items := slice }}{{ $planned := 0 }}
+{{- range $id, $c := hugo.Data.catalog }}
+  {{- if in (slice "running" "building") $c.status }}
+    {{- $items = $items | append (merge $c (dict "id" $id)) }}
+  {{- else if eq $c.status "planned" }}
+    {{- $planned = add $planned 1 }}
+  {{- end }}
+{{- end }}
+{{- $groups := slice }}
+{{- with hugo.Data.groups }}
+  {{- range .infrastructure }}{{ $groups = $groups | append (merge . (dict "layer" "infrastructure")) }}{{ end }}
+  {{- range .service }}{{ $groups = $groups | append (merge . (dict "layer" "service")) }}{{ end }}
+{{- end }}
+{{- $known := slice }}
+{{- range $groups }}{{ $known = $known | append (printf "%s/%s" .layer .id) }}{{ end }}
+{{- $others := slice }}
+{{- range $items }}{{ if not (in $known (printf "%s/%s" .layer .group)) }}{{ $others = $others | append . }}{{ end }}{{ end }}
+{{- if or $items $planned }}
+<section class="home-block home-stack">
+  <h2>{{ i18n "homeStack" }}</h2>
+  <div class="stack-groups">
+  {{- range $groups }}
+    {{- $g := . }}
+    {{- $members := where (where $items "layer" $g.layer) "group" $g.id }}
+    {{- if $members }}
+    <div class="stack-group">
+      {{- $page := cond (eq $g.layer "infrastructure") (site.GetPage (printf "/infrastructure/%s" $g.id)) nil }}
+      <h3>{{ with $page }}<a href="{{ .RelPermalink }}">{{ end }}{{ partial "l10n.html" $g.label }}{{ with $page }}</a>{{ end }}</h3>
+      {{- partial "home/stack-list.html" $members }}
+    </div>
+    {{- end }}
+  {{- end }}
+  {{- if $others }}
+    <div class="stack-group">
+      <h3>{{ i18n "homeOtherGroup" }}</h3>
+      {{- partial "home/stack-list.html" $others }}
+    </div>
+  {{- end }}
+  </div>
+  {{- if $planned }}
+  <p class="home-more">{{ with site.GetPage "/about" }}<a href="{{ .RelPermalink }}">{{ end }}{{ i18n "homePlannedMore" $planned }}{{ with site.GetPage "/about" }}</a>{{ end }}</p>
+  {{- end }}
+</section>
+{{- end }}

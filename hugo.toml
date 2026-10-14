@@ -61,6 +61,16 @@ buildDrafts = false
   ShowPostNavLinks = true
   mainSections = ["journal"]
 
+# Profil affiché sur l'accueil (architecture §5.1, §11.1). Valeurs fournies
+# par Firmin ; un champ vide masque le bouton correspondant.
+[params.profile]
+  name = ""
+  github = ""
+  linkedin = ""
+  [params.profile.cv]
+    fr = ""
+    en = ""
+
 # Pagination des listes via PaperMod.
 [pagination]
   pagerSize = 10
