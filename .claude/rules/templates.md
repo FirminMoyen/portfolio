@@ -40,4 +40,4 @@ Détail : `docs/architecture.md` §11, §12.
 - Contrôles dans `layouts/_partials/validate/`, appelés depuis `extend_head.html` (données via `partialCached`).
 - `errorf` pour une erreur, `warnf` pour un avertissement. Messages en français, préfixés par le chemin du fichier, avec les valeurs attendues.
 - Comparer des listes entre langues par `jsonify`.
-- Chaque règle V1 à V16 a son cas de test dans `tests/validation/`.
+- Chaque règle V1 à V16 DEVRAIT avoir son cas de test dans `tests/validation/` (§12) ; tout écart se justifie dans la PR.
