@@ -3,7 +3,20 @@
 # URL de base du site en production.
 baseURL = "https://firminmoyen.dev/"
 
-defaultContentLanguage = "fr"
+# Les deux langues vivent en sous-dossier (/fr/, /en/) ; la racine redirige vers
+# la langue par défaut (décision D1, docs/architecture.md §17). Changer de langue
+# par défaut ne casse donc aucun lien.
+defaultContentLanguage = "en"
+defaultContentLanguageInSubdir = true
+
+# Dates de publication interprétées dans ce fuseau.
+timeZone = "Europe/Brussels"
+
+# Génère /robots.txt.
+enableRobotsTXT = true
+
+# Un ref/relref cassé fait échouer le build.
+refLinksErrorLevel = "ERROR"
 
 # Titre affiché dans l'en-tête et les balises <title>.
 title = "Homelab & Infrastructure"
@@ -14,7 +27,7 @@ theme = ["PaperMod"]
 # Génère les brouillons dans `hugo server -D` mais pas dans un `hugo` classique.
 buildDrafts = false
 
-# Français : langue par défaut, servie à la racine du site (pas de préfixe /fr/).
+# Français : servi sous /fr/.
 [languages.fr]
   label = "Français"
   weight = 1

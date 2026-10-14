@@ -118,8 +118,18 @@ C'est le même format que les alias de Hugo, et une seule liste à tenir : ce ta
 | `/en/journal/` | `/en/` | `/en/devlog/` | 3.3 |
 | `/en/journal/proxmox-homelab-first-steps/` | `/en/` | `/en/devlog/` | 3.3 |
 | `/en/projects/` | `/en/` | `/en/infrastructure/` | 4.2 |
+| `/tags/` | `/fr/tags/` | `/fr/tags/` | — |
+| `/categories/` | `/fr/` | `/fr/` | — |
+| `/en/categories/` | `/en/` | `/en/` | — |
 
-Les deux lignes de l'article suivent D2 (§8) ; si l'article est conservé, elles changent. `/en/` et `/en/about/` gardent leur adresse.
+Les deux lignes de l'article suivent D2 (§8) ; si l'article est conservé, elles changent. `/en/`, `/en/about/` et `/en/tags/` gardent leur adresse.
+
+À l'étape 1.1, tant que `journal`, `projects` et la taxonomie `categories` existent, les redirections de la racine visent leur équivalent sous `/fr/` (`/journal/` → `/fr/journal/`…) ; l'étape 1.2 les passe à leur « cible aujourd'hui ».
+
+Exceptions, sans redirection :
+
+- les pages `…/page/1/`, que Hugo génère lui-même pour renvoyer vers la première page d'une liste et qui ne sont liées nulle part ;
+- les flux RSS (`index.xml`) des anciennes URL : une page HTML ne peut pas rediriger un lecteur de flux.
 
 ### 3.7 Fichiers techniques
 
@@ -455,5 +465,5 @@ Reportés à leurs phases : templates et rendu des blocs (3 à 5), modèle de do
 
 | # | Question | Recommandation | Bloque |
 |---|---|---|---|
-| D1 | Vers quelle langue `/` redirige-t-il ? | `en` ; réversible sans casser de lien | 1.1 |
+| D1 | Vers quelle langue `/` redirige-t-il ? | **Tranchée le 14/10/2026 : `en`** (architecture §17.2) | 1.1 |
 | D2 | Que faire de l'article `proxmox-homelab-premiers-pas` ? | Le supprimer ; ses URL redirigent comme au §3.6 | 1.2 |
