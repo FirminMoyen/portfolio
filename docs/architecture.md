@@ -152,13 +152,15 @@ Règles :
 
 ### 5.1 Accueil
 
-Objectif : l'essentiel en un écran sur desktop, en deux sur mobile. Les blocs, dans l'ordre :
+Objectif : l'essentiel en un écran sur desktop, en deux sur mobile. Un bloc sans donnée est masqué plutôt qu'affiché vide. Les blocs, dans l'ordre :
 
-1. **Identité.** Nom, poste visé (`headline`), pitch de deux ou trois phrases (corps de `content/_index.<lang>.md`), une ligne de localisation et de mobilité (`availability`). Boutons : CV (PDF de la langue courante), Contact (`/about/#contact`), GitHub, LinkedIn. Les textes viennent de Firmin ; les liens de `hugo.toml`.
-2. **Le lab en un coup d'œil.** Schéma `lab-overview` (§11.6), nombre de composants par statut, phases de la roadmap en cours et date de dernière vérification (la plus récente des dates `verified` du catalogue). Lien vers Infrastructure.
-3. **Stack.** Composants non retirés, groupés par groupe, chacun avec son badge de statut. Calculé depuis le catalogue.
-4. **Journal.** Les trois dernières entrées (hebdomadaires et post-mortems), avec numéro, date et description.
-5. **Certifications.** Statut de chacune, depuis les données.
+1. **Présentation.** Nom, poste visé (`headline`), pitch de deux ou trois phrases (corps de `content/_index.<lang>.md`), une ligne pratique (`availability`) : région plutôt que commune (§10), mobilité, langues, disponibilité. Boutons : CV (PDF de la langue courante, sans adresse, téléphone ni date de naissance), Contact (`/about/#contact`, l'ancre seulement quand elle existe), GitHub, LinkedIn. Les textes viennent de Firmin, les liens de `hugo.toml` (`params.profile`) ; un lien vide masque son bouton. Tant que `headline` est vide, seul le corps de la page s'affiche.
+2. **Le lab en un coup d'œil.** Schéma `lab-overview` (§11.6), marqué « architecture cible » tant qu'aucun composant n'est en service ; une ligne d'état : dernière semaine publiée et sa date, phase en cours de la feuille de route, nombre de composants en service, en construction et prévus. Liens : Infrastructure, Services, la phase (vers À propos), la dernière semaine (son entrée).
+3. **Stack.** Composants en service ou en construction, groupés par groupe dans l'ordre de `data/groups.yaml`, chacun avec son badge de statut et un lien vers sa page dès qu'elle existe. Les composants prévus sont seulement comptés (« + 9 composants prévus », lien vers la feuille de route), pour que la stack ne montre que ce qui existe. Calculé depuis le catalogue.
+4. **Journal.** Les trois dernières entrées, comptes rendus et post-mortems confondus : numéro (S06, PM-001), date, titre, description. Liens : le journal complet, les incidents, le flux RSS.
+5. **Certifications.** Chacune avec son statut (prévue, en préparation, obtenue le…), un lien vers sa page de terme (§5.8) quand elle existe, et vers sa vérification (Credly) une fois obtenue. Lien vers le parcours (À propos).
+
+Ne figurent pas sur l'accueil : la biographie (À propos), le détail technique (Infrastructure et Services), les ADR (Infrastructure), la liste complète des incidents (Journal).
 
 ### 5.2 Infrastructure
 
@@ -535,7 +537,7 @@ Contrôles :
   - `ShowCodeCopyButtons`, `ShowBreadCrumbs`, `ShowPostNavLinks` (pas de bouton RSS à côté des titres : le flux du journal est proposé dans le pied de page) ;
   - `socialIcons` (GitHub, LinkedIn, e-mail) ;
   - `labRepo` (D3) ;
-  - `profile` : nom, e-mail de contact, chemin du CV par langue ;
+  - `profile` : nom, liens GitHub et LinkedIn, chemin du CV par langue (en place depuis l'étape 5.2a, valeurs vides tant que Firmin ne les a pas fournies) ; e-mail de contact avec le shortcode `contact` (5.2) ;
   - `images` : image OpenGraph par défaut, au format PNG 1200 × 630 ;
 - Markdown : garder `unsafe = false` (pas de HTML brut dans le contenu) ; le shortcode `rawhtml` de PaperMod est interdit ;
 - `[privacy]` : désactiver les services tiers intégrés.
@@ -564,7 +566,9 @@ layouts/
 │   ├── extend_head.html                   point d'extension PaperMod : appelle les validations (§12)
 │   ├── extend_footer.html                 point d'extension PaperMod : lien RSS du journal, puis pied de page (5.2)
 │   ├── validate/{data,page}.html
-│   ├── catalog/{fiche,table,badge,link}.html
+│   ├── catalog/{fiche,table,badge,link}.html   badge et link en place depuis 5.2a
+│   ├── home/{intro,lab,stack,stack-list,journal,certifications}.html   blocs de l'accueil (5.2a)
+│   ├── l10n.html                          valeur {fr, en} d'un champ de données dans la langue courante
 │   ├── journal/{item,meta}.html
 │   ├── profile/links.html                 CV, e-mail, GitHub, LinkedIn : accueil, À propos, contact
 │   └── backlinks.html                     liens inverses (P3)
@@ -796,7 +800,8 @@ Jusqu'à la phase 4, les fiches et les pages de groupe exigées par V9 et V10 s'
 | Étape | Branche | Contenu | Critères d'acceptation |
 |---|---|---|---|
 | 5.1 | `feat/diagrams` | D2 dans `tools.env`, `render-diagrams.sh`, job `diagrams`, shortcode `diagram`, schéma `lab-overview` décrit par Firmin | Bon schéma selon le thème ; CI rouge si un SVG est périmé |
-| 5.2 | `feat/home-about` | `home.html`, page About, shortcodes `roadmap`, `certifications`, `contact`, templates de taxonomie | Accueil lisible en un écran sur desktop ; libellés des tags corrects |
+| 5.2a | `feat/home` | `home.html` et ses blocs (§5.1), badges et liens du catalogue, chaînes i18n, `params.profile` ; anticipé le 14/10/2026, avant les phases 2 à 4 | Sans données, accueil identique en production ; avec des données d'exemple locales, les cinq blocs s'affichent en FR et en EN, clair et sombre |
+| 5.2 | `feat/home-about` | Page About, shortcodes `roadmap`, `certifications`, `contact`, templates de taxonomie | Accueil lisible en un écran sur desktop ; libellés des tags corrects |
 | 5.3 | `docs/about-home` | Textes de Firmin, CV, contacts (D4), certifications, roadmap | Aucun champ provisoire publié |
 
 ### Phase 6 — Outillage de maintenance
@@ -920,6 +925,7 @@ Le site dépend de comptes et de services extérieurs au repo. C'est là qu'est 
 | 2026-10-14 | La section « Devlog » devient « Journal » (`/<lang>/journal/`, archetype `journal`, skill `/journal`, branches `docs/journal-<nnn>`) ; le §17.2 devient « Historique des décisions du site » pour éviter le double sens. Les lignes précédentes gardent le terme de leur date | PR de l'étape 1.5 |
 | 2026-10-14 | Infrastructure, Services et Journal publiées avant leur contenu, avec une description et un message « en construction » : le menu montre les cinq sections dès maintenant. Les sous-pages restent en brouillon ; redirections passées à leur cible finale | PR de l'étape 1.6 |
 | 2026-10-14 | Groupes d'infrastructure non décidés : les 7 pages de groupe sont retirées, la liste du §6.4 devient une proposition et D6 est ouverte | PR de l'étape 1.7 |
+| 2026-10-14 | Accueil (§5.1) refondu et implémenté en avance (5.2a) : blocs masqués sans données, stack limitée aux composants en service ou en construction (les prévus sont comptés), ligne d'état avec la dernière semaine plutôt que la dernière vérification, `params.profile` | PR de l'étape 5.2a |
 
 ---
 

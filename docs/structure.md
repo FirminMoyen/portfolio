@@ -159,15 +159,17 @@ Format de chaque fiche : identité de la page, puis ses blocs dans l'ordre d'aff
 | Rôle | L'essentiel en un écran : qui, quoi, preuve d'activité, contact |
 | URL | `/fr/` · `/en/` |
 | Fichiers | `content/_index.fr.md`, `content/_index.en.md` |
-| Type, template | home ; `layouts/home.html` (5.2). D'ici là, liste par défaut de PaperMod |
+| Type, template | home ; `layouts/home.html` et `_partials/home/*` (5.2a). Remplace la liste par défaut de PaperMod : `mainSections` n'est plus utilisé sur l'accueil |
 | Menu | Accueil / Home (10) |
-| Aujourd'hui | Contenu actuel conservé ; entrée de menu ajoutée au front matter ; `mainSections = ["journal"]` |
+| Aujourd'hui | Tant que `headline` est vide et que `data/` n'existe pas, seul le texte actuel s'affiche ; chaque bloc apparaît avec ses données |
 
-1. **Identité** : `headline`, `availability`, pitch, boutons CV, Contact (lien vers `#contact` de P13), GitHub, LinkedIn. *(front matter et Firmin ; liens dans `hugo.toml` ; 5.2)*
-2. **Le lab en un coup d'œil** : schéma `lab-overview`, nombre de composants par statut, phases en cours, date de dernière vérification, lien vers P03. *(données ; 5.1 et 5.2)*
-3. **Stack** : composants non retirés, groupés, avec leur badge de statut. *(catalogue ; 5.2)*
-4. **Dernières entrées du journal** : les 3 dernières entrées, P10 ou P12 (numéro, date, titre, description). *(5.2)*
-5. **Certifications** : liste et statuts. *(données ; 5.2)*
+Un bloc sans donnée est masqué. Détail des contenus et des liens : architecture §5.1.
+
+1. **Présentation** : nom, `headline`, pitch, `availability` ; boutons CV, Contact (`#contact` de P13 quand l'ancre existe), GitHub, LinkedIn. *(front matter et Firmin ; liens dans `hugo.toml` `params.profile` ; 5.2a)*
+2. **Le lab en un coup d'œil** : schéma `lab-overview` (« architecture cible » tant que rien n'est en service), dernière semaine publiée, phase en cours, nombre de composants en service, en construction et prévus ; liens vers P03 et P07. *(données ; 5.1 pour le schéma, 5.2a)*
+3. **Stack** : composants en service ou en construction, groupés, avec badge et lien ; les prévus sont seulement comptés. *(catalogue ; 5.2a)*
+4. **Dernières entrées du journal** : les 3 dernières entrées, P10 ou P12 (numéro, date, titre, description) ; liens vers P09, P11 et le flux RSS. *(5.2a)*
+5. **Certifications** : liste, statuts, lien vers la page de terme (P15) et la vérification ; lien vers P13. *(données ; 5.2a)*
 
 ### P03 — Infrastructure
 
@@ -457,6 +459,7 @@ Ordre retenu pour aujourd'hui : **0.1, puis la phase 1**. Les étapes 0.2 à 0.4
 | 1.5 | `feat/journal-rename` | Section « Devlog » renommée « Journal » partout (P09 à P12, menu, pied de page, archetype) | `/fr/journal/` et `/en/journal/` avec `-D` ; en production, `/en/journal/` redirige toujours ; plus aucun « devlog » dans le site |
 | 1.6 | `feat/placeholder-sections` | Infrastructure, Services et Journal publiées avec une description et un message « en construction » ; sous-pages en brouillon ; redirections du §3.6 à leur cible finale ; `static/en/journal/index.html` supprimé | Menu à 5 entrées en production ; aucune page vide ni `TODO(firmin)` publié ; chaque redirection mène à une page existante |
 | 1.7 | `feat/remove-infra-groups` | Les 7 pages de groupe (P04) retirées, en attendant D6 | Aucune page de groupe ; build vert |
+| 5.2a | `feat/home` | Template de l'accueil (P02), anticipé : cinq blocs masqués sans données | En production, accueil inchangé ; avec des données d'exemple locales, les cinq blocs s'affichent |
 
 Reportés à leurs phases : templates et rendu des blocs (3 à 5), modèle de données et validations (2), `enableGitInfo` (0.2, qui exige un clonage complet en CI), pied de page et fichiers i18n (5.2).
 
