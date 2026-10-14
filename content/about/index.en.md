@@ -1,5 +1,11 @@
 ---
 title: "About"
+ShowReadingTime: false
+ShowPostNavLinks: false
+menus:
+  main:
+    identifier: about
+    weight: 50
 ---
 
 <!-- Presentation text to write. -->

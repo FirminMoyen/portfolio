@@ -1,0 +1,3 @@
+# Chaînes d'interface du site (architecture §11.4). Celles de PaperMod
+# restent dans le thème ; une clé définie ici l'emporte sur celle du thème.
+devlogRss: "Flux RSS du devlog"
