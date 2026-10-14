@@ -6,7 +6,7 @@
 | Date | 14 octobre 2026 |
 | Emplacement | `docs/architecture.md` du repo `FirminMoyen/portfolio` |
 | Lecteurs | Claude Code (implémente et maintient), Firmin (valide), visiteurs du repo : ce document est public |
-| Documents liés | Structure page par page : `docs/structure.md` (pages, URL, menus, blocs, redirections) — **à venir** : tant qu'il n'existe pas, la phase 1 (§15) ne commence pas. Architecture et plan du lab (`docs/architecture.md` du repo `homelab`) : calendrier commun (§15 de ce plan), contenu du catalogue, ADR prévues. Règles opérationnelles : `CLAUDE.md` et `.claude/rules/` |
+| Documents liés | Structure page par page : `docs/structure.md` (pages, URL, menus, blocs, redirections). Architecture et plan du lab (`docs/architecture.md` du repo `homelab`) : calendrier commun (§15 de ce plan), contenu du catalogue, ADR prévues. Règles opérationnelles : `CLAUDE.md` et `.claude/rules/` |
 
 ## Résumé
 
@@ -26,7 +26,7 @@ L'Accueil (pitch, schéma du lab, stack, derniers devlogs, CV) et la page À pro
 - Ce document décrit la structure du site et ses raisons. `CLAUDE.md` et `.claude/rules/` contiennent les règles opérationnelles courtes et renvoient ici pour le détail.
 - Si une demande contredit ce document, ne pas l'exécuter en silence. Signaler la contradiction et proposer une modification du document. Le document et le code changent dans la même PR.
 - Les décisions ouvertes (§17.1) appartiennent à Firmin. Claude Code ne les tranche pas.
-- Le détail page par page (fichiers, templates, menus, blocs, redirections) est dans `docs/structure.md` (à venir). Ce document le complète sans jamais le contredire.
+- Le détail page par page (fichiers, templates, menus, blocs, redirections) est dans `docs/structure.md`. Ce document le complète sans jamais le contredire.
 
 ### 0.2 Vocabulaire normatif
 
@@ -745,15 +745,13 @@ En attendant la phase 3, Firmin consigne ses notes de chaque semaine. Elles devi
 
 | Étape | Branche | Contenu | Critères d'acceptation |
 |---|---|---|---|
-| 0.1 | `docs/architecture` | Ce document (statut « validé ») ; `CLAUDE.md` tiré de l'Annexe B, puis l'annexe retirée de ce document ; `.claude/rules/` ; `.claude/settings.json` (§14.3) | `CLAUDE.md` sous 200 lignes ; aucune contradiction entre les fichiers |
+| 0.1 | `docs/architecture` | Ce document (statut « validé ») ; `docs/structure.md` ; `CLAUDE.md` tiré de l'Annexe B, puis l'annexe retirée de ce document ; `.claude/rules/` ; `.claude/settings.json` (§14.3) | `CLAUDE.md` sous 200 lignes ; aucune contradiction entre les fichiers |
 | 0.2 | `chore/ci-pipeline` | `tools.env`, `install-tools.sh`, `build.yml`, `ci.yml` (jobs `build`, `links` et `i18n-sync`), `pages.yml` durci (clonage complet, `enableGitInfo`), Dependabot, modèle de PR | CI verte sur la PR ; déploiement inchangé après fusion ; actions épinglées par SHA ; même version de Hugo en local et en CI ; un lien interne cassé fait échouer `links` ; une PR qui ne modifie qu'une langue échoue |
 | 0.3 | `chore/publication-checks` | gitleaks, `check-publication.sh`, `.publication-allowlist`, hook pre-commit, job `publication` | Sur une branche jetable, une IP publique, un faux jeton et une image géolocalisée font échouer la CI |
 | 0.4 | `chore/cleanup` | Selon D5 | Site identique avant et après |
 | — | Firmin | Réglages GitHub (§13.5) | Fusion impossible sans CI verte |
 
 ### Phase 1 — Structure
-
-Prérequis : `docs/structure.md` présent dans le repo.
 
 | Étape | Branche | Contenu | Critères d'acceptation |
 |---|---|---|---|
@@ -905,7 +903,7 @@ Le site dépend de comptes et de services extérieurs au repo. C'est là qu'est 
 | 2026-10-14 | Architecture v0.1 (ce document) | PR de l'étape 0.1 |
 | 2026-10-14 | v0.2 : exploitation hors du repo (§16.9), sonde de disponibilité externe, repo du lab proposé (D3), lien vers le calendrier commun | Plan du lab |
 | 2026-10-14 | v0.3 : structure page par page (`docs/structure.md`) ; menus dans le front matter et sections en brouillon tant qu'elles sont vides ; redirections par fichiers `static/` ; ordre du jour : 0.1, puis phase 1, puis 0.2 à 0.4 | `docs/structure.md` |
-| 2026-10-14 | v0.3 validée et commitée ; annexe B retirée (`CLAUDE.md` devient la source) ; `.claude/rules/` et permissions (§14.3, précisions sur `gh api` et `git push`) ; tableau du §11.3 corrigé ; `docs/structure.md` à venir, prérequis de la phase 1 | PR de l'étape 0.1 |
+| 2026-10-14 | v0.3 validée et commitée ; annexe B retirée (`CLAUDE.md` devient la source) ; `.claude/rules/` et permissions (§14.3, précisions sur `gh api` et `git push`) ; tableau du §11.3 corrigé ; `docs/structure.md` v0.1 ajouté | PR de l'étape 0.1 |
 
 ---
 

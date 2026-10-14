@@ -28,7 +28,7 @@ Détail : `docs/architecture.md` §6, §7, §9, §10.
 - Archetypes : aucun appel de shortcode (`{{<`) (§7.3).
 
 ## Rédaction (§9)
-- Firmin rédige ; Claude Code met en forme, traduit, corrige. Il ne rédige jamais de lui-même (§9.1).
+- Claude Code crée la structure de `content/` (dossiers, front matter, rubriques vides, libellés de `docs/structure.md`, `TODO(firmin)` dans les brouillons) ; il met en forme, traduit et corrige ce que Firmin fournit ; il ne rédige jamais de prose de lui-même (C8, §9.1).
 - Aucun fait inventé : ni commande, ni version, ni chiffre, ni résultat, ni leçon. Information manquante : demander ou `TODO(firmin): <question>` (§9.2).
 - Historique immuable : devlog (erratum daté), ADR acceptée (seuls `status` et `superseded_by`), post-mortem (seul l'état des actions) (§9.3).
 - Traduction : le sens, même structure ; ne jamais traduire code, commandes, identifiants, noms de produits, champs structurés ; ne rien ajouter ni retirer (§9.4).

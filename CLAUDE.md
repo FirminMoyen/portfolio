@@ -1,7 +1,7 @@
 # CLAUDE.md
 
 Site portfolio du homelab de Firmin : Hugo + PaperMod, GitHub Pages, https://firminmoyen.dev.
-Référence : `docs/architecture.md` ; structure page par page : `docs/structure.md` (à venir).
+Référence : `docs/architecture.md` ; structure page par page : `docs/structure.md`.
 Lire la section concernée avant toute modification
 de structure, de template, de données, de CI ou d'outillage.
 
