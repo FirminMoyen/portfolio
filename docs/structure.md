@@ -31,7 +31,7 @@
 | P01 | Racine | `/` | — | Générée par Hugo | Redirection | — | Redirige vers la langue par défaut (D1) |
 | P02 | Accueil | `/fr/` | `/en/` | `content/_index.{fr,en}.md` | home | Accueil / Home (10) | Publiée (existante) |
 | P03 | Infrastructure | `/fr/infrastructure/` | `/en/infrastructure/` | `content/infrastructure/_index.*` | section | Infrastructure (20) | Publiée, en construction (1.6) |
-| P04 | Page de groupe (×7) | `/fr/infrastructure/<groupe>/` | `/en/infrastructure/<groupe>/` | `content/infrastructure/<groupe>/index.*` | page | — | Brouillons |
+| P04 | Page de groupe (une par groupe, D6) | `/fr/infrastructure/<groupe>/` | `/en/infrastructure/<groupe>/` | `content/infrastructure/<groupe>/index.*` | page | — | Aucune tant que D6 n'est pas tranchée |
 | P05 | Décisions d'architecture | `/fr/infrastructure/decisions/` | `/en/infrastructure/decisions/` | `content/infrastructure/decisions/_index.*` | section | — | Brouillon |
 | P06 | ADR | `…/decisions/adr-NNNN-<slug>/` | idem | Archetype `adr` | page | — | Modèle seulement |
 | P07 | Services | `/fr/services/` | `/en/services/` | `content/services/_index.*` | section | Services (30) | Publiée, en construction (1.6) |
@@ -45,7 +45,7 @@
 | P15 | Certifications | `/fr/certifications/`, `/fr/certifications/<id>/` | idem | Générées par Hugo | taxonomie | — | Automatiques ; aucune aujourd'hui |
 | P16 | Page 404 | `/fr/404.html`, `/404.html` | `/en/404.html` | Thème ; `static/404.html` à la racine | — | — | Racine : page autonome bilingue (1.1) |
 
-Les sept groupes de P04, avec leurs libellés (architecture §6.4) :
+Groupes de P04 : **à décider (D6, §8)**. Proposition de départ, tirée de l'architecture §6.4 :
 
 | Dossier | Titre FR | Titre EN |
 |---|---|---|
@@ -187,7 +187,7 @@ Format de chaque fiche : identité de la page, puis ses blocs dans l'ordre d'aff
 4. **Composants par groupe** : un tableau par groupe, dans l'ordre de `data/groups.yaml`. Colonnes : nom (lien vers sa carte dans P04), rôle, statut, où il tourne, date de vérification. *(4.1)*
 5. **Dernières décisions** : les 5 ADR les plus récentes et un lien vers P05. *(4.1)*
 
-### P04 — Page de groupe d'infrastructure (×7)
+### P04 — Page de groupe d'infrastructure (une par groupe, D6)
 
 | | |
 |---|---|
@@ -197,7 +197,7 @@ Format de chaque fiche : identité de la page, puis ses blocs dans l'ordre d'aff
 | Type, template | page ; `layouts/infrastructure/page.html` (4.1) |
 | Menu | — (accès par P03) |
 | Fil d'Ariane | Accueil › Infrastructure › *Groupe* |
-| Aujourd'hui | 7 brouillons : titre, description `TODO(firmin)`, rubriques vides |
+| Aujourd'hui | Aucune. Une fois D6 tranchée, chaque groupe reçoit sa page en brouillon : titre, description `TODO(firmin)`, rubriques vides (§6) |
 
 1. **En-tête** : titre (libellé du groupe), description. *(thème)*
 2. **Rubriques** : Rôle dans le lab · Mise en œuvre · Exploitation · Limites et évolutions. *(Firmin)*
@@ -371,13 +371,7 @@ content/
 ├── about/index.fr.md, index.en.md                 P13 À propos (publiée)
 ├── infrastructure/
 │   ├── _index.fr.md, _index.en.md                 P03 (publiée, en construction)
-│   ├── hardware/index.fr.md, index.en.md          P04 (brouillon)
-│   ├── network/…                                  P04 (brouillon)
-│   ├── virtualization/…                           P04 (brouillon)
-│   ├── storage-backup/…                           P04 (brouillon)
-│   ├── identity-security/…                        P04 (brouillon)
-│   ├── kubernetes/…                               P04 (brouillon)
-│   ├── automation/…                               P04 (brouillon)
+│   ├── <groupe>/index.fr.md, index.en.md          P04, selon D6 (aucun aujourd'hui)
 │   └── decisions/_index.fr.md, _index.en.md       P05 (brouillon)
 ├── services/_index.fr.md, _index.en.md            P07 (publiée, en construction)
 └── journal/
@@ -462,6 +456,7 @@ Ordre retenu pour aujourd'hui : **0.1, puis la phase 1**. Les étapes 0.2 à 0.4
 | 1.4 | `feat/footer-rss` | Bouton RSS retiré des titres ; lien vers le flux RSS du journal sous le pied de page (`extend_footer.html`, §3.3) ; premiers fichiers `i18n/` et `assets/css/extended/site.css` | Aucun logo RSS à côté des titres ; avec `-D`, le lien figure en bas de chaque page dans les deux langues ; en production, absent tant que le journal est en brouillon |
 | 1.5 | `feat/journal-rename` | Section « Devlog » renommée « Journal » partout (P09 à P12, menu, pied de page, archetype) | `/fr/journal/` et `/en/journal/` avec `-D` ; en production, `/en/journal/` redirige toujours ; plus aucun « devlog » dans le site |
 | 1.6 | `feat/placeholder-sections` | Infrastructure, Services et Journal publiées avec une description et un message « en construction » ; sous-pages en brouillon ; redirections du §3.6 à leur cible finale ; `static/en/journal/index.html` supprimé | Menu à 5 entrées en production ; aucune page vide ni `TODO(firmin)` publié ; chaque redirection mène à une page existante |
+| 1.7 | `feat/remove-infra-groups` | Les 7 pages de groupe (P04) retirées, en attendant D6 | Aucune page de groupe ; build vert |
 
 Reportés à leurs phases : templates et rendu des blocs (3 à 5), modèle de données et validations (2), `enableGitInfo` (0.2, qui exige un clonage complet en CI), pied de page et fichiers i18n (5.2).
 
@@ -471,3 +466,4 @@ Reportés à leurs phases : templates et rendu des blocs (3 à 5), modèle de do
 |---|---|---|---|
 | D1 | Vers quelle langue `/` redirige-t-il ? | **Tranchée le 14/10/2026 : `en`** (architecture §17.2) | 1.1 |
 | D2 | Que faire de l'article `proxmox-homelab-premiers-pas` ? | **Tranchée le 14/10/2026 : supprimé** ; ses URL redirigent comme au §3.6 | 1.2 |
+| D6 | Quels groupes d'infrastructure ? (architecture §17.1) | Partir de la proposition du §2 et l'ajuster ; chaque groupe retenu reçoit sa page P04 en brouillon | Pages de groupe, `data/groups.yaml` (2.1) |

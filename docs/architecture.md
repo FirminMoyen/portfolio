@@ -310,8 +310,10 @@ Tout `none` se justifie. `auth.method: none`, `backup.method: none` et une super
 
 L'ordre de la liste est l'ordre d'affichage. La page d'un groupe d'infrastructure (FR et EN) devient obligatoire dès qu'un de ses composants passe en construction (V10).
 
+Les groupes d'infrastructure ne sont pas encore décidés (D6) : la liste `infrastructure` ci-dessous est une proposition de départ, pas une décision. Aucune page de groupe n'existe tant que D6 n'est pas tranchée.
+
 ```yaml
-infrastructure:
+infrastructure:                # PROPOSITION, à trancher (D6)
   - {id: hardware,          label: {fr: "Matériel",                en: "Hardware"}}
   - {id: network,           label: {fr: "Réseau",                  en: "Network"}}
   - {id: virtualization,    label: {fr: "Virtualisation",          en: "Virtualization"}}
@@ -763,6 +765,7 @@ En attendant la phase 3, Firmin consigne ses notes de chaque semaine. Elles devi
 | 1.4 | `feat/footer-rss` | Lien RSS du journal dans le pied de page au lieu d'un bouton à côté des titres (`docs/structure.md` §3.3) | Aucun logo RSS dans les titres ; lien absent en production tant que le journal est en brouillon |
 | 1.5 | `feat/journal-rename` | Section « Devlog » renommée « Journal » : contenu, archetype, URL, menu, pied de page, documents | Plus aucun « devlog » hors de l'historique des décisions ; `/en/journal/` redirige tant que la section est en brouillon |
 | 1.6 | `feat/placeholder-sections` | Infrastructure, Services et Journal publiées « en construction » (`docs/structure.md` §1) ; redirections à leur cible finale | Menu à 5 entrées en production ; aucune page vide ni `TODO(firmin)` publié |
+| 1.7 | `feat/remove-infra-groups` | Les 7 pages de groupe retirées ; liste des groupes en décision ouverte (D6) | Aucune page de groupe dans le repo ; build vert |
 
 ### Phase 2 — Données et validation
 
@@ -899,6 +902,7 @@ Le site dépend de comptes et de services extérieurs au repo. C'est là qu'est 
 | D3 | Repo du lab : nom, public ou privé ? | `FirminMoyen/homelab`, public, avec les secrets chiffrés (SOPS/age) : les fiches peuvent alors pointer vers le code (plan du lab, LD9). En attendant, `deploy.code` reste vide. | Liens « code » des fiches |
 | D4 | Contact public : adresse principale ou alias dédié ? | Un alias dédié sur le domaine, remplaçable en cas de spam. CV public sans adresse, téléphone ni date de naissance. | 5.3 |
 | D5 | Supprimer `layouts-maison/` et `assets/css/main.css` ? | Oui : l'historique git les conserve. | 0.4 |
+| D6 | Quels groupes d'infrastructure (identifiants, libellés, ordre) ? | Partir de la proposition du §6.4 et l'ajuster une fois le matériel et la topologie du lab connus. Chaque groupe retenu reçoit sa page (P04) en brouillon. | 2.1 (`data/groups.yaml`), pages de groupe |
 
 ### 17.2 Historique des décisions du site
 
@@ -915,6 +919,7 @@ Le site dépend de comptes et de services extérieurs au repo. C'est là qu'est 
 | 2026-10-14 | Flux RSS : lien vers le flux du devlog sous le pied de page (`extend_footer.html`, registre §11.7) plutôt qu'un bouton à côté du titre de chaque section ; premiers fichiers `i18n/` et `site.css` | PR de l'étape 1.4 |
 | 2026-10-14 | La section « Devlog » devient « Journal » (`/<lang>/journal/`, archetype `journal`, skill `/journal`, branches `docs/journal-<nnn>`) ; le §17.2 devient « Historique des décisions du site » pour éviter le double sens. Les lignes précédentes gardent le terme de leur date | PR de l'étape 1.5 |
 | 2026-10-14 | Infrastructure, Services et Journal publiées avant leur contenu, avec une description et un message « en construction » : le menu montre les cinq sections dès maintenant. Les sous-pages restent en brouillon ; redirections passées à leur cible finale | PR de l'étape 1.6 |
+| 2026-10-14 | Groupes d'infrastructure non décidés : les 7 pages de groupe sont retirées, la liste du §6.4 devient une proposition et D6 est ouverte | PR de l'étape 1.7 |
 
 ---
 
