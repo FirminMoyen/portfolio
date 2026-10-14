@@ -2,7 +2,7 @@
 
 | | |
 |---|---|
-| Statut | Proposition v0.1 — à valider par Firmin avant implémentation |
+| Statut | Validé (v0.1), 14 octobre 2026 |
 | Date | 14 octobre 2026 |
 | Emplacement | `docs/structure.md` du repo `FirminMoyen/portfolio` |
 | Complète | `docs/architecture.md`, en particulier ses sections URL, Sections, Modèle de contenu, Implémentation Hugo et Plan d'implémentation |
