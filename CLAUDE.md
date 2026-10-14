@@ -1,74 +1,46 @@
 # CLAUDE.md
 
-Site de documentation d'infrastructure (homelab Proxmox/Ansible), généré avec Hugo.
+Site portfolio du homelab de Firmin : Hugo + PaperMod, GitHub Pages, https://firminmoyen.dev.
+Référence : `docs/architecture.md` ; structure page par page : `docs/structure.md` (à venir).
+Lire la section concernée avant toute modification
+de structure, de template, de données, de CI ou d'outillage.
+
+## Manière de travailler
+- Firmin valide tout : présenter un plan (fichiers, objectif de chaque changement) et attendre
+  son accord avant de créer ou de modifier un fichier.
+- Une étape à la fois (architecture §15) : une étape = une branche = une PR. Ne pas anticiper.
+- Si une demande contredit docs/architecture.md : s'arrêter, le signaler, proposer la
+  modification du document.
+- Les décisions ouvertes (architecture §17.1) appartiennent à Firmin.
 
 ## Commandes
-
-- Serveur de dev : `hugo server -D` (inclut les brouillons, rechargement à chaud)
-- Build de production : `hugo --minify`
+- Développement : `hugo server` (`-D` pour voir les brouillons)
+- Build et validations : `hugo --minify`
 - Sortie du build : `public/` (généré, ignoré par git, ne pas éditer à la main)
 
-## Structure
+## Invariants
+- Aucune invention : aucun fait absent des notes de Firmin ou du repo du lab. Information
+  manquante : demander, ou écrire `TODO(firmin): …` (bloque la publication).
+- Les faits d'un composant vivent dans `data/catalog/<id>.yaml`, jamais dans la prose.
+- Historique immuable : devlog, ADR et post-mortems ne se réécrivent pas
+  (erratum, nouvelle ADR, état des actions).
+- Bilingue : toute page existe en FR et en EN ; une modification se reporte dans l'autre
+  langue, dans la même PR.
+- Publication (architecture §10) : aucun secret, aucune IP publique, aucun détail d'accès
+  distant, aucune image géolocalisée. Ouvrir et inspecter chaque image ajoutée.
+- Ne jamais modifier `themes/PaperMod/`. Toute surcharge s'inscrit au registre (§11.7).
+- Aucun JavaScript écrit pour le site, aucune dépendance npm, aucun service tiers.
+- `hugo.toml` ne change que dans le cadre d'un plan validé.
 
-- `hugo.toml` — configuration du site (langues fr/en, menus par langue,
-  titre, thème, params PaperMod)
-- `content/` — pages et articles Markdown, en français et en anglais
-  - Site bilingue par suffixe de fichier : `xxx.fr.md` / `xxx.en.md` dans le
-    même dossier, appariés automatiquement par Hugo comme traductions
-    (même chemin, même nom de base). Le français est servi à la racine
-    (langue par défaut), l'anglais sous `/en/`.
-  - `content/_index.{fr,en}.md` — page d'accueil
-  - `content/journal/` — notes datées (interventions, incidents, découvertes)
-  - `content/projects/` — pages projets d'infrastructure
-  - `content/about/` — page à propos
-  - chaque section a un `_index.{fr,en}.md` avec `title` et `description`
-  - un article traduit peut avoir un `slug` différent en anglais (front
-    matter) tout en gardant le même nom de fichier de base pour rester
-    apparié à sa traduction
-- `themes/PaperMod/` — thème Hugo (submodule git, ne pas éditer directement)
-- `layouts/_partials/header.html` — surcharge du partial PaperMod : le
-  toggle de langue d'origine renvoie toujours vers la page d'accueil de
-  l'autre langue (`site.Home.Translations`) ; cette version utilise
-  `.Translations` pour renvoyer vers la page traduite équivalente
-- `layouts-maison/` — sauvegarde inactive des anciens layouts custom
-  (`_default/baseof.html`, `list.html`, `single.html`, `index.html`) d'avant
-  l'installation de PaperMod. Hors du chemin de recherche de Hugo
-  (`layouts/` et `themes/<theme>/layouts/` uniquement) : ce dossier n'est
-  jamais lu au build. Conservé pour un retour en arrière éventuel.
-- `assets/css/main.css` — feuille de style unique custom, non chargée
-  actuellement (PaperMod utilise son propre CSS embarqué)
-
-## Front matter des articles
-
-```yaml
----
-title: "Titre de l'article"
-date: 2026-08-27
-draft: false
----
-```
-
-- `title` : requis
-- `date` : requis, format `AAAA-MM-JJ`
-- `draft` : `true`/`false`, requis (les brouillons n'apparaissent pas en build classique)
-- `slug` : optionnel, pour donner une URL différente à la version anglaise
-  d'un article (le nom de fichier de base doit rester identique entre
-  `xxx.fr.md` et `xxx.en.md` pour que Hugo les apparie comme traductions)
-
-## Règles
-
-- Aucune dépendance npm, aucun framework CSS, aucun JavaScript côté client.
-- Ne jamais modifier `hugo.toml` sans demande explicite.
-- Ne jamais créer de contenu dans `content/` — les articles sont écrits par l'utilisateur.
-- Un seul fichier CSS dans `assets/` (`assets/css/main.css`), pas de découpage en modules.
-- Toujours vérifier que `hugo --minify` passe sans erreur avant de considérer une tâche terminée.
+## Définition de terminé
+Voir architecture §14.4 : plan validé, build sans erreur ni nouvel avertissement,
+contrôle de publication, FR et EN à jour, images vérifiées, revue visuelle par Firmin,
+document d'architecture à jour si la structure change.
 
 ## Workflow git
-
-- Toujours partir de `main` à jour, jamais travailler directement dessus.
-- Une branche par tâche, nommée `feat/`, `fix/`, `chore/` ou `docs/`.
-- Commits en Conventional Commits.
-- Ne jamais ouvrir de PR sans autorisation explicite de l'utilisateur —
-  committer et pousser la branche, puis demander avant d'ouvrir la PR.
-- Ne jamais merger soi-même.
-- Revenir sur `main` après l'ouverture de chaque PR.
+- Partir de `main` à jour ; ne jamais travailler directement sur `main`.
+- Une branche par tâche : `feat/`, `fix/`, `chore/`, `docs/` (le contenu du site passe par `docs/`).
+- Commits petits, en Conventional Commits.
+- Jamais `--no-verify`, jamais de force-push.
+- Pousser la branche, puis demander l'accord de Firmin avant d'ouvrir la PR.
+- Ne jamais fusionner soi-même. Revenir sur `main` après l'ouverture de chaque PR.
