@@ -466,4 +466,4 @@ Reportés à leurs phases : templates et rendu des blocs (3 à 5), modèle de do
 | # | Question | Recommandation | Bloque |
 |---|---|---|---|
 | D1 | Vers quelle langue `/` redirige-t-il ? | **Tranchée le 14/10/2026 : `en`** (architecture §17.2) | 1.1 |
-| D2 | Que faire de l'article `proxmox-homelab-premiers-pas` ? | Le supprimer ; ses URL redirigent comme au §3.6 | 1.2 |
+| D2 | Que faire de l'article `proxmox-homelab-premiers-pas` ? | **Tranchée le 14/10/2026 : supprimé** ; ses URL redirigent comme au §3.6 | 1.2 |
