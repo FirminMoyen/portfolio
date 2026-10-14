@@ -1,6 +1,11 @@
 ---
 title: "Homelab & Infrastructure"
 description: "Notes and experience reports on a Proxmox homelab, Ansible automation and observability."
+menus:
+  main:
+    identifier: home
+    name: "Home"
+    weight: 10
 ---
 
 Technical documentation of a homelab: Proxmox virtualization, provisioning and

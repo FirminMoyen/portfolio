@@ -1,5 +1,11 @@
 ---
 title: "À propos"
+ShowReadingTime: false
+ShowPostNavLinks: false
+menus:
+  main:
+    identifier: about
+    weight: 50
 ---
 
 <!-- Texte de présentation à écrire. -->

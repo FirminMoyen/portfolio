@@ -33,61 +33,50 @@ buildDrafts = false
   weight = 1
   locale = "fr-FR"
 
-  # Menu principal, affiché par le partial header de PaperMod via site.Menus.main.
-  [[languages.fr.menu.main]]
-    name = "Accueil"
-    url = "/"
-    weight = 5
-
-  [[languages.fr.menu.main]]
-    name = "Journal"
-    url = "/journal/"
-    weight = 10
-
-  [[languages.fr.menu.main]]
-    name = "Projets"
-    url = "/projects/"
-    weight = 20
-
-  [[languages.fr.menu.main]]
-    name = "À propos"
-    url = "/about/"
-    weight = 30
-
-# Anglais : servi sous /en/, activé par la présence de ce bloc.
+# Anglais : servi sous /en/.
 [languages.en]
   label = "English"
   weight = 2
   locale = "en-US"
 
-  [[languages.en.menu.main]]
-    name = "Home"
-    url = "/"
-    weight = 5
+# Menus : déclarés dans le front matter des pages, pas ici
+# (docs/structure.md §3.5). Une section en brouillon n'est pas construite,
+# donc son entrée de menu n'apparaît qu'à sa publication.
 
-  [[languages.en.menu.main]]
-    name = "Journal"
-    url = "/journal/"
-    weight = 10
-
-  [[languages.en.menu.main]]
-    name = "Projects"
-    url = "/projects/"
-    weight = 20
-
-  [[languages.en.menu.main]]
-    name = "About"
-    url = "/about/"
-    weight = 30
+# Taxonomies du site (docs/architecture.md §5.8).
+[taxonomies]
+  tag = "tags"
+  certification = "certifications"
 
 # Dark mode par défaut (bouton de bascule PaperMod toujours disponible).
 # displayFullLangName : affiche "Français"/"English" (label de chaque langue)
 # au lieu de "Fr"/"En" dans le toggle de langue de PaperMod.
+# mainSections : section listée sur l'accueil par PaperMod.
 [params]
   defaultTheme = "dark"
   ShowReadingTime = true
   displayFullLangName = true
+  ShowBreadCrumbs = true
+  ShowCodeCopyButtons = true
+  ShowPostNavLinks = true
+  ShowRssButtonInSectionTermList = true
+  mainSections = ["devlog"]
 
-# Pagination des listes (journal, projects) via PaperMod.
+# Pagination des listes via PaperMod.
 [pagination]
   pagerSize = 10
+
+# Aucun service tiers (architecture P8) : les intégrations de Hugo sont coupées.
+[privacy]
+  [privacy.disqus]
+    disable = true
+  [privacy.googleAnalytics]
+    disable = true
+  [privacy.instagram]
+    disable = true
+  [privacy.vimeo]
+    disable = true
+  [privacy.x]
+    disable = true
+  [privacy.youTube]
+    disable = true
