@@ -77,8 +77,9 @@ Affiché sur toutes les pages sauf l'accueil (`ShowBreadCrumbs`). Il suit l'arbo
 - Copyright.
 - Lien vers le code source du site.
 - Mention « ni cookies ni traceurs », dont le texte vient des fichiers i18n.
+- Lien vers le flux RSS du devlog (`/<lang>/devlog/index.xml`), sur toutes les pages, affiché seulement quand le devlog est publié.
 
-Implémenté en phase 5.2 par `extend_footer.html`. D'ici là, le pied de page de PaperMod reste en place.
+Le lien RSS est en place depuis l'étape 1.4 : `extend_footer.html` l'ajoute sous le pied de page de PaperMod. Le reste est implémenté en phase 5.2 dans le même fichier. Aucun bouton RSS à côté des titres (`ShowRssButtonInSectionTermList` désactivé).
 
 ### 3.4 Métadonnées
 
@@ -277,7 +278,7 @@ Format de chaque fiche : identité de la page, puis ses blocs dans l'ordre d'aff
 | Fil d'Ariane | Accueil › Devlog |
 | Aujourd'hui | Brouillon |
 
-1. **En-tête**, avec le bouton RSS. *(thème)*
+1. **En-tête.** *(thème)* Le flux RSS est proposé dans le pied de page (§3.3).
 2. **Introduction.** *(Firmin)*
 3. **Accès rapides** : Incidents (P11), Tags (P14), Certifications (P15). *(3.1)*
 4. **Liste paginée par 10**, du plus récent au plus ancien : entrées P10 et P12, avec numéro (S07 ou PM-002), date, titre, description et tags. Un badge signale les post-mortems. *(3.1)*
@@ -456,8 +457,9 @@ Ordre retenu pour aujourd'hui : **0.1, puis la phase 1**. Les étapes 0.2 à 0.4
 |---|---|---|---|
 | 0.1 | `docs/architecture` | `docs/architecture.md` (v0.3), `docs/structure.md` (ce document), `CLAUDE.md` (architecture, Annexe B), `.claude/rules/`, `.claude/settings.json` | `CLAUDE.md` sous 200 lignes ; la nouvelle règle sur `content/` (architecture C8) est en place, ce qui autorise les étapes suivantes |
 | 1.1 | `feat/i18n-subdirs` | Langues en sous-dossier, langue par défaut (D1) ; `timeZone`, `enableRobotsTXT`, `refLinksErrorLevel` ; redirections de `static/` vers les équivalents `/fr/` des pages encore existantes | `/` redirige vers la langue choisie ; chaque ancienne URL du §3.6 redirige ; le sélecteur de langue mène à la page traduite ; présence de `/404.html` vérifiée, ou solution proposée dans la PR |
-| 1.2 | `feat/sections` | Arborescence du §5 ; conversion d'À propos en dossier ; suppression de `journal` et `projects` (D2) ; menus déplacés dans le front matter (§3.5, §6) et retirés de `hugo.toml` ; taxonomies `tags` et `certifications` ; paramètres `ShowBreadCrumbs`, `ShowCodeCopyButtons`, `ShowPostNavLinks`, `ShowRssButtonInSectionTermList`, `mainSections = ["devlog"]` ; services tiers désactivés (`[privacy]`) ; redirections passées à leur « cible aujourd'hui » (§3.6) | Build vert, sans nouvel avertissement. **En production** (sans `-D`) : seules P02 et P13 existent, dans les deux langues, avec un menu Accueil · À propos. **Avec `-D`** : toutes les pages du §2 sont navigables, le menu compte 5 entrées dans l'ordre, le fil d'Ariane est juste, chaque page mène à sa traduction. Rien d'autre n'est écrit que les libellés de ce document et des `TODO(firmin)` |
+| 1.2 | `feat/sections` | Arborescence du §5 ; conversion d'À propos en dossier ; suppression de `journal` et `projects` (D2) ; menus déplacés dans le front matter (§3.5, §6) et retirés de `hugo.toml` ; taxonomies `tags` et `certifications` ; paramètres `ShowBreadCrumbs`, `ShowCodeCopyButtons`, `ShowPostNavLinks`, `mainSections = ["devlog"]` ; services tiers désactivés (`[privacy]`) ; redirections passées à leur « cible aujourd'hui » (§3.6) | Build vert, sans nouvel avertissement. **En production** (sans `-D`) : seules P02 et P13 existent, dans les deux langues, avec un menu Accueil · À propos. **Avec `-D`** : toutes les pages du §2 sont navigables, le menu compte 5 entrées dans l'ordre, le fil d'Ariane est juste, chaque page mène à sa traduction. Rien d'autre n'est écrit que les libellés de ce document et des `TODO(firmin)` |
 | 1.3 | `feat/archetypes` | Archetypes de dossier `devlog`, `postmortem`, `adr`, `services`, conformes à l'architecture, Annexe A | Chaque `hugo new content --kind …` crée FR et EN en brouillon, au bon front matter et avec les bonnes rubriques. Les fichiers de test sont supprimés, pas commités |
+| 1.4 | `feat/footer-rss` | Bouton RSS retiré des titres ; lien vers le flux RSS du devlog sous le pied de page (`extend_footer.html`, §3.3) ; premiers fichiers `i18n/` et `assets/css/extended/site.css` | Aucun logo RSS à côté des titres ; avec `-D`, le lien figure en bas de chaque page dans les deux langues ; en production, absent tant que le devlog est en brouillon |
 
 Reportés à leurs phases : templates et rendu des blocs (3 à 5), modèle de données et validations (2), `enableGitInfo` (0.2, qui exige un clonage complet en CI), pied de page et fichiers i18n (5.2).
 

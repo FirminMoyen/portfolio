@@ -530,7 +530,7 @@ Contrôles :
 - taxonomies : `tag = "tags"`, `certification = "certifications"` ;
 - aucun menu dans `hugo.toml` : les entrées sont dans le front matter des pages (§4, `docs/structure.md` §3.5) ;
 - `[params]`, en plus de l'existant :
-  - `ShowCodeCopyButtons`, `ShowBreadCrumbs`, `ShowPostNavLinks`, `ShowRssButtonInSectionTermList` ;
+  - `ShowCodeCopyButtons`, `ShowBreadCrumbs`, `ShowPostNavLinks` (pas de bouton RSS à côté des titres : le flux du devlog est proposé dans le pied de page) ;
   - `socialIcons` (GitHub, LinkedIn, e-mail) ;
   - `labRepo` (D3) ;
   - `profile` : nom, e-mail de contact, chemin du CV par langue ;
@@ -560,6 +560,7 @@ layouts/
 ├── _partials/
 │   ├── header.html                        surcharge existante (registre §11.7)
 │   ├── extend_head.html                   point d'extension PaperMod : appelle les validations (§12)
+│   ├── extend_footer.html                 point d'extension PaperMod : lien RSS du devlog, puis pied de page (5.2)
 │   ├── validate/{data,page}.html
 │   ├── catalog/{fiche,table,badge,link}.html
 │   ├── devlog/{item,meta}.html
@@ -608,6 +609,7 @@ Un seul fichier, `assets/css/extended/site.css`, que PaperMod ajoute après son 
 | `layouts/_partials/header.html` | Surcharge | Bascule de langue vers la page traduite (`.Translations`) plutôt que vers l'accueil | Comparer l'ancienne et la nouvelle version du `header.html` du thème ; reporter les changements |
 | `layouts/taxonomy.html` | Surcharge | Libellés des termes depuis `data/` | Idem avec `taxonomy.html` |
 | `layouts/_partials/extend_head.html` | Point d'extension prévu par le thème | Appel des validations | Vérifier qu'il est toujours inclus par `head.html` |
+| `layouts/_partials/extend_footer.html` | Point d'extension prévu par le thème | Lien RSS du devlog ; pied de page du site (5.2) | Vérifier qu'il est toujours inclus par `footer.html` |
 
 ---
 
@@ -758,6 +760,7 @@ En attendant la phase 3, Firmin consigne ses notes de chaque semaine. Elles devi
 | 1.1 | `feat/i18n-subdirs` | Langues en sous-dossier, redirection de la racine (D1), redirections des anciennes URL par fichiers `static/` (`docs/structure.md` §3.6) | `/` et chaque ancienne URL redirigent ; le sélecteur de langue mène à la page traduite ; présence de `public/404.html` vérifiée |
 | 1.2 | `feat/sections` | Arborescence complète de `docs/structure.md` (sections et pages de groupe en brouillon) ; menus dans le front matter ; pages existantes converties en dossiers (C5) ; `journal` et `projects` retirés, anciennes URL redirigées ; ancien article selon D2 ; ajouts à `hugo.toml` (§11.1) | Build vert. En production, seules les pages publiées et leurs entrées de menu existent. Avec `-D`, toute l'arborescence est navigable |
 | 1.3 | `feat/archetypes` | Archetypes (Annexe A) | `hugo new content --kind …` crée FR et EN en brouillon, conformes aux gabarits |
+| 1.4 | `feat/footer-rss` | Lien RSS du devlog dans le pied de page au lieu d'un bouton à côté des titres (`docs/structure.md` §3.3) | Aucun logo RSS dans les titres ; lien absent en production tant que le devlog est en brouillon |
 
 ### Phase 2 — Données et validation
 
@@ -907,6 +910,7 @@ Le site dépend de comptes et de services extérieurs au repo. C'est là qu'est 
 | 2026-10-14 | D1 : `/` redirige vers `en`. Langues en sous-dossier ; anciennes URL redirigées par `static/`, `/tags/` et `/categories/` comprises ; pages `…/page/1/` et flux RSS en exception (`docs/structure.md` §3.6) ; `/404.html` racine fourni par `static/404.html` (P16) | PR de l'étape 1.1 |
 | 2026-10-14 | D2 : ancien article supprimé, ses URL redirigées. Arborescence de `docs/structure.md` §5 en brouillon ; menus dans le front matter ; taxonomies `tags` et `certifications` ; fil d'Ariane ; services tiers désactivés (`[privacy]`) | PR de l'étape 1.2 |
 | 2026-10-14 | Archetypes de dossier `devlog`, `postmortem`, `adr`, `services` ; numéro tiré du nom du dossier ; champs du post-mortem inconnus laissés vides (Annexe A.2) | PR de l'étape 1.3 |
+| 2026-10-14 | Flux RSS : lien vers le flux du devlog sous le pied de page (`extend_footer.html`, registre §11.7) plutôt qu'un bouton à côté du titre de chaque section ; premiers fichiers `i18n/` et `site.css` | PR de l'étape 1.4 |
 
 ---
 
