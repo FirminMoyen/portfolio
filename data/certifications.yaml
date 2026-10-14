@@ -1,0 +1,7 @@
+# LPIC-1 : statut réel (CV). Les autres : EXEMPLE publié temporairement (site en construction)
+- {id: lpic-1, name: "LPIC-1 (Linux)", status: preparing}  # CV : objectif fin 2026
+- {id: ccna, name: "Cisco CCNA", status: planned}
+- {id: rhcsa, name: "Red Hat RHCSA", status: planned}
+- {id: rhce, name: "Red Hat RHCE", status: planned}
+- {id: terraform, name: "HashiCorp Terraform Associate", status: planned}
+- {id: cka, name: "CKA", status: planned}

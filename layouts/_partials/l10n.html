@@ -1,0 +1,7 @@
+{{- /* Renvoie la valeur d'un champ de données dans la langue courante :
+       chaîne commune, ou paire {fr, en} (architecture §6). */ -}}
+{{- $v := . -}}
+{{- if reflect.IsMap $v -}}
+  {{- $v = index $v site.Language.Lang | default (index $v "fr") -}}
+{{- end -}}
+{{- return $v -}}

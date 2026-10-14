@@ -17,14 +17,14 @@ de structure, de template, de données, de CI ou d'outillage.
 - Développement : `hugo server` (`-D` pour voir les brouillons)
 - Build et validations : `hugo --minify`
 - Sortie du build : `public/` (généré, ignoré par git, ne pas éditer à la main)
-- Nouveau contenu : `hugo new content --kind <devlog|postmortem|adr|services> <chemin>`
-  (ex. `devlog/007-<slug>` ; crée FR et EN en brouillon)
+- Nouveau contenu : `hugo new content --kind <journal|postmortem|adr|services> <chemin>`
+  (ex. `journal/007-<slug>` ; crée FR et EN en brouillon)
 
 ## Invariants
 - Aucune invention : aucun fait absent des notes de Firmin ou du repo du lab. Information
   manquante : demander, ou écrire `TODO(firmin): …` (bloque la publication).
 - Les faits d'un composant vivent dans `data/catalog/<id>.yaml`, jamais dans la prose.
-- Historique immuable : devlog, ADR et post-mortems ne se réécrivent pas
+- Historique immuable : journal, ADR et post-mortems ne se réécrivent pas
   (erratum, nouvelle ADR, état des actions).
 - Bilingue : toute page existe en FR et en EN ; une modification se reporte dans l'autre
   langue, dans la même PR.

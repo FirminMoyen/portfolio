@@ -1,0 +1,33 @@
+{{- /* Bloc 4 — Dernières entrées du journal : comptes rendus et post-mortems
+       confondus. */ -}}
+{{- with site.GetPage "/journal" }}
+{{- $journal := . }}
+{{- $entries := first 3 .RegularPagesRecursive.ByDate.Reverse }}
+{{- if $entries }}
+<section class="home-block home-journal">
+  <h2>{{ i18n "homeJournal" }}</h2>
+  <ul class="journal-list">
+    {{- range $entries }}
+    <li>
+      <a class="journal-title" href="{{ .RelPermalink }}">
+        <span class="journal-number">
+          {{- if .Params.pm }}{{ printf "PM-%03d" (int .Params.pm) }}{{ else if .Params.week }}{{ printf "%s%02d" (i18n "weekPrefix") (int .Params.week) }}{{ end -}}
+        </span>
+        {{ .Title }}
+      </a>
+      {{- if .Params.pm }} <span class="badge badge-postmortem">{{ i18n "homePostmortem" }}</span>{{ end }}
+      <span class="journal-date">{{ .Date | time.Format ":date_long" }}</span>
+      {{- with .Description }}
+      <p>{{ . }}</p>
+      {{- end }}
+    </li>
+    {{- end }}
+  </ul>
+  <p class="home-more">
+    <a href="{{ $journal.RelPermalink }}">{{ i18n "homeAllEntries" }} →</a>
+    {{- with site.GetPage "/journal/incidents" }}<a href="{{ .RelPermalink }}">{{ .Title }} →</a>{{ end }}
+    {{- with $journal.OutputFormats.Get "rss" }}<a href="{{ .RelPermalink }}">{{ i18n "homeRss" }}</a>{{ end }}
+  </p>
+</section>
+{{- end }}
+{{- end }}

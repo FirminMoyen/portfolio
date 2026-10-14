@@ -1,3 +1,50 @@
 # Chaînes d'interface du site (architecture §11.4). Celles de PaperMod
 # restent dans le thème ; une clé définie ici l'emporte sur celle du thème.
-devlogRss: "Flux RSS du devlog"
+journalRss: "Flux RSS du journal"
+
+# Accueil (architecture §5.1)
+homeCv: "CV (PDF)"
+homeContact: "Contact"
+homeLab: "Le lab en un coup d'œil"
+homeTargetArchitecture: "Architecture cible"
+homeDiagramAlt: "Schéma logique du homelab"
+homeLastWeek: "Dernière semaine :"
+homeCurrentPhase: "Phase en cours :"
+homeStack: "Stack"
+homeOtherGroup: "Autres"
+homePlannedMore:
+  one: "+ {{ .Count }} composant prévu"
+  other: "+ {{ .Count }} composants prévus"
+homeJournal: "Dernières entrées du journal"
+homePostmortem: "Post-mortem"
+homeAllEntries: "Tout le journal"
+homeRss: "Flux RSS"
+homeCertifications: "Certifications"
+homeBackground: "Mon parcours"
+weekPrefix: "S"
+
+# Statuts des composants (architecture §6.2)
+status_planned: "Prévu"
+status_building: "En construction"
+status_running: "En service"
+status_retired: "Retiré"
+
+# Statuts des certifications (architecture §6.6)
+cert_planned: "Prévue"
+cert_preparing: "En préparation"
+certPassed: "Obtenue le {{ .Date }}"
+certVerify: "Vérifier"
+
+# Compteurs de composants par statut (accueil)
+count_running:
+  one: "{{ .Count }} en service"
+  other: "{{ .Count }} en service"
+count_building:
+  one: "{{ .Count }} en construction"
+  other: "{{ .Count }} en construction"
+count_planned:
+  one: "{{ .Count }} prévu"
+  other: "{{ .Count }} prévus"
+
+# Bandeau « site en construction »
+constructionBanner: "Site en construction : le contenu est provisoire et en partie fictif (exemples). Il ne reflète pas encore la réalité."

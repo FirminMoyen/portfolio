@@ -1,0 +1,55 @@
+{{- /* Bloc 2 — Le lab en un coup d'œil : schéma, dernière semaine, phase en
+       cours, composants par statut. */ -}}
+{{- $running := 0 }}{{ $building := 0 }}{{ $planned := 0 }}
+{{- range hugo.Data.catalog }}
+  {{- if eq .status "running" }}{{ $running = add $running 1 }}{{ end }}
+  {{- if eq .status "building" }}{{ $building = add $building 1 }}{{ end }}
+  {{- if eq .status "planned" }}{{ $planned = add $planned 1 }}{{ end }}
+{{- end }}
+{{- $last := false }}
+{{- with site.GetPage "/journal" }}
+  {{- with first 1 (where .RegularPagesRecursive "Params.week" "!=" nil).ByDate.Reverse }}{{ $last = index . 0 }}{{ end }}
+{{- end }}
+{{- $phase := false }}
+{{- with hugo.Data.roadmap }}{{ with where . "status" "in-progress" }}{{ $phase = index . 0 }}{{ end }}{{ end }}
+{{- $light := resources.Get "diagrams/lab-overview.light.svg" }}
+{{- $dark := resources.Get "diagrams/lab-overview.dark.svg" }}
+{{- $infra := site.GetPage "/infrastructure" }}
+{{- $services := site.GetPage "/services" }}
+{{- $about := site.GetPage "/about" }}
+{{- $hasCounts := gt (add $running $building $planned) 0 }}
+{{- if or $light $hasCounts $last $phase }}
+<section class="home-block home-lab">
+  <h2>{{ i18n "homeLab" }}</h2>
+  {{- with $light }}
+  <a class="lab-diagram" href="{{ with $infra }}{{ .RelPermalink }}{{ end }}">
+    {{- if eq $running 0 }}
+    <span class="badge badge-target">{{ i18n "homeTargetArchitecture" }}</span>
+    {{- end }}
+    <img class="diagram-light" src="{{ .RelPermalink }}" alt="{{ i18n "homeDiagramAlt" }}">
+    {{- with $dark }}
+    <img class="diagram-dark" src="{{ .RelPermalink }}" alt="{{ i18n "homeDiagramAlt" }}">
+    {{- end }}
+  </a>
+  {{- end }}
+  <ul class="lab-status">
+    {{- with $last }}
+    <li>{{ i18n "homeLastWeek" }} <a href="{{ .RelPermalink }}">{{ printf "%s%02d" (i18n "weekPrefix") (int .Params.week) }}</a>, {{ .Date | time.Format ":date_long" }}</li>
+    {{- end }}
+    {{- with $phase }}
+    <li>{{ i18n "homeCurrentPhase" }} {{ with $about }}<a href="{{ .RelPermalink }}">{{ end }}{{ partial "l10n.html" $phase.title }}{{ with $about }}</a>{{ end }}</li>
+    {{- end }}
+    {{- if $hasCounts }}
+    <li>
+      {{- range slice "running" "building" "planned" }}
+      <span class="badge badge-{{ . }}">{{ i18n (printf "count_%s" .) (index (dict "running" $running "building" $building "planned" $planned) .) }}</span>
+      {{- end }}
+    </li>
+    {{- end }}
+  </ul>
+  <p class="home-more">
+    {{- with $infra }}<a href="{{ .RelPermalink }}">{{ .Title }} →</a>{{ end }}
+    {{- with $services }}<a href="{{ .RelPermalink }}">{{ .Title }} →</a>{{ end }}
+  </p>
+</section>
+{{- end }}

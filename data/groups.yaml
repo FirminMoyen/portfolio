@@ -1,0 +1,8 @@
+# EXEMPLE publié temporairement (site en construction) (D6 non tranchée)
+infrastructure:
+  - {id: exemple-groupe-a, label: {fr: "Réseau (exemple)", en: "Network (example)"}}
+  - {id: virtualisation, label: {fr: "Virtualisation (exemple)", en: "Virtualization (example)"}}
+  - {id: sauvegarde, label: {fr: "Sauvegarde (exemple)", en: "Backup (example)"}}
+service:
+  - {id: supervision, label: {fr: "Supervision (exemple)", en: "Observability (example)"}}
+  - {id: applications, label: {fr: "Applications (exemple)", en: "Applications (example)"}}

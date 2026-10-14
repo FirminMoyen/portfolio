@@ -1,0 +1,6 @@
+# EXEMPLE publié temporairement (site en construction)
+name: "Serveur de sauvegarde (ex.)"
+layer: infrastructure
+group: sauvegarde
+status: building
+summary: {fr: "Composant d'exemple.", en: "Example component."}

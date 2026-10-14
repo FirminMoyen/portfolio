@@ -20,7 +20,7 @@ Détail : `docs/architecture.md` §6, §7, §9, §10.
 
 ## Contenu (§7)
 - Une page = un dossier avec `index.fr.md` et `index.en.md` ; une section = `_index.fr.md` et `_index.en.md` (§7.1).
-- Numéros complétés par des zéros : 3 chiffres (devlog, post-mortems), 4 (ADR).
+- Numéros complétés par des zéros : 3 chiffres (journal, post-mortems), 4 (ADR).
 - Front matter YAML : `title`, `description` (160 caractères au plus), `draft`, plus les champs requis par type (§7.2). Champ `slug` interdit.
 - Champs structurés identiques en FR et en EN ; seuls `title`, `description` et le corps diffèrent (§7.2).
 - Aucune URL du site en dur : shortcodes `component`, `adr`, `pm`, ou `relref` (§7.4).
@@ -30,7 +30,7 @@ Détail : `docs/architecture.md` §6, §7, §9, §10.
 ## Rédaction (§9)
 - Claude Code crée la structure de `content/` (dossiers, front matter, rubriques vides, libellés de `docs/structure.md`, `TODO(firmin)` dans les brouillons) ; il met en forme, traduit et corrige ce que Firmin fournit ; il ne rédige jamais de prose de lui-même (C8, §9.1).
 - Aucun fait inventé : ni commande, ni version, ni chiffre, ni résultat, ni leçon. Information manquante : demander ou `TODO(firmin): <question>` (§9.2).
-- Historique immuable : devlog (erratum daté), ADR acceptée (seuls `status` et `superseded_by`), post-mortem (seul l'état des actions) (§9.3).
+- Historique immuable : journal (erratum daté), ADR acceptée (seuls `status` et `superseded_by`), post-mortem (seul l'état des actions) (§9.3).
 - Traduction : le sens, même structure ; ne jamais traduire code, commandes, identifiants, noms de produits, champs structurés ; ne rien ajouter ni retirer (§9.4).
 - Style : première personne, passé composé, phrases courtes, aucun superlatif (§9.5).
 - Toute modification de `index.fr.md` se reporte dans `index.en.md`, dans la même PR (§8).

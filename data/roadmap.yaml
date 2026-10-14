@@ -1,0 +1,10 @@
+# EXEMPLE publié temporairement (site en construction)
+- id: fondations
+  title: {fr: "Fondations (exemple)", en: "Foundations (example)"}
+  status: done
+- id: reseau-virtualisation
+  title: {fr: "Réseau et virtualisation (exemple)", en: "Network and virtualization (example)"}
+  status: in-progress
+- id: kubernetes
+  title: {fr: "Kubernetes (exemple)", en: "Kubernetes (example)"}
+  status: planned

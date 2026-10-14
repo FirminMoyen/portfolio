@@ -1,3 +1,50 @@
 # Site interface strings (architecture §11.4). PaperMod's own strings stay in
 # the theme; a key defined here overrides the theme's.
-devlogRss: "Devlog RSS feed"
+journalRss: "Journal RSS feed"
+
+# Home page (architecture §5.1)
+homeCv: "Resume (PDF)"
+homeContact: "Contact"
+homeLab: "The lab at a glance"
+homeTargetArchitecture: "Target architecture"
+homeDiagramAlt: "Logical diagram of the homelab"
+homeLastWeek: "Latest week:"
+homeCurrentPhase: "Current phase:"
+homeStack: "Stack"
+homeOtherGroup: "Other"
+homePlannedMore:
+  one: "+ {{ .Count }} planned component"
+  other: "+ {{ .Count }} planned components"
+homeJournal: "Latest journal entries"
+homePostmortem: "Post-mortem"
+homeAllEntries: "All journal entries"
+homeRss: "RSS feed"
+homeCertifications: "Certifications"
+homeBackground: "My background"
+weekPrefix: "W"
+
+# Component statuses (architecture §6.2)
+status_planned: "Planned"
+status_building: "Building"
+status_running: "Running"
+status_retired: "Retired"
+
+# Certification statuses (architecture §6.6)
+cert_planned: "Planned"
+cert_preparing: "Preparing"
+certPassed: "Passed on {{ .Date }}"
+certVerify: "Verify"
+
+# Compteurs de composants par statut (accueil)
+count_running:
+  one: "{{ .Count }} running"
+  other: "{{ .Count }} running"
+count_building:
+  one: "{{ .Count }} building"
+  other: "{{ .Count }} building"
+count_planned:
+  one: "{{ .Count }} planned"
+  other: "{{ .Count }} planned"
+
+# Bandeau « site en construction »
+constructionBanner: "Site under construction: the content is provisional and partly fictitious (examples). It does not reflect reality yet."

@@ -1,12 +1,12 @@
 {{- /*
   Point d'extension de PaperMod (registre, architecture §11.7).
-  Lien vers le flux RSS du devlog, sur toutes les pages, seulement quand la
-  section devlog est construite (publiée, ou brouillon avec -D).
+  Lien vers le flux RSS du journal, sur toutes les pages, seulement quand la
+  section journal est construite (publiée, ou brouillon avec -D).
 */ -}}
-{{- with site.GetPage "/devlog" }}
+{{- with site.GetPage "/journal" }}
   {{- with .OutputFormats.Get "rss" }}
 <div class="footer footer-rss">
-    <a href="{{ .RelPermalink }}">{{ i18n "devlogRss" }}</a>
+    <a href="{{ .RelPermalink }}">{{ i18n "journalRss" }}</a>
 </div>
   {{- end }}
 {{- end }}

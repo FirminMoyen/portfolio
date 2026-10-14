@@ -6,8 +6,8 @@ menus:
     identifier: home
     name: "Accueil"
     weight: 10
+headline: "Administrateur systèmes · Infrastructure Windows et Linux, automatisation, DevOps"
+availability: "Belgique · Recherche un poste en Belgique ou au Luxembourg · Français : langue maternelle, anglais : courant (C1) · Disponible immédiatement"
 ---
 
-Documentation technique d'un homelab : virtualisation Proxmox, provisioning et
-configuration via Ansible, mise en place d'observabilité (métriques, logs,
-alerting).
+Administrateur systèmes junior, bachelier en technologie de l'informatique (EPHEC). Expérience en administration Windows Server et Active Directory sur un parc multisite, en automatisation d'infrastructure (Terraform, Ansible, CI/CD) et en supervision (Prometheus, Grafana). Je maintiens depuis 2022 un cluster Proxmox en haute disponibilité. Recherche un poste d'administrateur systèmes en Belgique ou au Luxembourg.

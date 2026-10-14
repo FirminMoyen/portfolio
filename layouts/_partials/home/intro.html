@@ -1,0 +1,35 @@
+{{- /* Bloc 1 — Présentation. Tant que `headline` n'est pas renseigné, seul le
+       corps de la page est affiché, comme avant. */ -}}
+{{- $p := site.Params.profile }}
+{{- if .Params.headline }}
+<section class="home-intro">
+  {{- with $p.name }}
+  <h1 class="home-name">{{ . }}</h1>
+  {{- end }}
+  <p class="home-headline">{{ .Params.headline }}</p>
+  {{- with .Content }}
+  <div class="home-pitch">{{ . }}</div>
+  {{- end }}
+  {{- with .Params.availability }}
+  <p class="home-availability">{{ . }}</p>
+  {{- end }}
+  <p class="home-links">
+    {{- with $p.cv }}{{ with index . site.Language.Lang }}
+    <a class="button" href="{{ . | relURL }}">{{ i18n "homeCv" }}</a>
+    {{- end }}{{ end }}
+    {{- with site.GetPage "/about" }}
+    <a class="button" href="{{ .RelPermalink }}{{ if in .Content `id="contact"` }}#contact{{ end }}">{{ i18n "homeContact" }}</a>
+    {{- end }}
+    {{- with $p.github }}
+    <a class="button" href="{{ . }}" rel="noopener">GitHub</a>
+    {{- end }}
+    {{- with $p.linkedin }}
+    <a class="button" href="{{ . }}" rel="noopener">LinkedIn</a>
+    {{- end }}
+  </p>
+</section>
+{{- else }}
+  {{- with .Content }}
+<div class="home-pitch">{{ . }}</div>
+  {{- end }}
+{{- end }}
