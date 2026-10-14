@@ -904,7 +904,7 @@ Le site dépend de comptes et de services extérieurs au repo. C'est là qu'est 
 | 2026-10-14 | v0.2 : exploitation hors du repo (§16.9), sonde de disponibilité externe, repo du lab proposé (D3), lien vers le calendrier commun | Plan du lab |
 | 2026-10-14 | v0.3 : structure page par page (`docs/structure.md`) ; menus dans le front matter et sections en brouillon tant qu'elles sont vides ; redirections par fichiers `static/` ; ordre du jour : 0.1, puis phase 1, puis 0.2 à 0.4 | `docs/structure.md` |
 | 2026-10-14 | v0.3 validée et commitée ; annexe B retirée (`CLAUDE.md` devient la source) ; `.claude/rules/` et permissions (§14.3, précisions sur `gh api` et `git push`) ; tableau du §11.3 corrigé ; `docs/structure.md` v0.1 ajouté | PR de l'étape 0.1 |
-| 2026-10-14 | D1 : `/` redirige vers `en`. Langues en sous-dossier ; anciennes URL redirigées par `static/`, `/tags/` et `/categories/` comprises ; pages `…/page/1/` et flux RSS en exception (`docs/structure.md` §3.6) | PR de l'étape 1.1 |
+| 2026-10-14 | D1 : `/` redirige vers `en`. Langues en sous-dossier ; anciennes URL redirigées par `static/`, `/tags/` et `/categories/` comprises ; pages `…/page/1/` et flux RSS en exception (`docs/structure.md` §3.6) ; `/404.html` racine fourni par `static/404.html` (P16) | PR de l'étape 1.1 |
 
 ---
 

@@ -43,7 +43,7 @@
 | P13 | À propos | `/fr/about/` | `/en/about/` | `content/about/index.*` | page | À propos / About (50) | Publiée (convertie en dossier) |
 | P14 | Tags | `/fr/tags/`, `/fr/tags/<tag>/` | idem | Générées par Hugo | taxonomie | — | Automatiques ; aucun tag aujourd'hui |
 | P15 | Certifications | `/fr/certifications/`, `/fr/certifications/<id>/` | idem | Générées par Hugo | taxonomie | — | Automatiques ; aucune aujourd'hui |
-| P16 | Page 404 | `/fr/404.html`, `/404.html` | `/en/404.html` | Thème | — | — | Présence à la racine à vérifier |
+| P16 | Page 404 | `/fr/404.html`, `/404.html` | `/en/404.html` | Thème ; `static/404.html` à la racine | — | — | Racine : page autonome bilingue (1.1) |
 
 Les sept groupes de P04, avec leurs libellés (architecture §6.4) :
 
@@ -136,7 +136,7 @@ Exceptions, sans redirection :
 | Fichier | Origine |
 |---|---|
 | `/index.html` | Redirection vers la langue par défaut, générée par Hugo |
-| `/404.html` | Exigé par GitHub Pages. À vérifier après build ; s'il manque, la PR propose une solution |
+| `/404.html` | Exigé par GitHub Pages. Hugo ne le génère pas quand les deux langues sont en sous-dossier : `static/404.html`, page bilingue autonome (CSS intégré, clair et sombre, sans JavaScript, sans le style du thème) |
 | `/robots.txt` | `enableRobotsTXT` |
 | `/sitemap.xml` | Index des plans de site par langue (Hugo) |
 | `/<lang>/index.xml`, `/<lang>/devlog/index.xml` | Flux RSS (Hugo, PaperMod) |
@@ -360,7 +360,7 @@ Structure cible, posée avec le contenu de Firmin en 5.3 :
 
 ### P16 — Page 404
 
-Fournie par PaperMod, dans chaque langue. GitHub Pages sert `/404.html` à la racine : sa présence est vérifiée à l'étape 1.1.
+Fournie par PaperMod sous `/fr/404.html` et `/en/404.html`. GitHub Pages sert `/404.html` à la racine, que Hugo ne génère pas avec les deux langues en sous-dossier : c'est `static/404.html`, une page bilingue autonome qui renvoie vers `/en/` et `/fr/` (choix du 14/10/2026, étape 1.1).
 
 ## 5. Arborescence après aujourd'hui
 
