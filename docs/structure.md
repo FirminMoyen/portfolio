@@ -19,7 +19,7 @@
 
 - **URL.** Toutes les pages vivent sous `/fr/` ou `/en/` (architecture §4). Les slugs sont en anglais et identiques dans les deux langues.
 - **Dossiers.** Une page est un dossier contenant `index.fr.md` et `index.en.md`. Une section a ses `_index.fr.md` et `_index.en.md`.
-- **Brouillon tant que vide.** Toute page sans contenu porte `draft: true`. En production, elle n'est pas construite et n'apparaît ni dans le menu ni dans le plan du site. `hugo server -D` montre l'arborescence complète.
+- **Brouillon ou « en construction » tant que vide.** Une page sans contenu porte `draft: true` : en production, elle n'est pas construite et n'apparaît ni dans le menu ni dans le plan du site. Exception : les sections du menu (P03, P07, P09) sont publiées dès l'étape 1.6 avec une vraie description et un court message « en construction » dans leur corps, sans sous-page vide. Jamais de page vide ni de `TODO(firmin)` en production. `hugo server -D` montre l'arborescence complète.
 - **Menus dans le front matter des pages,** plus dans `hugo.toml`. Une entrée de menu n'existe que si sa page est construite : une section entre au menu automatiquement le jour où elle est publiée.
 - **Titres et descriptions.** Les titres sont les libellés de ce document. La description vaut `TODO(firmin)` tant que Firmin ne l'a pas écrite ; c'est permis dans un brouillon seulement.
 - **Pages d'état sans métadonnées d'article.** L'accueil, les sections, les pages de groupe et À propos n'affichent ni date, ni temps de lecture, ni navigation précédent/suivant.
@@ -30,13 +30,13 @@
 |---|---|---|---|---|---|---|---|
 | P01 | Racine | `/` | — | Générée par Hugo | Redirection | — | Redirige vers la langue par défaut (D1) |
 | P02 | Accueil | `/fr/` | `/en/` | `content/_index.{fr,en}.md` | home | Accueil / Home (10) | Publiée (existante) |
-| P03 | Infrastructure | `/fr/infrastructure/` | `/en/infrastructure/` | `content/infrastructure/_index.*` | section | Infrastructure (20) | Brouillon |
+| P03 | Infrastructure | `/fr/infrastructure/` | `/en/infrastructure/` | `content/infrastructure/_index.*` | section | Infrastructure (20) | Publiée, en construction (1.6) |
 | P04 | Page de groupe (×7) | `/fr/infrastructure/<groupe>/` | `/en/infrastructure/<groupe>/` | `content/infrastructure/<groupe>/index.*` | page | — | Brouillons |
 | P05 | Décisions d'architecture | `/fr/infrastructure/decisions/` | `/en/infrastructure/decisions/` | `content/infrastructure/decisions/_index.*` | section | — | Brouillon |
 | P06 | ADR | `…/decisions/adr-NNNN-<slug>/` | idem | Archetype `adr` | page | — | Modèle seulement |
-| P07 | Services | `/fr/services/` | `/en/services/` | `content/services/_index.*` | section | Services (30) | Brouillon |
+| P07 | Services | `/fr/services/` | `/en/services/` | `content/services/_index.*` | section | Services (30) | Publiée, en construction (1.6) |
 | P08 | Fiche service | `/fr/services/<id>/` | `/en/services/<id>/` | Archetype `services` | page | — | Modèle seulement |
-| P09 | Journal | `/fr/journal/` | `/en/journal/` | `content/journal/_index.*` | section | Journal (40) | Brouillon |
+| P09 | Journal | `/fr/journal/` | `/en/journal/` | `content/journal/_index.*` | section | Journal (40) | Publiée, en construction (1.6) |
 | P10 | Entrée du journal | `/fr/journal/NNN-<slug>/` | idem | Archetype `journal` | page | — | Modèle seulement |
 | P11 | Incidents | `/fr/journal/incidents/` | `/en/journal/incidents/` | `content/journal/incidents/_index.*` | section | — | Brouillon |
 | P12 | Post-mortem | `/fr/journal/incidents/pm-NNN-<slug>/` | idem | Archetype `postmortem` | page | — | Modèle seulement |
@@ -92,12 +92,12 @@ Le lien RSS est en place depuis l'étape 1.4 : `extend_footer.html` l'ajoute sou
 | Identifiant | FR | EN | Cible | Poids | Apparaît |
 |---|---|---|---|---|---|
 | `home` | Accueil | Home | P02 | 10 | Toujours |
-| `infrastructure` | Infrastructure | Infrastructure | P03 | 20 | Quand P03 est publiée (4.2) |
-| `services` | Services | Services | P07 | 30 | Quand P07 est publiée (4.2) |
-| `journal` | Journal | Journal | P09 | 40 | Quand P09 est publiée (3.3) |
+| `infrastructure` | Infrastructure | Infrastructure | P03 | 20 | Toujours (depuis 1.6) |
+| `services` | Services | Services | P07 | 30 | Toujours (depuis 1.6) |
+| `journal` | Journal | Journal | P09 | 40 | Toujours (depuis 1.6) |
 | `about` | À propos | About | P13 | 50 | Toujours |
 
-En production, le menu se limite donc aujourd'hui à **Accueil · À propos**. Les autres entrées apparaissent seules, avec la publication de leur section.
+En production, le menu compte donc les cinq entrées depuis l'étape 1.6. Une entrée de menu n'existe que si sa page est construite : une section remise en brouillon en sortirait seule.
 
 ### 3.6 Redirections des anciennes URL
 
@@ -113,17 +113,17 @@ C'est le même format que les alias de Hugo, et une seule liste à tenir : ce ta
 | Ancienne URL | Cible aujourd'hui | Cible finale | Mise à jour à l'étape |
 |---|---|---|---|
 | `/about/` | `/fr/about/` | `/fr/about/` | — |
-| `/journal/` | `/fr/` | `/fr/journal/` | 3.3 |
-| `/journal/proxmox-homelab-premiers-pas/` | `/fr/` | `/fr/journal/` | 3.3 |
-| `/projects/` | `/fr/` | `/fr/infrastructure/` | 4.2 |
-| `/en/journal/` | `/en/` | — : la section Journal reprend cette adresse | 3.3 : supprimer `static/en/journal/index.html` |
-| `/en/journal/proxmox-homelab-first-steps/` | `/en/` | `/en/journal/` | 3.3 |
-| `/en/projects/` | `/en/` | `/en/infrastructure/` | 4.2 |
+| `/journal/` | `/fr/journal/` | `/fr/journal/` | — (1.6) |
+| `/journal/proxmox-homelab-premiers-pas/` | `/fr/journal/` | `/fr/journal/` | — (1.6) |
+| `/projects/` | `/fr/infrastructure/` | `/fr/infrastructure/` | — (1.6) |
+| `/en/journal/` | — : c'est la section Journal | — | 1.6 : `static/en/journal/index.html` supprimé |
+| `/en/journal/proxmox-homelab-first-steps/` | `/en/journal/` | `/en/journal/` | — (1.6) |
+| `/en/projects/` | `/en/infrastructure/` | `/en/infrastructure/` | — (1.6) |
 | `/tags/` | `/fr/tags/` | `/fr/tags/` | — |
 | `/categories/` | `/fr/` | `/fr/` | — |
 | `/en/categories/` | `/en/` | `/en/` | — |
 
-Les deux lignes de l'article suivent D2 (§8) ; si l'article est conservé, elles changent. `/en/journal/` est un cas à part : c'était l'ancienne section anglaise, et c'est aussi l'adresse de la section Journal. Tant que celle-ci est en brouillon, `static/en/journal/index.html` redirige vers `/en/` ; à la publication (3.3), ce fichier est supprimé et la section reprend l'adresse. `/en/`, `/en/about/` et `/en/tags/` gardent leur adresse.
+Les deux lignes de l'article suivent D2 (§8) ; si l'article est conservé, elles changent. `/en/journal/` est un cas à part : c'était l'ancienne section anglaise, et c'est aussi l'adresse de la section Journal. Jusqu'à l'étape 1.5, `static/en/journal/index.html` redirigeait vers `/en/` ; depuis la publication de la section (1.6), ce fichier est supprimé et la section a repris l'adresse. `/en/`, `/en/about/` et `/en/tags/` gardent leur adresse.
 
 À l'étape 1.1, tant que `journal`, `projects` et la taxonomie `categories` existent, les redirections de la racine visent leur équivalent sous `/fr/` (`/journal/` → `/fr/journal/`…) ; l'étape 1.2 les passe à leur « cible aujourd'hui ».
 
@@ -179,7 +179,7 @@ Format de chaque fiche : identité de la page, puis ses blocs dans l'ordre d'aff
 | Type, template | section ; `layouts/infrastructure/section.html` (4.1) |
 | Menu | Infrastructure (20), dès sa publication |
 | Fil d'Ariane | Accueil › Infrastructure |
-| Aujourd'hui | Brouillon |
+| Aujourd'hui | Publiée (1.6) : description et message « en construction » ; sous-pages en brouillon |
 
 1. **En-tête** : titre, description. *(thème)*
 2. **Introduction**, dont la règle de frontière entre infrastructure et services. *(Firmin)*
@@ -244,7 +244,7 @@ Format de chaque fiche : identité de la page, puis ses blocs dans l'ordre d'aff
 | Type, template | section ; `layouts/services/section.html` (4.1) |
 | Menu | Services (30), dès sa publication |
 | Fil d'Ariane | Accueil › Services |
-| Aujourd'hui | Brouillon |
+| Aujourd'hui | Publiée (1.6) : description et message « en construction » ; sous-pages en brouillon |
 
 1. **En-tête.** *(thème)*
 2. **Introduction.** *(Firmin)*
@@ -276,7 +276,7 @@ Format de chaque fiche : identité de la page, puis ses blocs dans l'ordre d'aff
 | Type, template | section ; `layouts/journal/section.html` (3.1) |
 | Menu | Journal (40), dès sa publication |
 | Fil d'Ariane | Accueil › Journal |
-| Aujourd'hui | Brouillon |
+| Aujourd'hui | Publiée (1.6) : description et message « en construction » ; sous-pages en brouillon |
 
 1. **En-tête.** *(thème)* Le flux RSS est proposé dans le pied de page (§3.3).
 2. **Introduction.** *(Firmin)*
@@ -370,7 +370,7 @@ content/
 ├── _index.fr.md, _index.en.md                     P02 Accueil (publiée)
 ├── about/index.fr.md, index.en.md                 P13 À propos (publiée)
 ├── infrastructure/
-│   ├── _index.fr.md, _index.en.md                 P03 (brouillon)
+│   ├── _index.fr.md, _index.en.md                 P03 (publiée, en construction)
 │   ├── hardware/index.fr.md, index.en.md          P04 (brouillon)
 │   ├── network/…                                  P04 (brouillon)
 │   ├── virtualization/…                           P04 (brouillon)
@@ -379,9 +379,9 @@ content/
 │   ├── kubernetes/…                               P04 (brouillon)
 │   ├── automation/…                               P04 (brouillon)
 │   └── decisions/_index.fr.md, _index.en.md       P05 (brouillon)
-├── services/_index.fr.md, _index.en.md            P07 (brouillon)
+├── services/_index.fr.md, _index.en.md            P07 (publiée, en construction)
 └── journal/
-    ├── _index.fr.md, _index.en.md                 P09 (brouillon)
+    ├── _index.fr.md, _index.en.md                 P09 (publiée, en construction)
     └── incidents/_index.fr.md, _index.en.md       P11 (brouillon)
 archetypes/
 ├── journal/index.fr.md, index.en.md                P10
@@ -461,6 +461,7 @@ Ordre retenu pour aujourd'hui : **0.1, puis la phase 1**. Les étapes 0.2 à 0.4
 | 1.3 | `feat/archetypes` | Archetypes de dossier `journal`, `postmortem`, `adr`, `services`, conformes à l'architecture, Annexe A | Chaque `hugo new content --kind …` crée FR et EN en brouillon, au bon front matter et avec les bonnes rubriques. Les fichiers de test sont supprimés, pas commités |
 | 1.4 | `feat/footer-rss` | Bouton RSS retiré des titres ; lien vers le flux RSS du journal sous le pied de page (`extend_footer.html`, §3.3) ; premiers fichiers `i18n/` et `assets/css/extended/site.css` | Aucun logo RSS à côté des titres ; avec `-D`, le lien figure en bas de chaque page dans les deux langues ; en production, absent tant que le journal est en brouillon |
 | 1.5 | `feat/journal-rename` | Section « Devlog » renommée « Journal » partout (P09 à P12, menu, pied de page, archetype) | `/fr/journal/` et `/en/journal/` avec `-D` ; en production, `/en/journal/` redirige toujours ; plus aucun « devlog » dans le site |
+| 1.6 | `feat/placeholder-sections` | Infrastructure, Services et Journal publiées avec une description et un message « en construction » ; sous-pages en brouillon ; redirections du §3.6 à leur cible finale ; `static/en/journal/index.html` supprimé | Menu à 5 entrées en production ; aucune page vide ni `TODO(firmin)` publié ; chaque redirection mène à une page existante |
 
 Reportés à leurs phases : templates et rendu des blocs (3 à 5), modèle de données et validations (2), `enableGitInfo` (0.2, qui exige un clonage complet en CI), pied de page et fichiers i18n (5.2).
 

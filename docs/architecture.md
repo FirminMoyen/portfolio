@@ -144,7 +144,7 @@ Règles :
 
 - Les slugs sont en ASCII minuscule, en kebab-case, en anglais, et identiques dans les deux langues.
 - Une URL publiée ne disparaît pas : un renommage ou une suppression DOIT laisser une redirection, à vérifier dans `public/` après build. Hugo préfixe les `aliases` de la langue de la page ; pour une URL hors des préfixes de langue, la redirection passe par un fichier `static/` (`docs/structure.md` §3.6).
-- Chaque fusion sur `main` est déployée, donc aucune section vide en production. Une section sans contenu porte `draft: true`. Les entrées de menu sont déclarées dans le front matter de leur page, pas dans `hugo.toml` : une section entre au menu automatiquement le jour où elle est publiée (`docs/structure.md` §1, §3.5).
+- Chaque fusion sur `main` est déployée, donc aucune page vide ni aucun `TODO(firmin)` en production. Une page sans contenu porte `draft: true` ; seules les sections du menu peuvent être publiées avant leur contenu, avec une description et un court message « en construction » (`docs/structure.md` §1). Les entrées de menu sont déclarées dans le front matter de leur page, pas dans `hugo.toml` : une section entre au menu automatiquement le jour où elle est publiée (`docs/structure.md` §1, §3.5).
 
 ---
 
@@ -762,6 +762,7 @@ En attendant la phase 3, Firmin consigne ses notes de chaque semaine. Elles devi
 | 1.3 | `feat/archetypes` | Archetypes (Annexe A) | `hugo new content --kind …` crée FR et EN en brouillon, conformes aux gabarits |
 | 1.4 | `feat/footer-rss` | Lien RSS du journal dans le pied de page au lieu d'un bouton à côté des titres (`docs/structure.md` §3.3) | Aucun logo RSS dans les titres ; lien absent en production tant que le journal est en brouillon |
 | 1.5 | `feat/journal-rename` | Section « Devlog » renommée « Journal » : contenu, archetype, URL, menu, pied de page, documents | Plus aucun « devlog » hors de l'historique des décisions ; `/en/journal/` redirige tant que la section est en brouillon |
+| 1.6 | `feat/placeholder-sections` | Infrastructure, Services et Journal publiées « en construction » (`docs/structure.md` §1) ; redirections à leur cible finale | Menu à 5 entrées en production ; aucune page vide ni `TODO(firmin)` publié |
 
 ### Phase 2 — Données et validation
 
@@ -776,16 +777,16 @@ En attendant la phase 3, Firmin consigne ses notes de chaque semaine. Elles devi
 |---|---|---|---|
 | 3.1 | `feat/journal-templates` | Templates du journal et des incidents, partials `journal/*`, `backlinks`, shortcodes `component`, `adr`, `pm`, CSS, image OpenGraph par défaut | Revue visuelle en FR et EN, thèmes clair et sombre, largeur mobile ; liens inverses corrects ; un composant sans page publiée s'affiche sans lien |
 | 3.2 | `feat/adr-templates` | Templates decisions | Bandeau « remplacée par » ; liens inverses |
-| 3.3 | `docs/journal-001` | Premières entrées (Firmin), leurs ADR, les composants qu'elles citent (avec fiche ou page de groupe si V9 ou V10 l'exige), entrée Journal au menu | Entrées publiées ; aperçu LinkedIn correct (titre, description, image) ; aucun fait inventé |
+| 3.3 | `docs/journal-001` | Premières entrées (Firmin), leurs ADR, les composants qu'elles citent (avec fiche ou page de groupe si V9 ou V10 l'exige), message « en construction » retiré du Journal | Entrées publiées ; aperçu LinkedIn correct (titre, description, image) ; aucun fait inventé |
 
-Jusqu'à la phase 4, les fiches et les pages de groupe exigées par V9 et V10 s'affichent avec le template par défaut de PaperMod : leur prose est en ligne, leur fiche technique arrive en 4.1. Infrastructure et Services n'entrent au menu qu'en 4.2.
+Jusqu'à la phase 4, les fiches et les pages de groupe exigées par V9 et V10 s'affichent avec le template par défaut de PaperMod : leur prose est en ligne, leur fiche technique arrive en 4.1. Infrastructure, Services et Journal sont au menu depuis l'étape 1.6, avec un message « en construction ».
 
 ### Phase 4 — État : catalogue
 
 | Étape | Branche | Contenu | Critères d'acceptation |
 |---|---|---|---|
 | 4.1 | `feat/catalog-templates` | Partials `catalog/*`, templates services et infrastructure | Revue visuelle ; les exigences par statut s'affichent comme prévu (« restauration non testée », notes des `none`) |
-| 4.2 | `docs/catalog-initial` | Reste du catalogue (Firmin), prose des pages de groupe, entrées Infrastructure et Services au menu | Build vert ; aucun composant inventé |
+| 4.2 | `docs/catalog-initial` | Reste du catalogue (Firmin), prose des pages de groupe, message « en construction » retiré d'Infrastructure et de Services | Build vert ; aucun composant inventé |
 
 ### Phase 5 — Accueil, À propos, schémas
 
@@ -913,6 +914,7 @@ Le site dépend de comptes et de services extérieurs au repo. C'est là qu'est 
 | 2026-10-14 | Archetypes de dossier `devlog`, `postmortem`, `adr`, `services` ; numéro tiré du nom du dossier ; champs du post-mortem inconnus laissés vides (Annexe A.2) | PR de l'étape 1.3 |
 | 2026-10-14 | Flux RSS : lien vers le flux du devlog sous le pied de page (`extend_footer.html`, registre §11.7) plutôt qu'un bouton à côté du titre de chaque section ; premiers fichiers `i18n/` et `site.css` | PR de l'étape 1.4 |
 | 2026-10-14 | La section « Devlog » devient « Journal » (`/<lang>/journal/`, archetype `journal`, skill `/journal`, branches `docs/journal-<nnn>`) ; le §17.2 devient « Historique des décisions du site » pour éviter le double sens. Les lignes précédentes gardent le terme de leur date | PR de l'étape 1.5 |
+| 2026-10-14 | Infrastructure, Services et Journal publiées avant leur contenu, avec une description et un message « en construction » : le menu montre les cinq sections dès maintenant. Les sous-pages restent en brouillon ; redirections passées à leur cible finale | PR de l'étape 1.6 |
 
 ---
 
