@@ -13,9 +13,9 @@
 Le site présente un homelab reconstruit de zéro et documenté chaque semaine. Il doit permettre à Firmin d'être repéré pour un poste en administration systèmes et infrastructure. Il sépare deux natures de contenu :
 
 - **l'état actuel du lab** : Infrastructure et Services, des pages mises à jour en place et générées depuis un catalogue de données unique (`data/catalog/`) ;
-- **le chemin parcouru** : Devlog (une entrée par semaine), post-mortems et décisions d'architecture (ADR), des entrées datées qu'on ne réécrit pas.
+- **le chemin parcouru** : Journal (une entrée par semaine), post-mortems et décisions d'architecture (ADR), des entrées datées qu'on ne réécrit pas.
 
-L'Accueil (pitch, schéma du lab, stack, derniers devlogs, CV) et la page À propos (le projet, son auteur, les contacts) complètent l'ensemble. Le site est bilingue FR/EN et statique (Hugo + PaperMod sur GitHub Pages), sans JavaScript propre. Il se valide lui-même : le build Hugo échoue si une donnée est incohérente, une traduction manquante ou une référence cassée. La CI ajoute les contrôles que Hugo ne peut pas faire : secrets, adresses IP, métadonnées d'images, synchronisation des traductions.
+L'Accueil (pitch, schéma du lab, stack, dernières entrées du journal, CV) et la page À propos (le projet, son auteur, les contacts) complètent l'ensemble. Le site est bilingue FR/EN et statique (Hugo + PaperMod sur GitHub Pages), sans JavaScript propre. Il se valide lui-même : le build Hugo échoue si une donnée est incohérente, une traduction manquante ou une référence cassée. La CI ajoute les contrôles que Hugo ne peut pas faire : secrets, adresses IP, métadonnées d'images, synchronisation des traductions.
 
 ---
 
@@ -46,7 +46,7 @@ Lire ce document en entier, puis présenter le plan de l'étape 0.1 (§15) sans 
 
 ### 0.5 Tenir ce document à jour
 
-Une PR qui modifie la structure (sections, schémas de données, règles de validation, CI, outillage, gouvernance) DOIT mettre à jour ce document dans la même PR et ajouter une ligne au journal (§17.2).
+Une PR qui modifie la structure (sections, schémas de données, règles de validation, CI, outillage, gouvernance) DOIT mettre à jour ce document dans la même PR et ajouter une ligne à l'historique des décisions (§17.2).
 
 ---
 
@@ -56,29 +56,29 @@ Une PR qui modifie la structure (sections, schémas de données, règles de vali
 
 Firmin reconstruit son homelab de zéro, avec le matériel qu'il possède déjà et sans budget. Le lab lui sert à apprendre, à préparer des certifications (CCNA, Red Hat, Terraform, Ansible, Kubernetes) et à démontrer des pratiques d'exploitation conformes aux standards du métier : sécurité, maintenance, disponibilité. Rien n'y est exposé sur Internet.
 
-Le site est la vitrine de ce travail. Chaque semaine, Firmin le met à jour et publie un post LinkedIn qui renvoie vers l'entrée du devlog.
+Le site est la vitrine de ce travail. Chaque semaine, Firmin le met à jour et publie un post LinkedIn qui renvoie vers l'entrée du journal.
 
 ### 1.2 Publics
 
 | Public | Temps | Ce qu'il cherche | Parcours type |
 |---|---|---|---|
 | Recruteur | moins d'une minute | Qui, quel poste, quel niveau, preuve d'activité, contact | Accueil → CV ou contact |
-| Responsable technique, ingénieur | 5 à 15 minutes | Rigueur, raisonnement, capacité d'exploitation | Accueil → Infrastructure → fiche → ADR → devlog ou post-mortem → code |
+| Responsable technique, ingénieur | 5 à 15 minutes | Rigueur, raisonnement, capacité d'exploitation | Accueil → Infrastructure → fiche → ADR → journal ou post-mortem → code |
 | Firmin | — | La référence de son propre lab | Toutes les sections |
 
 ### 1.3 Critères de réussite
 
 - Sur l'accueil, en un écran (desktop), un recruteur comprend le profil et voit le lab.
-- Chaque affirmation technique est datée et vérifiable : lien vers le code, l'entrée devlog ou l'ADR.
+- Chaque affirmation technique est datée et vérifiable : lien vers le code, l'entrée du journal ou l'ADR.
 - La mise à jour hebdomadaire coûte peu : Firmin donne ses notes, valide, fusionne. Les archetypes et les procédures guident le reste ; le build et la CI le contrôlent.
 
 ---
 
 ## 2. Principes d'architecture
 
-- **P1 — L'état n'est pas l'historique.** Infrastructure et Services décrivent l'état actuel et se modifient en place. Devlog, post-mortems et ADR forment l'historique : datés, jamais réécrits (§9.3).
+- **P1 — L'état n'est pas l'historique.** Infrastructure et Services décrivent l'état actuel et se modifient en place. Journal, post-mortems et ADR forment l'historique : datés, jamais réécrits (§9.3).
 - **P2 — Une seule source par fait.** Le statut, l'emplacement, le mode de déploiement, la sauvegarde et la supervision d'un composant n'existent que dans `data/catalog/<id>.yaml`. Les templates les affichent ; la prose ne les répète pas.
-- **P3 — Liens déclarés d'un côté, calculés de l'autre.** Une entrée devlog déclare les composants et les ADR qu'elle concerne. Les fiches et les ADR affichent les liens inverses, calculés au build.
+- **P3 — Liens déclarés d'un côté, calculés de l'autre.** Une entrée du journal déclare les composants et les ADR qu'elle concerne. Les fiches et les ADR affichent les liens inverses, calculés au build.
 - **P4 — Statut honnête.** Prévu, en construction, en service, retiré : un élément prévu n'est jamais présenté comme fait. Un composant n'est déclaré en service qu'avec ses réponses d'exploitation (sauvegarde, supervision, vérification datée) ; le build refuse le statut sinon (§6.3).
 - **P5 — Le site se valide lui-même.** Les contrôles de cohérence vivent dans les templates (`errorf`) : `hugo --minify` échoue en local comme en CI. La CI ajoute ce que Hugo ne voit pas (§12, §13).
 - **P6 — Sécurité dès la conception.** La politique de publication (§10) est écrite et contrôlée automatiquement ; ce qui ne peut pas l'être passe en revue.
@@ -104,9 +104,9 @@ Le site est la vitrine de ce travail. Chaque semaine, Firmin le met à jour et p
 
 | # | Domaine | Existant | Proposé | Raison |
 |---|---|---|---|---|
-| C1 | Sections | journal, projects, about | accueil, infrastructure (+ decisions), services, devlog (+ incidents), about | Architecture convenue le 12/10/2026 |
+| C1 | Sections | journal, projects, about | accueil, infrastructure (+ decisions), services, journal (+ incidents), about | Architecture convenue le 12/10/2026 |
 | C2 | URL | FR à la racine, EN sous `/en/` | FR sous `/fr/`, EN sous `/en/` ; la racine redirige vers la langue par défaut | La langue par défaut peut changer sans casser un seul lien (D1) |
-| C3 | Ancien contenu | `journal/proxmox-homelab-premiers-pas` | Selon D2 ; `/journal/` redirige vers le devlog | Le lab décrit n'existe plus |
+| C3 | Ancien contenu | `journal/proxmox-homelab-premiers-pas` | Selon D2 ; `/journal/` redirige vers la nouvelle section Journal | Le lab décrit n'existe plus |
 | C4 | Slugs | `slug` anglais différent autorisé | Même slug dans les deux langues, champ `slug` interdit | Appariement et liens prévisibles, contrôle simple |
 | C5 | Organisation | Un fichier par langue | Un dossier par page (page bundle) : `index.fr.md`, `index.en.md`, images | Les images vivent avec leur page ; un archetype crée FR et EN d'une commande |
 | C6 | CSS | `assets/css/main.css`, non chargé | `assets/css/extended/site.css` | C'est l'emplacement que PaperMod assemble après son propre CSS |
@@ -129,16 +129,16 @@ Le site est la vitrine de ce travail. Chaque semaine, Firmin le met à jour et p
 /<lang>/infrastructure/decisions/adr-0001-<slug>/
 /<lang>/services/                             Catalogue des services
 /<lang>/services/<id>/                        Fiche d'un service
-/<lang>/devlog/                               Toutes les entrées : hebdomadaires et post-mortems
-/<lang>/devlog/001-<slug>/                    Entrée hebdomadaire
-/<lang>/devlog/incidents/                     Post-mortems
-/<lang>/devlog/incidents/pm-001-<slug>/
+/<lang>/journal/                               Toutes les entrées : hebdomadaires et post-mortems
+/<lang>/journal/001-<slug>/                    Entrée hebdomadaire
+/<lang>/journal/incidents/                     Post-mortems
+/<lang>/journal/incidents/pm-001-<slug>/
 /<lang>/about/                                Le projet, l'auteur, les contacts
 /<lang>/tags/<tag>/                           Tout ce qui concerne une technologie
 /<lang>/certifications/<id>/                  Tout le travail lié à une certification
 ```
 
-Menu, dans cet ordre : Accueil · Infrastructure · Services · Devlog · À propos (EN : Home · Infrastructure · Services · Devlog · About).
+Menu, dans cet ordre : Accueil · Infrastructure · Services · Journal · À propos (EN : Home · Infrastructure · Services · Journal · About).
 
 Règles :
 
@@ -157,7 +157,7 @@ Objectif : l'essentiel en un écran sur desktop, en deux sur mobile. Les blocs, 
 1. **Identité.** Nom, poste visé (`headline`), pitch de deux ou trois phrases (corps de `content/_index.<lang>.md`), une ligne de localisation et de mobilité (`availability`). Boutons : CV (PDF de la langue courante), Contact (`/about/#contact`), GitHub, LinkedIn. Les textes viennent de Firmin ; les liens de `hugo.toml`.
 2. **Le lab en un coup d'œil.** Schéma `lab-overview` (§11.6), nombre de composants par statut, phases de la roadmap en cours et date de dernière vérification (la plus récente des dates `verified` du catalogue). Lien vers Infrastructure.
 3. **Stack.** Composants non retirés, groupés par groupe, chacun avec son badge de statut. Calculé depuis le catalogue.
-4. **Devlog.** Les trois dernières entrées (hebdomadaires et post-mortems), avec numéro, date et description.
+4. **Journal.** Les trois dernières entrées (hebdomadaires et post-mortems), avec numéro, date et description.
 5. **Certifications.** Statut de chacune, depuis les données.
 
 ### 5.2 Infrastructure
@@ -174,12 +174,12 @@ Objectif : l'essentiel en un écran sur desktop, en deux sur mobile. Les blocs, 
 - Une ADR acceptée n'est pas réécrite. Changer d'avis passe par une nouvelle ADR qui déclare `supersedes`. L'ancienne passe alors en `superseded` avec `superseded_by` : ce sont les seuls champs qui changent.
 - Mérite une ADR tout choix entre de vraies alternatives aux conséquences durables : hyperviseur, topologie réseau, outil de sauvegarde, accès distant, distribution Kubernetes, outil GitOps… Un simple réglage n'en mérite pas.
 - Index : numéro, titre, statut, date, du plus récent au plus ancien.
-- Page : badge de statut, date, composants concernés, bandeau « remplacée par » s'il y a lieu, entrées devlog qui la citent (calculées).
+- Page : badge de statut, date, composants concernés, bandeau « remplacée par » s'il y a lieu, entrées du journal qui la citent (calculées).
 
 ### 5.4 Services
 
 - **Catalogue** (`/services/`) : un tableau par groupe de services. Colonnes : nom (lien vers la fiche si elle existe), rôle, statut, où il tourne, exposition, date de vérification. Tout vient des données.
-- **Fiche** (`/services/<id>/`) : en-tête (nom, statut, rôle), fiche technique, prose de Firmin (Annexe A.4), puis entrées devlog, ADR et post-mortems liés (calculés).
+- **Fiche** (`/services/<id>/`) : en-tête (nom, statut, rôle), fiche technique, prose de Firmin (Annexe A.4), puis entrées du journal, ADR et post-mortems liés (calculés).
 
 Fiche technique, rendue par le même partial pour les services et pour les cartes d'infrastructure :
 
@@ -196,13 +196,13 @@ Fiche technique, rendue par le même partial pour les services et pour les carte
 | Dépendances | `depends_on` |
 | Vérifié le | `verified` |
 
-### 5.5 Devlog
+### 5.5 Journal
 
 - Une entrée par semaine de travail, numérotée en continu : S1, S2… en français, W1, W2… en anglais. Le numéro compte les comptes rendus hebdomadaires, pas les semaines du calendrier. Après une semaine sans entrée, la suivante prend le numéro suivant et précise la période couverte.
 - `date` = dernier jour de la semaine couverte (en pratique, le jour de publication). Une entrée rattrapée garde la date de sa semaine.
 - Gabarit fixe (Annexe A.1) : Objectif, Réalisé, Problèmes et résolution, Décisions, Appris, Semaine prochaine.
 - Chaque entrée déclare `components`, `adrs`, `tags` et `certifications`.
-- Liste (`/devlog/`) : toutes les entrées, post-mortems compris, de la plus récente à la plus ancienne. Pour chacune : numéro (S07 ou PM-002), date, titre, description, tags. Pagination par 10, flux RSS.
+- Liste (`/journal/`) : toutes les entrées, post-mortems compris, de la plus récente à la plus ancienne. Pour chacune : numéro (S07 ou PM-002), date, titre, description, tags. Pagination par 10, flux RSS.
 - Page : numéro et titre, date, description, tags et certifications, composants concernés, ADR liées, corps, navigation précédente/suivante.
 - Le post LinkedIn de la semaine résume l'entrée et y renvoie (§16.1).
 
@@ -213,7 +213,7 @@ Fiche technique, rendue par le même partial pour les services et pour les carte
 - Gravité : `sev1` (perte de données ou lab entièrement indisponible), `sev2` (un composant d'infrastructure ou un service indisponible), `sev3` (dégradation partielle, contournement disponible).
 - Numérotation continue : PM-001, PM-002… `date` = publication, `incident_date` = début de l'incident, `impact_minutes` = durée de l'impact.
 - Le corps n'est pas réécrit ; seul l'état des actions correctives évolue.
-- `/devlog/incidents/` les liste. Ils figurent aussi dans la liste du devlog, avec un badge.
+- `/journal/incidents/` les liste. Ils figurent aussi dans la liste du journal, avec un badge.
 
 ### 5.7 À propos
 
@@ -227,7 +227,7 @@ Une seule page, `/about/`, en trois parties :
 
 - `tags` : technologies et thèmes. Le vocabulaire est contrôlé dans `data/tags.yaml` ; un nouveau tag s'ajoute à ce fichier dans la même PR.
 - `certifications` : les identifiants de `data/certifications.yaml`.
-- Utilisées par les entrées devlog, les post-mortems et les ADR. Les pages d'état n'en ont pas besoin : le catalogue les décrit.
+- Utilisées par les entrées du journal, les post-mortems et les ADR. Les pages d'état n'en ont pas besoin : le catalogue les décrit.
 - Les pages de terme affichent le libellé tiré des données.
 
 ---
@@ -380,7 +380,7 @@ content/
 ├── services/
 │   ├── _index.{fr,en}.md
 │   └── <id>/index.{fr,en}.md                      id = identifiant du catalogue
-└── devlog/
+└── journal/
     ├── _index.{fr,en}.md
     ├── 001-<slug>/index.{fr,en}.md
     └── incidents/
@@ -388,7 +388,7 @@ content/
         └── pm-001-<slug>/index.{fr,en}.md
 ```
 
-Les numéros sont complétés par des zéros : trois chiffres pour le devlog et les post-mortems, quatre pour les ADR.
+Les numéros sont complétés par des zéros : trois chiffres pour le journal et les post-mortems, quatre pour les ADR.
 
 ### 7.2 Front matter
 
@@ -396,7 +396,7 @@ Front matter en YAML (`---`), comme aujourd'hui. Toute page porte `title`, `desc
 
 | Type | Champs requis en plus | Champs optionnels |
 |---|---|---|
-| Entrée devlog | `date`, `week`, `tags` | `components`, `adrs`, `certifications` |
+| Entrée du journal | `date`, `week`, `tags` | `components`, `adrs`, `certifications` |
 | Post-mortem | `date`, `pm`, `incident_date`, `severity`, `impact_minutes` | `components`, `tags` |
 | ADR | `date`, `adr`, `status` | `components`, `supersedes`, `superseded_by` (requis si `superseded`), `tags` |
 | Fiche service, page de groupe | — | — (les faits viennent du catalogue) |
@@ -411,14 +411,14 @@ Des archetypes de dossier créent les deux langues en une commande :
 
 ```
 archetypes/
-├── devlog/index.{fr,en}.md
+├── journal/index.{fr,en}.md
 ├── postmortem/index.{fr,en}.md
 ├── adr/index.{fr,en}.md
 └── services/index.{fr,en}.md
 ```
 
 ```
-hugo new content --kind devlog devlog/007-<slug>
+hugo new content --kind journal journal/007-<slug>
 ```
 
 Le dossier est créé avec les deux fichiers en brouillon, selon les gabarits de l'Annexe A. La date est celle du jour ; le numéro (`week`, `pm`, `adr`) est lu dans le nom du dossier, zéros de tête retirés (`007-…` → 7). Les champs qu'un archetype ne peut pas connaître restent vides plutôt que de recevoir une valeur d'exemple : la validation (V8) bloque la publication tant qu'ils ne sont pas remplis. Les archetypes sont des templates Go : ils NE DOIVENT PAS contenir d'appel de shortcode (`{{<`), que Hugo tenterait d'interpréter. Vérifier le comportement exact (archetype de dossier, choix par `--kind`) avec la version de Hugo épinglée.
@@ -427,7 +427,7 @@ Le dossier est créé avec les deux fichiers en brouillon, selon les gabarits de
 
 - Vers un composant : `{{< component "grafana" >}}`. Le shortcode mène à la fiche (service) ou à l'ancre de la page de groupe (infrastructure).
 - Vers une ADR ou un post-mortem : `{{< adr 1 >}}`, `{{< pm 1 >}}`.
-- Vers toute autre page : `[texte]({{< relref "/devlog/001-<slug>" >}})`. Une référence cassée fait échouer le build.
+- Vers toute autre page : `[texte]({{< relref "/journal/001-<slug>" >}})`. Une référence cassée fait échouer le build.
 - Aucune URL du site écrite en dur. Les liens externes sont permis et vérifiés chaque semaine (§13.2).
 
 ### 7.5 Images
@@ -457,7 +457,7 @@ Le dossier est créé avec les deux fichiers en brouillon, selon les gabarits de
 
 | Contenu | Rédaction | Rôle de Claude Code |
 |---|---|---|
-| Prose : devlog, post-mortems, ADR, fiches, pages de groupe, accueil, À propos | Firmin, en texte ou en notes | Mettre en forme à partir des notes, sur demande ; traduire ; corriger orthographe et format |
+| Prose : journal, post-mortems, ADR, fiches, pages de groupe, accueil, À propos | Firmin, en texte ou en notes | Mettre en forme à partir des notes, sur demande ; traduire ; corriger orthographe et format |
 | Données : catalogue, roadmap, certifications, tags | Firmin, par ses énoncés | Transcrire en YAML ce que Firmin énonce |
 | Structure : sections, archetypes, templates, CI, outillage | Claude Code | Proposer un plan, puis implémenter après accord |
 
@@ -469,7 +469,7 @@ Le dossier est créé avec les deux fichiers en brouillon, selon les gabarits de
 
 ### 9.3 Historique immuable
 
-- Devlog : une entrée publiée n'est pas réécrite. Une faute de frappe se corrige directement ; une erreur de fond se signale par un bloc « Erratum (date) » en fin d'entrée.
+- Journal : une entrée publiée n'est pas réécrite. Une faute de frappe se corrige directement ; une erreur de fond se signale par un bloc « Erratum (date) » en fin d'entrée.
 - ADR acceptée : seuls `status` et `superseded_by` changent.
 - Post-mortem : seul l'état des actions correctives évolue.
 - Pages d'état (Infrastructure, Services, Accueil, À propos) : mises à jour en place.
@@ -530,7 +530,7 @@ Contrôles :
 - taxonomies : `tag = "tags"`, `certification = "certifications"` ;
 - aucun menu dans `hugo.toml` : les entrées sont dans le front matter des pages (§4, `docs/structure.md` §3.5) ;
 - `[params]`, en plus de l'existant :
-  - `ShowCodeCopyButtons`, `ShowBreadCrumbs`, `ShowPostNavLinks` (pas de bouton RSS à côté des titres : le flux du devlog est proposé dans le pied de page) ;
+  - `ShowCodeCopyButtons`, `ShowBreadCrumbs`, `ShowPostNavLinks` (pas de bouton RSS à côté des titres : le flux du journal est proposé dans le pied de page) ;
   - `socialIcons` (GitHub, LinkedIn, e-mail) ;
   - `labRepo` (D3) ;
   - `profile` : nom, e-mail de contact, chemin du CV par langue ;
@@ -553,17 +553,17 @@ layouts/
 │   ├── page.html                          page de groupe
 │   └── decisions/{section,page}.html      index et page d'ADR
 ├── services/{section,page}.html           catalogue et fiche
-├── devlog/
+├── journal/
 │   ├── section.html                       liste (inclut les post-mortems)
 │   ├── page.html                          entrée hebdomadaire
 │   └── incidents/{section,page}.html      post-mortems
 ├── _partials/
 │   ├── header.html                        surcharge existante (registre §11.7)
 │   ├── extend_head.html                   point d'extension PaperMod : appelle les validations (§12)
-│   ├── extend_footer.html                 point d'extension PaperMod : lien RSS du devlog, puis pied de page (5.2)
+│   ├── extend_footer.html                 point d'extension PaperMod : lien RSS du journal, puis pied de page (5.2)
 │   ├── validate/{data,page}.html
 │   ├── catalog/{fiche,table,badge,link}.html
-│   ├── devlog/{item,meta}.html
+│   ├── journal/{item,meta}.html
 │   ├── profile/links.html                 CV, e-mail, GitHub, LinkedIn : accueil, À propos, contact
 │   └── backlinks.html                     liens inverses (P3)
 └── _shortcodes/{diagram,component,adr,pm,roadmap,certifications,contact}.html
@@ -609,7 +609,7 @@ Un seul fichier, `assets/css/extended/site.css`, que PaperMod ajoute après son 
 | `layouts/_partials/header.html` | Surcharge | Bascule de langue vers la page traduite (`.Translations`) plutôt que vers l'accueil | Comparer l'ancienne et la nouvelle version du `header.html` du thème ; reporter les changements |
 | `layouts/taxonomy.html` | Surcharge | Libellés des termes depuis `data/` | Idem avec `taxonomy.html` |
 | `layouts/_partials/extend_head.html` | Point d'extension prévu par le thème | Appel des validations | Vérifier qu'il est toujours inclus par `head.html` |
-| `layouts/_partials/extend_footer.html` | Point d'extension prévu par le thème | Lien RSS du devlog ; pied de page du site (5.2) | Vérifier qu'il est toujours inclus par `footer.html` |
+| `layouts/_partials/extend_footer.html` | Point d'extension prévu par le thème | Lien RSS du journal ; pied de page du site (5.2) | Vérifier qu'il est toujours inclus par `footer.html` |
 
 ---
 
@@ -709,7 +709,7 @@ Toutes portent `disable-model-invocation: true` : c'est Firmin qui les déclench
 
 | Skill | Usage | Procédure |
 |---|---|---|
-| `/devlog` | Entrée hebdomadaire : numéro suivant calculé, slug proposé | §16.1 |
+| `/journal` | Entrée hebdomadaire : numéro suivant calculé, slug proposé | §16.1 |
 | `/component <id>` | Ajouter un composant ou le faire évoluer | §16.2 |
 | `/adr <slug>` | Nouvelle décision | §16.3 |
 | `/postmortem <slug>` | Nouvel incident | §16.4 |
@@ -730,7 +730,7 @@ Toutes portent `disable-model-invocation: true` : c'est Firmin qui les déclench
 4. FR et EN sont à jour, ou le label `i18n-skip` est justifié.
 5. Chaque image ajoutée a été ouverte et vérifiée (§10).
 6. Revue visuelle par Firmin : Claude Code lance `hugo server` et donne la liste des pages à regarder, en FR et en EN, en thème clair et sombre.
-7. Ce document est à jour si la structure change, journal compris (§17.2).
+7. Ce document est à jour si la structure change, historique des décisions compris (§17.2).
 8. Branche poussée. La PR n'est ouverte qu'avec l'accord de Firmin ; Claude Code ne fusionne jamais.
 
 ---
@@ -741,7 +741,7 @@ Les phases se suivent dans l'ordre. Chaque étape est une branche et une PR ; so
 
 Ordre retenu le 14/10/2026 : 0.1, puis la phase 1 (la structure, détaillée dans `docs/structure.md` §7), puis 0.2 à 0.4. Tant que la CI n'existe pas, `hugo --minify` exécuté en local fait office de contrôle (§14.4).
 
-En attendant la phase 3, Firmin consigne ses notes de chaque semaine. Elles deviendront, dans l'ordre, les premières entrées du devlog, datées de leur semaine. La semaine S1 (12–18 octobre 2026) est celle de la planification. Le calendrier commun au site et au lab est au §15 du plan du lab.
+En attendant la phase 3, Firmin consigne ses notes de chaque semaine. Elles deviendront, dans l'ordre, les premières entrées du journal, datées de leur semaine. La semaine S1 (12–18 octobre 2026) est celle de la planification. Le calendrier commun au site et au lab est au §15 du plan du lab.
 
 ### Phase 0 — Fondations
 
@@ -760,7 +760,8 @@ En attendant la phase 3, Firmin consigne ses notes de chaque semaine. Elles devi
 | 1.1 | `feat/i18n-subdirs` | Langues en sous-dossier, redirection de la racine (D1), redirections des anciennes URL par fichiers `static/` (`docs/structure.md` §3.6) | `/` et chaque ancienne URL redirigent ; le sélecteur de langue mène à la page traduite ; présence de `public/404.html` vérifiée |
 | 1.2 | `feat/sections` | Arborescence complète de `docs/structure.md` (sections et pages de groupe en brouillon) ; menus dans le front matter ; pages existantes converties en dossiers (C5) ; `journal` et `projects` retirés, anciennes URL redirigées ; ancien article selon D2 ; ajouts à `hugo.toml` (§11.1) | Build vert. En production, seules les pages publiées et leurs entrées de menu existent. Avec `-D`, toute l'arborescence est navigable |
 | 1.3 | `feat/archetypes` | Archetypes (Annexe A) | `hugo new content --kind …` crée FR et EN en brouillon, conformes aux gabarits |
-| 1.4 | `feat/footer-rss` | Lien RSS du devlog dans le pied de page au lieu d'un bouton à côté des titres (`docs/structure.md` §3.3) | Aucun logo RSS dans les titres ; lien absent en production tant que le devlog est en brouillon |
+| 1.4 | `feat/footer-rss` | Lien RSS du journal dans le pied de page au lieu d'un bouton à côté des titres (`docs/structure.md` §3.3) | Aucun logo RSS dans les titres ; lien absent en production tant que le journal est en brouillon |
+| 1.5 | `feat/journal-rename` | Section « Devlog » renommée « Journal » : contenu, archetype, URL, menu, pied de page, documents | Plus aucun « devlog » hors de l'historique des décisions ; `/en/journal/` redirige tant que la section est en brouillon |
 
 ### Phase 2 — Données et validation
 
@@ -769,13 +770,13 @@ En attendant la phase 3, Firmin consigne ses notes de chaque semaine. Elles devi
 | 2.1 | `feat/data-model` | Fichiers `data/` (groupes ; vocabulaires vides ou fournis par Firmin), chaînes i18n de base, `validate/data.html` (V1 à V4, V14), tests et job `validation-tests` | Chaque règle a un cas de test qui échoue avec le message attendu |
 | 2.2 | `feat/page-validation` | `validate/page.html` (V5 à V13, V15, V16), tests | Idem |
 
-### Phase 3 — Historique : devlog, incidents, ADR (débloque la publication hebdomadaire)
+### Phase 3 — Historique : journal, incidents, ADR (débloque la publication hebdomadaire)
 
 | Étape | Branche | Contenu | Critères d'acceptation |
 |---|---|---|---|
-| 3.1 | `feat/devlog-templates` | Templates devlog et incidents, partials `devlog/*`, `backlinks`, shortcodes `component`, `adr`, `pm`, CSS, image OpenGraph par défaut | Revue visuelle en FR et EN, thèmes clair et sombre, largeur mobile ; liens inverses corrects ; un composant sans page publiée s'affiche sans lien |
+| 3.1 | `feat/journal-templates` | Templates du journal et des incidents, partials `journal/*`, `backlinks`, shortcodes `component`, `adr`, `pm`, CSS, image OpenGraph par défaut | Revue visuelle en FR et EN, thèmes clair et sombre, largeur mobile ; liens inverses corrects ; un composant sans page publiée s'affiche sans lien |
 | 3.2 | `feat/adr-templates` | Templates decisions | Bandeau « remplacée par » ; liens inverses |
-| 3.3 | `docs/devlog-001` | Premières entrées (Firmin), leurs ADR, les composants qu'elles citent (avec fiche ou page de groupe si V9 ou V10 l'exige), entrée Devlog au menu | Entrées publiées ; aperçu LinkedIn correct (titre, description, image) ; aucun fait inventé |
+| 3.3 | `docs/journal-001` | Premières entrées (Firmin), leurs ADR, les composants qu'elles citent (avec fiche ou page de groupe si V9 ou V10 l'exige), entrée Journal au menu | Entrées publiées ; aperçu LinkedIn correct (titre, description, image) ; aucun fait inventé |
 
 Jusqu'à la phase 4, les fiches et les pages de groupe exigées par V9 et V10 s'affichent avec le template par défaut de PaperMod : leur prose est en ligne, leur fiche technique arrive en 4.1. Infrastructure et Services n'entrent au menu qu'en 4.2.
 
@@ -805,12 +806,12 @@ Jusqu'à la phase 4, les fiches et les pages de groupe exigées par V9 et V10 s'
 
 ## 16. Procédures de maintenance
 
-### 16.1 Chaque semaine : l'entrée devlog (`/devlog`, puis `/linkedin`)
+### 16.1 Chaque semaine : l'entrée du journal (`/journal`, puis `/linkedin`)
 
 1. Firmin donne ses notes de la semaine : ce qui a été fait, les problèmes, les décisions, les changements de statut, les incidents.
 2. Claude Code présente son plan : numéro (le suivant), slug, composants, ADR et tags concernés, modifications du catalogue, ADR ou post-mortem à créer.
 3. Après accord :
-   - créer la branche `docs/devlog-<nnn>` et le dossier depuis l'archetype ;
+   - créer la branche `docs/journal-<nnn>` et le dossier depuis l'archetype ;
    - mettre en forme l'entrée française à partir des notes, sans rien ajouter (les questions deviennent des `TODO(firmin)`) ;
    - mettre à jour le catalogue ;
    - créer les ADR et post-mortems éventuels (§16.3, §16.4) ;
@@ -828,7 +829,7 @@ Jusqu'à la phase 4, les fiches et les pages de groupe exigées par V9 et V10 s'
 - **Test de restauration réussi** : `backup.restore_tested`, sur indication de Firmin.
 - **Retrait** : statut `retired` et `since`. La fiche reste en ligne, puisqu'elle fait partie de l'histoire du lab ; le composant sort du schéma.
 - **Changement de topologie** (hôte, dépendances, réseau) : le schéma `lab-overview` est mis à jour dans la même PR.
-- Toute évolution est mentionnée dans l'entrée devlog de la semaine.
+- Toute évolution est mentionnée dans l'entrée du journal de la semaine.
 
 ### 16.3 Décision (`/adr`)
 
@@ -836,7 +837,7 @@ Numéro suivant. Statut `proposed` ou `accepted`. Firmin fournit le contexte, le
 
 ### 16.4 Incident (`/postmortem`)
 
-Rédigé dans la semaine de l'incident, à partir de la chronologie et des faits fournis par Firmin. Les actions correctives prennent la forme d'une liste de cases à cocher. L'entrée devlog de la semaine y renvoie. L'état des actions est mis à jour ensuite, au fil de leur réalisation.
+Rédigé dans la semaine de l'incident, à partir de la chronologie et des faits fournis par Firmin. Les actions correctives prennent la forme d'une liste de cases à cocher. L'entrée du journal de la semaine y renvoie. L'état des actions est mis à jour ensuite, au fil de leur réalisation.
 
 ### 16.5 Chaque mois (première semaine)
 
@@ -853,7 +854,7 @@ Rédigé dans la semaine de l'incident, à partir de la chronologie et des faits
 
 ### 16.7 Changement d'architecture
 
-Sections, schémas, validations, CI, outillage : mise à jour de ce document et ligne au journal (§17.2) dans la même PR. Si des URL changent, redirections.
+Sections, schémas, validations, CI, outillage : mise à jour de ce document et ligne à l'historique des décisions (§17.2) dans la même PR. Si des URL changent, redirections.
 
 ### 16.8 Fuite publiée
 
@@ -898,7 +899,7 @@ Le site dépend de comptes et de services extérieurs au repo. C'est là qu'est 
 | D4 | Contact public : adresse principale ou alias dédié ? | Un alias dédié sur le domaine, remplaçable en cas de spam. CV public sans adresse, téléphone ni date de naissance. | 5.3 |
 | D5 | Supprimer `layouts-maison/` et `assets/css/main.css` ? | Oui : l'historique git les conserve. | 0.4 |
 
-### 17.2 Journal des décisions du site
+### 17.2 Historique des décisions du site
 
 | Date | Décision | Référence |
 |---|---|---|
@@ -911,6 +912,7 @@ Le site dépend de comptes et de services extérieurs au repo. C'est là qu'est 
 | 2026-10-14 | D2 : ancien article supprimé, ses URL redirigées. Arborescence de `docs/structure.md` §5 en brouillon ; menus dans le front matter ; taxonomies `tags` et `certifications` ; fil d'Ariane ; services tiers désactivés (`[privacy]`) | PR de l'étape 1.2 |
 | 2026-10-14 | Archetypes de dossier `devlog`, `postmortem`, `adr`, `services` ; numéro tiré du nom du dossier ; champs du post-mortem inconnus laissés vides (Annexe A.2) | PR de l'étape 1.3 |
 | 2026-10-14 | Flux RSS : lien vers le flux du devlog sous le pied de page (`extend_footer.html`, registre §11.7) plutôt qu'un bouton à côté du titre de chaque section ; premiers fichiers `i18n/` et `site.css` | PR de l'étape 1.4 |
+| 2026-10-14 | La section « Devlog » devient « Journal » (`/<lang>/journal/`, archetype `journal`, skill `/journal`, branches `docs/journal-<nnn>`) ; le §17.2 devient « Historique des décisions du site » pour éviter le double sens. Les lignes précédentes gardent le terme de leur date | PR de l'étape 1.5 |
 
 ---
 
@@ -930,7 +932,7 @@ Le site dépend de comptes et de services extérieurs au repo. C'est là qu'est 
 
 Les gabarits ci-dessous montrent les fichiers tels que l'archetype les crée (`archetypes/`). L'archetype remplit la date et le numéro, et met `draft: true`. Les commentaires HTML guident la rédaction ; ils restent invisibles sur le site.
 
-### A.1 Entrée devlog — `devlog/<nnn>-<slug>/index.fr.md`
+### A.1 Entrée du journal — `journal/<nnn>-<slug>/index.fr.md`
 
 ```markdown
 ---
@@ -962,7 +964,7 @@ certifications: []
 
 Rubriques en anglais : Goal of the week, Done, Problems and fixes, Decisions, Learned, Next week.
 
-### A.2 Post-mortem — `devlog/incidents/pm-<nnn>-<slug>/index.fr.md`
+### A.2 Post-mortem — `journal/incidents/pm-<nnn>-<slug>/index.fr.md`
 
 ```markdown
 ---

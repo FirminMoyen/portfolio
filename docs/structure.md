@@ -36,10 +36,10 @@
 | P06 | ADR | `…/decisions/adr-NNNN-<slug>/` | idem | Archetype `adr` | page | — | Modèle seulement |
 | P07 | Services | `/fr/services/` | `/en/services/` | `content/services/_index.*` | section | Services (30) | Brouillon |
 | P08 | Fiche service | `/fr/services/<id>/` | `/en/services/<id>/` | Archetype `services` | page | — | Modèle seulement |
-| P09 | Devlog | `/fr/devlog/` | `/en/devlog/` | `content/devlog/_index.*` | section | Devlog (40) | Brouillon |
-| P10 | Entrée devlog | `/fr/devlog/NNN-<slug>/` | idem | Archetype `devlog` | page | — | Modèle seulement |
-| P11 | Incidents | `/fr/devlog/incidents/` | `/en/devlog/incidents/` | `content/devlog/incidents/_index.*` | section | — | Brouillon |
-| P12 | Post-mortem | `/fr/devlog/incidents/pm-NNN-<slug>/` | idem | Archetype `postmortem` | page | — | Modèle seulement |
+| P09 | Journal | `/fr/journal/` | `/en/journal/` | `content/journal/_index.*` | section | Journal (40) | Brouillon |
+| P10 | Entrée du journal | `/fr/journal/NNN-<slug>/` | idem | Archetype `journal` | page | — | Modèle seulement |
+| P11 | Incidents | `/fr/journal/incidents/` | `/en/journal/incidents/` | `content/journal/incidents/_index.*` | section | — | Brouillon |
+| P12 | Post-mortem | `/fr/journal/incidents/pm-NNN-<slug>/` | idem | Archetype `postmortem` | page | — | Modèle seulement |
 | P13 | À propos | `/fr/about/` | `/en/about/` | `content/about/index.*` | page | À propos / About (50) | Publiée (convertie en dossier) |
 | P14 | Tags | `/fr/tags/`, `/fr/tags/<tag>/` | idem | Générées par Hugo | taxonomie | — | Automatiques ; aucun tag aujourd'hui |
 | P15 | Certifications | `/fr/certifications/`, `/fr/certifications/<id>/` | idem | Générées par Hugo | taxonomie | — | Automatiques ; aucune aujourd'hui |
@@ -70,14 +70,14 @@ Les sept groupes de P04, avec leurs libellés (architecture §6.4) :
 
 ### 3.2 Fil d'Ariane
 
-Affiché sur toutes les pages sauf l'accueil (`ShowBreadCrumbs`). Il suit l'arborescence : Accueil › Infrastructure › Réseau ; Accueil › Devlog › Incidents › PM-001. Activé aujourd'hui (1.2).
+Affiché sur toutes les pages sauf l'accueil (`ShowBreadCrumbs`). Il suit l'arborescence : Accueil › Infrastructure › Réseau ; Accueil › Journal › Incidents › PM-001. Activé aujourd'hui (1.2).
 
 ### 3.3 Pied de page
 
 - Copyright.
 - Lien vers le code source du site.
 - Mention « ni cookies ni traceurs », dont le texte vient des fichiers i18n.
-- Lien vers le flux RSS du devlog (`/<lang>/devlog/index.xml`), sur toutes les pages, affiché seulement quand le devlog est publié.
+- Lien vers le flux RSS du journal (`/<lang>/journal/index.xml`), sur toutes les pages, affiché seulement quand le journal est publié.
 
 Le lien RSS est en place depuis l'étape 1.4 : `extend_footer.html` l'ajoute sous le pied de page de PaperMod. Le reste est implémenté en phase 5.2 dans le même fichier. Aucun bouton RSS à côté des titres (`ShowRssButtonInSectionTermList` désactivé).
 
@@ -94,7 +94,7 @@ Le lien RSS est en place depuis l'étape 1.4 : `extend_footer.html` l'ajoute sou
 | `home` | Accueil | Home | P02 | 10 | Toujours |
 | `infrastructure` | Infrastructure | Infrastructure | P03 | 20 | Quand P03 est publiée (4.2) |
 | `services` | Services | Services | P07 | 30 | Quand P07 est publiée (4.2) |
-| `devlog` | Devlog | Devlog | P09 | 40 | Quand P09 est publiée (3.3) |
+| `journal` | Journal | Journal | P09 | 40 | Quand P09 est publiée (3.3) |
 | `about` | À propos | About | P13 | 50 | Toujours |
 
 En production, le menu se limite donc aujourd'hui à **Accueil · À propos**. Les autres entrées apparaissent seules, avec la publication de leur section.
@@ -113,17 +113,17 @@ C'est le même format que les alias de Hugo, et une seule liste à tenir : ce ta
 | Ancienne URL | Cible aujourd'hui | Cible finale | Mise à jour à l'étape |
 |---|---|---|---|
 | `/about/` | `/fr/about/` | `/fr/about/` | — |
-| `/journal/` | `/fr/` | `/fr/devlog/` | 3.3 |
-| `/journal/proxmox-homelab-premiers-pas/` | `/fr/` | `/fr/devlog/` | 3.3 |
+| `/journal/` | `/fr/` | `/fr/journal/` | 3.3 |
+| `/journal/proxmox-homelab-premiers-pas/` | `/fr/` | `/fr/journal/` | 3.3 |
 | `/projects/` | `/fr/` | `/fr/infrastructure/` | 4.2 |
-| `/en/journal/` | `/en/` | `/en/devlog/` | 3.3 |
-| `/en/journal/proxmox-homelab-first-steps/` | `/en/` | `/en/devlog/` | 3.3 |
+| `/en/journal/` | `/en/` | — : la section Journal reprend cette adresse | 3.3 : supprimer `static/en/journal/index.html` |
+| `/en/journal/proxmox-homelab-first-steps/` | `/en/` | `/en/journal/` | 3.3 |
 | `/en/projects/` | `/en/` | `/en/infrastructure/` | 4.2 |
 | `/tags/` | `/fr/tags/` | `/fr/tags/` | — |
 | `/categories/` | `/fr/` | `/fr/` | — |
 | `/en/categories/` | `/en/` | `/en/` | — |
 
-Les deux lignes de l'article suivent D2 (§8) ; si l'article est conservé, elles changent. `/en/`, `/en/about/` et `/en/tags/` gardent leur adresse.
+Les deux lignes de l'article suivent D2 (§8) ; si l'article est conservé, elles changent. `/en/journal/` est un cas à part : c'était l'ancienne section anglaise, et c'est aussi l'adresse de la section Journal. Tant que celle-ci est en brouillon, `static/en/journal/index.html` redirige vers `/en/` ; à la publication (3.3), ce fichier est supprimé et la section reprend l'adresse. `/en/`, `/en/about/` et `/en/tags/` gardent leur adresse.
 
 À l'étape 1.1, tant que `journal`, `projects` et la taxonomie `categories` existent, les redirections de la racine visent leur équivalent sous `/fr/` (`/journal/` → `/fr/journal/`…) ; l'étape 1.2 les passe à leur « cible aujourd'hui ».
 
@@ -140,7 +140,7 @@ Exceptions, sans redirection :
 | `/404.html` | Exigé par GitHub Pages. Hugo ne le génère pas quand les deux langues sont en sous-dossier : `static/404.html`, page bilingue autonome (CSS intégré, clair et sombre, sans JavaScript, sans le style du thème) |
 | `/robots.txt` | `enableRobotsTXT` |
 | `/sitemap.xml` | Index des plans de site par langue (Hugo) |
-| `/<lang>/index.xml`, `/<lang>/devlog/index.xml` | Flux RSS (Hugo, PaperMod) |
+| `/<lang>/index.xml`, `/<lang>/journal/index.xml` | Flux RSS (Hugo, PaperMod) |
 | `/CNAME` | `static/CNAME`, existant |
 
 ## 4. Les pages
@@ -161,12 +161,12 @@ Format de chaque fiche : identité de la page, puis ses blocs dans l'ordre d'aff
 | Fichiers | `content/_index.fr.md`, `content/_index.en.md` |
 | Type, template | home ; `layouts/home.html` (5.2). D'ici là, liste par défaut de PaperMod |
 | Menu | Accueil / Home (10) |
-| Aujourd'hui | Contenu actuel conservé ; entrée de menu ajoutée au front matter ; `mainSections = ["devlog"]` |
+| Aujourd'hui | Contenu actuel conservé ; entrée de menu ajoutée au front matter ; `mainSections = ["journal"]` |
 
 1. **Identité** : `headline`, `availability`, pitch, boutons CV, Contact (lien vers `#contact` de P13), GitHub, LinkedIn. *(front matter et Firmin ; liens dans `hugo.toml` ; 5.2)*
 2. **Le lab en un coup d'œil** : schéma `lab-overview`, nombre de composants par statut, phases en cours, date de dernière vérification, lien vers P03. *(données ; 5.1 et 5.2)*
 3. **Stack** : composants non retirés, groupés, avec leur badge de statut. *(catalogue ; 5.2)*
-4. **Derniers devlogs** : les 3 dernières entrées, P10 ou P12 (numéro, date, titre, description). *(5.2)*
+4. **Dernières entrées du journal** : les 3 dernières entrées, P10 ou P12 (numéro, date, titre, description). *(5.2)*
 5. **Certifications** : liste et statuts. *(données ; 5.2)*
 
 ### P03 — Infrastructure
@@ -201,7 +201,7 @@ Format de chaque fiche : identité de la page, puis ses blocs dans l'ordre d'aff
 
 1. **En-tête** : titre (libellé du groupe), description. *(thème)*
 2. **Rubriques** : Rôle dans le lab · Mise en œuvre · Exploitation · Limites et évolutions. *(Firmin)*
-3. **Cartes des composants** : une par composant du groupe, ancrée sur `#<id>`. Chaque carte porte la fiche technique (architecture §5.4) et les liens vers le devlog, les ADR et les incidents qui la concernent. *(catalogue ; 4.1)*
+3. **Cartes des composants** : une par composant du groupe, ancrée sur `#<id>`. Chaque carte porte la fiche technique (architecture §5.4) et les liens vers le journal, les ADR et les incidents qui la concernent. *(catalogue ; 4.1)*
 
 ### P05 — Décisions d'architecture (index)
 
@@ -232,7 +232,7 @@ Format de chaque fiche : identité de la page, puis ses blocs dans l'ordre d'aff
 1. **En-tête** : « ADR-0007 — titre », badge de statut, date, composants concernés (liens). *(3.2)*
 2. **Bandeau** « Remplacée par ADR-xxxx » ou « Remplace ADR-xxxx », s'il y a lieu. *(3.2)*
 3. **Corps** : Contexte · Options considérées · Décision · Conséquences. *(archetype)*
-4. **Citée par** : les entrées devlog qui la référencent, calculées. *(3.2)*
+4. **Citée par** : les entrées du journal qui la référencent, calculées. *(3.2)*
 
 ### P07 — Services (catalogue)
 
@@ -264,18 +264,18 @@ Format de chaque fiche : identité de la page, puis ses blocs dans l'ordre d'aff
 1. **En-tête** : nom, badge de statut, rôle. *(catalogue ; 4.1)*
 2. **Fiche technique** (architecture §5.4). *(catalogue ; 4.1)*
 3. **Corps** : Pourquoi · Mise en œuvre · Exploitation · Limites et évolutions. *(archetype)*
-4. **Liés** : entrées devlog, ADR et incidents, calculés. *(4.1)*
+4. **Liés** : entrées du journal, ADR et incidents, calculés. *(4.1)*
 
-### P09 — Devlog (liste)
+### P09 — Journal (liste)
 
 | | |
 |---|---|
 | Rôle | Le chemin parcouru, semaine par semaine |
-| URL | `/fr/devlog/` · `/en/devlog/` |
-| Fichiers | `content/devlog/_index.fr.md`, `_index.en.md` |
-| Type, template | section ; `layouts/devlog/section.html` (3.1) |
-| Menu | Devlog (40), dès sa publication |
-| Fil d'Ariane | Accueil › Devlog |
+| URL | `/fr/journal/` · `/en/journal/` |
+| Fichiers | `content/journal/_index.fr.md`, `_index.en.md` |
+| Type, template | section ; `layouts/journal/section.html` (3.1) |
+| Menu | Journal (40), dès sa publication |
+| Fil d'Ariane | Accueil › Journal |
 | Aujourd'hui | Brouillon |
 
 1. **En-tête.** *(thème)* Le flux RSS est proposé dans le pied de page (§3.3).
@@ -283,14 +283,14 @@ Format de chaque fiche : identité de la page, puis ses blocs dans l'ordre d'aff
 3. **Accès rapides** : Incidents (P11), Tags (P14), Certifications (P15). *(3.1)*
 4. **Liste paginée par 10**, du plus récent au plus ancien : entrées P10 et P12, avec numéro (S07 ou PM-002), date, titre, description et tags. Un badge signale les post-mortems. *(3.1)*
 
-### P10 — Entrée devlog
+### P10 — Entrée du journal
 
 | | |
 |---|---|
-| URL | `/fr/devlog/NNN-<slug>/` |
-| Fichiers | Créés par `hugo new content --kind devlog devlog/NNN-<slug>` |
-| Type, template | page ; `layouts/devlog/page.html` (3.1) |
-| Fil d'Ariane | Accueil › Devlog › S07 |
+| URL | `/fr/journal/NNN-<slug>/` |
+| Fichiers | Créés par `hugo new content --kind journal journal/NNN-<slug>` |
+| Type, template | page ; `layouts/journal/page.html` (3.1) |
+| Fil d'Ariane | Accueil › Journal › S07 |
 | Aujourd'hui | Archetype seulement (1.3) |
 
 1. **En-tête** : « S07 · titre », date, description, tags, certifications. *(3.1)*
@@ -304,11 +304,11 @@ Format de chaque fiche : identité de la page, puis ses blocs dans l'ordre d'aff
 | | |
 |---|---|
 | Rôle | Tous les post-mortems |
-| URL | `/fr/devlog/incidents/` · `/en/devlog/incidents/` |
-| Fichiers | `content/devlog/incidents/_index.fr.md`, `_index.en.md` |
-| Type, template | section ; `layouts/devlog/incidents/section.html` (3.1) |
+| URL | `/fr/journal/incidents/` · `/en/journal/incidents/` |
+| Fichiers | `content/journal/incidents/_index.fr.md`, `_index.en.md` |
+| Type, template | section ; `layouts/journal/incidents/section.html` (3.1) |
 | Menu | — (accès par P09) |
-| Fil d'Ariane | Accueil › Devlog › Incidents |
+| Fil d'Ariane | Accueil › Journal › Incidents |
 | Aujourd'hui | Brouillon |
 
 1. **En-tête.** *(thème)*
@@ -319,10 +319,10 @@ Format de chaque fiche : identité de la page, puis ses blocs dans l'ordre d'aff
 
 | | |
 |---|---|
-| URL | `/fr/devlog/incidents/pm-NNN-<slug>/` |
-| Fichiers | Créés par `hugo new content --kind postmortem devlog/incidents/pm-NNN-<slug>` |
-| Type, template | page ; `layouts/devlog/incidents/page.html` (3.1) |
-| Fil d'Ariane | Accueil › Devlog › Incidents › PM-003 |
+| URL | `/fr/journal/incidents/pm-NNN-<slug>/` |
+| Fichiers | Créés par `hugo new content --kind postmortem journal/incidents/pm-NNN-<slug>` |
+| Type, template | page ; `layouts/journal/incidents/page.html` (3.1) |
+| Fil d'Ariane | Accueil › Journal › Incidents › PM-003 |
 | Aujourd'hui | Archetype seulement (1.3) |
 
 1. **En-tête** : « PM-003 · titre », gravité, date de l'incident, durée d'impact, composants. *(3.1)*
@@ -380,11 +380,11 @@ content/
 │   ├── automation/…                               P04 (brouillon)
 │   └── decisions/_index.fr.md, _index.en.md       P05 (brouillon)
 ├── services/_index.fr.md, _index.en.md            P07 (brouillon)
-└── devlog/
+└── journal/
     ├── _index.fr.md, _index.en.md                 P09 (brouillon)
     └── incidents/_index.fr.md, _index.en.md       P11 (brouillon)
 archetypes/
-├── devlog/index.fr.md, index.en.md                P10
+├── journal/index.fr.md, index.en.md                P10
 ├── postmortem/index.fr.md, index.en.md            P12
 ├── adr/index.fr.md, index.en.md                   P06
 └── services/index.fr.md, index.en.md              P08
@@ -393,7 +393,7 @@ static/
 └── <7 redirections du §3.6>/index.html
 ```
 
-Supprimés : `content/journal/`, `content/projects/`, ancien article (selon D2).
+Supprimés : l'ancienne section `content/journal/` (la section Journal actuelle, P09, l'a remplacée au même emplacement), `content/projects/`, ancien article (selon D2).
 
 ## 6. Front matter de structure
 
@@ -457,9 +457,10 @@ Ordre retenu pour aujourd'hui : **0.1, puis la phase 1**. Les étapes 0.2 à 0.4
 |---|---|---|---|
 | 0.1 | `docs/architecture` | `docs/architecture.md` (v0.3), `docs/structure.md` (ce document), `CLAUDE.md` (architecture, Annexe B), `.claude/rules/`, `.claude/settings.json` | `CLAUDE.md` sous 200 lignes ; la nouvelle règle sur `content/` (architecture C8) est en place, ce qui autorise les étapes suivantes |
 | 1.1 | `feat/i18n-subdirs` | Langues en sous-dossier, langue par défaut (D1) ; `timeZone`, `enableRobotsTXT`, `refLinksErrorLevel` ; redirections de `static/` vers les équivalents `/fr/` des pages encore existantes | `/` redirige vers la langue choisie ; chaque ancienne URL du §3.6 redirige ; le sélecteur de langue mène à la page traduite ; présence de `/404.html` vérifiée, ou solution proposée dans la PR |
-| 1.2 | `feat/sections` | Arborescence du §5 ; conversion d'À propos en dossier ; suppression de `journal` et `projects` (D2) ; menus déplacés dans le front matter (§3.5, §6) et retirés de `hugo.toml` ; taxonomies `tags` et `certifications` ; paramètres `ShowBreadCrumbs`, `ShowCodeCopyButtons`, `ShowPostNavLinks`, `mainSections = ["devlog"]` ; services tiers désactivés (`[privacy]`) ; redirections passées à leur « cible aujourd'hui » (§3.6) | Build vert, sans nouvel avertissement. **En production** (sans `-D`) : seules P02 et P13 existent, dans les deux langues, avec un menu Accueil · À propos. **Avec `-D`** : toutes les pages du §2 sont navigables, le menu compte 5 entrées dans l'ordre, le fil d'Ariane est juste, chaque page mène à sa traduction. Rien d'autre n'est écrit que les libellés de ce document et des `TODO(firmin)` |
-| 1.3 | `feat/archetypes` | Archetypes de dossier `devlog`, `postmortem`, `adr`, `services`, conformes à l'architecture, Annexe A | Chaque `hugo new content --kind …` crée FR et EN en brouillon, au bon front matter et avec les bonnes rubriques. Les fichiers de test sont supprimés, pas commités |
-| 1.4 | `feat/footer-rss` | Bouton RSS retiré des titres ; lien vers le flux RSS du devlog sous le pied de page (`extend_footer.html`, §3.3) ; premiers fichiers `i18n/` et `assets/css/extended/site.css` | Aucun logo RSS à côté des titres ; avec `-D`, le lien figure en bas de chaque page dans les deux langues ; en production, absent tant que le devlog est en brouillon |
+| 1.2 | `feat/sections` | Arborescence du §5 ; conversion d'À propos en dossier ; suppression de l'ancien `journal` et de `projects` (D2) ; menus déplacés dans le front matter (§3.5, §6) et retirés de `hugo.toml` ; taxonomies `tags` et `certifications` ; paramètres `ShowBreadCrumbs`, `ShowCodeCopyButtons`, `ShowPostNavLinks`, `mainSections = ["journal"]` ; services tiers désactivés (`[privacy]`) ; redirections passées à leur « cible aujourd'hui » (§3.6) | Build vert, sans nouvel avertissement. **En production** (sans `-D`) : seules P02 et P13 existent, dans les deux langues, avec un menu Accueil · À propos. **Avec `-D`** : toutes les pages du §2 sont navigables, le menu compte 5 entrées dans l'ordre, le fil d'Ariane est juste, chaque page mène à sa traduction. Rien d'autre n'est écrit que les libellés de ce document et des `TODO(firmin)` |
+| 1.3 | `feat/archetypes` | Archetypes de dossier `journal`, `postmortem`, `adr`, `services`, conformes à l'architecture, Annexe A | Chaque `hugo new content --kind …` crée FR et EN en brouillon, au bon front matter et avec les bonnes rubriques. Les fichiers de test sont supprimés, pas commités |
+| 1.4 | `feat/footer-rss` | Bouton RSS retiré des titres ; lien vers le flux RSS du journal sous le pied de page (`extend_footer.html`, §3.3) ; premiers fichiers `i18n/` et `assets/css/extended/site.css` | Aucun logo RSS à côté des titres ; avec `-D`, le lien figure en bas de chaque page dans les deux langues ; en production, absent tant que le journal est en brouillon |
+| 1.5 | `feat/journal-rename` | Section « Devlog » renommée « Journal » partout (P09 à P12, menu, pied de page, archetype) | `/fr/journal/` et `/en/journal/` avec `-D` ; en production, `/en/journal/` redirige toujours ; plus aucun « devlog » dans le site |
 
 Reportés à leurs phases : templates et rendu des blocs (3 à 5), modèle de données et validations (2), `enableGitInfo` (0.2, qui exige un clonage complet en CI), pied de page et fichiers i18n (5.2).
 
