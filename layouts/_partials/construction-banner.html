@@ -1,0 +1,5 @@
+{{- /* Bandeau « site en construction », en haut de chaque page, tant que
+       params.underConstruction vaut true (architecture §9.2, exception). */ -}}
+{{- if site.Params.underConstruction }}
+<div class="construction-banner" role="note">{{ i18n "constructionBanner" }}</div>
+{{- end }}

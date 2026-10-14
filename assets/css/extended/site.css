@@ -64,3 +64,9 @@ html[data-theme="dark"] .diagram-dark { display: block; }
 .badge-planned { border-style: dashed; }
 .badge-postmortem { border-color: #b04a4a; }
 .badge-target { background: var(--entry); }
+
+/* Bandeau « site en construction » (en haut de chaque page). */
+.construction-banner {
+    padding: 8px var(--gap); text-align: center; font-size: 14px; line-height: 20px;
+    color: var(--primary); background: var(--entry); border-bottom: 2px dashed #b07d1a;
+}

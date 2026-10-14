@@ -45,3 +45,6 @@ count_building:
 count_planned:
   one: "{{ .Count }} planned"
   other: "{{ .Count }} planned"
+
+# Bandeau « site en construction »
+constructionBanner: "Site under construction: the content is provisional and partly fictitious (examples). It does not reflect reality yet."
