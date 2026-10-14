@@ -1,9 +1,9 @@
 ---
-title: "Devlog"
+title: "Journal"
 description: "TODO(firmin)"
 draft: true
 menus:
   main:
-    identifier: devlog
+    identifier: journal
     weight: 40
 ---

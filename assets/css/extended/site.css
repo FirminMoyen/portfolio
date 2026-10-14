@@ -1,7 +1,7 @@
 /* Feuille de style du site, ajoutée par PaperMod après la sienne
    (architecture §11.5). Variables du thème uniquement. */
 
-/* Lien RSS du devlog, juste sous le pied de page de PaperMod. */
+/* Lien RSS du journal, juste sous le pied de page de PaperMod. */
 .footer.footer-rss {
     padding-top: 0;
     margin-top: calc(var(--gap) * -1);

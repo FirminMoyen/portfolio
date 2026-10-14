@@ -59,7 +59,7 @@ buildDrafts = false
   ShowBreadCrumbs = true
   ShowCodeCopyButtons = true
   ShowPostNavLinks = true
-  mainSections = ["devlog"]
+  mainSections = ["journal"]
 
 # Pagination des listes via PaperMod.
 [pagination]
