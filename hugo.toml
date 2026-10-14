@@ -59,7 +59,6 @@ buildDrafts = false
   ShowBreadCrumbs = true
   ShowCodeCopyButtons = true
   ShowPostNavLinks = true
-  ShowRssButtonInSectionTermList = true
   mainSections = ["devlog"]
 
 # Pagination des listes via PaperMod.
