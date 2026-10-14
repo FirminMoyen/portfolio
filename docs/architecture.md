@@ -470,6 +470,7 @@ Le dossier est créé avec les deux fichiers en brouillon, selon les gabarits de
 - Claude Code NE DOIT PAS ajouter un fait absent de ce que Firmin a fourni ou de ce qui est vérifiable dans le repo du lab : ni commande, ni version, ni chiffre, ni résultat, ni difficulté, ni leçon.
 - Une information manque : la demander. Dans un brouillon, la marquer `TODO(firmin): <question>`. Le build refuse tout `TODO(firmin)` dans une page publiée (V11).
 - `verified` et `backup.restore_tested` ne changent que sur indication explicite de Firmin.
+- **Exception temporaire (décidée par Firmin le 14/10/2026).** Le site est publié avec du contenu d'exemple fictif, marqué « EXEMPLE » / « (exemple) » : présentation, profil, catalogue, groupes, feuille de route, certifications, schéma, entrées du journal, post-mortem, fiches et pages de groupe. Un bandeau en haut de chaque page (`params.underConstruction`) signale que le contenu est provisoire et en partie fictif. Ce contenu est remplacé par les vraies données de Firmin, et le bandeau retiré, au plus tard à la première vraie entrée du journal (3.3).
 
 ### 9.3 Historique immuable
 
@@ -612,7 +613,7 @@ Un seul fichier, `assets/css/extended/site.css`, que PaperMod ajoute après son 
 
 | Fichier du site | Nature | Raison | À chaque mise à jour de PaperMod |
 |---|---|---|---|
-| `layouts/_partials/header.html` | Surcharge | Bascule de langue vers la page traduite (`.Translations`) plutôt que vers l'accueil | Comparer l'ancienne et la nouvelle version du `header.html` du thème ; reporter les changements |
+| `layouts/_partials/header.html` | Surcharge | Bascule de langue vers la page traduite (`.Translations`) plutôt que vers l'accueil ; bandeau « site en construction » en tête (`construction-banner.html`) | Comparer l'ancienne et la nouvelle version du `header.html` du thème ; reporter les changements |
 | `layouts/taxonomy.html` | Surcharge | Libellés des termes depuis `data/` | Idem avec `taxonomy.html` |
 | `layouts/_partials/extend_head.html` | Point d'extension prévu par le thème | Appel des validations | Vérifier qu'il est toujours inclus par `head.html` |
 | `layouts/_partials/extend_footer.html` | Point d'extension prévu par le thème | Lien RSS du journal ; pied de page du site (5.2) | Vérifier qu'il est toujours inclus par `footer.html` |
@@ -926,6 +927,7 @@ Le site dépend de comptes et de services extérieurs au repo. C'est là qu'est 
 | 2026-10-14 | Infrastructure, Services et Journal publiées avant leur contenu, avec une description et un message « en construction » : le menu montre les cinq sections dès maintenant. Les sous-pages restent en brouillon ; redirections passées à leur cible finale | PR de l'étape 1.6 |
 | 2026-10-14 | Groupes d'infrastructure non décidés : les 7 pages de groupe sont retirées, la liste du §6.4 devient une proposition et D6 est ouverte | PR de l'étape 1.7 |
 | 2026-10-14 | Accueil (§5.1) refondu et implémenté en avance (5.2a) : blocs masqués sans données, stack limitée aux composants en service ou en construction (les prévus sont comptés), ligne d'état avec la dernière semaine plutôt que la dernière vérification, `params.profile` | PR de l'étape 5.2a |
+| 2026-10-14 | Exception à §9.2 décidée par Firmin : contenu d'exemple fictif publié pour montrer le rendu, sous un bandeau « site en construction » sur chaque page ; Décisions d'architecture et Incidents publiées « en construction ». À retirer au plus tard en 3.3 | PR du bandeau |
 
 ---
 

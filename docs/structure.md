@@ -67,6 +67,7 @@ Groupes de P04 : **à décider (D6, §8)**. Proposition de départ, tirée de l'
 | Menu | Entrées des pages publiées, dans l'ordre des poids (§3.5) | Aujourd'hui (1.2) |
 | Sélecteur de langue | Mène à la page traduite (surcharge existante de `header.html`) | Existant |
 | Bascule de thème | Clair / sombre (PaperMod) | Existant |
+| Bandeau « site en construction » | Au-dessus de l'en-tête, sur chaque page, tant que `params.underConstruction` vaut `true` : signale un contenu provisoire et en partie fictif (architecture §9.2, exception) | Depuis `feat/construction-banner` |
 
 ### 3.2 Fil d'Ariane
 
@@ -460,6 +461,7 @@ Ordre retenu pour aujourd'hui : **0.1, puis la phase 1**. Les étapes 0.2 à 0.4
 | 1.6 | `feat/placeholder-sections` | Infrastructure, Services et Journal publiées avec une description et un message « en construction » ; sous-pages en brouillon ; redirections du §3.6 à leur cible finale ; `static/en/journal/index.html` supprimé | Menu à 5 entrées en production ; aucune page vide ni `TODO(firmin)` publié ; chaque redirection mène à une page existante |
 | 1.7 | `feat/remove-infra-groups` | Les 7 pages de groupe (P04) retirées, en attendant D6 | Aucune page de groupe ; build vert |
 | 5.2a | `feat/home` | Template de l'accueil (P02), anticipé : cinq blocs masqués sans données | En production, accueil inchangé ; avec des données d'exemple locales, les cinq blocs s'affichent |
+| — | `feat/construction-banner` | Bandeau « site en construction » ; contenu d'exemple publié (accueil, données, journal, post-mortem, services, groupes) ; Décisions d'architecture et Incidents publiées « en construction » | Bandeau sur chaque page ; aucun `TODO(firmin)` publié |
 
 Reportés à leurs phases : templates et rendu des blocs (3 à 5), modèle de données et validations (2), `enableGitInfo` (0.2, qui exige un clonage complet en CI), pied de page et fichiers i18n (5.2).
 
