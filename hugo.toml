@@ -70,8 +70,8 @@ buildDrafts = false
   github = "https://github.com/"
   linkedin = "https://www.linkedin.com/"
   [params.profile.cv]
-    fr = "/cv/exemple-fr.pdf"
-    en = "/cv/exemple-en.pdf"
+    fr = "/cv/cv-firmin-moyen-fr.pdf"
+    en = "/cv/cv-firmin-moyen-en.pdf"
 
 # Pagination des listes via PaperMod.
 [pagination]
