@@ -1,0 +1,39 @@
+{{- /* Page CV : version HTML du CV, avec téléchargement du PDF de la langue
+       courante (params.profile.cv). Colonne latérale depuis le front matter
+       (`sidebar`), parcours depuis le corps de la page. */ -}}
+{{- define "main" }}
+{{- $p := site.Params.profile }}
+{{- $pdf := "" }}{{ with $p.cv }}{{ $pdf = index . site.Language.Lang }}{{ end }}
+<article class="post-single cv">
+  <header class="cv-header">
+    {{- partial "breadcrumbs.html" . }}
+    <h1 class="profile-name">{{ $p.name | default .Title }}</h1>
+    {{- with .Params.headline }}
+    <p class="profile-headline">{{ . }}</p>
+    {{- end }}
+    {{- with $pdf }}
+    <p class="profile-links">
+      <a class="button" href="{{ . | relURL }}" download>{{ i18n "cvDownload" }}</a>
+    </p>
+    {{- end }}
+  </header>
+  <div class="cv-grid">
+    <aside class="cv-aside">
+      {{- range .Params.sidebar }}
+      <section>
+        <h2>{{ .title }}</h2>
+        <ul>
+          {{- range .items }}
+          <li{{ if .strong }} class="cv-strong"{{ end }}>
+            {{- with .label }}<span class="cv-label">{{ . }}</span>{{ end }}
+            {{- with .text }}<span class="cv-text">{{ . }}</span>{{ end }}
+          </li>
+          {{- end }}
+        </ul>
+      </section>
+      {{- end }}
+    </aside>
+    <div class="cv-main post-content">{{ .Content }}</div>
+  </div>
+</article>
+{{- end }}

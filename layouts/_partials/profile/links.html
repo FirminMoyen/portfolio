@@ -1,11 +1,14 @@
-{{- /* Boutons CV (langue courante), GitHub, LinkedIn, depuis params.profile. */ -}}
+{{- /* Boutons CV, GitHub, LinkedIn, depuis params.profile. Le bouton CV mène à la
+       page CV si elle existe, sinon directement au PDF de la langue courante. */ -}}
 {{- $p := site.Params.profile }}
 {{- $cv := "" }}{{ with $p.cv }}{{ $cv = index . site.Language.Lang }}{{ end }}
 {{- if or $cv $p.github $p.linkedin }}
 <p class="profile-links">
-  {{- with $cv }}
+  {{- with site.GetPage "/cv" }}
+  <a class="button" href="{{ .RelPermalink }}">{{ i18n "profileCv" }}</a>
+  {{- else }}{{ with $cv }}
   <a class="button" href="{{ . | relURL }}">{{ i18n "profileCv" }}</a>
-  {{- end }}
+  {{- end }}{{ end }}
   {{- with $p.github }}
   <a class="button" href="{{ . }}" rel="noopener">GitHub</a>
   {{- end }}

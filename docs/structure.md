@@ -169,7 +169,7 @@ Format de chaque fiche : identité de la page, puis ses blocs dans l'ordre d'aff
 Un bloc sans donnée est masqué. Détail des contenus et des liens : architecture §5.1.
 
 1. **Le projet** : présentation (corps de la page) et lien vers P13. *(Firmin ; 5.2a)*
-2. **Le lab en un coup d'œil** : schéma `lab-overview` (« architecture cible » tant que rien n'est en service), dernière semaine publiée, phase en cours, nombre de composants en service, en construction et prévus ; liens vers P03 et P07. *(données ; 5.1 pour le schéma, 5.2a)*
+2. **Le lab en un coup d'œil** : schéma `lab-overview` (« architecture cible » tant que rien n'est en service), nombre de composants en service, en construction et prévus, phase en cours ; liens vers P03 et P07. Pas de dernière semaine : le bloc 4 la montre déjà. *(données ; 5.1 pour le schéma, 5.2a)*
 3. **Stack** : composants en service ou en construction, groupés, avec badge et lien ; les prévus sont seulement comptés (lien vers P03). *(catalogue ; 5.2a)*
 4. **Dernières entrées du journal** : les 3 dernières entrées, P10 ou P12 (numéro, date, titre, description) ; liens vers P09, P11 et le flux RSS. *(5.2a)*
 

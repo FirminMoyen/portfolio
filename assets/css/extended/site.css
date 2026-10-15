@@ -121,11 +121,7 @@ h1, h2, h3, .post-title, .entry-header h2 { letter-spacing: -0.02em; }
     display: flex; flex-direction: column; padding: 14px 16px; border: 1px solid var(--border);
     border-radius: 10px; background: var(--theme); color: var(--secondary); font-size: 14px;
 }
-a.metric { text-decoration: none !important; }
-a.metric:hover { border-color: var(--accent); }
 .metric-value { font-size: 30px; font-weight: 600; line-height: 1.2; color: var(--primary); letter-spacing: -0.02em; }
-.metric-accent .metric-value { color: var(--accent); }
-.metric-note { font-size: 12px; margin-top: 2px; }
 .lab-phase { margin-top: 14px; color: var(--secondary); font-size: 15px; }
 
 .lab-diagram { display: block; position: relative; margin-top: 16px; text-decoration: none !important; }
@@ -162,11 +158,32 @@ html[data-theme="dark"] .diagram-dark { display: block; }
     padding: 8px 16px; border: 1px solid var(--border); border-radius: 999px;
     background: var(--entry); color: var(--primary); font-size: 15px; font-weight: 500;
 }
-.profile-links .button:first-child { background: var(--accent); border-color: var(--accent); color: #fff; }
+.profile-links .button:first-child { background: var(--accent); border-color: var(--accent); color: var(--theme); }
 .profile-links .button:hover { border-color: var(--accent); }
 .profile-pitch { font-size: 18px; }
 .cert-list li { display: flex; justify-content: space-between; align-items: center; gap: 8px; padding: 8px 0; border-bottom: 1px solid var(--border); }
 .cert-list li:last-child { border-bottom: none; }
+
+/* --- Page CV --- */
+/* Page plus large que les autres : PaperMod limite .main à --main-width. */
+.main:has(> .cv) { max-width: calc(960px + var(--gap) * 2); }
+.cv-header { margin-bottom: calc(var(--gap) * 1.25); }
+.cv-grid { display: grid; grid-template-columns: 250px minmax(0, 1fr); gap: 40px; align-items: start; }
+.cv-aside { background: var(--entry); border: 1px solid var(--border); border-radius: var(--radius); padding: 20px; font-size: 14px; }
+.cv-aside section + section { margin-top: 20px; }
+.cv-aside h2 { font-size: 13px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: var(--primary); margin-bottom: 8px; }
+.cv-aside ul { list-style: none; padding: 0; margin: 0; }
+.cv-aside li { margin-bottom: 8px; color: var(--content); }
+.cv-label { display: block; color: var(--accent); font-weight: 500; }
+.cv-text { display: block; }
+.cv-strong .cv-text { color: var(--accent); font-weight: 600; }
+.cv-main h2 { font-size: 13px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: var(--primary); margin: 0 0 12px; padding-bottom: 6px; border-bottom: 1px solid var(--border); }
+.cv-main h2:not(:first-child) { margin-top: 32px; }
+.cv-main h3 { font-size: 18px; margin: 20px 0 2px; }
+.cv-main h3 + p { margin: 0 0 8px; }
+.cv-main h3 + p em { font-style: normal; color: var(--accent); font-size: 14px; }
+.cv-main ul { padding-inline-start: 18px; }
+.cv-main li { margin-bottom: 4px; }
 
 /* --- Badges : le texte porte toujours le sens, la couleur ne fait qu'aider (§11.5). --- */
 .badge {
@@ -184,6 +201,10 @@ html[data-theme="dark"] .diagram-dark { display: block; }
 .construction-banner {
     padding: 8px var(--gap); text-align: center; font-size: 13px; line-height: 20px;
     color: var(--warn); background: var(--warn-soft); border-bottom: 1px solid var(--border);
+}
+
+@media (max-width: 760px) {
+    .cv-grid { grid-template-columns: minmax(0, 1fr); gap: 24px; }
 }
 
 /* --- Petits écrans --- */

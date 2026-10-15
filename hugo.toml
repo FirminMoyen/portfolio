@@ -81,8 +81,8 @@ buildDrafts = false
 # par Firmin ; un champ vide masque le bouton correspondant.
 [params.profile]
   name = "Firmin Moyen"
-  github = "https://github.com/"
-  linkedin = "https://www.linkedin.com/"
+  github = "https://github.com/FirminMoyen"
+  linkedin = "https://www.linkedin.com/in/firmin-moyen-01724b264/"
   [params.profile.cv]
     fr = "/cv/cv-firmin-moyen-fr.pdf"
     en = "/cv/cv-firmin-moyen-en.pdf"
