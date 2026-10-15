@@ -603,6 +603,8 @@ Le shortcode `component` et la liste des composants d'une entrée ne créent un 
 
 Un seul fichier, `assets/css/extended/site.css`, que PaperMod ajoute après son propre CSS. Il utilise les variables du thème (`--primary`, `--secondary`, `--tertiary`, `--entry`, `--border`, `--code-bg`) pour fonctionner en clair comme en sombre. Un badge de statut porte toujours son texte, jamais la seule couleur. Aucun framework CSS.
 
+Style retenu le 15/10/2026 : « éditorial ». Fond papier, grande typographie, un seul accent (bleu), cartes à bordure fine, badges en pastilles teintées. `site.css` redéfinit les variables de PaperMod pour le clair et pour le sombre (y compris sans JavaScript, `data-theme="auto"`). Le thème suit le système du visiteur (`defaultTheme = "auto"`), et la bascule de PaperMod reste disponible. Polices du système, aucune police externe (P8).
+
 ### 11.6 Schémas
 
 - Source en D2 (`assets/diagrams/<nom>.d2`), version épinglée (§13.1). Rendu en deux SVG commités à côté de la source, `<nom>.light.svg` et `<nom>.dark.svg`, pour qu'ils apparaissent dans le diff des PR.
@@ -931,6 +933,7 @@ Le site dépend de comptes et de services extérieurs au repo. C'est là qu'est 
 | 2026-10-14 | Accueil (§5.1) refondu et implémenté en avance (5.2a) : blocs masqués sans données, stack limitée aux composants en service ou en construction (les prévus sont comptés), ligne d'état avec la dernière semaine plutôt que la dernière vérification, `params.profile` | PR de l'étape 5.2a |
 | 2026-10-14 | Exception à §9.2 décidée par Firmin : contenu d'exemple fictif publié pour montrer le rendu, sous un bandeau « site en construction » sur chaque page ; Décisions d'architecture et Incidents publiées « en construction ». À retirer au plus tard en 3.3 | PR du bandeau |
 | 2026-10-15 | L'accueil ne présente plus que le projet ; tout ce qui concerne Firmin (profil, CV, certifications, contact) passe sur la page « À propos de moi » / « About me », déplacée de `/about/` à `/about-me/` (alias Hugo pour `/fr/about/` et `/en/about/`, redirection `static/` pour `/about/`) | PR `feat/about-me` |
+| 2026-10-15 | Style « éditorial » (proposition C) : palette claire et sombre redéfinie dans `site.css`, chiffres clés en cartes sur l'accueil, thème par défaut selon le système du visiteur, bascule clair/sombre conservée | PR `feat/style-editorial` |
 
 ---
 
