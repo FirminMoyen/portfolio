@@ -1,14 +1,10 @@
-{{- /* Bloc 2 — Le lab en un coup d'œil : chiffres clés (dernière semaine,
-       composants par statut), phase en cours, schéma. */ -}}
+{{- /* Bloc 2 — Le lab en un coup d'œil : composants par statut, phase en
+       cours, schéma. La dernière entrée du journal est dans le bloc 4. */ -}}
 {{- $running := 0 }}{{ $building := 0 }}{{ $planned := 0 }}
 {{- range hugo.Data.catalog }}
   {{- if eq .status "running" }}{{ $running = add $running 1 }}{{ end }}
   {{- if eq .status "building" }}{{ $building = add $building 1 }}{{ end }}
   {{- if eq .status "planned" }}{{ $planned = add $planned 1 }}{{ end }}
-{{- end }}
-{{- $last := false }}
-{{- with site.GetPage "/journal" }}
-  {{- with first 1 (where .RegularPagesRecursive "Params.week" "!=" nil).ByDate.Reverse }}{{ $last = index . 0 }}{{ end }}
 {{- end }}
 {{- $phase := false }}
 {{- with hugo.Data.roadmap }}{{ with where . "status" "in-progress" }}{{ $phase = index . 0 }}{{ end }}{{ end }}
@@ -18,26 +14,17 @@
 {{- $services := site.GetPage "/services" }}
 
 {{- $hasCounts := gt (add $running $building $planned) 0 }}
-{{- if or $light $hasCounts $last $phase }}
+{{- if or $light $hasCounts $phase }}
 <section class="home-block home-lab">
   <h2>{{ i18n "homeLab" }}</h2>
-  {{- if or $last $hasCounts }}
+  {{- if $hasCounts }}
   <div class="lab-metrics">
-    {{- with $last }}
-    <a class="metric metric-accent" href="{{ .RelPermalink }}">
-      <span class="metric-value">{{ printf "%s%02d" (i18n "weekPrefix") (int .Params.week) }}</span>
-      <span class="metric-label">{{ i18n "metricLastWeek" }}</span>
-      <span class="metric-note">{{ .Date | time.Format ":date_long" }}</span>
-    </a>
-    {{- end }}
-    {{- if $hasCounts }}
     {{- range slice "running" "building" "planned" }}
     {{- $n := index (dict "running" $running "building" $building "planned" $planned) . }}
     <div class="metric metric-{{ . }}">
       <span class="metric-value">{{ $n }}</span>
       <span class="metric-label">{{ i18n (printf "metric_%s" .) $n }}</span>
     </div>
-    {{- end }}
     {{- end }}
   </div>
   {{- end }}

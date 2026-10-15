@@ -7,7 +7,6 @@ profileCv: "CV"
 homeLab: "Le lab en un coup d'œil"
 homeTargetArchitecture: "Architecture cible"
 homeDiagramAlt: "Schéma logique du homelab"
-homeLastWeek: "Dernière semaine :"
 homeCurrentPhase: "Phase en cours :"
 homeStack: "Stack"
 homeOtherGroup: "Autres"
@@ -38,7 +37,6 @@ certVerify: "Vérifier"
 constructionBanner: "Site en construction : le contenu est provisoire et en partie fictif (exemples). Il ne reflète pas encore la réalité."
 
 # Chiffres clés de l'accueil
-metricLastWeek: "dernière semaine"
 metric_running:
   one: "en service"
   other: "en service"

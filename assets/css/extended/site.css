@@ -121,11 +121,7 @@ h1, h2, h3, .post-title, .entry-header h2 { letter-spacing: -0.02em; }
     display: flex; flex-direction: column; padding: 14px 16px; border: 1px solid var(--border);
     border-radius: 10px; background: var(--theme); color: var(--secondary); font-size: 14px;
 }
-a.metric { text-decoration: none !important; }
-a.metric:hover { border-color: var(--accent); }
 .metric-value { font-size: 30px; font-weight: 600; line-height: 1.2; color: var(--primary); letter-spacing: -0.02em; }
-.metric-accent .metric-value { color: var(--accent); }
-.metric-note { font-size: 12px; margin-top: 2px; }
 .lab-phase { margin-top: 14px; color: var(--secondary); font-size: 15px; }
 
 .lab-diagram { display: block; position: relative; margin-top: 16px; text-decoration: none !important; }
