@@ -63,6 +63,15 @@ buildDrafts = false
   # Bandeau « site en construction » en haut de chaque page (contenu d'exemple publié).
   underConstruction = true
 
+# Icônes d'onglet (monogramme FM, static/) et couleur de la barre du navigateur mobile.
+[params.assets]
+  favicon = "favicon.svg"
+  favicon16x16 = "favicon-16x16.png"
+  favicon32x32 = "favicon-32x32.png"
+  apple_touch_icon = "apple-touch-icon.png"
+  safari_pinned_tab = "safari-pinned-tab.svg"
+  theme_color = "#2f5bea"
+
 # Profil affiché sur l'accueil (architecture §5.1, §11.1). Valeurs fournies
 # par Firmin ; un champ vide masque le bouton correspondant.
 [params.profile]
