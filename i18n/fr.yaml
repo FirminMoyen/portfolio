@@ -33,16 +33,18 @@ cert_preparing: "En préparation"
 certPassed: "Obtenue le {{ .Date }}"
 certVerify: "Vérifier"
 
-# Compteurs de composants par statut (accueil)
-count_running:
-  one: "{{ .Count }} en service"
-  other: "{{ .Count }} en service"
-count_building:
-  one: "{{ .Count }} en construction"
-  other: "{{ .Count }} en construction"
-count_planned:
-  one: "{{ .Count }} prévu"
-  other: "{{ .Count }} prévus"
 
 # Bandeau « site en construction »
 constructionBanner: "Site en construction : le contenu est provisoire et en partie fictif (exemples). Il ne reflète pas encore la réalité."
+
+# Chiffres clés de l'accueil
+metricLastWeek: "dernière semaine"
+metric_running:
+  one: "en service"
+  other: "en service"
+metric_building:
+  one: "en construction"
+  other: "en construction"
+metric_planned:
+  one: "prévu"
+  other: "prévus"

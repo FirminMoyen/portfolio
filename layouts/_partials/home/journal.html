@@ -9,6 +9,7 @@
   <ul class="journal-list">
     {{- range $entries }}
     <li>
+      <span class="journal-date">{{ .Date | time.Format ":date_long" }}</span>
       <a class="journal-title" href="{{ .RelPermalink }}">
         <span class="journal-number">
           {{- if .Params.pm }}{{ printf "PM-%03d" (int .Params.pm) }}{{ else if .Params.week }}{{ printf "%s%02d" (i18n "weekPrefix") (int .Params.week) }}{{ end -}}
@@ -16,7 +17,6 @@
         {{ .Title }}
       </a>
       {{- if .Params.pm }} <span class="badge badge-postmortem">{{ i18n "homePostmortem" }}</span>{{ end }}
-      <span class="journal-date">{{ .Date | time.Format ":date_long" }}</span>
       {{- with .Description }}
       <p>{{ . }}</p>
       {{- end }}

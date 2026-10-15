@@ -1,76 +1,197 @@
 /* Feuille de style du site, ajoutée par PaperMod après la sienne
-   (architecture §11.5). Variables du thème uniquement. */
+   (architecture §11.5). Style « éditorial » : fond papier, grande
+   typographie, un seul accent. Clair et sombre redéfinis ici ; la bascule
+   de thème de PaperMod reste disponible. */
+
+/* --- Palette et dimensions (variables de PaperMod + nôtres) --- */
+:root {
+    --main-width: 760px;
+    --nav-width: 1040px;
+    --radius: 12px;
+    --theme: #fbfaf8;
+    --entry: #ffffff;
+    --primary: #141413;
+    --secondary: #6b6a65;
+    --tertiary: #e6e3dc;
+    --content: #2b2a27;
+    --code-bg: #f2f0eb;
+    --border: #ebe8e1;
+    --accent: #2f5bea;
+    --accent-soft: #e9eefd;
+    --ok: #1f7a4d;
+    --ok-soft: #e4f4ea;
+    --warn: #9a5b00;
+    --warn-soft: #fbefd9;
+    --danger: #b3261e;
+    --danger-soft: #fbe7e5;
+}
+
+:root[data-theme="dark"] {
+    --theme: #141413;
+    --entry: #1d1d1b;
+    --primary: #f2f0eb;
+    --secondary: #a3a19a;
+    --tertiary: #3a3936;
+    --content: #d9d7d0;
+    --code-bg: #26251f;
+    --border: #2c2b28;
+    --accent: #7c9bff;
+    --accent-soft: #1d2440;
+    --ok: #5fd39a;
+    --ok-soft: #14291e;
+    --warn: #f0b85a;
+    --warn-soft: #2e2412;
+    --danger: #ff8a80;
+    --danger-soft: #331816;
+}
+
+/* Sans JavaScript, la page reste en data-theme="auto" : même palette sombre si le système est sombre. */
+@media (prefers-color-scheme: dark) {
+    :root[data-theme="auto"] {
+        --theme: #141413;
+        --entry: #1d1d1b;
+        --primary: #f2f0eb;
+        --secondary: #a3a19a;
+        --tertiary: #3a3936;
+        --content: #d9d7d0;
+        --code-bg: #26251f;
+        --border: #2c2b28;
+        --accent: #7c9bff;
+        --accent-soft: #1d2440;
+        --ok: #5fd39a;
+        --ok-soft: #14291e;
+        --warn: #f0b85a;
+        --warn-soft: #2e2412;
+        --danger: #ff8a80;
+        --danger-soft: #331816;
+        color-scheme: dark;
+    }
+}
+
+/* PaperMod grise le fond des listes en clair : on garde le fond papier partout. */
+.list { background: var(--theme); }
+
+/* --- Typographie --- */
+body { font-size: 17px; line-height: 1.65; -webkit-font-smoothing: antialiased; }
+h1, h2, h3, .post-title, .entry-header h2 { letter-spacing: -0.02em; }
+.page-header h1, .post-title { font-size: 40px; line-height: 1.15; }
+.post-description, .page-header .post-description { color: var(--secondary); font-size: 18px; }
+.post-content a, .home-block a, .home-more a, .lab-phase a { color: var(--accent); box-shadow: none; text-decoration: underline; text-decoration-color: var(--accent-soft); text-underline-offset: 3px; text-decoration-thickness: 2px; }
+.post-content a:hover, .home-block a:hover, .home-more a:hover { text-decoration-color: var(--accent); }
+
+/* --- En-tête et menu --- */
+.header { border-bottom: 1px solid var(--border); background: var(--theme); }
+.logo a { font-weight: 600; letter-spacing: -0.01em; }
+#menu a { color: var(--secondary); font-size: 15px; }
+#menu a:hover { color: var(--primary); }
+#menu .active { color: var(--accent); font-weight: 500; border-bottom: 2px solid var(--accent); }
+.breadcrumbs, .breadcrumbs a { color: var(--secondary); font-size: 14px; }
+
+/* --- Cartes de liste (journal, services, sections) --- */
+.post-entry {
+    background: var(--entry); border: 1px solid var(--border); border-radius: var(--radius);
+    transition: border-color .15s ease;
+}
+.post-entry:hover { border-color: var(--accent); transform: none; }
+.entry-header h2 { font-size: 22px; }
+.entry-content { color: var(--secondary); }
+.entry-footer { color: var(--secondary); font-size: 13px; }
 
 /* Lien RSS du journal, juste sous le pied de page de PaperMod. */
-.footer.footer-rss {
-    padding-top: 0;
-    margin-top: calc(var(--gap) * -1);
-}
+.footer, .footer a { color: var(--secondary); }
+.footer.footer-rss { padding-top: 0; margin-top: calc(var(--gap) * -1); }
 
 /* --- Accueil (architecture §5.1) --- */
-.home-intro { margin-bottom: var(--gap); }
-.home-pitch { color: var(--content); font-size: 18px; margin-bottom: 8px; }
-.home-pitch p { margin-bottom: 8px; }
-.home-intro .home-more { margin-top: 0; }
-
-/* --- Page À propos de moi (architecture §5.7) --- */
-.profile-header { margin-bottom: var(--gap); }
-.profile-name { font-size: 40px; margin-bottom: 4px; }
-.profile-headline { font-size: 20px; font-weight: 600; color: var(--primary); margin-bottom: 12px; }
-.profile-availability { color: var(--secondary); font-size: 15px; margin-bottom: 16px; }
-.profile-links { display: flex; flex-wrap: wrap; gap: 8px; }
-.profile-links .button {
-    padding: 6px 14px; border: 1px solid var(--border); border-radius: 8px;
-    background: var(--entry); color: var(--primary); font-size: 15px;
-}
-.profile-links .button:hover { border-color: var(--secondary); }
+.home-intro { margin: 8px 0 calc(var(--gap) * 1.5); }
+.home-pitch { color: var(--primary); font-size: 26px; line-height: 1.35; font-weight: 500; letter-spacing: -0.02em; }
+.home-pitch p { margin-bottom: 12px; }
+.home-intro .home-more { margin-top: 4px; }
 
 .home-block {
-    margin-top: var(--gap); padding: 20px; border: 1px solid var(--border);
+    margin-top: var(--gap); padding: 24px; border: 1px solid var(--border);
     border-radius: var(--radius); background: var(--entry);
 }
-.home-block h2 { font-size: 22px; margin-bottom: 12px; }
-.home-block h3 { font-size: 15px; color: var(--secondary); margin-bottom: 6px; }
-.home-block a { box-shadow: 0 1px 0 var(--secondary); }
+.home-block h2 { font-size: 20px; margin-bottom: 16px; }
+.home-block h3 { font-size: 13px; font-weight: 500; color: var(--secondary); text-transform: none; margin-bottom: 8px; }
 .home-block ul { list-style: none; padding: 0; margin: 0; }
-.home-more { display: flex; flex-wrap: wrap; gap: 16px; margin-top: 12px; font-size: 15px; }
+.home-more { display: flex; flex-wrap: wrap; gap: 20px; margin-top: 16px; font-size: 15px; }
 
-.lab-diagram { display: block; position: relative; margin-bottom: 12px; box-shadow: none !important; }
-.lab-diagram img { width: 100%; border: 1px solid var(--border); border-radius: 8px; }
-.lab-diagram .badge { position: absolute; top: 8px; left: 8px; }
+.lab-metrics { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 12px; }
+.metric {
+    display: flex; flex-direction: column; padding: 14px 16px; border: 1px solid var(--border);
+    border-radius: 10px; background: var(--theme); color: var(--secondary); font-size: 14px;
+}
+a.metric { text-decoration: none !important; }
+a.metric:hover { border-color: var(--accent); }
+.metric-value { font-size: 30px; font-weight: 600; line-height: 1.2; color: var(--primary); letter-spacing: -0.02em; }
+.metric-accent .metric-value { color: var(--accent); }
+.metric-note { font-size: 12px; margin-top: 2px; }
+.lab-phase { margin-top: 14px; color: var(--secondary); font-size: 15px; }
+
+.lab-diagram { display: block; position: relative; margin-top: 16px; text-decoration: none !important; }
+.lab-diagram img { width: 100%; border: 1px solid var(--border); border-radius: 10px; }
+.lab-diagram .badge { position: absolute; top: 10px; left: 10px; }
 .diagram-dark { display: none; }
 html[data-theme="dark"] .diagram-light { display: none; }
 html[data-theme="dark"] .diagram-dark { display: block; }
-.lab-status li { margin-bottom: 4px; }
-.lab-status .badge { margin-inline-start: 8px; }
-.lab-status .badge:first-child { margin-inline-start: 0; }
-
-.stack-groups { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 16px; }
-.stack-group li { margin-bottom: 4px; font-size: 15px; }
-
-.journal-list li { padding: 8px 0; border-bottom: 1px solid var(--border); }
-.journal-list li:last-child { border-bottom: none; }
-.journal-title { font-weight: 600; }
-.journal-number { color: var(--secondary); margin-inline-end: 6px; }
-.journal-date { display: block; color: var(--secondary); font-size: 13px; }
-.journal-list p { margin: 4px 0 0; font-size: 15px; }
-
-.cert-list li { margin-bottom: 6px; }
-
-/* Badges : le texte porte toujours le sens, la couleur ne fait qu'aider (§11.5). */
-.badge {
-    display: inline-block; padding: 1px 8px; border: 1px solid var(--border);
-    border-radius: 999px; font-size: 12px; line-height: 18px; color: var(--primary);
-    background: var(--theme); white-space: nowrap; vertical-align: middle;
+@media (prefers-color-scheme: dark) {
+    html[data-theme="auto"] .diagram-light { display: none; }
+    html[data-theme="auto"] .diagram-dark { display: block; }
 }
-.badge-running, .badge-passed { border-color: #3a8a4a; }
-.badge-building, .badge-preparing { border-color: #b07d1a; }
-.badge-planned { border-style: dashed; }
-.badge-postmortem { border-color: #b04a4a; }
-.badge-target { background: var(--entry); }
 
-/* Bandeau « site en construction » (en haut de chaque page). */
+.stack-groups { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 12px 28px; }
+.stack-group li { display: flex; justify-content: space-between; align-items: center; gap: 8px; padding: 6px 0; border-bottom: 1px solid var(--border); font-size: 15px; }
+.stack-group li:last-child { border-bottom: none; }
+
+.journal-list li { padding: 14px 0; border-bottom: 1px solid var(--border); }
+.journal-list li:first-child { padding-top: 0; }
+.journal-list li:last-child { border-bottom: none; padding-bottom: 0; }
+.journal-date { display: block; color: var(--accent); font-size: 13px; margin-bottom: 2px; }
+.journal-title { font-weight: 600; font-size: 17px; color: var(--primary) !important; text-decoration: none !important; }
+.journal-title:hover { color: var(--accent) !important; }
+.journal-number { color: var(--secondary); font-weight: 500; margin-inline-end: 6px; }
+.journal-list p { margin: 4px 0 0; font-size: 15px; color: var(--secondary); }
+
+/* --- Page À propos de moi (architecture §5.7) --- */
+.profile-header { margin-bottom: calc(var(--gap) * 1.25); }
+.profile-name { font-size: 44px; line-height: 1.1; letter-spacing: -0.03em; margin: 8px 0 6px; }
+.profile-headline { font-size: 20px; font-weight: 500; color: var(--primary); margin-bottom: 10px; }
+.profile-availability { color: var(--secondary); font-size: 15px; margin-bottom: 18px; }
+.profile-links { display: flex; flex-wrap: wrap; gap: 8px; }
+.profile-links .button {
+    padding: 8px 16px; border: 1px solid var(--border); border-radius: 999px;
+    background: var(--entry); color: var(--primary); font-size: 15px; font-weight: 500;
+}
+.profile-links .button:first-child { background: var(--accent); border-color: var(--accent); color: #fff; }
+.profile-links .button:hover { border-color: var(--accent); }
+.profile-pitch { font-size: 18px; }
+.cert-list li { display: flex; justify-content: space-between; align-items: center; gap: 8px; padding: 8px 0; border-bottom: 1px solid var(--border); }
+.cert-list li:last-child { border-bottom: none; }
+
+/* --- Badges : le texte porte toujours le sens, la couleur ne fait qu'aider (§11.5). --- */
+.badge {
+    display: inline-block; padding: 2px 10px; border: 1px solid transparent; border-radius: 999px;
+    font-size: 12px; font-weight: 500; line-height: 18px; white-space: nowrap; vertical-align: middle;
+    color: var(--secondary); background: var(--code-bg);
+}
+.badge-running, .badge-passed { color: var(--ok); background: var(--ok-soft); }
+.badge-building, .badge-preparing { color: var(--warn); background: var(--warn-soft); }
+.badge-planned { background: transparent; border: 1px dashed var(--tertiary); }
+.badge-postmortem { color: var(--danger); background: var(--danger-soft); }
+.badge-target { color: var(--accent); background: var(--accent-soft); }
+
+/* --- Bandeau « site en construction » (en haut de chaque page) --- */
 .construction-banner {
-    padding: 8px var(--gap); text-align: center; font-size: 14px; line-height: 20px;
-    color: var(--primary); background: var(--entry); border-bottom: 2px dashed #b07d1a;
+    padding: 8px var(--gap); text-align: center; font-size: 13px; line-height: 20px;
+    color: var(--warn); background: var(--warn-soft); border-bottom: 1px solid var(--border);
+}
+
+/* --- Petits écrans --- */
+@media (max-width: 600px) {
+    body { font-size: 16px; }
+    .home-pitch { font-size: 20px; }
+    .page-header h1, .post-title { font-size: 30px; }
+    .profile-name { font-size: 32px; }
+    .home-block { padding: 18px; }
+    .metric-value { font-size: 24px; }
 }

@@ -48,12 +48,12 @@ buildDrafts = false
   tag = "tags"
   certification = "certifications"
 
-# Dark mode par défaut (bouton de bascule PaperMod toujours disponible).
+# Thème clair ou sombre selon le système du visiteur (bouton de bascule PaperMod toujours disponible).
 # displayFullLangName : affiche "Français"/"English" (label de chaque langue)
 # au lieu de "Fr"/"En" dans le toggle de langue de PaperMod.
 # mainSections : section listée sur l'accueil par PaperMod.
 [params]
-  defaultTheme = "dark"
+  defaultTheme = "auto"
   ShowReadingTime = true
   displayFullLangName = true
   ShowBreadCrumbs = true
