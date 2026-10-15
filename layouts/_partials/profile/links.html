@@ -1,0 +1,16 @@
+{{- /* Boutons CV (langue courante), GitHub, LinkedIn, depuis params.profile. */ -}}
+{{- $p := site.Params.profile }}
+{{- $cv := "" }}{{ with $p.cv }}{{ $cv = index . site.Language.Lang }}{{ end }}
+{{- if or $cv $p.github $p.linkedin }}
+<p class="profile-links">
+  {{- with $cv }}
+  <a class="button" href="{{ . | relURL }}">{{ i18n "profileCv" }}</a>
+  {{- end }}
+  {{- with $p.github }}
+  <a class="button" href="{{ . }}" rel="noopener">GitHub</a>
+  {{- end }}
+  {{- with $p.linkedin }}
+  <a class="button" href="{{ . }}" rel="noopener">LinkedIn</a>
+  {{- end }}
+</p>
+{{- end }}

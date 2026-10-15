@@ -9,17 +9,21 @@
 
 /* --- Accueil (architecture §5.1) --- */
 .home-intro { margin-bottom: var(--gap); }
-.home-name { font-size: 40px; margin-bottom: 4px; }
-.home-headline { font-size: 20px; font-weight: 600; color: var(--primary); margin-bottom: 12px; }
-.home-pitch { color: var(--content); margin-bottom: 12px; }
+.home-pitch { color: var(--content); font-size: 18px; margin-bottom: 8px; }
 .home-pitch p { margin-bottom: 8px; }
-.home-availability { color: var(--secondary); font-size: 15px; margin-bottom: 16px; }
-.home-links { display: flex; flex-wrap: wrap; gap: 8px; }
-.home-links .button {
+.home-intro .home-more { margin-top: 0; }
+
+/* --- Page À propos de moi (architecture §5.7) --- */
+.profile-header { margin-bottom: var(--gap); }
+.profile-name { font-size: 40px; margin-bottom: 4px; }
+.profile-headline { font-size: 20px; font-weight: 600; color: var(--primary); margin-bottom: 12px; }
+.profile-availability { color: var(--secondary); font-size: 15px; margin-bottom: 16px; }
+.profile-links { display: flex; flex-wrap: wrap; gap: 8px; }
+.profile-links .button {
     padding: 6px 14px; border: 1px solid var(--border); border-radius: 8px;
     background: var(--entry); color: var(--primary); font-size: 15px;
 }
-.home-links .button:hover { border-color: var(--secondary); }
+.profile-links .button:hover { border-color: var(--secondary); }
 
 .home-block {
     margin-top: var(--gap); padding: 20px; border: 1px solid var(--border);

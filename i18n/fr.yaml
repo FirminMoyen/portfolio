@@ -3,8 +3,7 @@
 journalRss: "Flux RSS du journal"
 
 # Accueil (architecture §5.1)
-homeCv: "CV (PDF)"
-homeContact: "Contact"
+profileCv: "CV (PDF)"
 homeLab: "Le lab en un coup d'œil"
 homeTargetArchitecture: "Architecture cible"
 homeDiagramAlt: "Schéma logique du homelab"
@@ -20,7 +19,6 @@ homePostmortem: "Post-mortem"
 homeAllEntries: "Tout le journal"
 homeRss: "Flux RSS"
 homeCertifications: "Certifications"
-homeBackground: "Mon parcours"
 weekPrefix: "S"
 
 # Statuts des composants (architecture §6.2)

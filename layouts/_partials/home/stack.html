@@ -41,7 +41,7 @@
   {{- end }}
   </div>
   {{- if $planned }}
-  <p class="home-more">{{ with site.GetPage "/about" }}<a href="{{ .RelPermalink }}">{{ end }}{{ i18n "homePlannedMore" $planned }}{{ with site.GetPage "/about" }}</a>{{ end }}</p>
+  <p class="home-more">{{ with site.GetPage "/infrastructure" }}<a href="{{ .RelPermalink }}">{{ end }}{{ i18n "homePlannedMore" $planned }}{{ with site.GetPage "/infrastructure" }}</a>{{ end }}</p>
   {{- end }}
 </section>
 {{- end }}

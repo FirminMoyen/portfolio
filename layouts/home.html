@@ -1,6 +1,6 @@
 {{- /*
-  Accueil (architecture §5.1, docs/structure.md P02). Cinq blocs ; un bloc
-  sans donnée est masqué plutôt qu'affiché vide.
+  Accueil (architecture §5.1, docs/structure.md P02) : le projet seulement.
+  Quatre blocs ; un bloc sans donnée est masqué plutôt qu'affiché vide.
 */ -}}
 {{- define "main" }}
 <div class="home">
@@ -8,6 +8,5 @@
   {{- partial "home/lab.html" . }}
   {{- partial "home/stack.html" . }}
   {{- partial "home/journal.html" . }}
-  {{- partial "home/certifications.html" . }}
 </div>
 {{- end }}

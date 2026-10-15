@@ -16,7 +16,7 @@
 {{- $dark := resources.Get "diagrams/lab-overview.dark.svg" }}
 {{- $infra := site.GetPage "/infrastructure" }}
 {{- $services := site.GetPage "/services" }}
-{{- $about := site.GetPage "/about" }}
+
 {{- $hasCounts := gt (add $running $building $planned) 0 }}
 {{- if or $light $hasCounts $last $phase }}
 <section class="home-block home-lab">
@@ -37,7 +37,7 @@
     <li>{{ i18n "homeLastWeek" }} <a href="{{ .RelPermalink }}">{{ printf "%s%02d" (i18n "weekPrefix") (int .Params.week) }}</a>, {{ .Date | time.Format ":date_long" }}</li>
     {{- end }}
     {{- with $phase }}
-    <li>{{ i18n "homeCurrentPhase" }} {{ with $about }}<a href="{{ .RelPermalink }}">{{ end }}{{ partial "l10n.html" $phase.title }}{{ with $about }}</a>{{ end }}</li>
+    <li>{{ i18n "homeCurrentPhase" }} {{ with $infra }}<a href="{{ .RelPermalink }}">{{ end }}{{ partial "l10n.html" $phase.title }}{{ with $infra }}</a>{{ end }}</li>
     {{- end }}
     {{- if $hasCounts }}
     <li>

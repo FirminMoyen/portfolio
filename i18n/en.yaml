@@ -3,8 +3,7 @@
 journalRss: "Journal RSS feed"
 
 # Home page (architecture §5.1)
-homeCv: "Resume (PDF)"
-homeContact: "Contact"
+profileCv: "Resume (PDF)"
 homeLab: "The lab at a glance"
 homeTargetArchitecture: "Target architecture"
 homeDiagramAlt: "Logical diagram of the homelab"
@@ -20,7 +19,6 @@ homePostmortem: "Post-mortem"
 homeAllEntries: "All journal entries"
 homeRss: "RSS feed"
 homeCertifications: "Certifications"
-homeBackground: "My background"
 weekPrefix: "W"
 
 # Component statuses (architecture §6.2)

@@ -1,6 +1,6 @@
-{{- /* Bloc 5 — Certifications, depuis data/certifications.yaml. */ -}}
+{{- /* Certifications (page À propos de moi), depuis data/certifications.yaml. */ -}}
 {{- with hugo.Data.certifications }}
-<section class="home-block home-certifications">
+<section class="home-block profile-certifications">
   <h2>{{ i18n "homeCertifications" }}</h2>
   <ul class="cert-list">
     {{- range . }}
@@ -16,8 +16,5 @@
     </li>
     {{- end }}
   </ul>
-  {{- with site.GetPage "/about" }}
-  <p class="home-more"><a href="{{ .RelPermalink }}">{{ i18n "homeBackground" }} →</a></p>
-  {{- end }}
 </section>
 {{- end }}
