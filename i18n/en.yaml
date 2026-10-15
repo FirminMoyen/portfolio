@@ -3,7 +3,7 @@
 journalRss: "Journal RSS feed"
 
 # Home page (architecture §5.1)
-profileCv: "Resume (PDF)"
+profileCv: "Resume"
 homeLab: "The lab at a glance"
 homeTargetArchitecture: "Target architecture"
 homeDiagramAlt: "Logical diagram of the homelab"
@@ -48,3 +48,7 @@ metric_building:
 metric_planned:
   one: "planned"
   other: "planned"
+
+# Resume page
+cvDownload: "Download PDF"
+cvOpenPdf: "Open PDF"

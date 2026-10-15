@@ -3,7 +3,7 @@
 journalRss: "Flux RSS du journal"
 
 # Accueil (architecture §5.1)
-profileCv: "CV (PDF)"
+profileCv: "CV"
 homeLab: "Le lab en un coup d'œil"
 homeTargetArchitecture: "Architecture cible"
 homeDiagramAlt: "Schéma logique du homelab"
@@ -48,3 +48,7 @@ metric_building:
 metric_planned:
   one: "prévu"
   other: "prévus"
+
+# Page CV
+cvDownload: "Télécharger le PDF"
+cvOpenPdf: "Ouvrir le PDF"
