@@ -1,0 +1,11 @@
+{{- /* Page « À propos de moi » (architecture §5.7, docs/structure.md P13) :
+       profil, présentation (corps de la page), certifications. */ -}}
+{{- define "main" }}
+<article class="post-single about-me">
+  {{- partial "profile/intro.html" . }}
+  {{- with .Content }}
+  <div class="post-content profile-pitch">{{ . }}</div>
+  {{- end }}
+  {{- partial "profile/certifications.html" . }}
+</article>
+{{- end }}
