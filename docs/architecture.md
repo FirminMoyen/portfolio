@@ -37,7 +37,8 @@ L'Accueil (le projet : présentation, schéma du lab, stack, dernières entrées
 ### 0.3 Manière de travailler
 
 - Firmin n'écrit pas le code mais valide tout. Avant de créer ou de modifier un fichier, Claude Code DOIT présenter un plan (fichiers concernés, objectif de chaque changement) et attendre son accord.
-- Une étape à la fois. Une étape du §15 correspond à une branche et à une PR. Claude Code ne prend pas d'avance sur l'étape suivante.
+- Une étape à la fois : Claude Code ne prend pas d'avance sur l'étape suivante.
+- Une session de travail = une branche, qui peut couvrir plusieurs étapes du §15. Un commit à chaque changement ; PR en fin de session, sur demande de Firmin.
 - Commits petits, en Conventional Commits. Workflow git : §14 et `CLAUDE.md`.
 
 ### 0.4 Première action
@@ -730,8 +731,8 @@ Toutes portent `disable-model-invocation: true` : c'est Firmin qui les déclench
 ### 14.3 Permissions (`.claude/settings.json`)
 
 - **Autorisé** : build et scripts du repo (`.bin/*`, `scripts/*`), lecture et workflow git sur branche (`status`, `diff`, `log`, `add`, `commit`, `switch`, `checkout`), `gh pr create`, `gh pr view`, `gh run list`, `gh run view`.
-- **Interdit** : `gh pr merge`, `git push --force`, push direct sur `main`, toute modification des réglages GitHub (`gh repo edit`, `gh secret`, `gh api` en écriture).
-- Les règles de permission filtrent les commandes par préfixe : elles ne distinguent pas une lecture d'une écriture par `gh api`. `gh api` est donc refusé en bloc. `git push` sans option n'est ni autorisé ni interdit : il demande confirmation à chaque fois.
+- **Interdit** : `git push --force`, push direct sur `main`, toute modification des réglages GitHub (`gh repo edit`, `gh secret`, `gh api` en écriture).
+- Les règles de permission filtrent les commandes par préfixe : elles ne distinguent pas une lecture d'une écriture par `gh api`. `gh api` est donc refusé en bloc. `git push` sans option et `gh pr merge` ne sont ni autorisés ni interdits : ils demandent confirmation à chaque fois. Claude Code ne fusionne une PR que sur demande explicite de Firmin.
 
 ### 14.4 Définition de terminé (toute PR)
 
@@ -742,13 +743,13 @@ Toutes portent `disable-model-invocation: true` : c'est Firmin qui les déclench
 5. Chaque image ajoutée a été ouverte et vérifiée (§10).
 6. Revue visuelle par Firmin : Claude Code lance `hugo server` et donne la liste des pages à regarder, en FR et en EN, en thème clair et sombre.
 7. Ce document est à jour si la structure change, historique des décisions compris (§17.2).
-8. Branche poussée. La PR n'est ouverte qu'avec l'accord de Firmin ; Claude Code ne fusionne jamais.
+8. Branche poussée. La PR n'est ouverte qu'avec l'accord de Firmin, en fin de session ; elle n'est fusionnée par Claude Code que sur sa demande explicite.
 
 ---
 
 ## 15. Plan d'implémentation
 
-Les phases se suivent dans l'ordre. Chaque étape est une branche et une PR ; son plan est présenté et validé avant toute écriture. Chaque fusion laisse le site publiable, puisque `main` est déployée.
+Les phases se suivent dans l'ordre. Le plan de chaque étape est présenté et validé avant toute écriture ; les étapes d'une même session partagent une branche et une PR (§0.3). Chaque fusion laisse le site publiable, puisque `main` est déployée.
 
 Ordre retenu le 14/10/2026 : 0.1, puis la phase 1 (la structure, détaillée dans `docs/structure.md` §7), puis 0.2 à 0.4. Tant que la CI n'existe pas, `hugo --minify` exécuté en local fait office de contrôle (§14.4).
 
@@ -934,6 +935,7 @@ Le site dépend de comptes et de services extérieurs au repo. C'est là qu'est 
 | 2026-10-14 | Exception à §9.2 décidée par Firmin : contenu d'exemple fictif publié pour montrer le rendu, sous un bandeau « site en construction » sur chaque page ; Décisions d'architecture et Incidents publiées « en construction ». À retirer au plus tard en 3.3 | PR du bandeau |
 | 2026-10-15 | L'accueil ne présente plus que le projet ; tout ce qui concerne Firmin (profil, CV, certifications, contact) passe sur la page « À propos de moi » / « About me », déplacée de `/about/` à `/about-me/` (alias Hugo pour `/fr/about/` et `/en/about/`, redirection `static/` pour `/about/`) | PR `feat/about-me` |
 | 2026-10-15 | Style « éditorial » (proposition C) : palette claire et sombre redéfinie dans `site.css`, chiffres clés en cartes sur l'accueil, thème par défaut selon le système du visiteur, bascule clair/sombre conservée | PR `feat/style-editorial` |
+| 2026-10-15 | Gouvernance (décidée et modifiée par Firmin) : une branche et une PR par session de travail, un commit à chaque changement, PR en fin de session sur demande ; Claude Code peut fusionner sur demande explicite (`gh pr merge` retiré des interdits, confirmation à chaque fois) | PR `feat/style-editorial` |
 
 ---
 

@@ -8,7 +8,7 @@ de structure, de template, de données, de CI ou d'outillage.
 ## Manière de travailler
 - Firmin valide tout : présenter un plan (fichiers, objectif de chaque changement) et attendre
   son accord avant de créer ou de modifier un fichier.
-- Une étape à la fois (architecture §15) : une étape = une branche = une PR. Ne pas anticiper.
+- Une étape à la fois (architecture §15) : une session de travail = une branche ; un commit à chaque changement ; PR en fin de session, sur demande
 - Si une demande contredit docs/architecture.md : s'arrêter, le signaler, proposer la
   modification du document.
 - Les décisions ouvertes (architecture §17.1) appartiennent à Firmin.
@@ -45,4 +45,4 @@ document d'architecture à jour si la structure change.
 - Commits petits, en Conventional Commits.
 - Jamais `--no-verify`, jamais de force-push.
 - Pousser la branche, puis demander l'accord de Firmin avant d'ouvrir la PR.
-- Ne jamais fusionner soi-même. Revenir sur `main` après l'ouverture de chaque PR.
+- Fusionner une PR seulement sur demande explicite de Firmin. Revenir sur main après l’ouverture ou la fusion de chaque PR.
