@@ -15,7 +15,7 @@ Le site présente un homelab reconstruit de zéro et documenté chaque semaine. 
 - **l'état actuel du lab** : Infrastructure et Services, des pages mises à jour en place et générées depuis un catalogue de données unique (`data/catalog/`) ;
 - **le chemin parcouru** : Journal (une entrée par semaine), post-mortems et décisions d'architecture (ADR), des entrées datées qu'on ne réécrit pas.
 
-L'Accueil (pitch, schéma du lab, stack, dernières entrées du journal, CV) et la page À propos (le projet, son auteur, les contacts) complètent l'ensemble. Le site est bilingue FR/EN et statique (Hugo + PaperMod sur GitHub Pages), sans JavaScript propre. Il se valide lui-même : le build Hugo échoue si une donnée est incohérente, une traduction manquante ou une référence cassée. La CI ajoute les contrôles que Hugo ne peut pas faire : secrets, adresses IP, métadonnées d'images, synchronisation des traductions.
+L'Accueil (le projet : présentation, schéma du lab, stack, dernières entrées du journal) et la page À propos de moi (l'auteur : profil, CV, certifications, contact) complètent l'ensemble. Le site est bilingue FR/EN et statique (Hugo + PaperMod sur GitHub Pages), sans JavaScript propre. Il se valide lui-même : le build Hugo échoue si une donnée est incohérente, une traduction manquante ou une référence cassée. La CI ajoute les contrôles que Hugo ne peut pas faire : secrets, adresses IP, métadonnées d'images, synchronisation des traductions.
 
 ---
 
@@ -62,7 +62,7 @@ Le site est la vitrine de ce travail. Chaque semaine, Firmin le met à jour et p
 
 | Public | Temps | Ce qu'il cherche | Parcours type |
 |---|---|---|---|
-| Recruteur | moins d'une minute | Qui, quel poste, quel niveau, preuve d'activité, contact | Accueil → CV ou contact |
+| Recruteur | moins d'une minute | Qui, quel poste, quel niveau, preuve d'activité, contact | Accueil → À propos de moi → CV ou contact |
 | Responsable technique, ingénieur | 5 à 15 minutes | Rigueur, raisonnement, capacité d'exploitation | Accueil → Infrastructure → fiche → ADR → journal ou post-mortem → code |
 | Firmin | — | La référence de son propre lab | Toutes les sections |
 
@@ -133,12 +133,12 @@ Le site est la vitrine de ce travail. Chaque semaine, Firmin le met à jour et p
 /<lang>/journal/001-<slug>/                    Entrée hebdomadaire
 /<lang>/journal/incidents/                     Post-mortems
 /<lang>/journal/incidents/pm-001-<slug>/
-/<lang>/about/                                Le projet, l'auteur, les contacts
+/<lang>/about-me/                             L'auteur : profil, CV, certifications, contact
 /<lang>/tags/<tag>/                           Tout ce qui concerne une technologie
 /<lang>/certifications/<id>/                  Tout le travail lié à une certification
 ```
 
-Menu, dans cet ordre : Accueil · Infrastructure · Services · Journal · À propos (EN : Home · Infrastructure · Services · Journal · About).
+Menu, dans cet ordre : Accueil · Infrastructure · Services · Journal · À propos de moi (EN : Home · Infrastructure · Services · Journal · About me).
 
 Règles :
 
@@ -152,15 +152,14 @@ Règles :
 
 ### 5.1 Accueil
 
-Objectif : l'essentiel en un écran sur desktop, en deux sur mobile. Un bloc sans donnée est masqué plutôt qu'affiché vide. Les blocs, dans l'ordre :
+Objectif : présenter le **projet**, et lui seul ; tout ce qui concerne Firmin est sur la page À propos de moi (§5.7). L'essentiel en un écran sur desktop, en deux sur mobile. Un bloc sans donnée est masqué plutôt qu'affiché vide. Les blocs, dans l'ordre :
 
-1. **Présentation.** Nom, poste visé (`headline`), pitch de deux ou trois phrases (corps de `content/_index.<lang>.md`), une ligne pratique (`availability`) : région plutôt que commune (§10), mobilité, langues, disponibilité. Boutons : CV (PDF de la langue courante, sans adresse, téléphone ni date de naissance), Contact (`/about/#contact`, l'ancre seulement quand elle existe), GitHub, LinkedIn. Les textes viennent de Firmin, les liens de `hugo.toml` (`params.profile`) ; un lien vide masque son bouton. Tant que `headline` est vide, seul le corps de la page s'affiche.
-2. **Le lab en un coup d'œil.** Schéma `lab-overview` (§11.6), marqué « architecture cible » tant qu'aucun composant n'est en service ; une ligne d'état : dernière semaine publiée et sa date, phase en cours de la feuille de route, nombre de composants en service, en construction et prévus. Liens : Infrastructure, Services, la phase (vers À propos), la dernière semaine (son entrée).
-3. **Stack.** Composants en service ou en construction, groupés par groupe dans l'ordre de `data/groups.yaml`, chacun avec son badge de statut et un lien vers sa page dès qu'elle existe. Les composants prévus sont seulement comptés (« + 9 composants prévus », lien vers la feuille de route), pour que la stack ne montre que ce qui existe. Calculé depuis le catalogue.
+1. **Le projet.** Deux ou trois phrases (corps de `content/_index.<lang>.md`) : un homelab reconstruit de zéro, documenté chaque semaine, ce qu'il sert à apprendre et à démontrer. Lien « À propos de moi ».
+2. **Le lab en un coup d'œil.** Schéma `lab-overview` (§11.6), marqué « architecture cible » tant qu'aucun composant n'est en service ; une ligne d'état : dernière semaine publiée et sa date, phase en cours de la feuille de route, nombre de composants en service, en construction et prévus. Liens : Infrastructure, Services, la dernière semaine (son entrée).
+3. **Stack.** Composants en service ou en construction, groupés par groupe dans l'ordre de `data/groups.yaml`, chacun avec son badge de statut et un lien vers sa page dès qu'elle existe. Les composants prévus sont seulement comptés (« + 9 composants prévus », lien vers Infrastructure), pour que la stack ne montre que ce qui existe. Calculé depuis le catalogue.
 4. **Journal.** Les trois dernières entrées, comptes rendus et post-mortems confondus : numéro (S06, PM-001), date, titre, description. Liens : le journal complet, les incidents, le flux RSS.
-5. **Certifications.** Chacune avec son statut (prévue, en préparation, obtenue le…), un lien vers sa page de terme (§5.8) quand elle existe, et vers sa vérification (Credly) une fois obtenue. Lien vers le parcours (À propos).
 
-Ne figurent pas sur l'accueil : la biographie (À propos), le détail technique (Infrastructure et Services), les ADR (Infrastructure), la liste complète des incidents (Journal).
+Ne figurent pas sur l'accueil : tout ce qui concerne Firmin, certifications comprises (À propos de moi), le détail technique (Infrastructure et Services), les ADR (Infrastructure), la liste complète des incidents (Journal).
 
 ### 5.2 Infrastructure
 
@@ -217,13 +216,16 @@ Fiche technique, rendue par le même partial pour les services et pour les carte
 - Le corps n'est pas réécrit ; seul l'état des actions correctives évolue.
 - `/journal/incidents/` les liste. Ils figurent aussi dans la liste du journal, avec un badge.
 
-### 5.7 À propos
+### 5.7 À propos de moi
 
-Une seule page, `/about/`, en trois parties :
+Une seule page, `/about-me/` (titre « À propos de moi » / « About me »), consacrée à Firmin et à lui seul :
 
-1. **Le projet** : objectif, contraintes (budget nul, matériel existant, rien d'exposé), roadmap (shortcode `roadmap`), raison de la reconstruction (D2).
-2. **Moi** : parcours, certifications (shortcode `certifications`), CV en FR et en EN, contact (shortcode `contact`, sous un titre « Contact » qui produit l'ancre `#contact`).
-3. **Ce site** : comment il est construit et contrôlé (Hugo, CI, politique de publication), lien vers le repo, mention « ni cookies ni traceurs ».
+1. **Profil** : nom, poste visé (`headline`), ligne pratique (`availability`) : région plutôt que commune (§10), mobilité, langues, disponibilité. Boutons : CV (PDF de la langue courante, sans adresse, téléphone ni date de naissance), GitHub, LinkedIn, depuis `params.profile`.
+2. **Présentation** : corps de la page (parcours, expérience, poste recherché).
+3. **Certifications** : chacune avec son statut (prévue, en préparation, obtenue le…), un lien vers sa page de terme (§5.8) quand elle existe, et vers sa vérification (Credly) une fois obtenue. Depuis `data/certifications.yaml`.
+4. **Contact** (5.2) : shortcode `contact`, sous un titre « Contact » qui produit l'ancre `#contact`.
+
+Le projet (objectif, contraintes, feuille de route) est présenté côté projet, sur l'accueil ; la fabrication du site (Hugo, CI, politique de publication, « ni cookies ni traceurs ») dans le pied de page (5.2).
 
 ### 5.8 Taxonomies
 
@@ -374,7 +376,7 @@ Chaque page est un dossier (page bundle) qui contient `index.fr.md`, `index.en.m
 ```
 content/
 ├── _index.{fr,en}.md                              accueil
-├── about/index.{fr,en}.md
+├── about-me/index.{fr,en}.md
 ├── infrastructure/
 │   ├── _index.{fr,en}.md
 │   ├── <groupe>/index.{fr,en}.md                  un dossier par groupe d'infrastructure
@@ -404,8 +406,8 @@ Front matter en YAML (`---`), comme aujourd'hui. Toute page porte `title`, `desc
 | Post-mortem | `date`, `pm`, `incident_date`, `severity`, `impact_minutes` | `components`, `tags` |
 | ADR | `date`, `adr`, `status` | `components`, `supersedes`, `superseded_by` (requis si `superseded`), `tags` |
 | Fiche service, page de groupe | — | — (les faits viennent du catalogue) |
-| Accueil | `headline`, `availability` | — |
-| Sections, About | — | — |
+| À propos de moi | `headline`, `availability` | — |
+| Accueil, sections | — | — |
 
 Les champs structurés sont identiques dans les deux langues (contrôle V6) : `draft`, `date`, `week`, `pm`, `adr`, `status`, `incident_date`, `severity`, `impact_minutes`, `components`, `adrs`, `certifications`, `tags`, `supersedes`, `superseded_by`. Seuls `title`, `description` et le corps diffèrent.
 
@@ -461,7 +463,7 @@ Le dossier est créé avec les deux fichiers en brouillon, selon les gabarits de
 
 | Contenu | Rédaction | Rôle de Claude Code |
 |---|---|---|
-| Prose : journal, post-mortems, ADR, fiches, pages de groupe, accueil, À propos | Firmin, en texte ou en notes | Mettre en forme à partir des notes, sur demande ; traduire ; corriger orthographe et format |
+| Prose : journal, post-mortems, ADR, fiches, pages de groupe, accueil, À propos de moi | Firmin, en texte ou en notes | Mettre en forme à partir des notes, sur demande ; traduire ; corriger orthographe et format |
 | Données : catalogue, roadmap, certifications, tags | Firmin, par ses énoncés | Transcrire en YAML ce que Firmin énonce |
 | Structure : sections, archetypes, templates, CI, outillage | Claude Code | Proposer un plan, puis implémenter après accord |
 
@@ -477,7 +479,7 @@ Le dossier est créé avec les deux fichiers en brouillon, selon les gabarits de
 - Journal : une entrée publiée n'est pas réécrite. Une faute de frappe se corrige directement ; une erreur de fond se signale par un bloc « Erratum (date) » en fin d'entrée.
 - ADR acceptée : seuls `status` et `superseded_by` changent.
 - Post-mortem : seul l'état des actions correctives évolue.
-- Pages d'état (Infrastructure, Services, Accueil, À propos) : mises à jour en place.
+- Pages d'état (Infrastructure, Services, Accueil, À propos de moi) : mises à jour en place.
 
 ### 9.4 Traduction
 
@@ -538,7 +540,7 @@ Contrôles :
   - `ShowCodeCopyButtons`, `ShowBreadCrumbs`, `ShowPostNavLinks` (pas de bouton RSS à côté des titres : le flux du journal est proposé dans le pied de page) ;
   - `socialIcons` (GitHub, LinkedIn, e-mail) ;
   - `labRepo` (D3) ;
-  - `profile` : nom, liens GitHub et LinkedIn, chemin du CV par langue (en place depuis l'étape 5.2a, valeurs vides tant que Firmin ne les a pas fournies) ; e-mail de contact avec le shortcode `contact` (5.2) ;
+  - `profile` : nom, liens GitHub et LinkedIn, chemin du CV par langue, affichés sur la page À propos de moi ; e-mail de contact avec le shortcode `contact` (5.2) ;
   - `images` : image OpenGraph par défaut, au format PNG 1200 × 630 ;
 - Markdown : garder `unsafe = false` (pas de HTML brut dans le contenu) ; le shortcode `rawhtml` de PaperMod est interdit ;
 - `[privacy]` : désactiver les services tiers intégrés.
@@ -552,7 +554,7 @@ layouts/
 ├── home.html                              accueil (§5.1)
 ├── term.html                              pages de terme, libellés depuis data/ (§5.8)
 ├── taxonomy.html                          liste des termes (surcharge, registre §11.7)
-├── about/page.html
+├── about-me/page.html                     profil, présentation, certifications (§5.7)
 ├── infrastructure/
 │   ├── section.html                       vue d'ensemble
 │   ├── page.html                          page de groupe
@@ -568,10 +570,10 @@ layouts/
 │   ├── extend_footer.html                 point d'extension PaperMod : lien RSS du journal, puis pied de page (5.2)
 │   ├── validate/{data,page}.html
 │   ├── catalog/{fiche,table,badge,link}.html   badge et link en place depuis 5.2a
-│   ├── home/{intro,lab,stack,stack-list,journal,certifications}.html   blocs de l'accueil (5.2a)
+│   ├── home/{intro,lab,stack,stack-list,journal}.html   blocs de l'accueil : le projet (5.2a)
+│   ├── profile/{intro,links,certifications}.html   page À propos de moi
 │   ├── l10n.html                          valeur {fr, en} d'un champ de données dans la langue courante
 │   ├── journal/{item,meta}.html
-│   ├── profile/links.html                 CV, e-mail, GitHub, LinkedIn : accueil, À propos, contact
 │   └── backlinks.html                     liens inverses (P3)
 └── _shortcodes/{diagram,component,adr,pm,roadmap,certifications,contact}.html
 ```
@@ -589,7 +591,7 @@ Règles :
 | `component "<id>"` | Lien vers un composant, avec son badge de statut | identifiant connu |
 | `adr <n>`, `pm <n>` | Lien « ADR-0007 — titre », « PM-002 — titre » | numéro existant |
 | `diagram name="<nom>" alt="<texte>"` | Schéma en version claire et sombre (§11.6) | source présente, `alt` non vide |
-| `roadmap`, `certifications`, `contact` | Blocs de la page À propos, depuis les données et `hugo.toml` | — |
+| `roadmap`, `contact` | Feuille de route (côté projet), bloc de contact (À propos de moi), depuis les données et `hugo.toml`. Les certifications sont rendues par le template de À propos de moi | — |
 
 Le shortcode `component` et la liste des composants d'une entrée ne créent un lien que si la page cible (fiche ou page de groupe) est publiée. Sinon, ils affichent le nom et le badge sans lien. Aucun lien ne mène donc à une page absente, quel que soit l'ordre dans lequel le contenu arrive.
 
@@ -928,6 +930,7 @@ Le site dépend de comptes et de services extérieurs au repo. C'est là qu'est 
 | 2026-10-14 | Groupes d'infrastructure non décidés : les 7 pages de groupe sont retirées, la liste du §6.4 devient une proposition et D6 est ouverte | PR de l'étape 1.7 |
 | 2026-10-14 | Accueil (§5.1) refondu et implémenté en avance (5.2a) : blocs masqués sans données, stack limitée aux composants en service ou en construction (les prévus sont comptés), ligne d'état avec la dernière semaine plutôt que la dernière vérification, `params.profile` | PR de l'étape 5.2a |
 | 2026-10-14 | Exception à §9.2 décidée par Firmin : contenu d'exemple fictif publié pour montrer le rendu, sous un bandeau « site en construction » sur chaque page ; Décisions d'architecture et Incidents publiées « en construction ». À retirer au plus tard en 3.3 | PR du bandeau |
+| 2026-10-15 | L'accueil ne présente plus que le projet ; tout ce qui concerne Firmin (profil, CV, certifications, contact) passe sur la page « À propos de moi » / « About me », déplacée de `/about/` à `/about-me/` (alias Hugo pour `/fr/about/` et `/en/about/`, redirection `static/` pour `/about/`) | PR `feat/about-me` |
 
 ---
 

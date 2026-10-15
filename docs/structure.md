@@ -22,7 +22,7 @@
 - **Brouillon ou « en construction » tant que vide.** Une page sans contenu porte `draft: true` : en production, elle n'est pas construite et n'apparaît ni dans le menu ni dans le plan du site. Exception : les sections du menu (P03, P07, P09) sont publiées dès l'étape 1.6 avec une vraie description et un court message « en construction » dans leur corps, sans sous-page vide. Jamais de page vide ni de `TODO(firmin)` en production. `hugo server -D` montre l'arborescence complète.
 - **Menus dans le front matter des pages,** plus dans `hugo.toml`. Une entrée de menu n'existe que si sa page est construite : une section entre au menu automatiquement le jour où elle est publiée.
 - **Titres et descriptions.** Les titres sont les libellés de ce document. La description vaut `TODO(firmin)` tant que Firmin ne l'a pas écrite ; c'est permis dans un brouillon seulement.
-- **Pages d'état sans métadonnées d'article.** L'accueil, les sections, les pages de groupe et À propos n'affichent ni date, ni temps de lecture, ni navigation précédent/suivant.
+- **Pages d'état sans métadonnées d'article.** L'accueil, les sections, les pages de groupe et À propos de moi n'affichent ni date, ni temps de lecture, ni navigation précédent/suivant.
 
 ## 2. Inventaire
 
@@ -40,7 +40,7 @@
 | P10 | Entrée du journal | `/fr/journal/NNN-<slug>/` | idem | Archetype `journal` | page | — | Modèle seulement |
 | P11 | Incidents | `/fr/journal/incidents/` | `/en/journal/incidents/` | `content/journal/incidents/_index.*` | section | — | Brouillon |
 | P12 | Post-mortem | `/fr/journal/incidents/pm-NNN-<slug>/` | idem | Archetype `postmortem` | page | — | Modèle seulement |
-| P13 | À propos | `/fr/about/` | `/en/about/` | `content/about/index.*` | page | À propos / About (50) | Publiée (convertie en dossier) |
+| P13 | À propos de moi | `/fr/about-me/` | `/en/about-me/` | `content/about-me/index.*` | page | À propos de moi / About me (50) | Publiée |
 | P14 | Tags | `/fr/tags/`, `/fr/tags/<tag>/` | idem | Générées par Hugo | taxonomie | — | Automatiques ; aucun tag aujourd'hui |
 | P15 | Certifications | `/fr/certifications/`, `/fr/certifications/<id>/` | idem | Générées par Hugo | taxonomie | — | Automatiques ; aucune aujourd'hui |
 | P16 | Page 404 | `/fr/404.html`, `/404.html` | `/en/404.html` | Thème ; `static/404.html` à la racine | — | — | Racine : page autonome bilingue (1.1) |
@@ -96,7 +96,7 @@ Le lien RSS est en place depuis l'étape 1.4 : `extend_footer.html` l'ajoute sou
 | `infrastructure` | Infrastructure | Infrastructure | P03 | 20 | Toujours (depuis 1.6) |
 | `services` | Services | Services | P07 | 30 | Toujours (depuis 1.6) |
 | `journal` | Journal | Journal | P09 | 40 | Toujours (depuis 1.6) |
-| `about` | À propos | About | P13 | 50 | Toujours |
+| `about` | À propos de moi | About me | P13 | 50 | Toujours |
 
 En production, le menu compte donc les cinq entrées depuis l'étape 1.6. Une entrée de menu n'existe que si sa page est construite : une section remise en brouillon en sortirait seule.
 
@@ -113,7 +113,9 @@ C'est le même format que les alias de Hugo, et une seule liste à tenir : ce ta
 
 | Ancienne URL | Cible aujourd'hui | Cible finale | Mise à jour à l'étape |
 |---|---|---|---|
-| `/about/` | `/fr/about/` | `/fr/about/` | — |
+| `/about/` | `/fr/about-me/` | `/fr/about-me/` | — |
+| `/fr/about/` | `/fr/about-me/` (alias Hugo) | `/fr/about-me/` | — |
+| `/en/about/` | `/en/about-me/` (alias Hugo) | `/en/about-me/` | — |
 | `/journal/` | `/fr/journal/` | `/fr/journal/` | — (1.6) |
 | `/journal/proxmox-homelab-premiers-pas/` | `/fr/journal/` | `/fr/journal/` | — (1.6) |
 | `/projects/` | `/fr/infrastructure/` | `/fr/infrastructure/` | — (1.6) |
@@ -124,7 +126,7 @@ C'est le même format que les alias de Hugo, et une seule liste à tenir : ce ta
 | `/categories/` | `/fr/` | `/fr/` | — |
 | `/en/categories/` | `/en/` | `/en/` | — |
 
-Les deux lignes de l'article suivent D2 (§8) ; si l'article est conservé, elles changent. `/en/journal/` est un cas à part : c'était l'ancienne section anglaise, et c'est aussi l'adresse de la section Journal. Jusqu'à l'étape 1.5, `static/en/journal/index.html` redirigeait vers `/en/` ; depuis la publication de la section (1.6), ce fichier est supprimé et la section a repris l'adresse. `/en/`, `/en/about/` et `/en/tags/` gardent leur adresse.
+Les deux lignes de l'article suivent D2 (§8) ; si l'article est conservé, elles changent. `/en/journal/` est un cas à part : c'était l'ancienne section anglaise, et c'est aussi l'adresse de la section Journal. Jusqu'à l'étape 1.5, `static/en/journal/index.html` redirigeait vers `/en/` ; depuis la publication de la section (1.6), ce fichier est supprimé et la section a repris l'adresse. `/en/` et `/en/tags/` gardent leur adresse ; `/fr/about/` et `/en/about/` sont dans un préfixe de langue, donc redirigés par un alias de la page (`aliases: ["/about/"]`).
 
 À l'étape 1.1, tant que `journal`, `projects` et la taxonomie `categories` existent, les redirections de la racine visent leur équivalent sous `/fr/` (`/journal/` → `/fr/journal/`…) ; l'étape 1.2 les passe à leur « cible aujourd'hui ».
 
@@ -157,20 +159,19 @@ Format de chaque fiche : identité de la page, puis ses blocs dans l'ordre d'aff
 
 | | |
 |---|---|
-| Rôle | L'essentiel en un écran : qui, quoi, preuve d'activité, contact |
+| Rôle | Le projet, et lui seul : quoi, où il en est, preuve d'activité. Tout ce qui concerne Firmin est sur P13 |
 | URL | `/fr/` · `/en/` |
 | Fichiers | `content/_index.fr.md`, `content/_index.en.md` |
 | Type, template | home ; `layouts/home.html` et `_partials/home/*` (5.2a). Remplace la liste par défaut de PaperMod : `mainSections` n'est plus utilisé sur l'accueil |
 | Menu | Accueil / Home (10) |
-| Aujourd'hui | Tant que `headline` est vide et que `data/` n'existe pas, seul le texte actuel s'affiche ; chaque bloc apparaît avec ses données |
+| Aujourd'hui | Présentation du projet ; les autres blocs apparaissent avec leurs données |
 
 Un bloc sans donnée est masqué. Détail des contenus et des liens : architecture §5.1.
 
-1. **Présentation** : nom, `headline`, pitch, `availability` ; boutons CV, Contact (`#contact` de P13 quand l'ancre existe), GitHub, LinkedIn. *(front matter et Firmin ; liens dans `hugo.toml` `params.profile` ; 5.2a)*
+1. **Le projet** : présentation (corps de la page) et lien vers P13. *(Firmin ; 5.2a)*
 2. **Le lab en un coup d'œil** : schéma `lab-overview` (« architecture cible » tant que rien n'est en service), dernière semaine publiée, phase en cours, nombre de composants en service, en construction et prévus ; liens vers P03 et P07. *(données ; 5.1 pour le schéma, 5.2a)*
-3. **Stack** : composants en service ou en construction, groupés, avec badge et lien ; les prévus sont seulement comptés. *(catalogue ; 5.2a)*
+3. **Stack** : composants en service ou en construction, groupés, avec badge et lien ; les prévus sont seulement comptés (lien vers P03). *(catalogue ; 5.2a)*
 4. **Dernières entrées du journal** : les 3 dernières entrées, P10 ou P12 (numéro, date, titre, description) ; liens vers P09, P11 et le flux RSS. *(5.2a)*
-5. **Certifications** : liste, statuts, lien vers la page de terme (P15) et la vérification ; lien vers P13. *(données ; 5.2a)*
 
 ### P03 — Infrastructure
 
@@ -332,26 +333,22 @@ Un bloc sans donnée est masqué. Détail des contenus et des liens : architectu
 2. **Corps** : Résumé · Impact · Chronologie · Détection · Cause racine · Résolution · Actions correctives · Ce que j'en retiens. *(archetype)*
 3. **Navigation** précédente / suivante. *(thème)*
 
-### P13 — À propos
+### P13 — À propos de moi
 
 | | |
 |---|---|
-| Rôle | Le projet, son auteur, le contact, la fabrication du site |
-| URL | `/fr/about/` · `/en/about/` |
-| Fichiers | `content/about/index.fr.md`, `index.en.md` (aujourd'hui `_index`) |
-| Type, template | page ; `layouts/about/page.html` (5.2) |
-| Menu | À propos / About (50) |
-| Fil d'Ariane | Accueil › À propos |
-| Aujourd'hui | Convertie en dossier ; contenu actuel conservé ; entrée de menu dans le front matter |
+| Rôle | Firmin, et lui seul : profil, présentation, CV, certifications, contact |
+| URL | `/fr/about-me/` · `/en/about-me/` (anciennes `/about/` redirigées, §3.6) |
+| Fichiers | `content/about-me/index.fr.md`, `index.en.md` |
+| Type, template | page ; `layouts/about-me/page.html` et `_partials/profile/*` |
+| Menu | À propos de moi / About me (50) |
+| Fil d'Ariane | Accueil › À propos de moi |
+| Aujourd'hui | Profil, présentation (reprise du CV), boutons CV, GitHub, LinkedIn, certifications |
 
-Structure cible, posée avec le contenu de Firmin en 5.3 :
-
-| Titre FR | Titre EN | Contenu |
-|---|---|---|
-| ## Le projet | ## The project | ### Objectif · ### Contraintes · ### Feuille de route (shortcode `roadmap`, 5.2) |
-| ## Moi | ## About me | ### Parcours · ### Certifications (shortcode `certifications`, 5.2) · ### CV (liens vers les PDF) |
-| ## Contact | ## Contact | Shortcode `contact` (5.2). Le titre produit l'ancre `#contact` dans les deux langues |
-| ## Ce site | ## This site | Fabrication et contrôles du site, lien vers le repo |
+1. **Profil** : nom (`params.profile.name`), `headline`, `availability` ; boutons CV, GitHub, LinkedIn. *(front matter et `hugo.toml`)*
+2. **Présentation** : corps de la page. *(Firmin)*
+3. **Certifications** : liste, statuts, lien vers la page de terme (P15) et la vérification. *(données)*
+4. **Contact** : shortcode `contact` sous un titre « Contact » (ancre `#contact`). *(5.2)*
 
 ### P14 et P15 — Taxonomies
 
@@ -371,7 +368,7 @@ Fournie par PaperMod sous `/fr/404.html` et `/en/404.html`. GitHub Pages sert `/
 ```
 content/
 ├── _index.fr.md, _index.en.md                     P02 Accueil (publiée)
-├── about/index.fr.md, index.en.md                 P13 À propos (publiée)
+├── about-me/index.fr.md, index.en.md              P13 À propos de moi (publiée)
 ├── infrastructure/
 │   ├── _index.fr.md, _index.en.md                 P03 (publiée, en construction)
 │   ├── <groupe>/index.fr.md, index.en.md          P04, selon D6 (aucun aujourd'hui)
@@ -444,7 +441,7 @@ menus:
     weight: 10
 ```
 
-**À propos** (P13) : on ajoute au front matter existant `ShowReadingTime: false`, `ShowPostNavLinks: false`, et une entrée de menu `about` de poids 50, dont le nom est le titre.
+**À propos de moi** (P13, à l'origine « À propos ») : on ajoute au front matter existant `ShowReadingTime: false`, `ShowPostNavLinks: false`, et une entrée de menu `about` de poids 50, dont le nom est le titre.
 
 ## 7. Mise en œuvre aujourd'hui
 
@@ -462,6 +459,7 @@ Ordre retenu pour aujourd'hui : **0.1, puis la phase 1**. Les étapes 0.2 à 0.4
 | 1.7 | `feat/remove-infra-groups` | Les 7 pages de groupe (P04) retirées, en attendant D6 | Aucune page de groupe ; build vert |
 | 5.2a | `feat/home` | Template de l'accueil (P02), anticipé : cinq blocs masqués sans données | En production, accueil inchangé ; avec des données d'exemple locales, les cinq blocs s'affichent |
 | — | `feat/construction-banner` | Bandeau « site en construction » ; contenu d'exemple publié (accueil, données, journal, post-mortem, services, groupes) ; Décisions d'architecture et Incidents publiées « en construction » | Bandeau sur chaque page ; aucun `TODO(firmin)` publié |
+| — | `feat/about-me` | Accueil limité au projet ; profil, CV et certifications sur « À propos de moi », déplacée à `/about-me/` | Plus rien de personnel sur l'accueil ; `/about/`, `/fr/about/` et `/en/about/` redirigent |
 
 Reportés à leurs phases : templates et rendu des blocs (3 à 5), modèle de données et validations (2), `enableGitInfo` (0.2, qui exige un clonage complet en CI), pied de page et fichiers i18n (5.2).
 
