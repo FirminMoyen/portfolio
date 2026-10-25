@@ -20,7 +20,7 @@ My needs:
 - **Protect the home network**: a configuration mistake or a compromised VM in the lab must not affect the home.
 - **Learn a professional firewall**: zones, rules, NAT, as in a company.
 
-Constraints: zero budget (existing hardware: Hermes, Atlas, the unmanaged switch sw-01), nothing publicly exposed.
+Constraints: zero budget (existing hardware: PVE1, PVE2, the unmanaged switch sw-01), nothing publicly exposed.
 
 The previous lab already used this principle: a virtualised OPNsense in front of a network of the lab's own. The rebuild keeps it.
 
@@ -48,11 +48,11 @@ The decision was made in mid-October 2026, when the lab rebuild started. This AD
 
 ## Decision
 
-**The lab is isolated from the home network behind an OPNsense VM (fw-01) on Hermes.**
+**The lab is isolated from the home network behind an OPNsense VM (fw-01) on PVE1.**
 
 ### Chosen implementation
 
-- OPNsense, as a VM on Hermes, is the lab's firewall and router; the switch sw-01 is dedicated to the lab.
+- OPNsense, as a VM on PVE1, is the lab's firewall and router; the switch sw-01 is dedicated to the lab.
 - Lab network `10.42.0.0/16`, one /24 zone per use; the VLAN number matches the subnet's third octet.
 
 ## Consequences
@@ -65,10 +65,10 @@ The decision was made in mid-October 2026, when the lab rebuild started. This AD
 
 **Negative and risks**
 
-- **Single point of failure**: OPNsense is a VM on Hermes. If Hermes or the VM goes down, the lab loses its gateway: Internet, routing between zones, and remote access through the subnet router (see [ADR-0001]({{< relref "/infrastructure/decisions/adr-0001-remote-access-tailscale" >}})).
-- **Unmanaged switch**: sw-01 does not handle VLANs; carrying several zones to Atlas is not solved. The question remains open, this ADR does not settle it.
+- **Single point of failure**: OPNsense is a VM on PVE1. If PVE1 or the VM goes down, the lab loses its gateway: Internet, routing between zones, and remote access through the subnet router (see [ADR-0001]({{< relref "/infrastructure/decisions/adr-0001-remote-access-tailscale" >}})).
+- **Unmanaged switch**: sw-01 does not handle VLANs; carrying several zones to PVE2 is not solved. The question remains open, this ADR does not settle it.
 
 **To revisit**
 
-- Carrying the zones to Atlas, when the next zones are created.
+- Carrying the zones to PVE2, when the next zones are created.
 - The gateway's resilience, if the lab becomes more important (accepted today for budget reasons).

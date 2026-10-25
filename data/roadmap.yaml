@@ -1,6 +1,6 @@
 # Feuille de route du lab (architecture §6.7). Après l'étape 6, l'ordre n'est pas fixé.
 - id: proxmox-hermes
-  title: {fr: "Proxmox VE sur Hermes", en: "Proxmox VE on Hermes"}
+  title: {fr: "Proxmox VE sur PVE1", en: "Proxmox VE on PVE1"}
   status: done
 - id: opnsense-network
   title: {fr: "OPNsense et réseau du lab", en: "OPNsense and the lab network"}
@@ -15,7 +15,7 @@
     - {fr: "Durcissement de l'hôte", en: "Host hardening"}
     - {fr: "Test de redémarrage complet à distance", en: "Full remote reboot test"}
 - id: proxmox-atlas
-  title: {fr: "Proxmox VE sur Atlas", en: "Proxmox VE on Atlas"}
+  title: {fr: "Proxmox VE sur PVE2", en: "Proxmox VE on PVE2"}
   status: planned
 - id: proxmox-cluster
   title: {fr: "Cluster Proxmox à deux nœuds, sans HA", en: "Two-node Proxmox cluster, without HA"}

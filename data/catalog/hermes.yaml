@@ -1,10 +1,10 @@
-name: "Hermes"
+name: "PVE1"
 layer: infrastructure
 group: hardware
 status: running
 summary:
-  fr: "Dell Latitude 7490 (4 cœurs, 16 Go), nœud de l'infrastructure et de la connectivité du lab."
-  en: "Dell Latitude 7490 (4 cores, 16 GB), the node for the lab's infrastructure and connectivity."
+  fr: "Dell Latitude 7490 (4 cœurs, 16 Go), nœud de l'infrastructure du lab : pare-feu, routeur et accès distant."
+  en: "Dell Latitude 7490 (4 cores, 16 GB), the node for the lab's infrastructure: firewall, router and remote access."
 runtime:
   kind: hardware
 deploy:

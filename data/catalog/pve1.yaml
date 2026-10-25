@@ -1,10 +1,10 @@
-name: "Proxmox VE (Hermes)"
+name: "Proxmox VE (PVE1)"
 layer: infrastructure
 group: virtualization
 status: running
 summary:
-  fr: "Hyperviseur d'Hermes : Proxmox VE 9.2 (noyau 7.0), ZFS sur un seul disque, ARC plafonné à 1 Go, dépôt no-subscription."
-  en: "Hermes's hypervisor: Proxmox VE 9.2 (kernel 7.0), ZFS on a single disk, ARC capped at 1 GB, no-subscription repository."
+  fr: "Hyperviseur de PVE1 : Proxmox VE 9.2 (noyau 7.0), ZFS sur un seul disque, ARC plafonné à 1 Go, dépôt no-subscription."
+  en: "PVE1's hypervisor: Proxmox VE 9.2 (kernel 7.0), ZFS on a single disk, ARC capped at 1 GB, no-subscription repository."
 runtime:
   kind: bare-metal
   host: hermes

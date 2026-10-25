@@ -20,7 +20,7 @@ Mes besoins :
 - **Protéger le réseau domestique** : une erreur de configuration ou une VM compromise dans le lab ne doit pas toucher la maison.
 - **Apprendre un pare-feu professionnel** : zones, règles, NAT, comme en entreprise.
 
-Contraintes : budget zéro (matériel existant : Hermes, Atlas, le switch non manageable sw-01), rien d'exposé publiquement.
+Contraintes : budget zéro (matériel existant : PVE1, PVE2, le switch non manageable sw-01), rien d'exposé publiquement.
 
 Le lab précédent utilisait déjà ce principe : OPNsense virtualisé devant un réseau propre au lab. La reconstruction le reprend.
 
@@ -48,11 +48,11 @@ La décision a été prise mi-octobre 2026, au démarrage de la reconstruction d
 
 ## Décision
 
-**Le lab est isolé du réseau domestique derrière une VM OPNsense (fw-01) sur Hermes.**
+**Le lab est isolé du réseau domestique derrière une VM OPNsense (fw-01) sur PVE1.**
 
 ### Mise en œuvre retenue
 
-- OPNsense, en VM sur Hermes, est le pare-feu et le routeur du lab ; le switch sw-01 est dédié au lab.
+- OPNsense, en VM sur PVE1, est le pare-feu et le routeur du lab ; le switch sw-01 est dédié au lab.
 - Réseau du lab `10.42.0.0/16`, une zone /24 par usage ; le numéro de VLAN reprend le troisième octet du sous-réseau.
 
 ## Conséquences
@@ -65,10 +65,10 @@ La décision a été prise mi-octobre 2026, au démarrage de la reconstruction d
 
 **Négatives et risques**
 
-- **Point unique de défaillance** : OPNsense est une VM sur Hermes. Si Hermes ou la VM tombe, le lab perd sa passerelle : Internet, routage entre zones, et l'accès distant par le subnet router (voir [ADR-0001]({{< relref "/infrastructure/decisions/adr-0001-remote-access-tailscale" >}})).
-- **Switch non manageable** : sw-01 ne gère pas les VLAN ; le transport de plusieurs zones vers Atlas n'est pas résolu. La question reste ouverte, cette ADR ne la tranche pas.
+- **Point unique de défaillance** : OPNsense est une VM sur PVE1. Si PVE1 ou la VM tombe, le lab perd sa passerelle : Internet, routage entre zones, et l'accès distant par le subnet router (voir [ADR-0001]({{< relref "/infrastructure/decisions/adr-0001-remote-access-tailscale" >}})).
+- **Switch non manageable** : sw-01 ne gère pas les VLAN ; le transport de plusieurs zones vers PVE2 n'est pas résolu. La question reste ouverte, cette ADR ne la tranche pas.
 
 **À réexaminer**
 
-- Le transport des zones vers Atlas, au moment de créer les prochaines zones.
+- Le transport des zones vers PVE2, au moment de créer les prochaines zones.
 - La résilience de la passerelle, si le lab prend de l'importance (aujourd'hui acceptée par budget).

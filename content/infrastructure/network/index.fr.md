@@ -9,11 +9,15 @@ ShowPostNavLinks: false
 
 ## Rôle dans le lab
 
-Le réseau isole le lab du réseau domestique. OPNsense, en VM sur Hermes, est le pare-feu et le routeur du lab. Le switch sw-01 est dédié au lab. Tailscale fournit l'accès distant.
+Le réseau isole le lab du réseau domestique. OPNsense, en VM sur PVE1, est le pare-feu et le routeur du lab. Le switch sw-01 est dédié au lab. Tailscale fournit l'accès distant.
 
 ## Mise en œuvre
 
-Le lab utilise la plage `10.42.0.0/16`, découpée en une zone /24 par usage. Le numéro de VLAN reprend le troisième octet. La zone `10.42.0.0/24` est celle de l'infrastructure physique : OPNsense en `.1`, Hermes en `.2`, Atlas en `.3`.
+{{< diagram name="lab-network" alt="Schéma réseau du lab : la box domestique (1er NAT) et mes appareils (tunnel VPN) rejoignent OPNsense (fw-01, 2e NAT, passerelle 10.42.0.1), qui dessert la zone infrastructure 10.42.0.0/24 (fw-01 .1, PVE1 .2, PVE2 .3 prévu) et les zones à venir, une par usage, VLAN égal au 3e octet." >}}
+
+Le lab sort sur Internet par la box domestique : il y a donc un double NAT, la box puis OPNsense. Aucun port n'est redirigé vers le lab.
+
+Le lab utilise la plage `10.42.0.0/16`, découpée en une zone /24 par usage. Le numéro de VLAN reprend le troisième octet. La zone `10.42.0.0/24` est celle de l'infrastructure physique : OPNsense en `.1`, PVE1 en `.2`, PVE2 en `.3`.
 
 Le domaine DNS interne est un sous-domaine de firminmoyen.dev, résolu uniquement dans le lab.
 
