@@ -8,4 +8,4 @@ menus:
     weight: 40
 ---
 
-Section en construction. Le homelab est reconstruit de zéro ; cette page se remplira au fil des semaines.
+Le homelab est reconstruit de zéro. Chaque semaine, une entrée raconte ce qui a été fait, les problèmes rencontrés et les décisions prises.
