@@ -6,7 +6,7 @@
 | Date | 14 octobre 2026 |
 | Emplacement | `docs/architecture.md` du repo `FirminMoyen/portfolio` |
 | Lecteurs | Claude Code (implémente et maintient), Firmin (valide), visiteurs du repo : ce document est public |
-| Documents liés | Structure page par page : `docs/structure.md` (pages, URL, menus, blocs, redirections). Architecture et plan du lab (`docs/architecture.md` du repo `homelab`) : calendrier commun (§15 de ce plan), contenu du catalogue, ADR prévues. Règles opérationnelles : `CLAUDE.md` et `.claude/rules/` |
+| Documents liés | Structure page par page : `docs/structure.md` (pages, URL, menus, blocs, redirections). Repo privé du lab `FirminMoyen/homelab` (`~/dev/homelab`), qui sert aussi de QG : architecture et feuille de route du lab, ADR sources, runbooks, notes, et la configuration Claude Code (manager + agents, dont `site-maintainer` pour ce site et `publication-reviewer` pour le filtrage). Règles opérationnelles : `CLAUDE.md` et `.claude/rules/` |
 
 ## Résumé
 
@@ -190,7 +190,7 @@ Fiche technique, rendue par le même partial pour les services et pour les carte
 | Rôle | `summary` |
 | Statut | `status`, `since` |
 | Où il tourne | `runtime.kind`, `runtime.host` |
-| Déploiement | `deploy.method`, `deploy.code` (lien vers le repo du lab) |
+| Déploiement | `deploy.method` ; `deploy.code` reste vide : le repo du lab est privé (D3) |
 | Exposition | `exposure` |
 | Authentification | `auth.method`, `auth.mfa` |
 | Sauvegarde | `backup.method`, `backup.frequency`, `backup.restore_tested` (« restauration non testée » si absent) |
@@ -540,7 +540,6 @@ Contrôles :
 - `[params]`, en plus de l'existant :
   - `ShowCodeCopyButtons`, `ShowBreadCrumbs`, `ShowPostNavLinks` (pas de bouton RSS à côté des titres : le flux du journal est proposé dans le pied de page) ;
   - `socialIcons` (GitHub, LinkedIn, e-mail) ;
-  - `labRepo` (D3) ;
   - `profile` : nom, liens GitHub et LinkedIn, chemin du CV par langue, affichés sur la page À propos de moi ; e-mail de contact avec le shortcode `contact` (5.2) ;
   - `images` : image OpenGraph par défaut, au format PNG 1200 × 630 ;
 - Markdown : garder `unsafe = false` (pas de HTML brut dans le contenu) ; le shortcode `rawhtml` de PaperMod est interdit ;
@@ -910,7 +909,7 @@ Le site dépend de comptes et de services extérieurs au repo. C'est là qu'est 
 |---|---|---|---|
 | D1 | Vers quelle langue redirige `/` : `fr` ou `en` ? | **Tranchée le 14/10/2026 : `en`** (§17.2). Un recruteur non francophone ne lit pas une page en français, alors que l'inverse est rare dans l'IT. Ce choix reste réversible sans casser de lien (C2). | 1.1 |
 | D2 | Que faire de l'article `proxmox-homelab-premiers-pas` (lab d'avant la reconstruction) : le supprimer ou l'archiver ? | **Tranchée le 14/10/2026 : supprimé** (§17.2). Le supprimer et expliquer la reconstruction dans « Le projet ». L'article décrit des VM exposées directement sur le réseau local, à l'opposé de la posture visée. | 1.2 |
-| D3 | Repo du lab : nom, public ou privé ? | `FirminMoyen/homelab`, public, avec les secrets chiffrés (SOPS/age) : les fiches peuvent alors pointer vers le code (plan du lab, LD9). En attendant, `deploy.code` reste vide. | Liens « code » des fiches |
+| D3 | Repo du lab : nom, public ou privé ? | **Tranchée le 25/10/2026 : `FirminMoyen/homelab`, privé** (§17.2). Le lab y est documenté sans filtre ; ce qui est publiable arrive sur ce site après `publication-reviewer`. Pas de lien « code » public depuis les fiches. | Liens « code » des fiches |
 | D4 | Contact public : adresse principale ou alias dédié ? | Un alias dédié sur le domaine, remplaçable en cas de spam. CV public sans adresse, téléphone ni date de naissance. | 5.3 |
 | D5 | Supprimer `layouts-maison/` et `assets/css/main.css` ? | Oui : l'historique git les conserve. | 0.4 |
 | D6 | Quels groupes d'infrastructure (identifiants, libellés, ordre) ? | Partir de la proposition du §6.4 et l'ajuster une fois le matériel et la topologie du lab connus. Chaque groupe retenu reçoit sa page (P04) en brouillon. | 2.1 (`data/groups.yaml`), pages de groupe |
@@ -936,6 +935,7 @@ Le site dépend de comptes et de services extérieurs au repo. C'est là qu'est 
 | 2026-10-15 | L'accueil ne présente plus que le projet ; tout ce qui concerne Firmin (profil, CV, certifications, contact) passe sur la page « À propos de moi » / « About me », déplacée de `/about/` à `/about-me/` (alias Hugo pour `/fr/about/` et `/en/about/`, redirection `static/` pour `/about/`) | PR `feat/about-me` |
 | 2026-10-15 | Style « éditorial » (proposition C) : palette claire et sombre redéfinie dans `site.css`, chiffres clés en cartes sur l'accueil, thème par défaut selon le système du visiteur, bascule clair/sombre conservée | PR `feat/style-editorial` |
 | 2026-10-15 | Gouvernance (décidée et modifiée par Firmin) : une branche et une PR par session de travail, un commit à chaque changement, PR en fin de session sur demande ; Claude Code peut fusionner sur demande explicite (`gh pr merge` retiré des interdits, confirmation à chaque fois) | PR `feat/style-editorial` |
+| 2026-10-25 | D3 : repo du lab `FirminMoyen/homelab` privé, qui sert de QG (manager Claude Code et agents `site-maintainer`, `lab-architect`, `lab-operator`, `publication-reviewer`). Ce site est maintenu par `site-maintainer`, et ne reçoit du lab que ce que `publication-reviewer` a validé | QG `homelab` |
 
 ---
 
