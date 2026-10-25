@@ -5,7 +5,7 @@ draft: false
 description: "Why the lab is isolated from the home network behind a virtualised OPNsense firewall, and the options that were ruled out."
 adr: 2
 status: accepted
-components: [fw-01, pve1, sw-01]
+components: [fw-01, proxmox-pve1, sw-01]
 supersedes:
 superseded_by:
 tags: []

@@ -7,7 +7,7 @@ summary:
   en: "The lab's firewall and router, isolating the lab from the home network."
 runtime:
   kind: vm
-  host: pve1
+  host: proxmox-pve1
 deploy:
   method: manual
 exposure: vpn
@@ -22,5 +22,5 @@ monitoring:
   logs: false
   alerts: false
   note: {fr: "Reporté, voir la feuille de route.", en: "Deferred, see the roadmap."}
-depends_on: [pve1]
+depends_on: [proxmox-pve1]
 verified: 2026-10-25

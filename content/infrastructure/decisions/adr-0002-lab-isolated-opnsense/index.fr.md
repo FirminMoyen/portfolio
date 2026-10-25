@@ -5,7 +5,7 @@ draft: false
 description: "Pourquoi le lab est isolé du réseau domestique derrière un pare-feu OPNsense virtualisé, et les options écartées."
 adr: 2
 status: accepted
-components: [fw-01, pve1, sw-01]
+components: [fw-01, proxmox-pve1, sw-01]
 supersedes:
 superseded_by:
 tags: []

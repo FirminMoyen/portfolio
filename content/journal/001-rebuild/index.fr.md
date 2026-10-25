@@ -4,7 +4,7 @@ date: 2026-10-25
 draft: false
 description: "Le lab repart de zéro : Proxmox VE sur PVE1, réseau du lab derrière OPNsense, accès distant par Tailscale."
 week: 1
-components: [hermes, pve1, fw-01, tailscale]
+components: [pve1, proxmox-pve1, fw-01, tailscale]
 adrs: [1, 2]
 tags: []
 certifications: []
