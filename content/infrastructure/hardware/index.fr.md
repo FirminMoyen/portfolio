@@ -1,6 +1,7 @@
 ---
 title: "Matériel"
 description: "Les machines du lab : PVE1, en service, et PVE2, prévu."
+summary: "Les machines du lab : PVE1, en service, et PVE2, prévu."
 draft: false
 weight: 1
 ShowReadingTime: false

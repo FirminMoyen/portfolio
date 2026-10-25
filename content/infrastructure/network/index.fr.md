@@ -1,6 +1,7 @@
 ---
 title: "Réseau"
 description: "Le réseau du lab : isolé du réseau domestique derrière OPNsense, accessible à distance par Tailscale, sans port ouvert sur Internet."
+summary: "Le réseau du lab : isolé du réseau domestique derrière OPNsense, accessible à distance par Tailscale, sans port ouvert sur Internet."
 draft: false
 weight: 2
 ShowReadingTime: false

@@ -371,7 +371,7 @@ backup:     {label: {fr: "Sauvegarde", en: "Backup"}}
     - {fr: "…", en: "…"}
 ```
 
-La feuille de route ne porte pas de dates (décision de Firmin du 25/10/2026) : la chronologie se lit dans le journal, semaine par semaine. Les étapes donnent seulement l'ordre et le statut.
+La feuille de route ne porte pas de dates (décision de Firmin du 25/10/2026) : la chronologie se lit dans le journal, semaine par semaine. Les étapes donnent seulement l'ordre et le statut. Elle s'affiche sur la page Infrastructure par le shortcode `roadmap` (ancre `#lab-roadmap`, visée par la phase en cours de l'accueil et par le journal) ; l'étape en cours montre ses objectifs.
 
 ---
 
@@ -952,6 +952,7 @@ Le site dépend de comptes et de services extérieurs au repo. C'est là qu'est 
 | 2026-10-25 | Schémas conçus dans Claude Design au lieu de D2 (§11.6) : canvas privé validé par Firmin, export SVG par langue et par thème via `scripts/diagrams/`. Premier schéma : `lab-overview` sur l'accueil | PR `docs/first-public-content` |
 | 2026-10-25 | Noms publics des nœuds : PVE1 et PVE2, seuls utilisés sur le site et dans ce repo (les noms internes restent dans le repo privé du lab). Identifiants du catalogue alignés : `pve1`, `pve2` (matériel), `proxmox-pve1` (hyperviseur). Exception à l'historique immuable : ADR-0002 et journal 001, publiés le jour même et avant l'annonce du site, sont réécrits avec ces noms. Switch corrigé : 5 ports. Schémas `lab-network` et `lab-physical`, shortcode `diagram`, export par `scripts/diagrams/render.py` ; accueil élargi à `--nav-width` pour la lisibilité du schéma. Exceptions de publication sur l'arrivée d'Internet (§10) | PR `docs/diagrams-pve-naming` |
 | 2026-10-25 | Section Incidents repassée en brouillon tant qu'aucun incident n'existe. Titre des entrées du journal : « Semaine N — … » (« Week N — … »), prérempli par l'archetype ; le préfixe S01 disparaît de l'accueil | PR `docs/diagrams-pve-naming` |
+| 2026-10-25 | Feuille de route affichée sur la page Infrastructure (shortcode `roadmap`, livré en avance sur 5.2) ; compteurs par statut retirés de l'accueil ; résumé explicite (`summary`) pour les pages de groupe | PR `docs/diagrams-pve-naming` |
 
 ---
 

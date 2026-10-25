@@ -227,3 +227,14 @@ html[data-theme="dark"] .diagram-dark { display: block; }
     .home-block { padding: 18px; }
     .metric-value { font-size: 24px; }
 }
+
+/* --- Feuille de route (shortcode roadmap, architecture §6.7) --- */
+.post-content .roadmap { list-style: none; padding: 0; margin: 16px 0 24px; counter-reset: step; }
+.post-content .roadmap-step { counter-increment: step; display: flex; flex-wrap: wrap; align-items: center; gap: 4px 12px; padding: 10px 0; border-bottom: 1px solid var(--border); }
+.post-content .roadmap-step:last-child { border-bottom: none; }
+.post-content .roadmap-title::before { content: counter(step) ". "; color: var(--secondary); }
+.post-content .roadmap-planned .roadmap-title { color: var(--secondary); }
+.post-content .roadmap-goals { flex-basis: 100%; margin: 4px 0 0 20px; font-size: 15px; color: var(--secondary); }
+.badge-roadmap-done { color: var(--ok); background: var(--ok-soft); }
+.badge-roadmap-in-progress { color: var(--warn); background: var(--warn-soft); }
+.badge-roadmap-planned { background: transparent; border: 1px dashed var(--tertiary); }

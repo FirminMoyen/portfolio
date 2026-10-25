@@ -49,3 +49,6 @@ metric_planned:
 
 # Page CV
 cvDownload: "Télécharger le PDF"
+roadmap_done: "Fait"
+roadmap_in-progress: "En cours"
+roadmap_planned: "Prévu"

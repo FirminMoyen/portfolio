@@ -13,3 +13,9 @@ This section describes the lab's infrastructure, that is, what the rest of the l
 Today, the lab runs on a single node, PVE1, with Proxmox VE. An OPNsense firewall, in a VM on PVE1, isolates the lab from the home network. I reach the lab remotely through Tailscale, with no port open to the internet. A second node, PVE2, then a two-node Proxmox cluster are planned.
 
 The infrastructure is split into three groups: hardware, network and virtualization.
+
+## Roadmap
+
+The steps, in order. The timeline lives in the journal, week by week. After the cluster, the order is not set yet.
+
+{{< roadmap >}}

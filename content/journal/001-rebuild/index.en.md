@@ -36,6 +36,6 @@ Rebuild the lab from scratch, starting with the hypervisor, the lab network and 
 
 ## Next steps
 
-- Finish step 4 of the roadmap: host hardening and a full remote reboot test.
+- Finish step 4 of the [roadmap]({{< relref "/infrastructure" >}}#lab-roadmap): host hardening and a full remote reboot test.
 - Install Proxmox VE on PVE2.
 - Form the two-node Proxmox cluster, without HA.

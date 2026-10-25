@@ -1,6 +1,7 @@
 ---
 title: "Virtualization"
 description: "Proxmox VE, the lab's hypervisor: running on PVE1, then on PVE2, before a two-node cluster without high availability."
+summary: "Proxmox VE, the lab's hypervisor: running on PVE1, then on PVE2, before a two-node cluster without high availability."
 draft: false
 weight: 3
 ShowReadingTime: false

@@ -1,6 +1,7 @@
 ---
 title: "Virtualisation"
 description: "Proxmox VE, l'hyperviseur du lab : en service sur PVE1, puis sur PVE2, avant un cluster à deux nœuds sans haute disponibilité."
+summary: "Proxmox VE, l'hyperviseur du lab : en service sur PVE1, puis sur PVE2, avant un cluster à deux nœuds sans haute disponibilité."
 draft: false
 weight: 3
 ShowReadingTime: false

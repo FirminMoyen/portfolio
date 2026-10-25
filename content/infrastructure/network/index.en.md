@@ -1,6 +1,7 @@
 ---
 title: "Network"
 description: "The lab's network: isolated from the home network behind OPNsense, reachable remotely through Tailscale, with no port open to the internet."
+summary: "The lab's network: isolated from the home network behind OPNsense, reachable remotely through Tailscale, with no port open to the internet."
 draft: false
 weight: 2
 ShowReadingTime: false

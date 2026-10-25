@@ -1,6 +1,7 @@
 ---
 title: "Hardware"
 description: "The lab's machines: PVE1, running, and PVE2, planned."
+summary: "The lab's machines: PVE1, running, and PVE2, planned."
 draft: false
 weight: 1
 ShowReadingTime: false

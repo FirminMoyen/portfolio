@@ -36,6 +36,6 @@ Reconstruire le lab de zéro, en commençant par l'hyperviseur, le réseau du la
 
 ## Prochaines étapes
 
-- Terminer l'étape 4 de la feuille de route : durcissement de l'hôte et test de redémarrage complet à distance.
+- Terminer l'étape 4 de la [feuille de route]({{< relref "/infrastructure" >}}#lab-roadmap) : durcissement de l'hôte et test de redémarrage complet à distance.
 - Installer Proxmox VE sur PVE2.
 - Former le cluster Proxmox à deux nœuds, sans HA.
