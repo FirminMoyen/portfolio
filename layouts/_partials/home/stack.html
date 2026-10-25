@@ -28,7 +28,7 @@
     {{- if $members }}
     <div class="stack-group">
       {{- $page := cond (eq $g.layer "infrastructure") (site.GetPage (printf "/infrastructure/%s" $g.id)) nil }}
-      <h3>{{ with $page }}<a href="{{ .RelPermalink }}">{{ end }}{{ partial "l10n.html" $g.label }}{{ with $page }}</a>{{ end }}</h3>
+      <h3>{{ with $page }}<a href="{{ .RelPermalink }}">{{ end }}{{ partial "l10n.html" $g.label }}{{ with $page }} →</a>{{ end }}</h3>
       {{- partial "home/stack-list.html" $members }}
     </div>
     {{- end }}

@@ -40,6 +40,8 @@
 | P10 | Entrée du journal | `/fr/journal/NNN-<slug>/` | idem | Archetype `journal` | page | — | Modèle seulement |
 | P11 | Incidents | `/fr/journal/incidents/` | `/en/journal/incidents/` | `content/journal/incidents/_index.*` | section | — | Brouillon |
 | P12 | Post-mortem | `/fr/journal/incidents/pm-NNN-<slug>/` | idem | Archetype `postmortem` | page | — | Modèle seulement |
+| P17 | Divers | `/fr/misc/` | `/en/misc/` | `content/misc/_index.*` | section | Divers / Miscellaneous (45) | Publiée (25/10/2026) |
+| P18 | Article divers | `/fr/misc/<slug>/` | idem | Archetype `misc` | page | — | Premier article : objectifs et contraintes du projet |
 | P13 | À propos de moi | `/fr/about-me/` | `/en/about-me/` | `content/about-me/index.*` | page | À propos de moi / About me (50) | Publiée |
 | P14 | Tags | `/fr/tags/`, `/fr/tags/<tag>/` | idem | Générées par Hugo | taxonomie | — | Automatiques ; aucun tag aujourd'hui |
 | P15 | Certifications | `/fr/certifications/`, `/fr/certifications/<id>/` | idem | Générées par Hugo | taxonomie | — | Automatiques ; aucune aujourd'hui |
@@ -169,9 +171,9 @@ Format de chaque fiche : identité de la page, puis ses blocs dans l'ordre d'aff
 Un bloc sans donnée est masqué. Détail des contenus et des liens : architecture §5.1.
 
 1. **Le projet** : présentation (corps de la page) et lien vers P13. *(Firmin ; 5.2a)*
-2. **Le lab en un coup d'œil** : schéma `lab-overview` (« architecture cible » tant que rien n'est en service), nombre de composants en service, en construction et prévus, phase en cours ; liens vers P03 et P07. Pas de dernière semaine : le bloc 4 la montre déjà. *(données ; 5.1 pour le schéma, 5.2a)*
-3. **Stack** : composants en service ou en construction, groupés, avec badge et lien ; les prévus sont seulement comptés (lien vers P03). *(catalogue ; 5.2a)*
-4. **Dernières entrées du journal** : les 3 dernières entrées, P10 ou P12 (numéro, date, titre, description) ; liens vers P09, P11 et le flux RSS. *(5.2a)*
+2. **Le lab en un coup d'œil** : schéma `lab-overview` (« architecture cible » tant que rien n'est en service), phase en cours ; les compteurs par statut sont retirés tant qu'il n'y a pas de services ; liens vers P03 et P07. Pas de dernière semaine : le bloc 4 la montre déjà. *(données ; 5.1 pour le schéma, 5.2a)*
+3. **Stack** : composants en service ou en construction, groupés, avec badge, sans lien ; seul le titre du groupe (« Matériel → ») mène à sa page ; les prévus sont seulement comptés (lien vers P03). *(catalogue ; 5.2a)*
+4. **Dernières entrées du journal** : les 3 dernières entrées, P10 ou P12 (date, titre, numéro pour un post-mortem, description) ; liens vers P09, P11 (quand la section est publiée) et le flux RSS. *(5.2a)*
 
 ### P03 — Infrastructure
 
@@ -285,7 +287,7 @@ Un bloc sans donnée est masqué. Détail des contenus et des liens : architectu
 1. **En-tête.** *(thème)* Le flux RSS est proposé dans le pied de page (§3.3).
 2. **Introduction.** *(Firmin)*
 3. **Accès rapides** : Incidents (P11), Tags (P14), Certifications (P15). *(3.1)*
-4. **Liste paginée par 10**, du plus récent au plus ancien : entrées P10 et P12, avec numéro (S07 ou PM-002), date, titre, description et tags. Un badge signale les post-mortems. *(3.1)*
+4. **Liste paginée par 10**, du plus récent au plus ancien : entrées P10 et P12, avec date, titre (« Semaine N — … » ; numéro PM-002 pour un post-mortem), description et tags. Un badge signale les post-mortems. *(3.1)*
 
 ### P10 — Entrée du journal
 
@@ -294,10 +296,10 @@ Un bloc sans donnée est masqué. Détail des contenus et des liens : architectu
 | URL | `/fr/journal/NNN-<slug>/` |
 | Fichiers | Créés par `hugo new content --kind journal journal/NNN-<slug>` |
 | Type, template | page ; `layouts/journal/page.html` (3.1) |
-| Fil d'Ariane | Accueil › Journal › S07 |
+| Fil d'Ariane | Accueil › Journal › Semaine 7 |
 | Aujourd'hui | Archetype seulement (1.3) |
 
-1. **En-tête** : « S07 · titre », date, description, tags, certifications. *(3.1)*
+1. **En-tête** : titre (« Semaine 7 — … »), date, description, tags, certifications. *(3.1)*
 2. **Composants concernés et ADR liées** (liens). *(3.1)*
 3. **Corps** : Objectif de la semaine · Réalisé · Problèmes et résolution · Décisions · Appris · Semaine prochaine. *(archetype)*
 4. **Erratum**, facultatif, en fin d'entrée. *(Firmin)*
@@ -374,6 +376,8 @@ content/
 │   ├── <groupe>/index.fr.md, index.en.md          P04, selon D6 (aucun aujourd'hui)
 │   └── decisions/_index.fr.md, _index.en.md       P05 (brouillon)
 ├── services/_index.fr.md, _index.en.md            P07 (publiée, en construction)
+├── misc/_index.fr.md, _index.en.md                P17 Divers (publiée)
+│   └── <slug>/index.fr.md, index.en.md            P18
 └── journal/
     ├── _index.fr.md, _index.en.md                 P09 (publiée, en construction)
     └── incidents/_index.fr.md, _index.en.md       P11 (brouillon)
@@ -381,7 +385,8 @@ archetypes/
 ├── journal/index.fr.md, index.en.md                P10
 ├── postmortem/index.fr.md, index.en.md            P12
 ├── adr/index.fr.md, index.en.md                   P06
-└── services/index.fr.md, index.en.md              P08
+├── services/index.fr.md, index.en.md              P08
+└── misc/index.fr.md, index.en.md                  P18
 static/
 ├── CNAME                                          existant
 └── <7 redirections du §3.6>/index.html

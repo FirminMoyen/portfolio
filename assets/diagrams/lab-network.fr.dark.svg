@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="760" viewBox="0 0 1280 760" role="img" aria-label="Schéma réseau du lab" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif">
+<title>Schéma réseau du lab</title>
+<rect width="1280" height="760" fill="#1d1e20"/>
+<rect x="760" y="168" width="456" height="536" rx="16" fill="#24272b" stroke="#3d444d" stroke-width="1"/>
+<svg x="281" y="252" overflow="visible" width="143" height="8" viewBox="0 0 143 8" preserveAspectRatio="none" style="fill: none; stroke: #9da7b3; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round"><defs><marker id="dc-arrow-head-filled-1" orient="auto" markerWidth="5" markerHeight="5" refX="2" refY="2" overflow="visible"><path d="M0 0 L4 2 L0 4 Z" fill="#9da7b3" stroke="none" style="stroke: none; fill: #9da7b3; fill: context-stroke"/></marker></defs><path d="M 143 4 L 4 4" marker-end="url(#dc-arrow-head-filled-1)"></path></svg>
+<svg x="280" y="404" overflow="visible" width="143" height="8" viewBox="0 0 143 8" preserveAspectRatio="none" style="fill: none; stroke: #9da7b3; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round"><defs><marker id="dc-arrow-head-filled-2" orient="auto" markerWidth="5" markerHeight="5" refX="2" refY="2" overflow="visible"><path d="M0 0 L4 2 L0 4 Z" fill="#9da7b3" stroke="none" style="stroke: none; fill: #9da7b3; fill: context-stroke"/></marker></defs><path d="M 0 4 L 139 4" marker-end="url(#dc-arrow-head-filled-2)"></path></svg>
+<svg x="696" y="292" overflow="visible" width="95" height="8" viewBox="0 0 95 8" preserveAspectRatio="none" style="fill: none; stroke: #9da7b3; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round"><defs><marker id="dc-arrow-head-filled-3" orient="auto" markerWidth="5" markerHeight="5" refX="2" refY="2" overflow="visible"><path d="M0 0 L4 2 L0 4 Z" fill="#9da7b3" stroke="none" style="stroke: none; fill: #9da7b3; fill: context-stroke"/></marker></defs><path d="M 0 4 L 91 4" marker-end="url(#dc-arrow-head-filled-3)"></path></svg>
+<svg x="556" y="456" overflow="visible" width="8" height="84" viewBox="0 0 8 84" preserveAspectRatio="none" style="fill: none; stroke: #6e7681; stroke-width: 2; stroke-dasharray: 6 6; stroke-linecap: round; stroke-linejoin: round"><path d="M 4 0 L 4 84"></path></svg>
+<svg x="560" y="536" overflow="visible" width="231" height="8" viewBox="0 0 231 8" preserveAspectRatio="none" style="fill: none; stroke: #6e7681; stroke-width: 2; stroke-dasharray: 6 6; stroke-linecap: round; stroke-linejoin: round"><defs><marker id="dc-arrow-head-filled-4" orient="auto" markerWidth="5" markerHeight="5" refX="2" refY="2" overflow="visible"><path d="M0 0 L4 2 L0 4 Z" fill="#6e7681" stroke="none" style="stroke: none; fill: #6e7681; fill: context-stroke"/></marker></defs><path d="M 0 4 L 227 4" marker-end="url(#dc-arrow-head-filled-4)"></path></svg>
+<svg x="64" y="628" overflow="visible" width="40" height="8" viewBox="0 0 40 8" preserveAspectRatio="none" style="fill: none; stroke: #4493f8; stroke-width: 2; stroke-linecap: round"><path d="M 0 4 L 40 4"></path></svg>
+<svg x="64" y="660" overflow="visible" width="40" height="8" viewBox="0 0 40 8" preserveAspectRatio="none" style="fill: none; stroke: #6e7681; stroke-width: 2; stroke-dasharray: 6 6; stroke-linecap: round"><path d="M 0 4 L 40 4"></path></svg>
+<rect x="64" y="208" width="216" height="96" rx="10" fill="#1d1e20" stroke="#4493f8" stroke-width="1.5"/>
+<text x="172" y="240.5" text-anchor="middle" font-size="15" font-weight="700" fill="#e6edf3">Box internet</text>
+<text x="172" y="260.5" text-anchor="middle" font-size="15" fill="#e6edf3">domestique · 1er NAT</text>
+<text x="172" y="280.5" text-anchor="middle" font-size="15" fill="#e6edf3">aucun port ouvert</text>
+<rect x="64" y="360" width="216" height="96" rx="10" fill="#1d1e20" stroke="#4493f8" stroke-width="1.5"/>
+<text x="172" y="402.5" text-anchor="middle" font-size="15" font-weight="700" fill="#e6edf3">Mes appareils</text>
+<text x="172" y="422.5" text-anchor="middle" font-size="15" fill="#e6edf3">client Tailscale</text>
+<rect x="424" y="216" width="272" height="240" rx="10" fill="#1d1e20" stroke="#4493f8" stroke-width="1.5"/>
+<text x="560" y="280.5" text-anchor="middle" font-size="15" font-weight="700" fill="#e6edf3">OPNsense (fw-01)</text>
+<text x="560" y="300.5" text-anchor="middle" font-size="15" fill="#e6edf3">pare-feu et routeur du lab</text>
+<text x="560" y="320.5" text-anchor="middle" font-size="15" fill="#e6edf3">passerelle 10.42.0.1</text>
+<text x="560" y="340.5" text-anchor="middle" font-size="15" fill="#e6edf3"></text>
+<text x="560" y="360.5" text-anchor="middle" font-size="15" font-weight="700" fill="#e6edf3">Tailscale</text>
+<text x="560" y="380.5" text-anchor="middle" font-size="15" fill="#e6edf3">subnet router</text>
+<text x="560" y="400.5" text-anchor="middle" font-size="15" fill="#e6edf3">annonce 10.42.0.0/16</text>
+<rect x="792" y="216" width="392" height="160" rx="10" fill="#1d1e20" stroke="#4493f8" stroke-width="1.5"/>
+<text x="988" y="270.5" text-anchor="middle" font-size="15" font-weight="700" fill="#e6edf3">Zone infrastructure · 10.42.0.0/24</text>
+<text x="988" y="290.5" text-anchor="middle" font-size="15" fill="#e6edf3">.1 fw-01 (OPNsense)</text>
+<text x="988" y="310.5" text-anchor="middle" font-size="15" fill="#e6edf3">.2 PVE1 (Proxmox VE · infrastructure)</text>
+<text x="988" y="330.5" text-anchor="middle" font-size="15" fill="#e6edf3">.3 PVE2 (Proxmox VE · services, prévu)</text>
+<rect x="792" y="440" width="392" height="200" rx="10" fill="#1d1e20" stroke="#6e7681" stroke-width="1.5" stroke-dasharray="6 4"/>
+<text x="988" y="504.5" text-anchor="middle" font-size="15" font-weight="700" fill="#9da7b3">Zones à venir</text>
+<text x="988" y="524.5" text-anchor="middle" font-size="15" fill="#9da7b3">une zone /24 par usage</text>
+<text x="988" y="544.5" text-anchor="middle" font-size="15" fill="#9da7b3">VLAN = 3ᵉ octet</text>
+<text x="988" y="564.5" text-anchor="middle" font-size="15" fill="#9da7b3">ex. 10.42.10.0/24 → VLAN 10</text>
+<text x="988" y="584.5" text-anchor="middle" font-size="15" fill="#9da7b3">supervision, Windows, Linux, réseau, Kubernetes</text>
+<rect x="64" y="504" width="216" height="96" rx="10" fill="#24272b" stroke="#3d444d" stroke-width="1"/>
+<text x="172" y="536.5" text-anchor="middle" font-size="15" font-weight="700" fill="#9da7b3">Réseau domestique</text>
+<text x="172" y="556.5" text-anchor="middle" font-size="15" fill="#9da7b3">séparé du lab, jamais</text>
+<text x="172" y="576.5" text-anchor="middle" font-size="15" fill="#9da7b3">accessible par le VPN</text>
+<text x="64" y="83.0" font-size="30" font-weight="700" fill="#e6edf3">Schéma réseau du lab</text>
+<text x="64" y="114.5" font-size="15" fill="#9da7b3">Adressage logique · état au 25 octobre 2026</text>
+<text x="784" y="196.9" font-size="14" font-weight="600" fill="#9da7b3">Lab · 10.42.0.0/16</text>
+<text x="352" y="239.9" text-anchor="middle" font-size="13" fill="#9da7b3">2ᵉ NAT (OPNsense)</text>
+<text x="352" y="391.9" text-anchor="middle" font-size="13" fill="#9da7b3">tunnel VPN</text>
+<text x="744" y="279.9" text-anchor="middle" font-size="13" fill="#9da7b3">LAN</text>
+<text x="676" y="523.9" text-anchor="middle" font-size="13" fill="#9da7b3">routage entre zones (prévu)</text>
+<text x="116" y="633.9" font-size="13" fill="#9da7b3">En service</text>
+<text x="116" y="665.9" font-size="13" fill="#9da7b3">Prévu</text>
+</svg>

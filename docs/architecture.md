@@ -156,7 +156,7 @@ Règles :
 Objectif : présenter le **projet**, et lui seul ; tout ce qui concerne Firmin est sur la page À propos de moi (§5.7). L'essentiel en un écran sur desktop, en deux sur mobile. Un bloc sans donnée est masqué plutôt qu'affiché vide. Les blocs, dans l'ordre :
 
 1. **Le projet.** Deux ou trois phrases (corps de `content/_index.<lang>.md`) : un homelab reconstruit de zéro, documenté chaque semaine, ce qu'il sert à apprendre et à démontrer. Lien « À propos de moi ».
-2. **Le lab en un coup d'œil.** Schéma `lab-overview` (§11.6), marqué « architecture cible » tant qu'aucun composant n'est en service ; nombre de composants en service, en construction et prévus, phase en cours de la feuille de route. Liens : Infrastructure, Services. La dernière entrée du journal n'y figure pas : le bloc 4 la montre déjà.
+2. **Le lab en un coup d'œil.** Schéma `lab-overview` (§11.6), marqué « architecture cible » tant qu'aucun composant n'est en service ; phase en cours de la feuille de route. Les compteurs de composants par statut sont retirés (25/10/2026) : ils reviendront avec les services. Liens : Infrastructure, Services. La dernière entrée du journal n'y figure pas : le bloc 4 la montre déjà.
 3. **Stack.** Composants en service ou en construction, groupés par groupe dans l'ordre de `data/groups.yaml`, chacun avec son badge de statut et un lien vers sa page dès qu'elle existe. Les composants prévus sont seulement comptés (« + 9 composants prévus », lien vers Infrastructure), pour que la stack ne montre que ce qui existe. Calculé depuis le catalogue.
 4. **Journal.** Les trois dernières entrées, comptes rendus et post-mortems confondus : numéro (S06, PM-001), date, titre, description. Liens : le journal complet, les incidents, le flux RSS.
 
@@ -204,7 +204,7 @@ Fiche technique, rendue par le même partial pour les services et pour les carte
 - `date` = dernier jour de la semaine couverte (en pratique, le jour de publication). Une entrée rattrapée garde la date de sa semaine.
 - Gabarit fixe (Annexe A.1) : Objectif, Réalisé, Problèmes et résolution, Décisions, Appris, Semaine prochaine.
 - Chaque entrée déclare `components`, `adrs`, `tags` et `certifications`.
-- Liste (`/journal/`) : toutes les entrées, post-mortems compris, de la plus récente à la plus ancienne. Pour chacune : numéro (S07 ou PM-002), date, titre, description, tags. Pagination par 10, flux RSS.
+- Liste (`/journal/`) : toutes les entrées, post-mortems compris, de la plus récente à la plus ancienne. Pour chacune : date, titre (une entrée hebdomadaire commence par « Semaine N — » / « Week N — », un post-mortem garde son numéro PM-002), description, tags. Pagination par 10, flux RSS.
 - Page : numéro et titre, date, description, tags et certifications, composants concernés, ADR liées, corps, navigation précédente/suivante.
 - Le post LinkedIn de la semaine résume l'entrée et y renvoie (§16.1).
 
@@ -301,7 +301,7 @@ Sens des valeurs :
 | `runtime.kind`, `deploy.method` | — | requis | requis | — |
 | `runtime.host` | — | requis pour `bare-metal`, `vm`, `lxc`, `pod` | idem | — |
 | `exposure`, `auth` | — | requis pour `bare-metal`, `vm`, `lxc`, `pod` | idem | — |
-| `backup`, `monitoring` | — | — | requis | — |
+| `backup`, `monitoring` | — | — | optionnels (décision du 25/10/2026) : renseignés quand ils sont en place | — |
 | `verified` | — | requis | requis | — |
 | `since` | optionnel | optionnel | optionnel | requis (date de retrait) |
 | Fiche publiée (couche `service`) | optionnelle | requise | requise | conservée |
@@ -371,7 +371,7 @@ backup:     {label: {fr: "Sauvegarde", en: "Backup"}}
     - {fr: "…", en: "…"}
 ```
 
-La feuille de route ne porte pas de dates (décision de Firmin du 25/10/2026) : la chronologie se lit dans le journal, semaine par semaine. Les étapes donnent seulement l'ordre et le statut.
+La feuille de route ne porte pas de dates (décision de Firmin du 25/10/2026) : la chronologie se lit dans le journal, semaine par semaine. Les étapes donnent seulement l'ordre et le statut. Elle s'affiche sur la page Infrastructure par le shortcode `roadmap` (ancre `#lab-roadmap`, visée par la phase en cours de l'accueil et par le journal) ; l'étape en cours montre ses objectifs.
 
 ---
 
@@ -510,6 +510,7 @@ Le repo et le site sont publics : tout ce qui y entre doit pouvoir être lu par 
 |---|---|---|
 | Réseau | Schémas logiques, plan d'adressage privé (RFC 1918), VLAN | IP publique du domicile, IPv4 comme IPv6 ; adresses du réseau VPN (100.64.0.0/10) |
 | Accès distant | Le principe et l'outil (VPN maillé, aucun port ouvert) | Points d'accès, nom du tailnet, clés, règles d'accès détaillées, ports |
+| Arrivée d'Internet (exceptions décidées par Firmin le 25/10/2026) | Le lab sort par une box internet domestique, avec un double NAT (box, puis OPNsense) ; Internet arrive sur le pare-feu OPNsense de PVE1 | Fournisseur et modèle de la box ; toute adresse du réseau domestique ; nom des interfaces et des ponts ; accès de secours |
 | Secrets | — | Tout secret, jeton, mot de passe ou clé privée, même révoqué ou « de démonstration » |
 | Images | Captures relues | Métadonnées GPS ; capture montrant IP publique, jeton, e-mail, onglet ou notification personnels |
 | Données personnelles | Nom, région, e-mail de contact dédié (D4), liens professionnels | Adresse postale, téléphone, date de naissance, données de tiers (famille, appareils du foyer) |
@@ -605,7 +606,7 @@ Le shortcode `component` et la liste des composants d'une entrée ne créent un 
 
 ### 11.4 Chaînes d'interface
 
-`i18n/fr.yaml` et `i18n/en.yaml` contiennent toutes les chaînes d'interface : statuts, valeurs des énumérations, intitulés de la fiche technique, boutons, numéros de semaine (« S%02d » / « W%02d »). Aucun texte écrit en dur dans un template.
+`i18n/fr.yaml` et `i18n/en.yaml` contiennent toutes les chaînes d'interface : statuts, valeurs des énumérations, intitulés de la fiche technique, boutons, numéros de post-mortem (« PM-%03d »). Le numéro de semaine est écrit dans le titre de l'entrée, prérempli par l'archetype. Aucun texte écrit en dur dans un template.
 
 ### 11.5 CSS
 
@@ -615,12 +616,13 @@ Style retenu le 15/10/2026 : « éditorial ». Fond papier, grande typographie, 
 
 ### 11.6 Schémas
 
-- Conception dans Claude Design (décision de Firmin du 25/10/2026) : chaque schéma est dessiné et validé par Firmin sur un canvas privé, une planche par langue. Le canvas n'est pas dans le repo et n'est pas lié depuis le site.
-- Export : `scripts/diagrams/<nom>.py` reprend la mise en page validée (positions, textes FR et EN, couleurs claires et sombres) et écrit quatre SVG commités, `assets/diagrams/<nom>.<lang>.light.svg` et `<nom>.<lang>.dark.svg`, pour qu'ils apparaissent dans le diff des PR. Toute modification passe d'abord par le canvas, puis par le script. SVG statiques : aucune police externe (P8), aucun script, aucune image embarquée ; titre et description accessibles inclus.
+- Conception dans Claude Design (décision de Firmin du 25/10/2026) : chaque schéma est dessiné et validé par Firmin sur un canvas privé, une planche par langue. Le canvas n'est pas lié depuis le site.
+- Sources : chaque planche validée est copiée telle quelle dans `scripts/diagrams/src/<nom>.<lang>.dc.html`. Toute modification passe d'abord par le canvas, puis la planche est recopiée.
+- Export : `python3 scripts/diagrams/render.py` convertit chaque source en deux SVG commités, `assets/diagrams/<nom>.<lang>.light.svg` et `.dark.svg` (correspondance des couleurs claires et sombres dans le script), pour qu'ils apparaissent dans le diff des PR. SVG statiques : aucune police externe (P8), aucun script, aucune image embarquée ; titre accessible inclus.
 - Relecture : chaque schéma passe par `publication-reviewer` avant sa PR, comme tout contenu issu du lab.
-- Affichage : l'accueil choisit les SVG de la langue de la page ; le CSS montre la bonne version selon `html[data-theme]`, sans JavaScript. Le texte alternatif est obligatoire. Le shortcode `diagram` (5.1) suivra la même convention.
-- Vue logique uniquement (§10).
-- Premier schéma : `lab-overview`, sur l'accueil et sur la page Infrastructure.
+- Affichage : l'accueil et le shortcode `diagram` (`{{</* diagram name="<nom>" alt="…" */>}}`) choisissent les SVG de la langue de la page ; le CSS montre la bonne version selon `html[data-theme]`, sans JavaScript. Un clic ouvre le SVG en pleine taille. Le texte alternatif est obligatoire ; le shortcode échoue au build s'il manque, ou si un SVG manque.
+- Vue logique et câblage du lab uniquement (§10, y compris ses exceptions).
+- Schémas : `lab-overview` (accueil), `lab-network` (page Réseau), `lab-physical` (page Matériel).
 
 ### 11.7 Registre des surcharges du thème
 
@@ -848,7 +850,7 @@ Jusqu'à la phase 4, les fiches et les pages de groupe exigées par V9 et V10 s'
 
 - **Nouveau** : entrée `planned` avec les champs minimaux.
 - **Passage à `building`** : `runtime`, `deploy`, `exposure`, `auth`, `verified` ; pour un service, création de la fiche (archetype `services`).
-- **Passage à `running`** : `backup`, `monitoring`, `since`, `verified`. Le build refuse le statut s'il manque une réponse.
+- **Passage à `running`** : `since`, `verified` (`backup` et `monitoring` dès qu'ils sont en place). Le build refuse le statut s'il manque une réponse.
 - **Test de restauration réussi** : `backup.restore_tested`, sur indication de Firmin.
 - **Retrait** : statut `retired` et `since`. La fiche reste en ligne, puisqu'elle fait partie de l'histoire du lab ; le composant sort du schéma.
 - **Changement de topologie** (hôte, dépendances, réseau) : le schéma `lab-overview` est mis à jour dans la même PR.
@@ -948,6 +950,12 @@ Le site dépend de comptes et de services extérieurs au repo. C'est là qu'est 
 | 2026-10-25 | Fin de l'exception à §9.2 : contenu d'exemple retiré, vraies données publiées (catalogue, groupes, feuille de route, ADR-0001 et 0002, journal 001), bandeau « site en construction » désactivé | PR `docs/first-public-content` |
 | 2026-10-25 | Feuille de route sans dates (§6.7) : `started` et `finished` retirés du schéma, la chronologie vit dans le journal ; l'entrée 001 couvre tout ce qui a été fait avant le 25/10/2026 | PR `docs/first-public-content` |
 | 2026-10-25 | Schémas conçus dans Claude Design au lieu de D2 (§11.6) : canvas privé validé par Firmin, export SVG par langue et par thème via `scripts/diagrams/`. Premier schéma : `lab-overview` sur l'accueil | PR `docs/first-public-content` |
+| 2026-10-25 | Noms publics des nœuds : PVE1 et PVE2, seuls utilisés sur le site et dans ce repo (les noms internes restent dans le repo privé du lab). Identifiants du catalogue alignés : `pve1`, `pve2` (matériel), `proxmox-pve1` (hyperviseur). Exception à l'historique immuable : ADR-0002 et journal 001, publiés le jour même et avant l'annonce du site, sont réécrits avec ces noms. Switch corrigé : 5 ports. Schémas `lab-network` et `lab-physical`, shortcode `diagram`, export par `scripts/diagrams/render.py` ; accueil élargi à `--nav-width` pour la lisibilité du schéma. Exceptions de publication sur l'arrivée d'Internet (§10) | PR `docs/diagrams-pve-naming` |
+| 2026-10-25 | Section Incidents repassée en brouillon tant qu'aucun incident n'existe. Titre des entrées du journal : « Semaine N — … » (« Week N — … »), prérempli par l'archetype ; le préfixe S01 disparaît de l'accueil | PR `docs/diagrams-pve-naming` |
+| 2026-10-25 | Feuille de route affichée sur la page Infrastructure (shortcode `roadmap`, livré en avance sur 5.2) ; compteurs par statut retirés de l'accueil ; résumé explicite (`summary`) pour les pages de groupe | PR `docs/diagrams-pve-naming` |
+| 2026-10-25 | Sauvegardes et supervision : plus mentionnées sur le site tant qu'elles ne sont pas en place ; `backup` et `monitoring` deviennent optionnels dans le catalogue (§6.3) | PR `docs/diagrams-pve-naming` |
+| 2026-10-25 | Stack de l'accueil : titres de groupe plus marqués et seuls cliquables (vers la page du groupe) ; composants listés sans lien | PR `docs/diagrams-pve-naming` |
+| 2026-10-25 | Nouvelle section Divers (`/misc/`, menu 45, archetype `misc`) pour les articles qui n'entrent ni dans l'infrastructure ni dans les services ; premier article : objectifs et contraintes du projet. Accueil : texte d'introduction réécrit | PR `docs/diagrams-pve-naming` |
 
 ---
 

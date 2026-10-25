@@ -1,0 +1,18 @@
+{{- /*
+  Schéma conçu dans Claude Design et exporté par scripts/diagrams/render.py
+  (architecture §11.6). Usage : {{< diagram name="lab-network" alt="…" >}}
+  Montre la version de la langue de la page, claire ou sombre selon le thème ;
+  un clic ouvre le SVG en pleine taille.
+*/ -}}
+{{- $name := .Get "name" }}
+{{- $alt := .Get "alt" }}
+{{- $lang := .Page.Language.Lang }}
+{{- $light := resources.Get (printf "diagrams/%s.%s.light.svg" $name $lang) }}
+{{- $dark := resources.Get (printf "diagrams/%s.%s.dark.svg" $name $lang) }}
+{{- if not (and $light $dark) }}{{ errorf "diagram %q : SVG %s clair ou sombre manquant (%s)" $name $lang .Position }}{{ end }}
+{{- if not $alt }}{{ errorf "diagram %q : texte alternatif obligatoire (%s)" $name .Position }}{{ end }}
+<figure class="diagram">
+  <a class="diagram-light" href="{{ $light.RelPermalink }}"><img src="{{ $light.RelPermalink }}" alt="{{ $alt }}" loading="lazy"></a>
+  <a class="diagram-dark" href="{{ $dark.RelPermalink }}"><img src="{{ $dark.RelPermalink }}" alt="{{ $alt }}" loading="lazy"></a>
+  <figcaption>{{ i18n "diagramFullSize" }}</figcaption>
+</figure>

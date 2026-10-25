@@ -11,9 +11,8 @@
     <li>
       <span class="journal-date">{{ .Date | time.Format ":date_long" }}</span>
       <a class="journal-title" href="{{ .RelPermalink }}">
-        <span class="journal-number">
-          {{- if .Params.pm }}{{ printf "PM-%03d" (int .Params.pm) }}{{ else if .Params.week }}{{ printf "%s%02d" (i18n "weekPrefix") (int .Params.week) }}{{ end -}}
-        </span>
+        {{- /* Une entrée hebdomadaire porte « Semaine N — » dans son titre ; seul le post-mortem garde un numéro. */}}
+        {{- with .Params.pm }}<span class="journal-number">{{ printf "PM-%03d" (int .) }}</span>{{ end }}
         {{ .Title }}
       </a>
       {{- if .Params.pm }} <span class="badge badge-postmortem">{{ i18n "homePostmortem" }}</span>{{ end }}
@@ -25,7 +24,7 @@
   </ul>
   <p class="home-more">
     <a href="{{ $journal.RelPermalink }}">{{ i18n "homeAllEntries" }} →</a>
-    {{- with site.GetPage "/journal/incidents" }}<a href="{{ .RelPermalink }}">{{ .Title }} →</a>{{ end }}
+    {{- with site.GetPage "/journal/incidents" }}{{ if .RelPermalink }}<a href="{{ .RelPermalink }}">{{ .Title }} →</a>{{ end }}{{ end }}
     {{- with $journal.OutputFormats.Get "rss" }}<a href="{{ .RelPermalink }}">{{ i18n "homeRss" }}</a>{{ end }}
   </p>
 </section>

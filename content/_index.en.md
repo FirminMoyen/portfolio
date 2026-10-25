@@ -8,4 +8,4 @@ menus:
     weight: 10
 ---
 
-A homelab rebuilt from scratch, on existing hardware and with no budget, documented every week. It is a place to learn, to prepare for certifications and to apply professional operations practices: security, maintenance, availability. Nothing in it is exposed to the internet.
+Welcome to the showcase of my Proxmox homelab! Step by step, I'm rebuilding a small infrastructure at home with hardware I already had, to learn by doing and prepare for certifications. Every week, I share what I built, the choices I made and what I take away from them.

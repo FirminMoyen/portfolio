@@ -7,6 +7,7 @@ profileCv: "CV"
 homeLab: "Le lab en un coup d'œil"
 homeTargetArchitecture: "Architecture cible"
 homeDiagramAlt: "Schéma logique du homelab"
+diagramFullSize: "Cliquer sur le schéma pour l'ouvrir en pleine taille."
 homeCurrentPhase: "Phase en cours :"
 homeStack: "Stack"
 homeOtherGroup: "Autres"
@@ -18,7 +19,6 @@ homePostmortem: "Post-mortem"
 homeAllEntries: "Tout le journal"
 homeRss: "Flux RSS"
 homeCertifications: "Certifications"
-weekPrefix: "S"
 
 # Statuts des composants (architecture §6.2)
 status_planned: "Prévu"
@@ -49,3 +49,6 @@ metric_planned:
 
 # Page CV
 cvDownload: "Télécharger le PDF"
+roadmap_done: "Fait"
+roadmap_in-progress: "En cours"
+roadmap_planned: "Prévu"

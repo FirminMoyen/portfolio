@@ -1,0 +1,20 @@
+{{- /*
+  Feuille de route (architecture §6.7), lue dans data/roadmap.yaml.
+  Usage : {{< roadmap >}}. Étapes dans l'ordre, avec leur statut ; l'étape en
+  cours montre ses objectifs. Ancre #lab-roadmap, visée par l'accueil et le journal.
+*/ -}}
+{{- with hugo.Data.roadmap }}
+<ol class="roadmap" id="lab-roadmap">
+  {{- range . }}
+  <li class="roadmap-step roadmap-{{ .status }}">
+    <span class="roadmap-title">{{ partial "l10n.html" .title }}</span>
+    <span class="badge badge-roadmap-{{ .status }}">{{ i18n (printf "roadmap_%s" .status) }}</span>
+    {{- if and (eq .status "in-progress") .goals }}
+    <ul class="roadmap-goals">
+      {{- range .goals }}<li>{{ partial "l10n.html" . }}</li>{{ end }}
+    </ul>
+    {{- end }}
+  </li>
+  {{- end }}
+</ol>
+{{- end }}

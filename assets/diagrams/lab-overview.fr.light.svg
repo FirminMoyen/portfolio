@@ -1,52 +1,48 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="760" viewBox="0 0 1280 760" role="img" aria-labelledby="t d" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif">
-<title id="t">Vue d'ensemble du lab</title><desc id="d">Schéma du lab : mes appareils rejoignent le lab par un tunnel chiffré Tailscale, qui aboutit sur OPNsense dans Hermes ; OPNsense dessert le switch sw-01 et Atlas (prévu) ; réseau 10.42.0.0/16 isolé du réseau domestique.</desc>
-<defs>
-<marker id="a" orient="auto" markerWidth="5" markerHeight="5" refX="2" refY="2" overflow="visible"><path d="M0 0 L4 2 L0 4 Z" fill="#57606a"/></marker>
-<marker id="p" orient="auto" markerWidth="5" markerHeight="5" refX="2" refY="2" overflow="visible"><path d="M0 0 L4 2 L0 4 Z" fill="#8c959f"/></marker>
-</defs>
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="760" viewBox="0 0 1280 760" role="img" aria-label="Vue d&#x27;ensemble du lab" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif">
+<title>Vue d'ensemble du lab</title>
 <rect width="1280" height="760" fill="#ffffff"/>
-<rect x="360" y="160" width="856" height="536" rx="16" fill="#f6f8fa" stroke="#d0d7de"/>
-<rect x="392" y="216" width="792" height="184" rx="12" fill="#eef4fb" stroke="#b6d0ee"/>
-<line x1="280" y1="308" x2="419" y2="308" stroke="#57606a" stroke-width="2" stroke-linecap="round" marker-end="url(#a)"/>
-<line x1="656" y1="308" x2="747" y2="308" stroke="#57606a" stroke-width="2" stroke-linecap="round" marker-end="url(#a)"/>
-<line x1="868" y1="352" x2="868" y2="443" stroke="#57606a" stroke-width="2" stroke-linecap="round" marker-end="url(#a)"/>
-<line x1="752" y1="492" x2="661" y2="492" stroke="#8c959f" stroke-width="2" stroke-linecap="round" stroke-dasharray="6 6" marker-end="url(#p)"/>
-<line x1="64" y1="632" x2="104" y2="632" stroke="#0969da" stroke-width="2"/>
-<line x1="64" y1="664" x2="104" y2="664" stroke="#8c959f" stroke-width="2" stroke-dasharray="6 6"/>
+<rect x="360" y="160" width="856" height="536" rx="16" fill="#f6f8fa" stroke="#d0d7de" stroke-width="1"/>
+<rect x="392" y="216" width="792" height="184" rx="12" fill="#eef4fb" stroke="#b6d0ee" stroke-width="1"/>
+<svg x="280" y="304" overflow="visible" width="143" height="8" viewBox="0 0 143 8" preserveAspectRatio="none" style="fill: none; stroke: #57606a; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round"><defs><marker id="dc-arrow-head-filled-1" orient="auto" markerWidth="5" markerHeight="5" refX="2" refY="2" overflow="visible"><path d="M0 0 L4 2 L0 4 Z" fill="#57606a" stroke="none" style="stroke: none; fill: #57606a; fill: context-stroke"/></marker></defs><path d="M 0 4 L 139 4" marker-end="url(#dc-arrow-head-filled-1)"></path></svg>
+<svg x="656" y="304" overflow="visible" width="95" height="8" viewBox="0 0 95 8" preserveAspectRatio="none" style="fill: none; stroke: #57606a; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round"><defs><marker id="dc-arrow-head-filled-2" orient="auto" markerWidth="5" markerHeight="5" refX="2" refY="2" overflow="visible"><path d="M0 0 L4 2 L0 4 Z" fill="#57606a" stroke="none" style="stroke: none; fill: #57606a; fill: context-stroke"/></marker></defs><path d="M 0 4 L 91 4" marker-end="url(#dc-arrow-head-filled-2)"></path></svg>
+<svg x="864" y="352" overflow="visible" width="8" height="95" viewBox="0 0 8 95" preserveAspectRatio="none" style="fill: none; stroke: #57606a; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round"><defs><marker id="dc-arrow-head-filled-3" orient="auto" markerWidth="5" markerHeight="5" refX="2" refY="2" overflow="visible"><path d="M0 0 L4 2 L0 4 Z" fill="#57606a" stroke="none" style="stroke: none; fill: #57606a; fill: context-stroke"/></marker></defs><path d="M 4 0 L 4 91" marker-end="url(#dc-arrow-head-filled-3)"></path></svg>
+<svg x="657" y="488" overflow="visible" width="95" height="8" viewBox="0 0 95 8" preserveAspectRatio="none" style="fill: none; stroke: #8c959f; stroke-width: 2; stroke-dasharray: 6 6; stroke-linecap: round; stroke-linejoin: round"><defs><marker id="dc-arrow-head-filled-4" orient="auto" markerWidth="5" markerHeight="5" refX="2" refY="2" overflow="visible"><path d="M0 0 L4 2 L0 4 Z" fill="#8c959f" stroke="none" style="stroke: none; fill: #8c959f; fill: context-stroke"/></marker></defs><path d="M 95 4 L 4 4" marker-end="url(#dc-arrow-head-filled-4)"></path></svg>
+<svg x="64" y="628" overflow="visible" width="40" height="8" viewBox="0 0 40 8" preserveAspectRatio="none" style="fill: none; stroke: #0969da; stroke-width: 2; stroke-linecap: round"><path d="M 0 4 L 40 4"></path></svg>
+<svg x="64" y="660" overflow="visible" width="40" height="8" viewBox="0 0 40 8" preserveAspectRatio="none" style="fill: none; stroke: #8c959f; stroke-width: 2; stroke-dasharray: 6 6; stroke-linecap: round"><path d="M 0 4 L 40 4"></path></svg>
 <rect x="64" y="264" width="216" height="88" rx="10" fill="#ffffff" stroke="#0969da" stroke-width="1.5"/>
-<text x="172.0" y="303" text-anchor="middle" font-size="15" font-weight="700" fill="#1f2328">Mes appareils</text>
-<text x="172.0" y="323" text-anchor="middle" font-size="15" fill="#1f2328">client VPN</text>
+<text x="172" y="302.5" text-anchor="middle" font-size="15" font-weight="700" fill="#1f2328">Mes appareils</text>
+<text x="172" y="322.5" text-anchor="middle" font-size="15" fill="#1f2328">client VPN</text>
 <rect x="424" y="264" width="232" height="88" rx="10" fill="#ffffff" stroke="#0969da" stroke-width="1.5"/>
-<text x="540.0" y="293" text-anchor="middle" font-size="15" font-weight="700" fill="#1f2328">Tailscale</text>
-<text x="540.0" y="313" text-anchor="middle" font-size="15" fill="#1f2328">subnet router</text>
-<text x="540.0" y="333" text-anchor="middle" font-size="15" fill="#1f2328">plugin OPNsense</text>
+<text x="540" y="292.5" text-anchor="middle" font-size="15" font-weight="700" fill="#1f2328">Tailscale</text>
+<text x="540" y="312.5" text-anchor="middle" font-size="15" fill="#1f2328">subnet router, plugin</text>
+<text x="540" y="332.5" text-anchor="middle" font-size="15" fill="#1f2328">OPNsense</text>
 <rect x="752" y="264" width="232" height="88" rx="10" fill="#ffffff" stroke="#0969da" stroke-width="1.5"/>
-<text x="868.0" y="303" text-anchor="middle" font-size="15" font-weight="700" fill="#1f2328">OPNsense (fw-01)</text>
-<text x="868.0" y="323" text-anchor="middle" font-size="15" fill="#1f2328">VM : pare-feu et routeur</text>
+<text x="868" y="302.5" text-anchor="middle" font-size="15" font-weight="700" fill="#1f2328">OPNsense (fw-01)</text>
+<text x="868" y="322.5" text-anchor="middle" font-size="15" fill="#1f2328">VM : pare-feu et routeur</text>
 <rect x="752" y="448" width="232" height="88" rx="10" fill="#ffffff" stroke="#0969da" stroke-width="1.5"/>
-<text x="868.0" y="487" text-anchor="middle" font-size="15" font-weight="700" fill="#1f2328">sw-01</text>
-<text x="868.0" y="507" text-anchor="middle" font-size="15" fill="#1f2328">switch dédié au lab</text>
+<text x="868" y="486.5" text-anchor="middle" font-size="15" font-weight="700" fill="#1f2328">sw-01</text>
+<text x="868" y="506.5" text-anchor="middle" font-size="15" fill="#1f2328">switch dédié au lab</text>
 <rect x="424" y="448" width="232" height="88" rx="10" fill="#ffffff" stroke="#8c959f" stroke-width="1.5" stroke-dasharray="6 4"/>
-<text x="540.0" y="477" text-anchor="middle" font-size="15" font-weight="700" fill="#57606a">Atlas (pve2)</text>
-<text x="540.0" y="497" text-anchor="middle" font-size="15" fill="#57606a">Dell XPS 15 · workloads</text>
-<text x="540.0" y="517" text-anchor="middle" font-size="15" fill="#57606a">prévu</text>
+<text x="540" y="476.5" text-anchor="middle" font-size="15" font-weight="700" fill="#57606a">PVE2 · Dell XPS 15</text>
+<text x="540" y="496.5" text-anchor="middle" font-size="15" fill="#57606a">services (VM, conteneurs) ·</text>
+<text x="540" y="516.5" text-anchor="middle" font-size="15" fill="#57606a">prévu</text>
 <rect x="424" y="584" width="344" height="80" rx="10" fill="#ffffff" stroke="#0969da" stroke-width="1.5"/>
-<text x="596.0" y="619" text-anchor="middle" font-size="15" font-weight="700" fill="#1f2328">10.42.0.0/24</text>
-<text x="596.0" y="639" text-anchor="middle" font-size="15" fill="#1f2328">infrastructure physique</text>
+<text x="596" y="618.5" text-anchor="middle" font-size="15" font-weight="700" fill="#1f2328">10.42.0.0/24</text>
+<text x="596" y="638.5" text-anchor="middle" font-size="15" fill="#1f2328">infrastructure physique</text>
 <rect x="800" y="584" width="384" height="80" rx="10" fill="#ffffff" stroke="#8c959f" stroke-width="1.5" stroke-dasharray="6 4"/>
-<text x="992.0" y="619" text-anchor="middle" font-size="15" font-weight="700" fill="#57606a">10.42.10.0/24, 10.42.20.0/24…</text>
-<text x="992.0" y="639" text-anchor="middle" font-size="15" fill="#57606a">zones à venir · VLAN = 3ᵉ octet</text>
+<text x="992" y="618.5" text-anchor="middle" font-size="15" font-weight="700" fill="#57606a">10.42.10.0/24, 10.42.20.0/24…</text>
+<text x="992" y="638.5" text-anchor="middle" font-size="15" fill="#57606a">zones à venir · VLAN = 3ᵉ octet</text>
 <rect x="64" y="448" width="216" height="104" rx="10" fill="#f6f8fa" stroke="#d0d7de" stroke-width="1"/>
-<text x="172.0" y="485" text-anchor="middle" font-size="15" font-weight="700" fill="#57606a">Réseau domestique</text>
-<text x="172.0" y="505" text-anchor="middle" font-size="15" fill="#57606a">hors du lab, jamais</text>
-<text x="172.0" y="525" text-anchor="middle" font-size="15" fill="#57606a">accessible par le VPN</text>
-<text x="64" y="84" font-size="30" font-weight="700" fill="#1f2328">Vue d'ensemble du lab</text>
-<text x="64" y="116" font-size="15" fill="#57606a">Homelab reconstruit de zéro · état au 25 octobre 2026</text>
-<text x="384" y="192" font-size="14" font-weight="600" fill="#57606a">Lab · 10.42.0.0/16 · isolé du réseau domestique</text>
-<text x="416" y="244" font-size="14" font-weight="600" fill="#0550ae">Hermes (pve1) · Dell Latitude 7490 · Proxmox VE 9.2</text>
-<text x="352" y="292" text-anchor="middle" font-size="13" fill="#57606a">tunnel chiffré</text>
-<text x="880" y="404" font-size="13" fill="#57606a">LAN du lab</text>
-<text x="64" y="600" font-size="14" font-weight="600" fill="#1f2328">Rien n'est exposé sur Internet.</text>
-<text x="116" y="636" font-size="13" fill="#57606a">En service</text>
-<text x="116" y="668" font-size="13" fill="#57606a">Prévu</text>
+<text x="172" y="484.5" text-anchor="middle" font-size="15" font-weight="700" fill="#57606a">Réseau domestique</text>
+<text x="172" y="504.5" text-anchor="middle" font-size="15" fill="#57606a">hors du lab, jamais</text>
+<text x="172" y="524.5" text-anchor="middle" font-size="15" fill="#57606a">accessible par le VPN</text>
+<text x="64" y="83.0" font-size="30" font-weight="700" fill="#1f2328">Vue d'ensemble du lab</text>
+<text x="64" y="114.5" font-size="15" fill="#57606a">Homelab reconstruit de zéro · état au 25 octobre 2026</text>
+<text x="384" y="188.9" font-size="14" font-weight="600" fill="#57606a">Lab · 10.42.0.0/16 · isolé du réseau domestique</text>
+<text x="416" y="240.9" font-size="14" font-weight="600" fill="#0550ae">PVE1 · Dell Latitude 7490 · Proxmox VE 9.2 · infrastructure</text>
+<text x="352" y="291.9" text-anchor="middle" font-size="13" fill="#57606a">tunnel chiffré</text>
+<text x="880" y="383.9" font-size="13" fill="#57606a">LAN du lab</text>
+<text x="64" y="597.0" font-size="14" font-weight="600" fill="#1f2328">Rien n'est exposé sur Internet.</text>
+<text x="116" y="633.9" font-size="13" fill="#57606a">En service</text>
+<text x="116" y="665.9" font-size="13" fill="#57606a">Prévu</text>
 </svg>

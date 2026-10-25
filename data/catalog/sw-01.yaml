@@ -3,18 +3,10 @@ layer: infrastructure
 group: network
 status: running
 summary:
-  fr: "Switch non manageable à 6 ports, dédié au lab."
-  en: "Unmanaged 6-port switch, dedicated to the lab."
+  fr: "Switch non manageable à 5 ports, dédié au lab."
+  en: "Unmanaged 5-port switch, dedicated to the lab."
 runtime:
   kind: hardware
 deploy:
   method: manual
-backup:
-  method: none
-  note: {fr: "Reporté, voir la feuille de route.", en: "Deferred, see the roadmap."}
-monitoring:
-  metrics: false
-  logs: false
-  alerts: false
-  note: {fr: "Reporté, voir la feuille de route.", en: "Deferred, see the roadmap."}
 verified: 2026-10-25

@@ -124,9 +124,20 @@ h1, h2, h3, .post-title, .entry-header h2 { letter-spacing: -0.02em; }
 .metric-value { font-size: 30px; font-weight: 600; line-height: 1.2; color: var(--primary); letter-spacing: -0.02em; }
 .lab-phase { margin-top: 14px; color: var(--secondary); font-size: 15px; }
 
-.lab-diagram { display: block; position: relative; margin-top: 16px; text-decoration: none !important; }
-.lab-diagram img { width: 100%; border: 1px solid var(--border); border-radius: 10px; }
+/* Accueil plus large que les autres pages, pour que le schéma reste lisible ; le pitch garde la largeur de lecture. */
+.main:has(> .home) { max-width: calc(var(--nav-width) + var(--gap) * 2); }
+.home-intro { max-width: var(--main-width); }
+
+/* Schémas (architecture §11.6) : accueil et shortcode diagram. Un clic ouvre le SVG en pleine taille. */
+.lab-diagram, .diagram { position: relative; margin: 16px 0 0; }
+.lab-diagram a, .diagram a { box-shadow: none !important; text-decoration: none !important; }
+.lab-diagram img, .diagram img { width: 100%; border: 1px solid var(--border); border-radius: 10px; }
+.lab-diagram figcaption, .diagram figcaption { margin-top: 6px; font-size: 13px; color: var(--secondary); text-align: center; }
 .lab-diagram .badge { position: absolute; top: 10px; left: 10px; }
+/* Dans une page, le schéma déborde de la colonne de texte jusqu'à la largeur du menu. */
+.post-content .diagram { margin: 24px 0; width: min(var(--nav-width), 100vw - var(--gap) * 2); position: relative; left: 50%; transform: translateX(-50%); }
+.post-content .diagram figcaption { margin: 6px 0 0; font-size: 13px; font-weight: 400; color: var(--secondary); }
+.diagram-light { display: block; }
 .diagram-dark { display: none; }
 html[data-theme="dark"] .diagram-light { display: none; }
 html[data-theme="dark"] .diagram-dark { display: block; }
@@ -136,6 +147,11 @@ html[data-theme="dark"] .diagram-dark { display: block; }
 }
 
 .stack-groups { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 12px 28px; }
+/* Le titre du groupe (seul élément cliquable) se distingue nettement des composants listés dessous. */
+.home-block .stack-group h3 { font-size: 16px; font-weight: 600; color: var(--primary); margin-bottom: 4px; padding-bottom: 8px; border-bottom: 2px solid var(--border); }
+.home-block .stack-group h3 a { color: var(--primary); text-decoration: none; }
+.home-block .stack-group h3 a:hover { color: var(--accent); }
+.stack-name { color: var(--secondary); }
 .stack-group li { display: flex; justify-content: space-between; align-items: center; gap: 8px; padding: 6px 0; border-bottom: 1px solid var(--border); font-size: 15px; }
 .stack-group li:last-child { border-bottom: none; }
 
@@ -216,3 +232,14 @@ html[data-theme="dark"] .diagram-dark { display: block; }
     .home-block { padding: 18px; }
     .metric-value { font-size: 24px; }
 }
+
+/* --- Feuille de route (shortcode roadmap, architecture §6.7) --- */
+.post-content .roadmap { list-style: none; padding: 0; margin: 16px 0 24px; counter-reset: step; }
+.post-content .roadmap-step { counter-increment: step; display: flex; flex-wrap: wrap; align-items: center; gap: 4px 12px; padding: 10px 0; border-bottom: 1px solid var(--border); }
+.post-content .roadmap-step:last-child { border-bottom: none; }
+.post-content .roadmap-title::before { content: counter(step) ". "; color: var(--secondary); }
+.post-content .roadmap-planned .roadmap-title { color: var(--secondary); }
+.post-content .roadmap-goals { flex-basis: 100%; margin: 4px 0 0 20px; font-size: 15px; color: var(--secondary); }
+.badge-roadmap-done { color: var(--ok); background: var(--ok-soft); }
+.badge-roadmap-in-progress { color: var(--warn); background: var(--warn-soft); }
+.badge-roadmap-planned { background: transparent; border: 1px dashed var(--tertiary); }
