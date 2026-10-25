@@ -156,7 +156,7 @@ Règles :
 Objectif : présenter le **projet**, et lui seul ; tout ce qui concerne Firmin est sur la page À propos de moi (§5.7). L'essentiel en un écran sur desktop, en deux sur mobile. Un bloc sans donnée est masqué plutôt qu'affiché vide. Les blocs, dans l'ordre :
 
 1. **Le projet.** Deux ou trois phrases (corps de `content/_index.<lang>.md`) : un homelab reconstruit de zéro, documenté chaque semaine, ce qu'il sert à apprendre et à démontrer. Lien « À propos de moi ».
-2. **Le lab en un coup d'œil.** Schéma `lab-overview` (§11.6), marqué « architecture cible » tant qu'aucun composant n'est en service ; nombre de composants en service, en construction et prévus, phase en cours de la feuille de route. Liens : Infrastructure, Services. La dernière entrée du journal n'y figure pas : le bloc 4 la montre déjà.
+2. **Le lab en un coup d'œil.** Schéma `lab-overview` (§11.6), marqué « architecture cible » tant qu'aucun composant n'est en service ; phase en cours de la feuille de route. Les compteurs de composants par statut sont retirés (25/10/2026) : ils reviendront avec les services. Liens : Infrastructure, Services. La dernière entrée du journal n'y figure pas : le bloc 4 la montre déjà.
 3. **Stack.** Composants en service ou en construction, groupés par groupe dans l'ordre de `data/groups.yaml`, chacun avec son badge de statut et un lien vers sa page dès qu'elle existe. Les composants prévus sont seulement comptés (« + 9 composants prévus », lien vers Infrastructure), pour que la stack ne montre que ce qui existe. Calculé depuis le catalogue.
 4. **Journal.** Les trois dernières entrées, comptes rendus et post-mortems confondus : numéro (S06, PM-001), date, titre, description. Liens : le journal complet, les incidents, le flux RSS.
 

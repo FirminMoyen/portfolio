@@ -18,17 +18,7 @@
 {{- if or $light $hasCounts $phase }}
 <section class="home-block home-lab">
   <h2>{{ i18n "homeLab" }}</h2>
-  {{- if $hasCounts }}
-  <div class="lab-metrics">
-    {{- range slice "running" "building" "planned" }}
-    {{- $n := index (dict "running" $running "building" $building "planned" $planned) . }}
-    <div class="metric metric-{{ . }}">
-      <span class="metric-value">{{ $n }}</span>
-      <span class="metric-label">{{ i18n (printf "metric_%s" .) $n }}</span>
-    </div>
-    {{- end }}
-  </div>
-  {{- end }}
+  {{- /* Compteurs par statut retirés le 25/10/2026 : utiles quand il y aura des services. */}}
   {{- with $phase }}
   <p class="lab-phase">{{ i18n "homeCurrentPhase" }} {{ with $infra }}<a href="{{ .RelPermalink }}">{{ end }}{{ partial "l10n.html" $phase.title }}{{ with $infra }}</a>{{ end }}</p>
   {{- end }}
