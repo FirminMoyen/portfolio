@@ -33,15 +33,16 @@
   <p class="lab-phase">{{ i18n "homeCurrentPhase" }} {{ with $infra }}<a href="{{ .RelPermalink }}">{{ end }}{{ partial "l10n.html" $phase.title }}{{ with $infra }}</a>{{ end }}</p>
   {{- end }}
   {{- with $light }}
-  <a class="lab-diagram" href="{{ with $infra }}{{ .RelPermalink }}{{ end }}">
+  <figure class="lab-diagram">
     {{- if eq $running 0 }}
     <span class="badge badge-target">{{ i18n "homeTargetArchitecture" }}</span>
     {{- end }}
-    <img class="diagram-light" src="{{ .RelPermalink }}" alt="{{ i18n "homeDiagramAlt" }}">
+    <a class="diagram-light" href="{{ .RelPermalink }}"><img src="{{ .RelPermalink }}" alt="{{ i18n "homeDiagramAlt" }}"></a>
     {{- with $dark }}
-    <img class="diagram-dark" src="{{ .RelPermalink }}" alt="{{ i18n "homeDiagramAlt" }}">
+    <a class="diagram-dark" href="{{ .RelPermalink }}"><img src="{{ .RelPermalink }}" alt="{{ i18n "homeDiagramAlt" }}"></a>
     {{- end }}
-  </a>
+    <figcaption>{{ i18n "diagramFullSize" }}</figcaption>
+  </figure>
   {{- end }}
   <p class="home-more">
     {{- with $infra }}<a href="{{ .RelPermalink }}">{{ .Title }} →</a>{{ end }}
