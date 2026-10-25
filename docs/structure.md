@@ -40,6 +40,8 @@
 | P10 | Entrée du journal | `/fr/journal/NNN-<slug>/` | idem | Archetype `journal` | page | — | Modèle seulement |
 | P11 | Incidents | `/fr/journal/incidents/` | `/en/journal/incidents/` | `content/journal/incidents/_index.*` | section | — | Brouillon |
 | P12 | Post-mortem | `/fr/journal/incidents/pm-NNN-<slug>/` | idem | Archetype `postmortem` | page | — | Modèle seulement |
+| P17 | Divers | `/fr/misc/` | `/en/misc/` | `content/misc/_index.*` | section | Divers / Miscellaneous (45) | Publiée (25/10/2026) |
+| P18 | Article divers | `/fr/misc/<slug>/` | idem | Archetype `misc` | page | — | Premier article : objectifs et contraintes du projet |
 | P13 | À propos de moi | `/fr/about-me/` | `/en/about-me/` | `content/about-me/index.*` | page | À propos de moi / About me (50) | Publiée |
 | P14 | Tags | `/fr/tags/`, `/fr/tags/<tag>/` | idem | Générées par Hugo | taxonomie | — | Automatiques ; aucun tag aujourd'hui |
 | P15 | Certifications | `/fr/certifications/`, `/fr/certifications/<id>/` | idem | Générées par Hugo | taxonomie | — | Automatiques ; aucune aujourd'hui |
@@ -374,6 +376,8 @@ content/
 │   ├── <groupe>/index.fr.md, index.en.md          P04, selon D6 (aucun aujourd'hui)
 │   └── decisions/_index.fr.md, _index.en.md       P05 (brouillon)
 ├── services/_index.fr.md, _index.en.md            P07 (publiée, en construction)
+├── misc/_index.fr.md, _index.en.md                P17 Divers (publiée)
+│   └── <slug>/index.fr.md, index.en.md            P18
 └── journal/
     ├── _index.fr.md, _index.en.md                 P09 (publiée, en construction)
     └── incidents/_index.fr.md, _index.en.md       P11 (brouillon)
@@ -381,7 +385,8 @@ archetypes/
 ├── journal/index.fr.md, index.en.md                P10
 ├── postmortem/index.fr.md, index.en.md            P12
 ├── adr/index.fr.md, index.en.md                   P06
-└── services/index.fr.md, index.en.md              P08
+├── services/index.fr.md, index.en.md              P08
+└── misc/index.fr.md, index.en.md                  P18
 static/
 ├── CNAME                                          existant
 └── <7 redirections du §3.6>/index.html

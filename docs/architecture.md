@@ -955,6 +955,7 @@ Le site dépend de comptes et de services extérieurs au repo. C'est là qu'est 
 | 2026-10-25 | Feuille de route affichée sur la page Infrastructure (shortcode `roadmap`, livré en avance sur 5.2) ; compteurs par statut retirés de l'accueil ; résumé explicite (`summary`) pour les pages de groupe | PR `docs/diagrams-pve-naming` |
 | 2026-10-25 | Sauvegardes et supervision : plus mentionnées sur le site tant qu'elles ne sont pas en place ; `backup` et `monitoring` deviennent optionnels dans le catalogue (§6.3) | PR `docs/diagrams-pve-naming` |
 | 2026-10-25 | Stack de l'accueil : titres de groupe plus marqués et seuls cliquables (vers la page du groupe) ; composants listés sans lien | PR `docs/diagrams-pve-naming` |
+| 2026-10-25 | Nouvelle section Divers (`/misc/`, menu 45, archetype `misc`) pour les articles qui n'entrent ni dans l'infrastructure ni dans les services ; premier article : objectifs et contraintes du projet. Accueil : texte d'introduction réécrit | PR `docs/diagrams-pve-naming` |
 
 ---
 
