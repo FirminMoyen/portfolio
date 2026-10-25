@@ -28,8 +28,6 @@ Pour l'accès distant, j'ai choisi Tailscale après l'avoir comparé à Headscal
 
 Interfaces d'administration non exposées sur Internet, accessibles par le VPN. Celle d'OPNsense utilise des comptes locaux, sans 2FA.
 
-Les sauvegardes et la supervision ne sont pas encore en place : je les ai reportées.
-
 ## Limites et évolutions
 
 Sous FreeBSD, le plugin Tailscale fonctionne en espace utilisateur : le pare-feu d'OPNsense ne voit donc pas le trafic venu du VPN. Le cloisonnement repose pour l'instant sur la politique d'accès du VPN et sur l'annonce de la seule route du lab. Une piste est à l'étude : déplacer le subnet router dans une VM Linux, derrière le pare-feu.

@@ -18,10 +18,6 @@ The lab relies on two Dell laptops. PVE1 carries the lab's infrastructure: firew
 
 PVE1 is running: Proxmox VE is installed directly on the hardware (see the Virtualization page). PVE2 is not installed yet.
 
-## Operations
-
-Backups and monitoring are not in place yet: I have deferred them.
-
 ## Limits and next steps
 
 Until PVE2 is installed, PVE1 is the lab's only node. Installing Proxmox VE on PVE2 is the next step after the current one, before the two nodes are joined in a cluster.

@@ -301,7 +301,7 @@ Sens des valeurs :
 | `runtime.kind`, `deploy.method` | — | requis | requis | — |
 | `runtime.host` | — | requis pour `bare-metal`, `vm`, `lxc`, `pod` | idem | — |
 | `exposure`, `auth` | — | requis pour `bare-metal`, `vm`, `lxc`, `pod` | idem | — |
-| `backup`, `monitoring` | — | — | requis | — |
+| `backup`, `monitoring` | — | — | optionnels (décision du 25/10/2026) : renseignés quand ils sont en place | — |
 | `verified` | — | requis | requis | — |
 | `since` | optionnel | optionnel | optionnel | requis (date de retrait) |
 | Fiche publiée (couche `service`) | optionnelle | requise | requise | conservée |
@@ -850,7 +850,7 @@ Jusqu'à la phase 4, les fiches et les pages de groupe exigées par V9 et V10 s'
 
 - **Nouveau** : entrée `planned` avec les champs minimaux.
 - **Passage à `building`** : `runtime`, `deploy`, `exposure`, `auth`, `verified` ; pour un service, création de la fiche (archetype `services`).
-- **Passage à `running`** : `backup`, `monitoring`, `since`, `verified`. Le build refuse le statut s'il manque une réponse.
+- **Passage à `running`** : `since`, `verified` (`backup` et `monitoring` dès qu'ils sont en place). Le build refuse le statut s'il manque une réponse.
 - **Test de restauration réussi** : `backup.restore_tested`, sur indication de Firmin.
 - **Retrait** : statut `retired` et `since`. La fiche reste en ligne, puisqu'elle fait partie de l'histoire du lab ; le composant sort du schéma.
 - **Changement de topologie** (hôte, dépendances, réseau) : le schéma `lab-overview` est mis à jour dans la même PR.
@@ -953,6 +953,7 @@ Le site dépend de comptes et de services extérieurs au repo. C'est là qu'est 
 | 2026-10-25 | Noms publics des nœuds : PVE1 et PVE2, seuls utilisés sur le site et dans ce repo (les noms internes restent dans le repo privé du lab). Identifiants du catalogue alignés : `pve1`, `pve2` (matériel), `proxmox-pve1` (hyperviseur). Exception à l'historique immuable : ADR-0002 et journal 001, publiés le jour même et avant l'annonce du site, sont réécrits avec ces noms. Switch corrigé : 5 ports. Schémas `lab-network` et `lab-physical`, shortcode `diagram`, export par `scripts/diagrams/render.py` ; accueil élargi à `--nav-width` pour la lisibilité du schéma. Exceptions de publication sur l'arrivée d'Internet (§10) | PR `docs/diagrams-pve-naming` |
 | 2026-10-25 | Section Incidents repassée en brouillon tant qu'aucun incident n'existe. Titre des entrées du journal : « Semaine N — … » (« Week N — … »), prérempli par l'archetype ; le préfixe S01 disparaît de l'accueil | PR `docs/diagrams-pve-naming` |
 | 2026-10-25 | Feuille de route affichée sur la page Infrastructure (shortcode `roadmap`, livré en avance sur 5.2) ; compteurs par statut retirés de l'accueil ; résumé explicite (`summary`) pour les pages de groupe | PR `docs/diagrams-pve-naming` |
+| 2026-10-25 | Sauvegardes et supervision : plus mentionnées sur le site tant qu'elles ne sont pas en place ; `backup` et `monitoring` deviennent optionnels dans le catalogue (§6.3) | PR `docs/diagrams-pve-naming` |
 
 ---
 

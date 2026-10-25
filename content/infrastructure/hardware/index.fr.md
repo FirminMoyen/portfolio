@@ -18,10 +18,6 @@ Le lab repose sur deux ordinateurs portables Dell. PVE1 porte l'infrastructure d
 
 PVE1 est en service : Proxmox VE y est installé directement sur le matériel (voir la page Virtualisation). PVE2 n'est pas encore installé.
 
-## Exploitation
-
-Les sauvegardes et la supervision ne sont pas encore en place : je les ai reportées.
-
 ## Limites et évolutions
 
 Tant que PVE2 n'est pas installé, PVE1 est le seul nœud du lab. L'installation de Proxmox VE sur PVE2 est la prochaine étape après celle en cours, avant la mise en cluster des deux nœuds.

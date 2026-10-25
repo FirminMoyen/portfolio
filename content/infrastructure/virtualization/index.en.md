@@ -20,8 +20,6 @@ I installed Proxmox VE directly on PVE1, with ZFS on the machine's single disk a
 
 Administration interfaces are not exposed to the internet and are reachable through the VPN. Proxmox VE's web interface uses local accounts, without 2FA.
 
-Backups and monitoring are not in place yet: I have deferred them.
-
 The current step is about remote administration without physical access: host hardening and a full remote reboot test.
 
 ## Limits and next steps

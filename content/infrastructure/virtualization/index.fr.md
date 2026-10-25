@@ -20,8 +20,6 @@ J'ai installé Proxmox VE directement sur PVE1, avec ZFS sur le seul disque de l
 
 Interfaces d'administration non exposées sur Internet, accessibles par le VPN. Celle de Proxmox VE utilise des comptes locaux, sans 2FA.
 
-Les sauvegardes et la supervision ne sont pas encore en place : je les ai reportées.
-
 L'étape en cours porte sur l'administration à distance sans accès physique : durcissement de l'hôte et test de redémarrage complet à distance.
 
 ## Limites et évolutions

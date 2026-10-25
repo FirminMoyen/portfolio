@@ -28,8 +28,6 @@ For remote access, I chose Tailscale after comparing it with Headscale and NetBi
 
 Administration interfaces are not exposed to the internet and are reachable through the VPN. OPNsense's web interface uses local accounts, without 2FA.
 
-Backups and monitoring are not in place yet: I have deferred them.
-
 ## Limits and next steps
 
 On FreeBSD, the Tailscale plugin runs in userspace, so OPNsense's firewall does not see traffic coming from the VPN. For now, isolation relies on the VPN's access policy and on advertising only the lab's route. One option is under study: moving the subnet router into a Linux VM, behind the firewall.

@@ -9,12 +9,4 @@ runtime:
   kind: hardware
 deploy:
   method: manual
-backup:
-  method: none
-  note: {fr: "Reporté, voir la feuille de route.", en: "Deferred, see the roadmap."}
-monitoring:
-  metrics: false
-  logs: false
-  alerts: false
-  note: {fr: "Reporté, voir la feuille de route.", en: "Deferred, see the roadmap."}
 verified: 2026-10-25
