@@ -130,11 +130,14 @@ h1, h2, h3, .post-title, .entry-header h2 { letter-spacing: -0.02em; }
 
 /* Schémas (architecture §11.6) : accueil et shortcode diagram. Un clic ouvre le SVG en pleine taille. */
 .lab-diagram, .diagram { position: relative; margin: 16px 0 0; }
-.lab-diagram a, .diagram a { display: block; box-shadow: none !important; text-decoration: none !important; }
+.lab-diagram a, .diagram a { box-shadow: none !important; text-decoration: none !important; }
 .lab-diagram img, .diagram img { width: 100%; border: 1px solid var(--border); border-radius: 10px; }
 .lab-diagram figcaption, .diagram figcaption { margin-top: 6px; font-size: 13px; color: var(--secondary); text-align: center; }
 .lab-diagram .badge { position: absolute; top: 10px; left: 10px; }
-.post-content .diagram { margin: 24px 0; }
+/* Dans une page, le schéma déborde de la colonne de texte jusqu'à la largeur du menu. */
+.post-content .diagram { margin: 24px 0; width: min(var(--nav-width), 100vw - var(--gap) * 2); position: relative; left: 50%; transform: translateX(-50%); }
+.post-content .diagram figcaption { margin: 6px 0 0; font-size: 13px; font-weight: 400; color: var(--secondary); }
+.diagram-light { display: block; }
 .diagram-dark { display: none; }
 html[data-theme="dark"] .diagram-light { display: none; }
 html[data-theme="dark"] .diagram-dark { display: block; }
