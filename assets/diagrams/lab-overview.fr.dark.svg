@@ -1,5 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1280" height="760" viewBox="0 0 1280 760" role="img" aria-labelledby="t d" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif">
-<title id="t">Vue d'ensemble du lab</title><desc id="d">Schéma du lab : mes appareils rejoignent par un tunnel chiffré Tailscale, sur OPNsense dans Hermes ; OPNsense dessert le switch sw-01 et Atlas (prévu) ; réseau 10.42.0.0/16 isolé du réseau domestique.</desc>
+<title id="t">Vue d'ensemble du lab</title><desc id="d">Schéma du lab : mes appareils rejoignent le lab par un tunnel chiffré Tailscale, qui aboutit sur OPNsense dans Hermes ; OPNsense dessert le switch sw-01 et Atlas (prévu) ; réseau 10.42.0.0/16 isolé du réseau domestique.</desc>
 <defs>
 <marker id="a" orient="auto" markerWidth="5" markerHeight="5" refX="2" refY="2" overflow="visible"><path d="M0 0 L4 2 L0 4 Z" fill="#9da7b3"/></marker>
 <marker id="p" orient="auto" markerWidth="5" markerHeight="5" refX="2" refY="2" overflow="visible"><path d="M0 0 L4 2 L0 4 Z" fill="#6e7681"/></marker>

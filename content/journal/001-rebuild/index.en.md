@@ -18,11 +18,11 @@ Rebuild the lab from scratch, starting with the hypervisor, the lab network and 
 
 ## Done
 
-- In mid-October 2026, I started rebuilding the lab from scratch; the old lab was wiped.
+- In mid-October 2026, I started rebuilding the lab from scratch.
 - Installed Proxmox VE 9.2 on Hermes.
 - OPNsense as a VM on Hermes, and the lab network `10.42.0.0/24`. The previous lab already used this principle, a virtualised OPNsense in front of a network of the lab's own; the rebuild keeps it.
 - Remote access through Tailscale, with a subnet router on OPNsense.
-- **Netstack mode required on FreeBSD.** On FreeBSD, the Tailscale plugin runs in userspace, so OPNsense's firewall does not see traffic coming from the VPN. For now, isolation relies on the VPN's access policy and on advertising only the lab's route. One option is under study: moving the subnet router into a Linux VM, behind the firewall.
+- **Tailscale plugin limit on FreeBSD.** On FreeBSD, the Tailscale plugin runs in userspace, so OPNsense's firewall does not see traffic coming from the VPN. For now, isolation relies on the VPN's access policy and on advertising only the lab's route. One option is under study: moving the subnet router into a Linux VM, behind the firewall.
 - Tests over 4G: the lab is reachable, the home network is not.
 
 ## Problems and fixes

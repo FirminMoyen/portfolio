@@ -32,7 +32,7 @@ TEXT = {
         home=("Réseau domestique", ["hors du lab, jamais", "accessible par le VPN"]),
         tunnel="tunnel chiffré", lan="LAN du lab", exposed="Rien n'est exposé sur Internet.",
         running="En service", planned="Prévu",
-        desc="Schéma du lab : mes appareils rejoignent par un tunnel chiffré Tailscale, sur OPNsense dans Hermes ; "
+        desc="Schéma du lab : mes appareils rejoignent le lab par un tunnel chiffré Tailscale, qui aboutit sur OPNsense dans Hermes ; "
              "OPNsense dessert le switch sw-01 et Atlas (prévu) ; réseau 10.42.0.0/16 isolé du réseau domestique.",
     ),
     "en": dict(

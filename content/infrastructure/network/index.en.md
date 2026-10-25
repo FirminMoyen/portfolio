@@ -21,7 +21,7 @@ For remote access, I chose Tailscale after comparing it with Headscale and NetBi
 
 ## Operations
 
-Administration interfaces are not exposed to the internet and are reachable through the VPN. OPNsense's uses local accounts, without 2FA.
+Administration interfaces are not exposed to the internet and are reachable through the VPN. OPNsense's web interface uses local accounts, without 2FA.
 
 Backups and monitoring are not in place yet: I have deferred them.
 

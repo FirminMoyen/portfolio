@@ -17,7 +17,7 @@ I installed Proxmox VE directly on Hermes, with ZFS on the machine's single disk
 
 ## Operations
 
-Administration interfaces are not exposed to the internet and are reachable through the VPN. Proxmox VE's uses local accounts, without 2FA.
+Administration interfaces are not exposed to the internet and are reachable through the VPN. Proxmox VE's web interface uses local accounts, without 2FA.
 
 Backups and monitoring are not in place yet: I have deferred them.
 
