@@ -147,6 +147,11 @@ html[data-theme="dark"] .diagram-dark { display: block; }
 }
 
 .stack-groups { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 12px 28px; }
+/* Le titre du groupe (seul élément cliquable) se distingue nettement des composants listés dessous. */
+.home-block .stack-group h3 { font-size: 16px; font-weight: 600; color: var(--primary); margin-bottom: 4px; padding-bottom: 8px; border-bottom: 2px solid var(--border); }
+.home-block .stack-group h3 a { color: var(--primary); text-decoration: none; }
+.home-block .stack-group h3 a:hover { color: var(--accent); }
+.stack-name { color: var(--secondary); }
 .stack-group li { display: flex; justify-content: space-between; align-items: center; gap: 8px; padding: 6px 0; border-bottom: 1px solid var(--border); font-size: 15px; }
 .stack-group li:last-child { border-bottom: none; }
 
