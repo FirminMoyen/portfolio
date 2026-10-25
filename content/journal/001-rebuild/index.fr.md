@@ -34,7 +34,8 @@ Reconstruire le lab de zéro, en commençant par l'hyperviseur, le réseau du la
 - Le lab est isolé du réseau domestique derrière une VM OPNsense sur Hermes : [ADR-0002]({{< relref "/infrastructure/decisions/adr-0002-lab-isolated-opnsense" >}}).
 - L'accès distant au lab passe par Tailscale : [ADR-0001]({{< relref "/infrastructure/decisions/adr-0001-remote-access-tailscale" >}}).
 
-## Semaine prochaine
+## Prochaines étapes
 
 - Terminer l'étape 4 de la feuille de route : durcissement de l'hôte et test de redémarrage complet à distance.
 - Installer Proxmox VE sur Atlas.
+- Former le cluster Proxmox à deux nœuds, sans HA.

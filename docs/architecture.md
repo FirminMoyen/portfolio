@@ -367,11 +367,11 @@ backup:     {label: {fr: "Sauvegarde", en: "Backup"}}
 - id: foundations              # EXEMPLE — Firmin fournit les phases réelles
   title: {fr: "…", en: "…"}
   status: in-progress          # planned | in-progress | done
-  started: 2026-10-12          # requis si in-progress ou done
-  finished:                    # requis si done
   goals:                       # objectifs vérifiables
     - {fr: "…", en: "…"}
 ```
+
+La feuille de route ne porte pas de dates (décision de Firmin du 25/10/2026) : la chronologie se lit dans le journal, semaine par semaine. Les étapes donnent seulement l'ordre et le statut.
 
 ---
 
@@ -946,6 +946,7 @@ Le site dépend de comptes et de services extérieurs au repo. C'est là qu'est 
 | 2026-10-15 | Gouvernance (décidée et modifiée par Firmin) : une branche et une PR par session de travail, un commit à chaque changement, PR en fin de session sur demande ; Claude Code peut fusionner sur demande explicite (`gh pr merge` retiré des interdits, confirmation à chaque fois) | PR `feat/style-editorial` |
 | 2026-10-25 | D6 : trois groupes d'infrastructure, dans cet ordre : `hardware` (Matériel / Hardware), `network` (Réseau / Network), `virtualization` (Virtualisation / Virtualization). Les autres groupes de la proposition du §6.4 seront ajoutés quand ils auront du contenu ; aucun groupe de services tant qu'aucun service n'existe | PR `docs/first-public-content` |
 | 2026-10-25 | Fin de l'exception à §9.2 : contenu d'exemple retiré, vraies données publiées (catalogue, groupes, feuille de route, ADR-0001 et 0002, journal 001), bandeau « site en construction » désactivé | PR `docs/first-public-content` |
+| 2026-10-25 | Feuille de route sans dates (§6.7) : `started` et `finished` retirés du schéma, la chronologie vit dans le journal ; l'entrée 001 couvre tout ce qui a été fait avant le 25/10/2026 | PR `docs/first-public-content` |
 | 2026-10-25 | Schémas conçus dans Claude Design au lieu de D2 (§11.6) : canvas privé validé par Firmin, export SVG par langue et par thème via `scripts/diagrams/`. Premier schéma : `lab-overview` sur l'accueil | PR `docs/first-public-content` |
 
 ---

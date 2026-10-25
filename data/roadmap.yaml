@@ -1,24 +1,16 @@
 # Feuille de route du lab (architecture §6.7). Après l'étape 6, l'ordre n'est pas fixé.
-# TODO(firmin): dates de début (started) et de fin (finished) des étapes 1 à 4, requises par §6.7.
 - id: proxmox-hermes
   title: {fr: "Proxmox VE sur Hermes", en: "Proxmox VE on Hermes"}
   status: done
-  started:
-  finished:
 - id: opnsense-network
   title: {fr: "OPNsense et réseau du lab", en: "OPNsense and the lab network"}
   status: done
-  started:
-  finished:
 - id: remote-access
   title: {fr: "Accès distant par Tailscale", en: "Remote access with Tailscale"}
   status: done
-  started:
-  finished:
 - id: remote-administration
   title: {fr: "Administration à distance sans accès physique", en: "Remote administration without physical access"}
   status: in-progress
-  started:
   goals:
     - {fr: "Durcissement de l'hôte", en: "Host hardening"}
     - {fr: "Test de redémarrage complet à distance", en: "Full remote reboot test"}
