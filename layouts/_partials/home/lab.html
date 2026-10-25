@@ -8,8 +8,9 @@
 {{- end }}
 {{- $phase := false }}
 {{- with hugo.Data.roadmap }}{{ with where . "status" "in-progress" }}{{ $phase = index . 0 }}{{ end }}{{ end }}
-{{- $light := resources.Get "diagrams/lab-overview.light.svg" }}
-{{- $dark := resources.Get "diagrams/lab-overview.dark.svg" }}
+{{- $lang := site.Language.Lang }}
+{{- $light := resources.Get (printf "diagrams/lab-overview.%s.light.svg" $lang) }}
+{{- $dark := resources.Get (printf "diagrams/lab-overview.%s.dark.svg" $lang) }}
 {{- $infra := site.GetPage "/infrastructure" }}
 {{- $services := site.GetPage "/services" }}
 
