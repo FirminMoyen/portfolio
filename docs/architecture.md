@@ -204,7 +204,7 @@ Fiche technique, rendue par le même partial pour les services et pour les carte
 - `date` = dernier jour de la semaine couverte (en pratique, le jour de publication). Une entrée rattrapée garde la date de sa semaine.
 - Gabarit fixe (Annexe A.1) : Objectif, Réalisé, Problèmes et résolution, Décisions, Appris, Semaine prochaine.
 - Chaque entrée déclare `components`, `adrs`, `tags` et `certifications`.
-- Liste (`/journal/`) : toutes les entrées, post-mortems compris, de la plus récente à la plus ancienne. Pour chacune : numéro (S07 ou PM-002), date, titre, description, tags. Pagination par 10, flux RSS.
+- Liste (`/journal/`) : toutes les entrées, post-mortems compris, de la plus récente à la plus ancienne. Pour chacune : date, titre (une entrée hebdomadaire commence par « Semaine N — » / « Week N — », un post-mortem garde son numéro PM-002), description, tags. Pagination par 10, flux RSS.
 - Page : numéro et titre, date, description, tags et certifications, composants concernés, ADR liées, corps, navigation précédente/suivante.
 - Le post LinkedIn de la semaine résume l'entrée et y renvoie (§16.1).
 
@@ -606,7 +606,7 @@ Le shortcode `component` et la liste des composants d'une entrée ne créent un 
 
 ### 11.4 Chaînes d'interface
 
-`i18n/fr.yaml` et `i18n/en.yaml` contiennent toutes les chaînes d'interface : statuts, valeurs des énumérations, intitulés de la fiche technique, boutons, numéros de semaine (« S%02d » / « W%02d »). Aucun texte écrit en dur dans un template.
+`i18n/fr.yaml` et `i18n/en.yaml` contiennent toutes les chaînes d'interface : statuts, valeurs des énumérations, intitulés de la fiche technique, boutons, numéros de post-mortem (« PM-%03d »). Le numéro de semaine est écrit dans le titre de l'entrée, prérempli par l'archetype. Aucun texte écrit en dur dans un template.
 
 ### 11.5 CSS
 
@@ -951,6 +951,7 @@ Le site dépend de comptes et de services extérieurs au repo. C'est là qu'est 
 | 2026-10-25 | Feuille de route sans dates (§6.7) : `started` et `finished` retirés du schéma, la chronologie vit dans le journal ; l'entrée 001 couvre tout ce qui a été fait avant le 25/10/2026 | PR `docs/first-public-content` |
 | 2026-10-25 | Schémas conçus dans Claude Design au lieu de D2 (§11.6) : canvas privé validé par Firmin, export SVG par langue et par thème via `scripts/diagrams/`. Premier schéma : `lab-overview` sur l'accueil | PR `docs/first-public-content` |
 | 2026-10-25 | Noms publics des nœuds : PVE1 et PVE2, seuls utilisés sur le site et dans ce repo (les noms internes restent dans le repo privé du lab). Identifiants du catalogue alignés : `pve1`, `pve2` (matériel), `proxmox-pve1` (hyperviseur). Exception à l'historique immuable : ADR-0002 et journal 001, publiés le jour même et avant l'annonce du site, sont réécrits avec ces noms. Switch corrigé : 5 ports. Schémas `lab-network` et `lab-physical`, shortcode `diagram`, export par `scripts/diagrams/render.py` ; accueil élargi à `--nav-width` pour la lisibilité du schéma. Exceptions de publication sur l'arrivée d'Internet (§10) | PR `docs/diagrams-pve-naming` |
+| 2026-10-25 | Section Incidents repassée en brouillon tant qu'aucun incident n'existe. Titre des entrées du journal : « Semaine N — … » (« Week N — … »), prérempli par l'archetype ; le préfixe S01 disparaît de l'accueil | PR `docs/diagrams-pve-naming` |
 
 ---
 

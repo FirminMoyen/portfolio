@@ -1,5 +1,5 @@
 ---
-title: ""
+title: "Week {{ index (split .File.ContentBaseName "-") 0 | strings.TrimLeft "0" | int }} — "
 date: {{ now.Format "2006-01-02" }}
 draft: true
 description: ""

@@ -19,7 +19,6 @@ homePostmortem: "Post-mortem"
 homeAllEntries: "All journal entries"
 homeRss: "RSS feed"
 homeCertifications: "Certifications"
-weekPrefix: "W"
 
 # Component statuses (architecture §6.2)
 status_planned: "Planned"

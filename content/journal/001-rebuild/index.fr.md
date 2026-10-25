@@ -1,5 +1,5 @@
 ---
-title: "Reconstruction : Proxmox, OPNsense et accès distant"
+title: "Semaine 1 — Reconstruction : Proxmox, OPNsense et accès distant"
 date: 2026-10-25
 draft: false
 description: "Le lab repart de zéro : Proxmox VE sur PVE1, réseau du lab derrière OPNsense, accès distant par Tailscale."

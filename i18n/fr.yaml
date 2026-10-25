@@ -19,7 +19,6 @@ homePostmortem: "Post-mortem"
 homeAllEntries: "Tout le journal"
 homeRss: "Flux RSS"
 homeCertifications: "Certifications"
-weekPrefix: "S"
 
 # Statuts des composants (architecture §6.2)
 status_planned: "Prévu"
