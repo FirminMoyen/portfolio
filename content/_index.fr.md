@@ -8,4 +8,4 @@ menus:
     weight: 10
 ---
 
-Un homelab reconstruit de zéro, avec le matériel existant et sans budget, et documenté chaque semaine. Il sert à apprendre, à préparer des certifications et à appliquer les pratiques d'exploitation du métier : sécurité, maintenance, disponibilité. Rien n'y est exposé sur Internet.
+Bienvenue sur la vitrine de mon homelab Proxmox ! J'y reconstruis pas à pas une petite infrastructure à la maison, avec du matériel que j'avais déjà, pour apprendre en pratiquant et me préparer aux certifications. Chaque semaine, je raconte ici ce que j'ai construit, les choix que j'ai faits et ce que j'en retiens.
