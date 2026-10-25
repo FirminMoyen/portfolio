@@ -480,7 +480,7 @@ Le dossier est créé avec les deux fichiers en brouillon, selon les gabarits de
 - Claude Code NE DOIT PAS ajouter un fait absent de ce que Firmin a fourni ou de ce qui est vérifiable dans le repo du lab : ni commande, ni version, ni chiffre, ni résultat, ni difficulté, ni leçon.
 - Une information manque : la demander. Dans un brouillon, la marquer `TODO(firmin): <question>`. Le build refuse tout `TODO(firmin)` dans une page publiée (V11).
 - `verified` et `backup.restore_tested` ne changent que sur indication explicite de Firmin.
-- **Exception temporaire (décidée par Firmin le 14/10/2026).** Le site est publié avec du contenu d'exemple fictif, marqué « EXEMPLE » / « (exemple) » : présentation, profil, catalogue, groupes, feuille de route, certifications, schéma, entrées du journal, post-mortem, fiches et pages de groupe. Un bandeau en haut de chaque page (`params.underConstruction`) signale que le contenu est provisoire et en partie fictif. Ce contenu est remplacé par les vraies données de Firmin, et le bandeau retiré, au plus tard à la première vraie entrée du journal (3.3).
+- **Exception temporaire (décidée par Firmin le 14/10/2026).** Le site est publié avec du contenu d'exemple fictif, marqué « EXEMPLE » / « (exemple) » : présentation, profil, catalogue, groupes, feuille de route, certifications, schéma, entrées du journal, post-mortem, fiches et pages de groupe. Un bandeau en haut de chaque page (`params.underConstruction`) signale que le contenu est provisoire et en partie fictif. Ce contenu est remplacé par les vraies données de Firmin, et le bandeau retiré, au plus tard à la première vraie entrée du journal (3.3). **Close le 25/10/2026** : tout le contenu d'exemple est retiré ou remplacé, le bandeau est désactivé (`underConstruction = false`).
 
 ### 9.3 Historique immuable
 
@@ -945,6 +945,7 @@ Le site dépend de comptes et de services extérieurs au repo. C'est là qu'est 
 | 2026-10-15 | Style « éditorial » (proposition C) : palette claire et sombre redéfinie dans `site.css`, chiffres clés en cartes sur l'accueil, thème par défaut selon le système du visiteur, bascule clair/sombre conservée | PR `feat/style-editorial` |
 | 2026-10-15 | Gouvernance (décidée et modifiée par Firmin) : une branche et une PR par session de travail, un commit à chaque changement, PR en fin de session sur demande ; Claude Code peut fusionner sur demande explicite (`gh pr merge` retiré des interdits, confirmation à chaque fois) | PR `feat/style-editorial` |
 | 2026-10-25 | D6 : trois groupes d'infrastructure, dans cet ordre : `hardware` (Matériel / Hardware), `network` (Réseau / Network), `virtualization` (Virtualisation / Virtualization). Les autres groupes de la proposition du §6.4 seront ajoutés quand ils auront du contenu ; aucun groupe de services tant qu'aucun service n'existe | PR `docs/first-public-content` |
+| 2026-10-25 | Fin de l'exception à §9.2 : contenu d'exemple retiré, vraies données publiées (catalogue, groupes, feuille de route, ADR-0001 et 0002, journal 001), bandeau « site en construction » désactivé | PR `docs/first-public-content` |
 | 2026-10-25 | Schémas conçus dans Claude Design au lieu de D2 (§11.6) : canvas privé validé par Firmin, export SVG par langue et par thème via `scripts/diagrams/`. Premier schéma : `lab-overview` sur l'accueil | PR `docs/first-public-content` |
 
 ---
