@@ -315,13 +315,20 @@ Tout `none` se justifie. `auth.method: none`, `backup.method: none` et une super
 
 L'ordre de la liste est l'ordre d'affichage. La page d'un groupe d'infrastructure (FR et EN) devient obligatoire dès qu'un de ses composants passe en construction (V10).
 
-Les groupes d'infrastructure ne sont pas encore décidés (D6) : la liste `infrastructure` ci-dessous est une proposition de départ, pas une décision. Aucune page de groupe n'existe tant que D6 n'est pas tranchée.
+Les groupes d'infrastructure sont fixés par D6 (tranchée le 25/10/2026, §17.2) : trois groupes, dans cet ordre. Les autres groupes de la proposition de départ (stockage et sauvegardes, identité et sécurité, Kubernetes, automatisation) seront ajoutés quand ils auront du contenu. Aucun groupe de services n'est déclaré tant qu'aucun service n'existe : la liste `service` reste vide.
 
 ```yaml
-infrastructure:                # PROPOSITION, à trancher (D6)
+infrastructure:
   - {id: hardware,          label: {fr: "Matériel",                en: "Hardware"}}
   - {id: network,           label: {fr: "Réseau",                  en: "Network"}}
   - {id: virtualization,    label: {fr: "Virtualisation",          en: "Virtualization"}}
+service: []
+```
+
+Proposition de départ pour les groupes encore à venir (à ajouter le jour où ils ont du contenu) :
+
+```yaml
+infrastructure:
   - {id: storage-backup,    label: {fr: "Stockage et sauvegardes", en: "Storage and backup"}}
   - {id: identity-security, label: {fr: "Identité et sécurité",    en: "Identity and security"}}
   - {id: kubernetes,        label: {fr: "Kubernetes",              en: "Kubernetes"}}
@@ -913,7 +920,7 @@ Le site dépend de comptes et de services extérieurs au repo. C'est là qu'est 
 | D3 | Repo du lab : nom, public ou privé ? | `FirminMoyen/homelab`, public, avec les secrets chiffrés (SOPS/age) : les fiches peuvent alors pointer vers le code (plan du lab, LD9). En attendant, `deploy.code` reste vide. | Liens « code » des fiches |
 | D4 | Contact public : adresse principale ou alias dédié ? | Un alias dédié sur le domaine, remplaçable en cas de spam. CV public sans adresse, téléphone ni date de naissance. | 5.3 |
 | D5 | Supprimer `layouts-maison/` et `assets/css/main.css` ? | Oui : l'historique git les conserve. | 0.4 |
-| D6 | Quels groupes d'infrastructure (identifiants, libellés, ordre) ? | Partir de la proposition du §6.4 et l'ajuster une fois le matériel et la topologie du lab connus. Chaque groupe retenu reçoit sa page (P04) en brouillon. | 2.1 (`data/groups.yaml`), pages de groupe |
+| D6 | Quels groupes d'infrastructure (identifiants, libellés, ordre) ? | **Tranchée le 25/10/2026 : `hardware`, `network`, `virtualization`** (§6.4, §17.2). Les autres groupes de la proposition seront ajoutés quand ils auront du contenu. | 2.1 (`data/groups.yaml`), pages de groupe |
 
 ### 17.2 Historique des décisions du site
 
@@ -936,6 +943,7 @@ Le site dépend de comptes et de services extérieurs au repo. C'est là qu'est 
 | 2026-10-15 | L'accueil ne présente plus que le projet ; tout ce qui concerne Firmin (profil, CV, certifications, contact) passe sur la page « À propos de moi » / « About me », déplacée de `/about/` à `/about-me/` (alias Hugo pour `/fr/about/` et `/en/about/`, redirection `static/` pour `/about/`) | PR `feat/about-me` |
 | 2026-10-15 | Style « éditorial » (proposition C) : palette claire et sombre redéfinie dans `site.css`, chiffres clés en cartes sur l'accueil, thème par défaut selon le système du visiteur, bascule clair/sombre conservée | PR `feat/style-editorial` |
 | 2026-10-15 | Gouvernance (décidée et modifiée par Firmin) : une branche et une PR par session de travail, un commit à chaque changement, PR en fin de session sur demande ; Claude Code peut fusionner sur demande explicite (`gh pr merge` retiré des interdits, confirmation à chaque fois) | PR `feat/style-editorial` |
+| 2026-10-25 | D6 : trois groupes d'infrastructure, dans cet ordre : `hardware` (Matériel / Hardware), `network` (Réseau / Network), `virtualization` (Virtualisation / Virtualization). Les autres groupes de la proposition du §6.4 seront ajoutés quand ils auront du contenu ; aucun groupe de services tant qu'aucun service n'existe | PR `docs/first-public-content` |
 
 ---
 
