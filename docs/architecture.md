@@ -315,13 +315,20 @@ Tout `none` se justifie. `auth.method: none`, `backup.method: none` et une super
 
 L'ordre de la liste est l'ordre d'affichage. La page d'un groupe d'infrastructure (FR et EN) devient obligatoire dès qu'un de ses composants passe en construction (V10).
 
-Les groupes d'infrastructure ne sont pas encore décidés (D6) : la liste `infrastructure` ci-dessous est une proposition de départ, pas une décision. Aucune page de groupe n'existe tant que D6 n'est pas tranchée.
+Les groupes d'infrastructure sont fixés par D6 (tranchée le 25/10/2026, §17.2) : trois groupes, dans cet ordre. Les autres groupes de la proposition de départ (stockage et sauvegardes, identité et sécurité, Kubernetes, automatisation) seront ajoutés quand ils auront du contenu. Aucun groupe de services n'est déclaré tant qu'aucun service n'existe : la liste `service` reste vide.
 
 ```yaml
-infrastructure:                # PROPOSITION, à trancher (D6)
+infrastructure:
   - {id: hardware,          label: {fr: "Matériel",                en: "Hardware"}}
   - {id: network,           label: {fr: "Réseau",                  en: "Network"}}
   - {id: virtualization,    label: {fr: "Virtualisation",          en: "Virtualization"}}
+service: []
+```
+
+Proposition de départ pour les groupes encore à venir (à ajouter le jour où ils ont du contenu) :
+
+```yaml
+infrastructure:
   - {id: storage-backup,    label: {fr: "Stockage et sauvegardes", en: "Storage and backup"}}
   - {id: identity-security, label: {fr: "Identité et sécurité",    en: "Identity and security"}}
   - {id: kubernetes,        label: {fr: "Kubernetes",              en: "Kubernetes"}}
@@ -360,11 +367,11 @@ backup:     {label: {fr: "Sauvegarde", en: "Backup"}}
 - id: foundations              # EXEMPLE — Firmin fournit les phases réelles
   title: {fr: "…", en: "…"}
   status: in-progress          # planned | in-progress | done
-  started: 2026-10-12          # requis si in-progress ou done
-  finished:                    # requis si done
   goals:                       # objectifs vérifiables
     - {fr: "…", en: "…"}
 ```
+
+La feuille de route ne porte pas de dates (décision de Firmin du 25/10/2026) : la chronologie se lit dans le journal, semaine par semaine. Les étapes donnent seulement l'ordre et le statut.
 
 ---
 
@@ -442,7 +449,7 @@ Le dossier est créé avec les deux fichiers en brouillon, selon les gabarits de
 - Dans le dossier de la page, référencées en relatif, avec un texte alternatif obligatoire (V12).
 - PNG, JPG, WebP ou SVG, 1 Mo au plus (contrôle CI).
 - Chaque capture est relue avant commit (§10). Aucune métadonnée GPS (contrôle CI).
-- Les schémas ne sont pas des images de page : ce sont des sources D2 (§11.6).
+- Les schémas ne sont pas des images de page : ils sont conçus dans Claude Design et exportés en SVG (§11.6).
 
 ---
 
@@ -473,7 +480,7 @@ Le dossier est créé avec les deux fichiers en brouillon, selon les gabarits de
 - Claude Code NE DOIT PAS ajouter un fait absent de ce que Firmin a fourni ou de ce qui est vérifiable dans le repo du lab : ni commande, ni version, ni chiffre, ni résultat, ni difficulté, ni leçon.
 - Une information manque : la demander. Dans un brouillon, la marquer `TODO(firmin): <question>`. Le build refuse tout `TODO(firmin)` dans une page publiée (V11).
 - `verified` et `backup.restore_tested` ne changent que sur indication explicite de Firmin.
-- **Exception temporaire (décidée par Firmin le 14/10/2026).** Le site est publié avec du contenu d'exemple fictif, marqué « EXEMPLE » / « (exemple) » : présentation, profil, catalogue, groupes, feuille de route, certifications, schéma, entrées du journal, post-mortem, fiches et pages de groupe. Un bandeau en haut de chaque page (`params.underConstruction`) signale que le contenu est provisoire et en partie fictif. Ce contenu est remplacé par les vraies données de Firmin, et le bandeau retiré, au plus tard à la première vraie entrée du journal (3.3).
+- **Exception temporaire (décidée par Firmin le 14/10/2026).** Le site est publié avec du contenu d'exemple fictif, marqué « EXEMPLE » / « (exemple) » : présentation, profil, catalogue, groupes, feuille de route, certifications, schéma, entrées du journal, post-mortem, fiches et pages de groupe. Un bandeau en haut de chaque page (`params.underConstruction`) signale que le contenu est provisoire et en partie fictif. Ce contenu est remplacé par les vraies données de Firmin, et le bandeau retiré, au plus tard à la première vraie entrée du journal (3.3). **Close le 25/10/2026** : tout le contenu d'exemple est retiré ou remplacé, le bandeau est désactivé (`underConstruction = false`).
 
 ### 9.3 Historique immuable
 
@@ -608,9 +615,10 @@ Style retenu le 15/10/2026 : « éditorial ». Fond papier, grande typographie, 
 
 ### 11.6 Schémas
 
-- Source en D2 (`assets/diagrams/<nom>.d2`), version épinglée (§13.1). Rendu en deux SVG commités à côté de la source, `<nom>.light.svg` et `<nom>.dark.svg`, pour qu'ils apparaissent dans le diff des PR.
-- Rendu par `scripts/render-diagrams.sh`. La CI refait le rendu et échoue si les SVG commités diffèrent. Si le rendu n'est pas reproductible à l'octet près, le contrôle se limite à « rendu sans erreur et deux SVG présents », et ce document est mis à jour.
-- Affichage : le shortcode `diagram` produit les deux images ; le CSS montre la bonne selon `html[data-theme]`, sans JavaScript. Le texte alternatif est obligatoire.
+- Conception dans Claude Design (décision de Firmin du 25/10/2026) : chaque schéma est dessiné et validé par Firmin sur un canvas privé, une planche par langue. Le canvas n'est pas dans le repo et n'est pas lié depuis le site.
+- Export : `scripts/diagrams/<nom>.py` reprend la mise en page validée (positions, textes FR et EN, couleurs claires et sombres) et écrit quatre SVG commités, `assets/diagrams/<nom>.<lang>.light.svg` et `<nom>.<lang>.dark.svg`, pour qu'ils apparaissent dans le diff des PR. Toute modification passe d'abord par le canvas, puis par le script. SVG statiques : aucune police externe (P8), aucun script, aucune image embarquée ; titre et description accessibles inclus.
+- Relecture : chaque schéma passe par `publication-reviewer` avant sa PR, comme tout contenu issu du lab.
+- Affichage : l'accueil choisit les SVG de la langue de la page ; le CSS montre la bonne version selon `html[data-theme]`, sans JavaScript. Le texte alternatif est obligatoire. Le shortcode `diagram` (5.1) suivra la même convention.
 - Vue logique uniquement (§10).
 - Premier schéma : `lab-overview`, sur l'accueil et sur la page Infrastructure.
 
@@ -683,7 +691,7 @@ PaperMod produit des liens absolus (`baseURL`). Pour la vérification hors ligne
 - `permissions` minimales : `contents: read` par défaut ; `pages: write` et `id-token: write` pour le seul job de déploiement.
 - Tout binaire téléchargé est vérifié par somme de contrôle.
 - `concurrency` annule les exécutions obsolètes d'une même PR.
-- Dependabot (`.github/dependabot.yml`), chaque semaine : écosystèmes `github-actions` et `gitsubmodule` (PaperMod). Hugo, D2, gitleaks et lychee se mettent à jour à la main, chaque mois (§16.5).
+- Dependabot (`.github/dependabot.yml`), chaque semaine : écosystèmes `github-actions` et `gitsubmodule` (PaperMod). Hugo, gitleaks et lychee se mettent à jour à la main, chaque mois (§16.5).
 - Modèle de PR (`.github/pull_request_template.md`) : la définition de terminé (§14.4) sous forme de cases à cocher.
 
 ### 13.4 En local
@@ -805,7 +813,7 @@ Jusqu'à la phase 4, les fiches et les pages de groupe exigées par V9 et V10 s'
 
 | Étape | Branche | Contenu | Critères d'acceptation |
 |---|---|---|---|
-| 5.1 | `feat/diagrams` | D2 dans `tools.env`, `render-diagrams.sh`, job `diagrams`, shortcode `diagram`, schéma `lab-overview` décrit par Firmin | Bon schéma selon le thème ; CI rouge si un SVG est périmé |
+| 5.1 | `feat/diagrams` | Shortcode `diagram`, job `diagrams` (quatre SVG présents et valides par schéma, export à jour). Le schéma `lab-overview` est livré en avance (25/10/2026) selon §11.6 | Bon schéma selon la langue et le thème ; CI rouge si un SVG manque ou est périmé |
 | 5.2a | `feat/home` | `home.html` et ses blocs (§5.1), badges et liens du catalogue, chaînes i18n, `params.profile` ; anticipé le 14/10/2026, avant les phases 2 à 4 | Sans données, accueil identique en production ; avec des données d'exemple locales, les cinq blocs s'affichent en FR et en EN, clair et sombre |
 | 5.2 | `feat/home-about` | Page About, shortcodes `roadmap`, `certifications`, `contact`, templates de taxonomie | Accueil lisible en un écran sur desktop ; libellés des tags corrects |
 | 5.3 | `docs/about-home` | Textes de Firmin, CV, contacts (D4), certifications, roadmap | Aucun champ provisoire publié |
@@ -859,7 +867,7 @@ Rédigé dans la semaine de l'incident, à partir de la chronologie et des faits
 - Composants non vérifiés depuis plus de 60 jours (avertissements V14) : les revoir avec Firmin et mettre à jour `verified`.
 - PR Dependabot : actions ; PaperMod selon le §16.6.
 - Rapport des liens externes.
-- Versions des outils (Hugo, D2, gitleaks, lychee) : lire les notes de version, mettre à jour `tools.env`, vérifier que le build ne produit aucun nouvel avertissement.
+- Versions des outils (Hugo, gitleaks, lychee) : lire les notes de version, mettre à jour `tools.env`, vérifier que le build ne produit aucun nouvel avertissement.
 
 ### 16.6 Mise à jour de PaperMod
 
@@ -913,7 +921,7 @@ Le site dépend de comptes et de services extérieurs au repo. C'est là qu'est 
 | D3 | Repo du lab : nom, public ou privé ? | `FirminMoyen/homelab`, public, avec les secrets chiffrés (SOPS/age) : les fiches peuvent alors pointer vers le code (plan du lab, LD9). En attendant, `deploy.code` reste vide. | Liens « code » des fiches |
 | D4 | Contact public : adresse principale ou alias dédié ? | Un alias dédié sur le domaine, remplaçable en cas de spam. CV public sans adresse, téléphone ni date de naissance. | 5.3 |
 | D5 | Supprimer `layouts-maison/` et `assets/css/main.css` ? | Oui : l'historique git les conserve. | 0.4 |
-| D6 | Quels groupes d'infrastructure (identifiants, libellés, ordre) ? | Partir de la proposition du §6.4 et l'ajuster une fois le matériel et la topologie du lab connus. Chaque groupe retenu reçoit sa page (P04) en brouillon. | 2.1 (`data/groups.yaml`), pages de groupe |
+| D6 | Quels groupes d'infrastructure (identifiants, libellés, ordre) ? | **Tranchée le 25/10/2026 : `hardware`, `network`, `virtualization`** (§6.4, §17.2). Les autres groupes de la proposition seront ajoutés quand ils auront du contenu. | 2.1 (`data/groups.yaml`), pages de groupe |
 
 ### 17.2 Historique des décisions du site
 
@@ -936,6 +944,10 @@ Le site dépend de comptes et de services extérieurs au repo. C'est là qu'est 
 | 2026-10-15 | L'accueil ne présente plus que le projet ; tout ce qui concerne Firmin (profil, CV, certifications, contact) passe sur la page « À propos de moi » / « About me », déplacée de `/about/` à `/about-me/` (alias Hugo pour `/fr/about/` et `/en/about/`, redirection `static/` pour `/about/`) | PR `feat/about-me` |
 | 2026-10-15 | Style « éditorial » (proposition C) : palette claire et sombre redéfinie dans `site.css`, chiffres clés en cartes sur l'accueil, thème par défaut selon le système du visiteur, bascule clair/sombre conservée | PR `feat/style-editorial` |
 | 2026-10-15 | Gouvernance (décidée et modifiée par Firmin) : une branche et une PR par session de travail, un commit à chaque changement, PR en fin de session sur demande ; Claude Code peut fusionner sur demande explicite (`gh pr merge` retiré des interdits, confirmation à chaque fois) | PR `feat/style-editorial` |
+| 2026-10-25 | D6 : trois groupes d'infrastructure, dans cet ordre : `hardware` (Matériel / Hardware), `network` (Réseau / Network), `virtualization` (Virtualisation / Virtualization). Les autres groupes de la proposition du §6.4 seront ajoutés quand ils auront du contenu ; aucun groupe de services tant qu'aucun service n'existe | PR `docs/first-public-content` |
+| 2026-10-25 | Fin de l'exception à §9.2 : contenu d'exemple retiré, vraies données publiées (catalogue, groupes, feuille de route, ADR-0001 et 0002, journal 001), bandeau « site en construction » désactivé | PR `docs/first-public-content` |
+| 2026-10-25 | Feuille de route sans dates (§6.7) : `started` et `finished` retirés du schéma, la chronologie vit dans le journal ; l'entrée 001 couvre tout ce qui a été fait avant le 25/10/2026 | PR `docs/first-public-content` |
+| 2026-10-25 | Schémas conçus dans Claude Design au lieu de D2 (§11.6) : canvas privé validé par Firmin, export SVG par langue et par thème via `scripts/diagrams/`. Premier schéma : `lab-overview` sur l'accueil | PR `docs/first-public-content` |
 
 ---
 

@@ -60,8 +60,9 @@ buildDrafts = false
   ShowCodeCopyButtons = true
   ShowPostNavLinks = true
   mainSections = ["journal"]
-  # Bandeau « site en construction » en haut de chaque page (contenu d'exemple publié).
-  underConstruction = true
+  # Bandeau « site en construction » en haut de chaque page. Retiré le 25/10/2026 :
+  # le contenu d'exemple est remplacé par les vraies données (architecture §9.2).
+  underConstruction = false
 
 # Monogramme FM à gauche du titre du site, dans l'en-tête.
 [params.label]

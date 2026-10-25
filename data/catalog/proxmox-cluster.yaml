@@ -1,0 +1,7 @@
+name: "Cluster Proxmox"
+layer: infrastructure
+group: virtualization
+status: planned
+summary:
+  fr: "Cluster Proxmox VE à deux nœuds, sans haute disponibilité."
+  en: "Two-node Proxmox VE cluster, without high availability."

@@ -67,7 +67,7 @@ Groupes de P04 : **à décider (D6, §8)**. Proposition de départ, tirée de l'
 | Menu | Entrées des pages publiées, dans l'ordre des poids (§3.5) | Aujourd'hui (1.2) |
 | Sélecteur de langue | Mène à la page traduite (surcharge existante de `header.html`) | Existant |
 | Bascule de thème | Clair / sombre (PaperMod) | Existant |
-| Bandeau « site en construction » | Au-dessus de l'en-tête, sur chaque page, tant que `params.underConstruction` vaut `true` : signale un contenu provisoire et en partie fictif (architecture §9.2, exception) | Depuis `feat/construction-banner` |
+| Bandeau « site en construction » | Au-dessus de l'en-tête, sur chaque page, tant que `params.underConstruction` vaut `true` : signale un contenu provisoire et en partie fictif (architecture §9.2, exception) | Désactivé depuis le 25/10/2026 (`false`), le partial reste disponible |
 
 ### 3.2 Fil d'Ariane
 

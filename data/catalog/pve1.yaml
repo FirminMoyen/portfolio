@@ -1,0 +1,26 @@
+name: "Proxmox VE (Hermes)"
+layer: infrastructure
+group: virtualization
+status: running
+summary:
+  fr: "Hyperviseur d'Hermes : Proxmox VE 9.2 (noyau 7.0), ZFS sur un seul disque, ARC plafonné à 1 Go, dépôt no-subscription."
+  en: "Hermes's hypervisor: Proxmox VE 9.2 (kernel 7.0), ZFS on a single disk, ARC capped at 1 GB, no-subscription repository."
+runtime:
+  kind: bare-metal
+  host: hermes
+deploy:
+  method: manual
+exposure: vpn
+auth:
+  method: local
+  mfa: false
+backup:
+  method: none
+  note: {fr: "Reporté, voir la feuille de route.", en: "Deferred, see the roadmap."}
+monitoring:
+  metrics: false
+  logs: false
+  alerts: false
+  note: {fr: "Reporté, voir la feuille de route.", en: "Deferred, see the roadmap."}
+depends_on: [hermes]
+verified: 2026-10-25

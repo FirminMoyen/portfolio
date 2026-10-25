@@ -1,6 +1,0 @@
-# EXEMPLE publié temporairement (site en construction)
-name: "Tableaux de bord (ex.)"
-layer: service
-group: supervision
-status: building
-summary: {fr: "Composant d'exemple.", en: "Example component."}

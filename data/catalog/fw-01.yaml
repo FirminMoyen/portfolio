@@ -1,0 +1,26 @@
+name: "OPNsense"
+layer: infrastructure
+group: network
+status: running
+summary:
+  fr: "Pare-feu et routeur du lab, qui isole le lab du réseau domestique."
+  en: "The lab's firewall and router, isolating the lab from the home network."
+runtime:
+  kind: vm
+  host: pve1
+deploy:
+  method: manual
+exposure: vpn
+auth:
+  method: local
+  mfa: false
+backup:
+  method: none
+  note: {fr: "Reporté, voir la feuille de route.", en: "Deferred, see the roadmap."}
+monitoring:
+  metrics: false
+  logs: false
+  alerts: false
+  note: {fr: "Reporté, voir la feuille de route.", en: "Deferred, see the roadmap."}
+depends_on: [pve1]
+verified: 2026-10-25

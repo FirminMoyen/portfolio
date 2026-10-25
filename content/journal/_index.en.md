@@ -8,4 +8,4 @@ menus:
     weight: 40
 ---
 
-Under construction. The homelab is being rebuilt from scratch; this page will fill up week by week.
+The homelab is being rebuilt from scratch. Each week, an entry covers what was done, the problems met and the decisions taken.

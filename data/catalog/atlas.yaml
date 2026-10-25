@@ -1,0 +1,7 @@
+name: "Atlas"
+layer: infrastructure
+group: hardware
+status: planned
+summary:
+  fr: "Dell XPS 15 (6 cœurs, 32 Go), nœud des workloads ; pas encore installé."
+  en: "Dell XPS 15 (6 cores, 32 GB), the node for workloads; not installed yet."

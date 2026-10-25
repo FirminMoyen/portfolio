@@ -1,0 +1,26 @@
+name: "Tailscale"
+layer: infrastructure
+group: network
+status: running
+summary:
+  fr: "Accès distant au lab par VPN maillé : subnet router sur OPNsense, qui annonce la seule route du lab (10.42.0.0/16)."
+  en: "Remote access to the lab through a mesh VPN: a subnet router on OPNsense, advertising only the lab's route (10.42.0.0/16)."
+runtime:
+  kind: vm
+  host: fw-01
+deploy:
+  method: manual
+exposure: vpn
+auth:
+  method: sso
+  mfa: false
+backup:
+  method: none
+  note: {fr: "Reporté, voir la feuille de route.", en: "Deferred, see the roadmap."}
+monitoring:
+  metrics: false
+  logs: false
+  alerts: false
+  note: {fr: "Reporté, voir la feuille de route.", en: "Deferred, see the roadmap."}
+depends_on: [fw-01]
+verified: 2026-10-25
