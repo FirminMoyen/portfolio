@@ -1,6 +1,0 @@
-# EXEMPLE publié temporairement (site en construction)
-name: "Métriques (ex.)"
-layer: service
-group: supervision
-status: running
-summary: {fr: "Composant d'exemple.", en: "Example component."}
