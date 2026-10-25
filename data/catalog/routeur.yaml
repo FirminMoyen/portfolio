@@ -1,6 +1,0 @@
-# EXEMPLE publié temporairement (site en construction)
-name: "Routeur (ex.)"
-layer: infrastructure
-group: exemple-groupe-a
-status: running
-summary: {fr: "Composant d'exemple.", en: "Example component."}
