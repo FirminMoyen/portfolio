@@ -1,11 +1,14 @@
 {{- /* Page « À propos de moi » (architecture §5.7, docs/structure.md P13) :
-       profil, présentation (corps de la page), certifications. */ -}}
+       profil, présentation (corps de la page : parcours, homelab, façon de
+       travailler), puis contact, toujours en fin de page
+       (ancre #contact). Compétences, dates et certifications vivent dans le
+       CV (page CV), pas ici. */ -}}
 {{- define "main" }}
 <article class="post-single about-me">
   {{- partial "profile/intro.html" . }}
   {{- with .Content }}
-  <div class="post-content profile-pitch">{{ . }}</div>
+  <div class="post-content md-content profile-pitch">{{ . }}</div>
   {{- end }}
-  {{- partial "profile/certifications.html" . }}
+  {{- partial "profile/contact.html" . }}
 </article>
 {{- end }}

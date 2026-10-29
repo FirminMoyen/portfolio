@@ -1,6 +1,9 @@
 {{- /* Page CV : version HTML du CV, avec téléchargement du PDF de la langue
        courante (params.profile.cv). Colonne latérale depuis le front matter
-       (`sidebar`), parcours depuis le corps de la page. */ -}}
+       (`sidebar`), parcours depuis le corps de la page. Un élément de la colonne
+       peut porter `kind` : `email` (params.contactEmail), `linkedin`
+       (params.profile.linkedin) ou `website` (accueil du site) ; la valeur vient
+       alors de hugo.toml, jamais du front matter. */ -}}
 {{- define "main" }}
 {{- $p := site.Params.profile }}
 {{- $pdf := "" }}{{ with $p.cv }}{{ $pdf = index . site.Language.Lang }}{{ end }}
@@ -26,6 +29,13 @@
           {{- range .items }}
           <li{{ if .strong }} class="cv-strong"{{ end }}>
             {{- with .label }}<span class="cv-label">{{ . }}</span>{{ end }}
+            {{- if eq .kind "email" }}
+              {{- with site.Params.contactEmail }}<span class="cv-text"><a href="mailto:{{ . }}">{{ . }}</a></span>{{ end }}
+            {{- else if eq .kind "linkedin" }}
+              {{- with $p.linkedin }}<span class="cv-text"><a href="{{ . }}" rel="noopener">LinkedIn</a></span>{{ end }}
+            {{- else if eq .kind "website" }}
+              {{- with site.Params.siteDomain }}<span class="cv-text"><a href="https://{{ . }}{{ "" | relLangURL }}">{{ . }}</a></span>{{ end }}
+            {{- end }}
             {{- with .text }}<span class="cv-text">{{ . }}</span>{{ end }}
           </li>
           {{- end }}
