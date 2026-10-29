@@ -1,6 +1,7 @@
 ---
-title: "Homelab & Infrastructure"
-description: "A homelab rebuilt from scratch and documented every week: infrastructure, services, journal and decisions."
+title: "Firmin Moyen · Homelab"
+description: "Firmin Moyen, junior systems administrator, is rebuilding his homelab from scratch and documenting it every week. Looking for a role in Belgium or Luxembourg."
+identity: "Junior systems administrator · Looking for a role in Belgium or Luxembourg"
 menus:
   main:
     identifier: home

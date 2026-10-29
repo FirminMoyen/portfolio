@@ -1,10 +1,28 @@
-{{- /* Bloc 1 — Le projet : présentation (corps de la page d'accueil) et lien
-       vers la page À propos de moi. Rien sur la personne ici (§5.1). */ -}}
+{{- /* Bloc 1 — Le projet (architecture §5.1) : présentation (corps de la page
+       d'accueil), puis ligne d'identité (nom et `identity` du front matter) et
+       boutons CV et « Me contacter » (ancre #contact de la page À propos de
+       moi), puis liens vers « Le projet » et « À propos de moi ». */ -}}
+{{- $about := site.GetPage "/about-me" }}
+{{- $cv := partial "profile/cv-url.html" . }}
 <section class="home-intro">
   {{- with .Content }}
   <div class="home-pitch">{{ . }}</div>
   {{- end }}
-  {{- with site.GetPage "/about-me" }}
-  <p class="home-more"><a href="{{ .RelPermalink }}">{{ .Title }} →</a></p>
+  {{- with .Params.identity }}
+  <p class="home-identity"><strong>{{ site.Params.profile.name }}</strong> · {{ . }}</p>
   {{- end }}
+  {{- if or $cv $about }}
+  <p class="profile-links home-actions">
+    {{- with $cv }}
+    <a class="button" href="{{ . }}">{{ i18n "profileCv" }}</a>
+    {{- end }}
+    {{- with $about }}
+    <a class="button" href="{{ .RelPermalink }}#contact">{{ i18n "homeContactMe" }}</a>
+    {{- end }}
+  </p>
+  {{- end }}
+  <p class="home-more">
+    {{- with site.GetPage "/project" }}<a href="{{ .RelPermalink }}">{{ .Title }} →</a>{{ end }}
+    {{- with $about }}<a href="{{ .RelPermalink }}">{{ .Title }} →</a>{{ end }}
+  </p>
 </section>

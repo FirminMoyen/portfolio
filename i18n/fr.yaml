@@ -18,20 +18,12 @@ homeJournal: "Dernières entrées du journal"
 homePostmortem: "Post-mortem"
 homeAllEntries: "Tout le journal"
 homeRss: "Flux RSS"
-homeCertifications: "Certifications"
 
 # Statuts des composants (architecture §6.2)
 status_planned: "Prévu"
 status_building: "En construction"
 status_running: "En service"
 status_retired: "Retiré"
-
-# Statuts des certifications (architecture §6.6)
-cert_planned: "Prévue"
-cert_preparing: "En préparation"
-certPassed: "Obtenue le {{ .Date }}"
-certVerify: "Vérifier"
-
 
 # Bandeau « site en construction »
 constructionBanner: "Site en construction : le contenu est provisoire et en partie fictif (exemples). Il ne reflète pas encore la réalité."
@@ -52,3 +44,18 @@ cvDownload: "Télécharger le PDF"
 roadmap_done: "Fait"
 roadmap_in-progress: "En cours"
 roadmap_planned: "Prévu"
+
+# Accueil : ligne d'identité et boutons (architecture §5.1)
+homeContactMe: "Me contacter"
+
+# Page À propos de moi : bloc Contact (architecture §5.7)
+contactTitle: "Contact"
+contactIntro: "Le plus simple pour me joindre : un e-mail ou un message sur LinkedIn."
+contactEmail: "E-mail"
+
+# Pied de page (docs/structure.md §3.3)
+footerContact: "Contact :"
+footerSource: "Code source du site"
+footerPrivacy: "Sans cookies ni traceurs"
+footerBuiltWith: "Construit avec"
+footerAnd: "et"

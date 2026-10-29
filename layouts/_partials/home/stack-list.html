@@ -1,7 +1,8 @@
-{{- /* Liste de composants de la stack, triés par nom, avec badge de statut.
-       Pas de lien : seul le titre du groupe mène à une page (décision du 25/10/2026). */ -}}
+{{- /* Liste de composants de la stack, triés par nom affiché (label, dans la
+       langue courante), avec badge de statut. Pas de lien : seul le titre du
+       groupe mène à une page (décision du 25/10/2026). */ -}}
 <ul>
-  {{- range sort . "name" }}
-  <li><span class="stack-name">{{ .name }}</span> {{ partial "catalog/badge.html" .status }}</li>
+  {{- range sort . "label" }}
+  <li><span class="stack-name">{{ .label }}</span> {{ partial "catalog/badge.html" .status }}</li>
   {{- end }}
 </ul>

@@ -4,7 +4,8 @@
 {{- $items := slice }}{{ $planned := 0 }}
 {{- range $id, $c := hugo.Data.catalog }}
   {{- if in (slice "running" "building") $c.status }}
-    {{- $items = $items | append (merge $c (dict "id" $id)) }}
+    {{- /* label : nom affiché dans la langue courante (chaîne commune ou paire {fr, en}). */}}
+    {{- $items = $items | append (merge $c (dict "id" $id "label" (partial "l10n.html" $c.name))) }}
   {{- else if eq $c.status "planned" }}
     {{- $planned = add $planned 1 }}
   {{- end }}

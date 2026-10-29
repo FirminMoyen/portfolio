@@ -1,12 +1,24 @@
 {{- /*
-  Point d'extension de PaperMod (registre, architecture §11.7).
-  Lien vers le flux RSS du journal, sur toutes les pages, seulement quand la
-  section journal est construite (publiée, ou brouillon avec -D).
+  Point d'extension de PaperMod (registre, architecture §11.7) : pied de page
+  du site (docs/structure.md §3.3). Le pied de page de PaperMod est masqué
+  (params.hideFooter) ; PaperMod appelle toujours ce partial, puis ses scripts.
+  Nom, contact (params.contactEmail), code source du site (params.siteRepo),
+  flux RSS du journal (seulement quand la section est construite), mention
+  « sans cookies ni traceurs », crédit discret à Hugo et PaperMod.
 */ -}}
-{{- with site.GetPage "/journal" }}
-  {{- with .OutputFormats.Get "rss" }}
-<div class="footer footer-rss">
-    <a href="{{ .RelPermalink }}">{{ i18n "journalRss" }}</a>
-</div>
+<footer class="footer site-footer">
+  <span>&copy; {{ now.Year }} {{ site.Params.profile.name | default site.Title }}</span>
+  {{- with site.Params.contactEmail }}
+  <span>{{ i18n "footerContact" }} <a href="mailto:{{ . }}">{{ . }}</a></span>
   {{- end }}
-{{- end }}
+  {{- with site.Params.siteRepo }}
+  <span><a href="{{ . }}" rel="noopener">{{ i18n "footerSource" }}</a></span>
+  {{- end }}
+  {{- with site.GetPage "/journal" }}
+    {{- with .OutputFormats.Get "rss" }}
+  <span><a href="{{ .RelPermalink }}">{{ i18n "journalRss" }}</a></span>
+    {{- end }}
+  {{- end }}
+  <span>{{ i18n "footerPrivacy" }}</span>
+  <span>{{ i18n "footerBuiltWith" }} <a href="https://gohugo.io/" rel="noopener">Hugo</a> {{ i18n "footerAnd" }} <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener">PaperMod</a></span>
+</footer>

@@ -18,8 +18,9 @@ enableRobotsTXT = true
 # Un ref/relref cassé fait échouer le build.
 refLinksErrorLevel = "ERROR"
 
-# Titre affiché dans l'en-tête et les balises <title>.
-title = "Homelab & Infrastructure"
+# Titre affiché dans l'en-tête et les balises <title> : le nom d'abord
+# (décision du 28/10/2026, architecture §17.2).
+title = "Firmin Moyen · Homelab"
 
 # Thème PaperMod, installé en submodule dans themes/PaperMod.
 theme = ["PaperMod"]
@@ -27,17 +28,28 @@ theme = ["PaperMod"]
 # Génère les brouillons dans `hugo server -D` mais pas dans un `hugo` classique.
 buildDrafts = false
 
+# Pages d'index des taxonomies (/<lang>/tags/, /<lang>/certifications/) non
+# générées tant qu'aucune page n'utilise de tag ni de certification : elles
+# seraient vides (décision du 28/10/2026). Les pages de terme restent générées.
+# Retirer cette ligne le jour où le premier tag est utilisé.
+disableKinds = ["taxonomy"]
+
 # Français : servi sous /fr/.
+# images : image OpenGraph par défaut (1200 × 630), une par langue (architecture §11.1).
 [languages.fr]
   label = "Français"
   weight = 1
   locale = "fr-FR"
+  [languages.fr.params]
+    images = ["og-image.fr.png"]
 
 # Anglais : servi sous /en/.
 [languages.en]
   label = "English"
   weight = 2
   locale = "en-US"
+  [languages.en.params]
+    images = ["og-image.en.png"]
 
 # Menus : déclarés dans le front matter des pages, pas ici
 # (docs/structure.md §3.5). Une section en brouillon n'est pas construite,
@@ -60,6 +72,19 @@ buildDrafts = false
   ShowCodeCopyButtons = true
   ShowPostNavLinks = true
   mainSections = ["journal"]
+  # Auteur du site (balise meta author), adresse de contact unique (page À propos
+  # de moi, CV, pied de page) et code source du site (pied de page).
+  author = "Firmin Moyen"
+  # L'auteur reste dans la balise meta, mais n'est pas répété sous chaque carte et chaque page.
+  hideAuthor = true
+  contactEmail = "contact@firminmoyen.dev"
+  # Domaine public, affiché en clair (ligne « Site web » du CV) : fixe, pour que le serveur de dev
+  # (qui remplace baseURL par localhost) ne l'affiche pas, ni dans un PDF imprimé depuis l'aperçu.
+  siteDomain = "firminmoyen.dev"
+  siteRepo = "https://github.com/FirminMoyen/portfolio"
+  # Le pied de page de PaperMod est remplacé par celui du site, rendu dans
+  # extend_footer.html (registre, architecture §11.7).
+  hideFooter = true
   # Bandeau « site en construction » en haut de chaque page. Retiré le 25/10/2026 :
   # le contenu d'exemple est remplacé par les vraies données (architecture §9.2).
   underConstruction = false

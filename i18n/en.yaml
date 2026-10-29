@@ -18,20 +18,12 @@ homeJournal: "Latest journal entries"
 homePostmortem: "Post-mortem"
 homeAllEntries: "All journal entries"
 homeRss: "RSS feed"
-homeCertifications: "Certifications"
 
 # Component statuses (architecture §6.2)
 status_planned: "Planned"
 status_building: "Building"
 status_running: "Running"
 status_retired: "Retired"
-
-# Certification statuses (architecture §6.6)
-cert_planned: "Planned"
-cert_preparing: "Preparing"
-certPassed: "Passed on {{ .Date }}"
-certVerify: "Verify"
-
 
 # Bandeau « site en construction »
 constructionBanner: "Site under construction: the content is provisional and partly fictitious (examples). It does not reflect reality yet."
@@ -52,3 +44,18 @@ cvDownload: "Download PDF"
 roadmap_done: "Done"
 roadmap_in-progress: "In progress"
 roadmap_planned: "Planned"
+
+# Home page: identity line and buttons (architecture §5.1)
+homeContactMe: "Contact me"
+
+# About me page: Contact block (architecture §5.7)
+contactTitle: "Contact"
+contactIntro: "The easiest way to reach me: an email or a message on LinkedIn."
+contactEmail: "Email"
+
+# Footer (docs/structure.md §3.3)
+footerContact: "Contact:"
+footerSource: "Site source code"
+footerPrivacy: "No cookies, no trackers"
+footerBuiltWith: "Built with"
+footerAnd: "and"
