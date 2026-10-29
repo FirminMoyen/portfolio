@@ -43,7 +43,7 @@ En semaine 1, j'avais élargi la route annoncée par le VPN à tout le réseau d
 
 ## La suite
 
-Prochaine étape de la [feuille de route]({{< relref "/infrastructure" >}}#lab-roadmap) : mettre en place une stack de monitoring. Jusqu'ici, j'ai tout installé et configuré à la main : l'automatisation avec Ansible et Terraform viendra ensuite.
+Prochaine étape de la [feuille de route]({{< relref "/roadmap" >}}) : mettre en place une stack de monitoring. Jusqu'ici, j'ai tout installé et configuré à la main : l'automatisation avec Ansible et Terraform viendra ensuite.
 
 ## En bref {.brief}
 

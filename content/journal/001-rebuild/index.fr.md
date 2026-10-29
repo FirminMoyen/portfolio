@@ -36,7 +36,7 @@ Le réseau du lab est prévu en zones : une zone /24 par usage, dont le numéro 
 
 ## La suite
 
-Terminer l'étape 4 de la [feuille de route]({{< relref "/infrastructure" >}}#lab-roadmap) : administrer le lab sans accès physique, avec le durcissement de l'hôte et un test de redémarrage complet à distance. Ensuite, installer Proxmox VE sur PVE2 et réunir les deux machines dans un cluster à deux nœuds, sans haute disponibilité.
+Terminer l'étape 4 de la [feuille de route]({{< relref "/roadmap" >}}) : administrer le lab sans accès physique, avec le durcissement de l'hôte et un test de redémarrage complet à distance. Ensuite, installer Proxmox VE sur PVE2 et réunir les deux machines dans un cluster à deux nœuds, sans haute disponibilité.
 
 ## En bref {.brief}
 

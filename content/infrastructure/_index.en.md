@@ -12,10 +12,4 @@ This section describes the lab as it is today: the machines, the network that co
 
 The two machines, PVE1 and PVE2, run Proxmox VE and are joined in a cluster. An OPNsense firewall, installed as a virtual machine on PVE1, separates the lab from the home network and splits it into zones. I reach it remotely through Tailscale, a VPN. One of the zones is isolated from the rest: there, out of curiosity, I experiment with an autonomous AI agent.
 
-The important choices are explained in the [architecture decisions]({{< relref "/infrastructure/decisions" >}}).
-
-## Roadmap
-
-The lab's steps, in order. The timeline lives in the [journal]({{< relref "/journal" >}}), week by week.
-
-{{< roadmap >}}
+The important choices are explained in the [architecture decisions]({{< relref "/infrastructure/decisions" >}}), and the next steps on the [roadmap]({{< relref "/roadmap" >}}).

@@ -1,7 +1,7 @@
 {{- /* Bloc 3 — Stack : les briques du lab par thème (data/stack.yaml), avec
        leur rôle et leur statut (architecture §5.1, §6.8). Le statut se lit
        dans le catalogue ou la feuille de route ; `status` seulement pour une
-       brique absente des deux. Lien vers la feuille de route en bas. */ -}}
+       brique absente des deux. Lien vers la page Feuille de route en bas. */ -}}
 {{- $roadmap := dict }}
 {{- range hugo.Data.roadmap }}{{ $roadmap = merge $roadmap (dict .id .status) }}{{ end }}
 {{- /* Statuts de la feuille de route ramenés au vocabulaire du catalogue. */}}
@@ -33,8 +33,8 @@
     </div>
   {{- end }}
   </div>
-  {{- with site.GetPage "/infrastructure" }}
-  <p class="home-more"><a href="{{ .RelPermalink }}#lab-roadmap">{{ i18n "homeRoadmapLink" }}</a></p>
+  {{- with site.GetPage "/roadmap" }}
+  <p class="home-more"><a href="{{ .RelPermalink }}">{{ i18n "homeRoadmapLink" }}</a></p>
   {{- end }}
 </section>
 {{- end }}

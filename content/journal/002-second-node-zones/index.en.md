@@ -43,7 +43,7 @@ In week 1, I had widened the route advertised by the VPN to the whole lab networ
 
 ## What's next
 
-Next step on the [roadmap]({{< relref "/infrastructure" >}}#lab-roadmap): setting up a monitoring stack. So far, I have installed and configured everything by hand: automation with Ansible and Terraform will come after that.
+Next step on the [roadmap]({{< relref "/roadmap" >}}): setting up a monitoring stack. So far, I have installed and configured everything by hand: automation with Ansible and Terraform will come after that.
 
 ## In brief {.brief}
 
