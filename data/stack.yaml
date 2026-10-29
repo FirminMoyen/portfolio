@@ -1,0 +1,58 @@
+# Bloc Stack de l'accueil (architecture §5.1, §6.8) : les briques du lab par thème, avec leur rôle.
+# L'ordre des thèmes et des briques est l'ordre d'affichage. Quatre thèmes côte à côte sur desktop :
+# un rôle tient en quelques mots.
+# Statut d'une brique, une seule source :
+#   - `components` : statut du premier composant du catalogue (data/catalog/<id>.yaml) ;
+#   - `roadmap` : statut de l'étape de data/roadmap.yaml (done → en service, in-progress → en cours, planned → à venir) ;
+#   - `status` (running | building | planned) : seulement pour une brique absente du catalogue et de la feuille de route.
+# `link` : page du thème, chemin de contenu (facultatif, seulement si la page est publiée).
+- id: infrastructure
+  label: {fr: "Infrastructure", en: "Infrastructure"}
+  link: /infrastructure
+  items:
+    - name: {fr: "Portables Dell", en: "Dell laptops"}
+      role: {fr: "Les deux nœuds du lab", en: "The lab's two nodes"}
+      components: [pve1, pve2]
+    - name: "Proxmox VE"
+      role: {fr: "Cluster à deux nœuds", en: "Two-node cluster"}
+      components: [proxmox-cluster]
+    - name: "Ansible"
+      role: {fr: "Configuration automatisée", en: "Automated configuration"}
+      roadmap: ansible
+    - name: "Terraform"
+      role: {fr: "Infrastructure as Code", en: "Infrastructure as Code"}
+      roadmap: ansible
+- id: network
+  label: {fr: "Réseau", en: "Network"}
+  link: /infrastructure/network
+  items:
+    - name: "OPNsense"
+      role: {fr: "Pare-feu et routeur du lab", en: "The lab's firewall and router"}
+      components: [fw-01]
+    - name: {fr: "Pare-feu Proxmox", en: "Proxmox firewall"}
+      role: {fr: "Filtrage des VM des zones", en: "Filtering for zone VMs"}
+      status: running
+    - name: "Tailscale"
+      role: {fr: "VPN, aucun port ouvert", en: "VPN, no open port"}
+      components: [tailscale]
+- id: monitoring
+  label: {fr: "Monitoring", en: "Monitoring"}
+  items:
+    - name: "Prometheus"
+      role: {fr: "Collecte des métriques", en: "Metrics collection"}
+      roadmap: monitoring
+    - name: "Grafana"
+      role: {fr: "Tableaux de bord", en: "Dashboards"}
+      roadmap: monitoring
+    - name: "Uptime Kuma"
+      role: {fr: "Disponibilité des services", en: "Service uptime"}
+      roadmap: monitoring
+- id: services
+  label: {fr: "Services", en: "Services"}
+  items:
+    - name: "OpenBot server"
+      role: {fr: "Agent IA, en zone isolée", en: "AI agent, in an isolated zone"}
+      status: running
+    - name: {fr: "Lab LPIC-1", en: "LPIC-1 lab"}
+      role: {fr: "VM Linux d'entraînement", en: "Linux practice VMs"}
+      status: planned

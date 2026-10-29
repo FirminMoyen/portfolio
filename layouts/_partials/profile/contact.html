@@ -1,0 +1,19 @@
+{{- /* Contact (page À propos de moi, architecture §5.7) : titre « Contact »
+       ancré sur #contact (visé par le bouton « Me contacter » de l'accueil),
+       e-mail depuis params.contactEmail, LinkedIn depuis params.profile. */ -}}
+{{- $email := site.Params.contactEmail }}
+{{- $linkedin := site.Params.profile.linkedin }}
+{{- if or $email $linkedin }}
+<section class="home-block profile-contact">
+  <h2 id="contact">{{ i18n "contactTitle" }}</h2>
+  <p>{{ i18n "contactIntro" }}</p>
+  <ul class="contact-list">
+    {{- with $email }}
+    <li><span class="contact-label">{{ i18n "contactEmail" }}</span> <a href="mailto:{{ . }}">{{ . }}</a></li>
+    {{- end }}
+    {{- with $linkedin }}
+    <li><span class="contact-label">LinkedIn</span> <a href="{{ . }}" rel="noopener">{{ strings.TrimPrefix "https://www." . | strings.TrimSuffix "/" }}</a></li>
+    {{- end }}
+  </ul>
+</section>
+{{- end }}

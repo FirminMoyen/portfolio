@@ -36,7 +36,8 @@
   {{- end }}
   <p class="home-more">
     {{- with $infra }}<a href="{{ .RelPermalink }}">{{ .Title }} →</a>{{ end }}
-    {{- with $services }}<a href="{{ .RelPermalink }}">{{ .Title }} →</a>{{ end }}
+    {{- /* Une section en brouillon est trouvée par GetPage mais n'a pas d'URL : pas de lien. */}}
+    {{- with $services }}{{ if .RelPermalink }}<a href="{{ .RelPermalink }}">{{ .Title }} →</a>{{ end }}{{ end }}
   </p>
 </section>
 {{- end }}

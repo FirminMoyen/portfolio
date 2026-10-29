@@ -97,15 +97,21 @@ h1, h2, h3, .post-title, .entry-header h2 { letter-spacing: -0.02em; }
 .entry-content { color: var(--secondary); }
 .entry-footer { color: var(--secondary); font-size: 13px; }
 
-/* Lien RSS du journal, juste sous le pied de page de PaperMod. */
+/* Pied de page du site (extend_footer.html, docs/structure.md §3.3) : éléments séparés par un point médian, retour à la ligne permis. */
 .footer, .footer a { color: var(--secondary); }
-.footer.footer-rss { padding-top: 0; margin-top: calc(var(--gap) * -1); }
+.site-footer { max-width: calc(var(--nav-width) + var(--gap) * 2); display: flex; flex-wrap: wrap; justify-content: center; gap: 2px 0; font-size: 13px; }
+.site-footer span { white-space: nowrap; }
+.site-footer span + span::before { content: "·"; margin: 0 8px; color: var(--tertiary); }
 
 /* --- Accueil (architecture §5.1) --- */
 .home-intro { margin: 8px 0 calc(var(--gap) * 1.5); }
 .home-pitch { color: var(--primary); font-size: 26px; line-height: 1.35; font-weight: 500; letter-spacing: -0.02em; }
 .home-pitch p { margin-bottom: 12px; }
 .home-intro .home-more { margin-top: 4px; }
+/* Ligne d'identité et boutons CV / Me contacter, juste sous la présentation (§5.1). */
+.home-identity { margin: 4px 0 14px; color: var(--secondary); font-size: 17px; }
+.home-identity strong { color: var(--primary); font-weight: 600; }
+.home-actions { margin-bottom: 14px; }
 
 .home-block {
     margin-top: var(--gap); padding: 24px; border: 1px solid var(--border);
@@ -146,13 +152,18 @@ html[data-theme="dark"] .diagram-dark { display: block; }
     html[data-theme="auto"] .diagram-dark { display: block; }
 }
 
-.stack-groups { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 12px 28px; }
+/* Quatre thèmes côte à côte sur desktop, deux sur tablette, un sur mobile. */
+.stack-groups { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 20px 24px; }
+@media (max-width: 900px) { .stack-groups { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 560px) { .stack-groups { grid-template-columns: minmax(0, 1fr); } }
 /* Le titre du groupe (seul élément cliquable) se distingue nettement des composants listés dessous. */
 .home-block .stack-group h3 { font-size: 16px; font-weight: 600; color: var(--primary); margin-bottom: 4px; padding-bottom: 8px; border-bottom: 2px solid var(--border); }
 .home-block .stack-group h3 a { color: var(--primary); text-decoration: none; }
 .home-block .stack-group h3 a:hover { color: var(--accent); }
-.stack-name { color: var(--secondary); }
-.stack-group li { display: flex; justify-content: space-between; align-items: center; gap: 8px; padding: 6px 0; border-bottom: 1px solid var(--border); font-size: 15px; }
+.stack-group li { padding: 8px 0; border-bottom: 1px solid var(--border); font-size: 15px; }
+.stack-head { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 4px 8px; }
+.stack-name { color: var(--primary); font-weight: 500; }
+.stack-role { display: block; margin-top: 2px; color: var(--secondary); font-size: 13px; line-height: 1.4; }
 .stack-group li:last-child { border-bottom: none; }
 
 .journal-list li { padding: 14px 0; border-bottom: 1px solid var(--border); }
@@ -177,8 +188,13 @@ html[data-theme="dark"] .diagram-dark { display: block; }
 .profile-links .button:first-child { background: var(--accent); border-color: var(--accent); color: var(--theme); }
 .profile-links .button:hover { border-color: var(--accent); }
 .profile-pitch { font-size: 18px; }
-.cert-list li { display: flex; justify-content: space-between; align-items: center; gap: 8px; padding: 8px 0; border-bottom: 1px solid var(--border); }
-.cert-list li:last-child { border-bottom: none; }
+.profile-pitch h2 { margin: 48px 0 16px; font-size: 27px; }
+.profile-pitch li { margin-top: 0.6rem; }
+.profile-contact p { margin-bottom: 10px; }
+.contact-list li { display: flex; flex-wrap: wrap; gap: 4px 12px; padding: 8px 0; border-bottom: 1px solid var(--border); }
+.contact-list li:last-child { border-bottom: none; }
+.contact-label { min-width: 80px; color: var(--secondary); }
+.cv-aside a { color: var(--accent); }
 
 /* --- Page CV --- */
 /* Page plus large que les autres : PaperMod limite .main à --main-width. */
@@ -207,8 +223,8 @@ html[data-theme="dark"] .diagram-dark { display: block; }
     font-size: 12px; font-weight: 500; line-height: 18px; white-space: nowrap; vertical-align: middle;
     color: var(--secondary); background: var(--code-bg);
 }
-.badge-running, .badge-passed { color: var(--ok); background: var(--ok-soft); }
-.badge-building, .badge-preparing { color: var(--warn); background: var(--warn-soft); }
+.badge-running { color: var(--ok); background: var(--ok-soft); }
+.badge-building { color: var(--warn); background: var(--warn-soft); }
 .badge-planned { background: transparent; border: 1px dashed var(--tertiary); }
 .badge-postmortem { color: var(--danger); background: var(--danger-soft); }
 .badge-target { color: var(--accent); background: var(--accent-soft); }
@@ -223,6 +239,26 @@ html[data-theme="dark"] .diagram-dark { display: block; }
     .cv-grid { grid-template-columns: minmax(0, 1fr); gap: 24px; }
 }
 
+/* --- Encadré « En bref » des entrées du journal (Annexe A.1) : titre `## En bref {.brief}` et la liste qui le suit. --- */
+.post-content h2.brief {
+    margin: 32px 0 0; padding: 14px 20px 6px; font-size: 15px; letter-spacing: 0.04em; text-transform: uppercase;
+    color: var(--secondary); background: var(--entry); border: 1px solid var(--border); border-bottom: none;
+    border-radius: var(--radius) var(--radius) 0 0;
+}
+.post-content h2.brief + ul {
+    margin: 0 0 24px; padding: 4px 20px 14px 38px; font-size: 15px;
+    background: var(--entry); border: 1px solid var(--border); border-top: none; border-radius: 0 0 var(--radius) var(--radius);
+}
+.post-content h2.brief + ul li { margin-bottom: 6px; }
+
+/* --- Menu sur petit écran : les entrées passent à la ligne au lieu de défiler hors de l'écran (PaperMod : nowrap + overflow-x). --- */
+@media (max-width: 768px) {
+    /* Lignes plus basses que les 60 px de PaperMod : le titre, les bascules et le menu peuvent occuper plusieurs lignes. */
+    .header-nav { line-height: 44px; padding-top: 4px; padding-bottom: 8px; }
+    .logo a { font-size: 20px; }
+    .menu { flex-wrap: wrap; white-space: normal; overflow-x: visible; column-gap: 18px; row-gap: 0; line-height: 36px; }
+}
+
 /* --- Petits écrans --- */
 @media (max-width: 600px) {
     body { font-size: 16px; }
@@ -231,6 +267,9 @@ html[data-theme="dark"] .diagram-dark { display: block; }
     .profile-name { font-size: 32px; }
     .home-block { padding: 18px; }
     .metric-value { font-size: 24px; }
+    /* Pied de page sur plusieurs lignes : pas de point médian en début de ligne. */
+    .site-footer { column-gap: 16px; }
+    .site-footer span + span::before { content: none; }
 }
 
 /* --- Feuille de route (shortcode roadmap, architecture §6.7) --- */
@@ -243,3 +282,31 @@ html[data-theme="dark"] .diagram-dark { display: block; }
 .badge-roadmap-done { color: var(--ok); background: var(--ok-soft); }
 .badge-roadmap-in-progress { color: var(--warn); background: var(--warn-soft); }
 .badge-roadmap-planned { background: transparent; border: 1px dashed var(--tertiary); }
+
+/* --- Impression de la page CV : source des CV en PDF de static/cv/ (une page A4 par langue).
+   A4, sans en-tête, pied de page, fil d'Ariane ni bouton ; couleurs conservées. --- */
+@media print {
+    @page { size: A4; margin: 11mm 12mm; }
+    html, body { background: #fff !important; }
+    body { font-size: 10pt; line-height: 1.4; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .header, .footer, .top-link, .breadcrumbs, .construction-banner, .cv .profile-links { display: none !important; }
+    .main:has(> .cv) { max-width: none; margin: 0; padding: 0; }
+    .cv-header { margin-bottom: 4mm; }
+    .cv .profile-name { font-size: 20pt; margin: 0 0 1pt; }
+    .cv .profile-headline { font-size: 10.5pt; margin-bottom: 0; }
+    .cv-grid { grid-template-columns: 52mm minmax(0, 1fr); gap: 7mm; }
+    .cv-aside, .cv-aside li { font-size: 8pt; line-height: 1.35; }
+    .cv-aside { padding: 3.5mm; }
+    .cv-aside section + section { margin-top: 3mm; }
+    .cv-aside h2, .cv-main h2 { font-size: 8.5pt; margin-bottom: 3pt; }
+    .cv-aside li { margin-bottom: 2pt; }
+    .cv-main { margin: 0; }
+    .cv-main, .cv-main p, .cv-main li { font-size: 8.8pt; line-height: 1.36; }
+    .cv-main h2:not(:first-child) { margin-top: 4mm; }
+    .cv-main h3 { font-size: 10pt; margin: 2.5mm 0 0; break-after: avoid; }
+    .cv-main h3 + p { margin-bottom: 2pt; }
+    .cv-main h3 + p em { font-size: 8.5pt; }
+    .cv-main ul { margin: 0; break-inside: avoid; }
+    .cv-main li { margin-bottom: 1pt; }
+    .cv-main p { margin-bottom: 1.5mm; }
+}

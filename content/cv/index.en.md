@@ -7,6 +7,9 @@ headline: "Systems Administrator · Windows and Linux infrastructure, automation
 sidebar:
   - title: "Contact"
     items:
+      - kind: email
+      - kind: linkedin
+      - kind: website
       - text: "Belgium"
       - text: "Driving licence (B)"
       - text: "Available immediately"
@@ -43,7 +46,7 @@ sidebar:
 
 ## Profile
 
-Junior systems administrator with a bachelor's degree in Information Technology (EPHEC). Experience administering Windows Server and Active Directory across a multi-site estate, automating infrastructure (Terraform, Ansible, CI/CD) and setting up monitoring (Prometheus, Grafana). Running a high-availability Proxmox cluster since 2022. Looking for a systems administrator role in Belgium or Luxembourg.
+Junior systems administrator with a bachelor's degree in Information Technology (EPHEC). Experience administering Windows Server and Active Directory across a multi-site estate, automating infrastructure (Terraform, Ansible, CI/CD) and setting up monitoring (Prometheus, Grafana). Ran a high-availability Proxmox cluster from 2022 to 2026. Now rebuilding my homelab from scratch and documenting it every week. Looking for a systems administrator role in Belgium or Luxembourg.
 
 ## Professional experience
 
@@ -76,6 +79,18 @@ Junior systems administrator with a bachelor's degree in Information Technology 
 
 ## Personal project: homelab
 
-- High-availability Proxmox VE cluster, maintained since 2022, with its own network, domain and self-hosted services.
-- Monitoring with Prometheus and Grafana.
-- Secure remote access via Tailscale (WireGuard VPN), with no services exposed to the internet.
+### Documented rebuild
+
+*Since 10/2026 · {{< site-link >}}*
+
+- Rebuilt from scratch, documented every week in French and English: journal, architecture decisions.
+- Two Proxmox VE nodes in a cluster, an OPNsense firewall that isolates the lab from the home network and splits it into zones.
+- Remote access via Tailscale (WireGuard VPN), with no services exposed to the internet.
+- In progress: monitoring with Prometheus, Grafana and Uptime Kuma, then automation with Ansible and Terraform.
+
+### First homelab
+
+*2022 – 2026*
+
+- High-availability Proxmox VE cluster, monitoring with Prometheus and Grafana, self-hosted services.
+- Wiped entirely in October 2026 to document everything from the start and rebuild on solid foundations.

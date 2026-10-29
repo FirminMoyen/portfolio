@@ -31,18 +31,18 @@ The decision was made in mid-October 2026, when the lab rebuild started. This AD
 ### Option 1 — Lab directly on the home network
 
 - **Pros**: no network configuration, nothing to maintain.
-- **Cons**: no isolation; a compromised VM or a mistake (DHCP, addressing) directly affects the home's devices. Nothing to learn on the firewall side.
+- **Cons**: no isolation. A compromised VM or a mistake (DHCP, addressing) directly affects the home's devices. Nothing to learn on the firewall side.
 - Ruled out: contrary to both needs.
 
 ### Option 2 — Isolation with the Proxmox firewall alone, without a dedicated router
 
-- **Pros**: no extra VM; filtering built into Proxmox, at host and VM level.
+- **Pros**: no extra VM. Filtering built into Proxmox, at host and VM level.
 - **Cons**: the Proxmox firewall filters host and VM traffic, but does not act as a perimeter router-firewall (routing between zones, NAT, DHCP/DNS per zone, single gateway). It does not teach the target skill: zones, rules and NAT on a dedicated firewall.
 - Ruled out: does not meet the need to learn a professional firewall.
 
 ### Option 3 — Dedicated physical router-firewall
 
-- **Pros**: hardware separation, independent of the hypervisors; no single point shared with a virtualisation machine.
+- **Pros**: hardware separation, independent of the hypervisors. No single point shared with a virtualisation machine.
 - **Cons**: buying hardware.
 - Ruled out: zero budget.
 
@@ -52,8 +52,8 @@ The decision was made in mid-October 2026, when the lab rebuild started. This AD
 
 ### Chosen implementation
 
-- OPNsense, as a VM on PVE1, is the lab's firewall and router; the switch sw-01 is dedicated to the lab.
-- Lab network `10.42.0.0/16`, one /24 zone per use; the VLAN number matches the subnet's third octet.
+- OPNsense, as a VM on PVE1, is the lab's firewall and router. The switch sw-01 is dedicated to the lab.
+- Lab network `10.42.0.0/16`, one /24 zone per use. The VLAN number matches the subnet's third octet.
 
 ## Consequences
 
@@ -66,7 +66,7 @@ The decision was made in mid-October 2026, when the lab rebuild started. This AD
 **Negative and risks**
 
 - **Single point of failure**: OPNsense is a VM on PVE1. If PVE1 or the VM goes down, the lab loses its gateway: Internet, routing between zones, and remote access through the subnet router (see [ADR-0001]({{< relref "/infrastructure/decisions/adr-0001-remote-access-tailscale" >}})).
-- **Unmanaged switch**: sw-01 does not handle VLANs; carrying several zones to PVE2 is not solved. The question remains open, this ADR does not settle it.
+- **Unmanaged switch**: sw-01 does not handle VLANs. Carrying several zones to PVE2 is not solved. The question remains open, this ADR does not settle it.
 
 **To revisit**
 

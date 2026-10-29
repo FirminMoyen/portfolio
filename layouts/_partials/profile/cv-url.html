@@ -1,0 +1,9 @@
+{{- /* URL du CV : la page CV si elle est publiée, sinon le PDF de la langue
+       courante (params.profile.cv). Renvoie "" s'il n'y a ni l'un ni l'autre.
+       Utilisé par la page À propos de moi et par l'accueil. */ -}}
+{{- $url := "" -}}
+{{- with site.GetPage "/cv" }}{{ $url = .RelPermalink }}{{ end -}}
+{{- if not $url -}}
+  {{- with site.Params.profile.cv }}{{ with index . site.Language.Lang }}{{ $url = . | relURL }}{{ end }}{{ end -}}
+{{- end -}}
+{{- return $url -}}

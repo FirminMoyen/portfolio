@@ -1,6 +1,7 @@
 ---
-title: "Homelab & Infrastructure"
-description: "Un homelab reconstruit de zéro et documenté chaque semaine : infrastructure, services, journal et décisions."
+title: "Firmin Moyen · Homelab"
+description: "Firmin Moyen, administrateur systèmes junior, reconstruit son homelab de zéro et le documente chaque semaine. Recherche un poste en Belgique ou au Luxembourg."
+identity: "Administrateur systèmes junior · Recherche un poste en Belgique ou au Luxembourg"
 menus:
   main:
     identifier: home

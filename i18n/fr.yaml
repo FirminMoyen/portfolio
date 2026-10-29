@@ -10,28 +10,21 @@ homeDiagramAlt: "Schéma logique du homelab"
 diagramFullSize: "Cliquer sur le schéma pour l'ouvrir en pleine taille."
 homeCurrentPhase: "Phase en cours :"
 homeStack: "Stack"
-homeOtherGroup: "Autres"
-homePlannedMore:
-  one: "+ {{ .Count }} composant prévu"
-  other: "+ {{ .Count }} composants prévus"
+homeRoadmapLink: "Feuille de route complète →"
+# Statuts du bloc Stack (data/stack.yaml) : vocabulaire du catalogue, « building » lu « En cours ».
+stack_running: "En service"
+stack_building: "En cours"
+stack_planned: "À venir"
 homeJournal: "Dernières entrées du journal"
 homePostmortem: "Post-mortem"
 homeAllEntries: "Tout le journal"
 homeRss: "Flux RSS"
-homeCertifications: "Certifications"
 
 # Statuts des composants (architecture §6.2)
-status_planned: "Prévu"
+status_planned: "À venir"
 status_building: "En construction"
 status_running: "En service"
 status_retired: "Retiré"
-
-# Statuts des certifications (architecture §6.6)
-cert_planned: "Prévue"
-cert_preparing: "En préparation"
-certPassed: "Obtenue le {{ .Date }}"
-certVerify: "Vérifier"
-
 
 # Bandeau « site en construction »
 constructionBanner: "Site en construction : le contenu est provisoire et en partie fictif (exemples). Il ne reflète pas encore la réalité."
@@ -44,11 +37,26 @@ metric_building:
   one: "en construction"
   other: "en construction"
 metric_planned:
-  one: "prévu"
-  other: "prévus"
+  one: "à venir"
+  other: "à venir"
 
 # Page CV
 cvDownload: "Télécharger le PDF"
 roadmap_done: "Fait"
 roadmap_in-progress: "En cours"
-roadmap_planned: "Prévu"
+roadmap_planned: "À venir"
+
+# Accueil : ligne d'identité et boutons (architecture §5.1)
+homeContactMe: "Me contacter"
+
+# Page À propos de moi : bloc Contact (architecture §5.7)
+contactTitle: "Contact"
+contactIntro: "Le plus simple pour me joindre : un e-mail ou un message sur LinkedIn."
+contactEmail: "E-mail"
+
+# Pied de page (docs/structure.md §3.3)
+footerContact: "Contact :"
+footerSource: "Code source du site"
+footerPrivacy: "Sans cookies ni traceurs"
+footerBuiltWith: "Construit avec"
+footerAnd: "et"

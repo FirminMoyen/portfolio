@@ -1,7 +1,12 @@
 name: "PVE2"
 layer: infrastructure
 group: hardware
-status: planned
+status: running
 summary:
-  fr: "Dell XPS 15 (6 cœurs, 32 Go), nœud des services (VM et conteneurs) ; pas encore installé."
-  en: "Dell XPS 15 (6 cores, 32 GB), the node for services (VMs and containers); not installed yet."
+  fr: "Dell XPS 15 9570 (6 cœurs, 32 Go), nœud des services (VM et conteneurs), relié au switch par un adaptateur USB-Ethernet."
+  en: "Dell XPS 15 9570 (6 cores, 32 GB), the node for services (VMs and containers), connected to the switch through a USB-Ethernet adapter."
+runtime:
+  kind: hardware
+deploy:
+  method: manual
+verified: 2026-10-27

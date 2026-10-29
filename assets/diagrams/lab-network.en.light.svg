@@ -5,8 +5,9 @@
 <svg x="281" y="252" overflow="visible" width="143" height="8" viewBox="0 0 143 8" preserveAspectRatio="none" style="fill: none; stroke: #57606a; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round"><defs><marker id="dc-arrow-head-filled-1" orient="auto" markerWidth="5" markerHeight="5" refX="2" refY="2" overflow="visible"><path d="M0 0 L4 2 L0 4 Z" fill="#57606a" stroke="none" style="stroke: none; fill: #57606a; fill: context-stroke"/></marker></defs><path d="M 143 4 L 4 4" marker-end="url(#dc-arrow-head-filled-1)"></path></svg>
 <svg x="280" y="404" overflow="visible" width="143" height="8" viewBox="0 0 143 8" preserveAspectRatio="none" style="fill: none; stroke: #57606a; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round"><defs><marker id="dc-arrow-head-filled-2" orient="auto" markerWidth="5" markerHeight="5" refX="2" refY="2" overflow="visible"><path d="M0 0 L4 2 L0 4 Z" fill="#57606a" stroke="none" style="stroke: none; fill: #57606a; fill: context-stroke"/></marker></defs><path d="M 0 4 L 139 4" marker-end="url(#dc-arrow-head-filled-2)"></path></svg>
 <svg x="696" y="292" overflow="visible" width="95" height="8" viewBox="0 0 95 8" preserveAspectRatio="none" style="fill: none; stroke: #57606a; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round"><defs><marker id="dc-arrow-head-filled-3" orient="auto" markerWidth="5" markerHeight="5" refX="2" refY="2" overflow="visible"><path d="M0 0 L4 2 L0 4 Z" fill="#57606a" stroke="none" style="stroke: none; fill: #57606a; fill: context-stroke"/></marker></defs><path d="M 0 4 L 91 4" marker-end="url(#dc-arrow-head-filled-3)"></path></svg>
-<svg x="556" y="456" overflow="visible" width="8" height="84" viewBox="0 0 8 84" preserveAspectRatio="none" style="fill: none; stroke: #8c959f; stroke-width: 2; stroke-dasharray: 6 6; stroke-linecap: round; stroke-linejoin: round"><path d="M 4 0 L 4 84"></path></svg>
-<svg x="560" y="536" overflow="visible" width="231" height="8" viewBox="0 0 231 8" preserveAspectRatio="none" style="fill: none; stroke: #8c959f; stroke-width: 2; stroke-dasharray: 6 6; stroke-linecap: round; stroke-linejoin: round"><defs><marker id="dc-arrow-head-filled-4" orient="auto" markerWidth="5" markerHeight="5" refX="2" refY="2" overflow="visible"><path d="M0 0 L4 2 L0 4 Z" fill="#8c959f" stroke="none" style="stroke: none; fill: #8c959f; fill: context-stroke"/></marker></defs><path d="M 0 4 L 227 4" marker-end="url(#dc-arrow-head-filled-4)"></path></svg>
+<svg x="556" y="456" overflow="visible" width="8" height="132" viewBox="0 0 8 132" preserveAspectRatio="none" style="fill: none; stroke: #8c959f; stroke-width: 2; stroke-dasharray: 6 6; stroke-linecap: round; stroke-linejoin: round"><path d="M 4 0 L 4 132"></path></svg>
+<svg x="560" y="584" overflow="visible" width="231" height="8" viewBox="0 0 231 8" preserveAspectRatio="none" style="fill: none; stroke: #8c959f; stroke-width: 2; stroke-dasharray: 6 6; stroke-linecap: round; stroke-linejoin: round"><defs><marker id="dc-arrow-head-filled-4" orient="auto" markerWidth="5" markerHeight="5" refX="2" refY="2" overflow="visible"><path d="M0 0 L4 2 L0 4 Z" fill="#8c959f" stroke="none" style="stroke: none; fill: #8c959f; fill: context-stroke"/></marker></defs><path d="M 0 4 L 227 4" marker-end="url(#dc-arrow-head-filled-4)"></path></svg>
+<svg x="696" y="426" overflow="visible" width="95" height="8" viewBox="0 0 95 8" preserveAspectRatio="none" style="fill: none; stroke: #57606a; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round"><defs><marker id="dc-arrow-head-filled-9" orient="auto" markerWidth="5" markerHeight="5" refX="2" refY="2" overflow="visible"><path d="M0 0 L4 2 L0 4 Z" fill="#57606a" stroke="none" style="stroke: none; fill: #57606a; fill: context-stroke"/></marker></defs><path d="M 0 4 L 91 4" marker-end="url(#dc-arrow-head-filled-9)"></path></svg>
 <svg x="64" y="628" overflow="visible" width="40" height="8" viewBox="0 0 40 8" preserveAspectRatio="none" style="fill: none; stroke: #0969da; stroke-width: 2; stroke-linecap: round"><path d="M 0 4 L 40 4"></path></svg>
 <svg x="64" y="660" overflow="visible" width="40" height="8" viewBox="0 0 40 8" preserveAspectRatio="none" style="fill: none; stroke: #8c959f; stroke-width: 2; stroke-dasharray: 6 6; stroke-linecap: round"><path d="M 0 4 L 40 4"></path></svg>
 <rect x="64" y="208" width="216" height="96" rx="10" fill="#ffffff" stroke="#0969da" stroke-width="1.5"/>
@@ -28,26 +29,30 @@
 <text x="988" y="270.5" text-anchor="middle" font-size="15" font-weight="700" fill="#1f2328">Infrastructure zone · 10.42.0.0/24</text>
 <text x="988" y="290.5" text-anchor="middle" font-size="15" fill="#1f2328">.1 fw-01 (OPNsense)</text>
 <text x="988" y="310.5" text-anchor="middle" font-size="15" fill="#1f2328">.2 PVE1 (Proxmox VE · infrastructure)</text>
-<text x="988" y="330.5" text-anchor="middle" font-size="15" fill="#1f2328">.3 PVE2 (Proxmox VE · services, planned)</text>
-<rect x="792" y="440" width="392" height="200" rx="10" fill="#ffffff" stroke="#8c959f" stroke-width="1.5" stroke-dasharray="6 4"/>
-<text x="988" y="494.5" text-anchor="middle" font-size="15" font-weight="700" fill="#57606a">Upcoming zones</text>
-<text x="988" y="514.5" text-anchor="middle" font-size="15" fill="#57606a">one /24 zone per use</text>
-<text x="988" y="534.5" text-anchor="middle" font-size="15" fill="#57606a">VLAN = 3rd octet</text>
-<text x="988" y="554.5" text-anchor="middle" font-size="15" fill="#57606a">e.g. 10.42.10.0/24 → VLAN 10</text>
-<text x="988" y="574.5" text-anchor="middle" font-size="15" fill="#57606a">monitoring, Windows, Linux, networking,</text>
-<text x="988" y="594.5" text-anchor="middle" font-size="15" fill="#57606a">Kubernetes</text>
+<text x="988" y="330.5" text-anchor="middle" font-size="15" fill="#1f2328">.3 PVE2 (Proxmox VE · services)</text>
+<rect x="792" y="400" width="392" height="112" rx="10" fill="#ffffff" stroke="#0969da" stroke-width="1.5"/>
+<text x="988" y="430.5" text-anchor="middle" font-size="15" font-weight="700" fill="#1f2328">Isolated zone · 10.42.50.0/24</text>
+<text x="988" y="450.5" text-anchor="middle" font-size="15" fill="#1f2328">experimentation VM</text>
+<text x="988" y="470.5" text-anchor="middle" font-size="15" fill="#1f2328">internet, but neither the home nor the rest of</text>
+<text x="988" y="490.5" text-anchor="middle" font-size="15" fill="#1f2328">the lab</text>
+<rect x="792" y="536" width="392" height="104" rx="10" fill="#ffffff" stroke="#8c959f" stroke-width="1.5" stroke-dasharray="6 4"/>
+<text x="988" y="572.5" text-anchor="middle" font-size="15" font-weight="700" fill="#57606a">Upcoming zones</text>
+<text x="988" y="592.5" text-anchor="middle" font-size="15" fill="#57606a">one /24 zone per use, no VLANs</text>
+<text x="988" y="612.5" text-anchor="middle" font-size="15" fill="#57606a">monitoring, Windows, Linux, Kubernetes</text>
 <rect x="64" y="504" width="216" height="96" rx="10" fill="#f6f8fa" stroke="#d0d7de" stroke-width="1"/>
 <text x="172" y="526.5" text-anchor="middle" font-size="15" font-weight="700" fill="#57606a">Home network</text>
 <text x="172" y="546.5" text-anchor="middle" font-size="15" fill="#57606a">separate from the lab,</text>
 <text x="172" y="566.5" text-anchor="middle" font-size="15" fill="#57606a">never reachable through</text>
 <text x="172" y="586.5" text-anchor="middle" font-size="15" fill="#57606a">the VPN</text>
 <text x="64" y="83.0" font-size="30" font-weight="700" fill="#1f2328">Lab network diagram</text>
-<text x="64" y="114.5" font-size="15" fill="#57606a">Logical addressing · as of 25 October 2026</text>
+<text x="64" y="114.5" font-size="15" fill="#57606a">Logical addressing · as of 28 October 2026</text>
 <text x="784" y="196.9" font-size="14" font-weight="600" fill="#57606a">Lab · 10.42.0.0/16</text>
 <text x="352" y="239.9" text-anchor="middle" font-size="13" fill="#57606a">2nd NAT (OPNsense)</text>
 <text x="352" y="391.9" text-anchor="middle" font-size="13" fill="#57606a">VPN tunnel</text>
 <text x="744" y="279.9" text-anchor="middle" font-size="13" fill="#57606a">LAN</text>
-<text x="676" y="523.9" text-anchor="middle" font-size="13" fill="#57606a">inter-zone routing (planned)</text>
-<text x="116" y="633.9" font-size="13" fill="#57606a">In service</text>
-<text x="116" y="665.9" font-size="13" fill="#57606a">Planned</text>
+<text x="676" y="571.9" text-anchor="middle" font-size="13" fill="#57606a">next zones (upcoming)</text>
+<text x="116" y="633.9" font-size="13" fill="#57606a">Running</text>
+<text x="116" y="665.9" font-size="13" fill="#57606a">Upcoming</text>
+<text x="744" y="399.9" text-anchor="middle" font-size="13" fill="#57606a">routing</text>
+<text x="744" y="415.9" text-anchor="middle" font-size="13" fill="#57606a">between zones</text>
 </svg>

@@ -10,16 +10,21 @@ tags: []
 certifications: []
 ---
 
-## Objectif de la semaine
+<!-- Titre : un tournant ou une question. Chapeau, sans titre : deux ou trois phrases (où en était le lab, ce qui a changé cette semaine). -->
 
-## Réalisé
+<!--more-->
 
-## Problèmes et résolution
-<!-- Pour chaque problème : symptôme, diagnostic, cause, solution. -->
+## Récit
+<!-- Un à trois récits courts, chacun sous un titre parlant. Pour chacun : le problème, ce que j'ai essayé, ce que j'ai choisi et pourquoi (lien vers la décision), la limite que j'accepte. -->
 
-## Décisions
-<!-- Une phrase par décision, avec le lien vers son ADR. -->
+## Ce que j'en retiens
+<!-- Les mots de Firmin. Rubrique retirée tant qu'il ne les a pas donnés. -->
 
-## Appris
+## La suite
 
-## Semaine prochaine
+## En bref {.brief}
+<!-- Pour les techniciens. -->
+
+- **Composants** : 
+- **Étapes** : 
+- **Décisions** : 
