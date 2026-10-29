@@ -43,7 +43,7 @@ In week 1, I had widened the route advertised by the VPN to the whole lab networ
 
 ## What's next
 
-Next step on the [roadmap]({{< relref "/infrastructure" >}}#lab-roadmap): setting up a monitoring stack. So far, I have installed and configured everything by hand: automation with Ansible and Terraform will come after that.
+Next step on the [roadmap]({{< relref "/roadmap" >}}): setting up a monitoring stack. So far, I have installed and configured everything by hand: automation with Ansible and Terraform will come after that.
 
 ## In brief {.brief}
 
@@ -58,3 +58,5 @@ Next step on the [roadmap]({{< relref "/infrastructure" >}}#lab-roadmap): settin
   - VPN route fixed to `10.42.0.0/16`.
 - **Decisions**: routed zones rather than VLANs, with the Proxmox firewall on each zone VM (see [Network]({{< relref "/infrastructure/network" >}})). Two votes for PVE1, one for PVE2 (see [Virtualization]({{< relref "/infrastructure/virtualization" >}})).
 - **Limits accepted**: no layer 2 isolation between zones. A single cluster link, with little latency margin.
+
+**Erratum (29 October 2026).** "Reachable only over SSH with a key" went too far: it is the VM's administration that goes over SSH, with keys only.

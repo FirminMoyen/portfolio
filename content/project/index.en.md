@@ -31,7 +31,7 @@ The details are on the [Infrastructure]({{< relref "/infrastructure" >}}) page, 
 
 ## What's next
 
-In progress: monitoring the lab with Prometheus, Grafana and Uptime Kuma. So far, I have installed and configured everything by hand: the step after that will be automating the lab with Ansible and Terraform. Further ahead, in an order not set yet: Kubernetes, a full GitOps approach, and a mixed Windows and Linux environment that reproduces company practices. The [roadmap]({{< relref "/infrastructure" >}}#lab-roadmap) shows where I am.
+In progress: monitoring the lab with Prometheus, Grafana and Uptime Kuma. So far, I have installed and configured everything by hand: the step after that will be automating the lab with Ansible and Terraform. The [roadmap]({{< relref "/roadmap" >}}) lays out what comes next, step by step.
 
 ## The framework I set for myself
 

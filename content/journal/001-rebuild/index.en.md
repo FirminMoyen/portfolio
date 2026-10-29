@@ -36,7 +36,7 @@ The lab network is planned in zones: one /24 zone per use, whose VLAN number mat
 
 ## What's next
 
-Finish step 4 of the [roadmap]({{< relref "/infrastructure" >}}#lab-roadmap): administering the lab without physical access, with host hardening and a full remote reboot test. Then install Proxmox VE on PVE2 and join the two machines in a two-node cluster, without high availability.
+Finish step 4 of the [roadmap]({{< relref "/roadmap" >}}): administering the lab without physical access, with host hardening and a full remote reboot test. Then install Proxmox VE on PVE2 and join the two machines in a two-node cluster, without high availability.
 
 ## In brief {.brief}
 

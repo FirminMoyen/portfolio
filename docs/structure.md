@@ -31,12 +31,13 @@
 | P01 | Racine | `/` | — | Générée par Hugo | Redirection | — | Redirige vers la langue par défaut (D1) |
 | P02 | Accueil | `/fr/` | `/en/` | `content/_index.{fr,en}.md` | home | Accueil / Home (10) | Publiée (existante) |
 | P19 | Le projet | `/fr/project/` | `/en/project/` | `content/project/index.{fr,en}.md` | page | Le projet / The project (15) | Publiée (28/10/2026) ; remplace P17 et P18 |
+| P21 | Feuille de route | `/fr/roadmap/` | `/en/roadmap/` | `content/roadmap/index.{fr,en}.md` | page | — | Publiée (29/10/2026), hors du menu ; reprend la feuille de route de P03 |
 | P03 | Infrastructure | `/fr/infrastructure/` | `/en/infrastructure/` | `content/infrastructure/_index.*` | section | Infrastructure (20) | Publiée |
-| P04 | Page de groupe (une par groupe, D6) | `/fr/infrastructure/<groupe>/` | `/en/infrastructure/<groupe>/` | `content/infrastructure/<groupe>/index.*` | page | — | Aucune tant que D6 n'est pas tranchée |
+| P04 | Page de groupe (une par groupe, D6) | `/fr/infrastructure/<groupe>/` | `/en/infrastructure/<groupe>/` | `content/infrastructure/<groupe>/index.*` | page | — | Publiées : Infrastructure physique (`hardware`), Réseau, Virtualisation, et depuis le 29/10/2026 Monitoring et Automatisation |
 | P05 | Décisions d'architecture | `/fr/infrastructure/decisions/` | `/en/infrastructure/decisions/` | `content/infrastructure/decisions/_index.*` | section | — | Publiée |
 | P06 | ADR | `…/decisions/adr-NNNN-<slug>/` | idem | Archetype `adr` | page | — | Modèle seulement |
-| P07 | Services | `/fr/services/` | `/en/services/` | `content/services/_index.*` | section | Services (30) | Brouillon depuis le 28/10/2026, tant qu'aucun service n'existe (hors du menu) |
-| P08 | Fiche service | `/fr/services/<id>/` | `/en/services/<id>/` | Archetype `services` | page | — | Modèle seulement |
+| P07 | Services | `/fr/services/` | `/en/services/` | `content/services/_index.*` | section | Services (30) | Publiée le 29/10/2026 (brouillon depuis le 28/10/2026) |
+| P08 | Page de service | `/fr/services/<id>/` | `/en/services/<id>/` | `content/services/<id>/index.*` | page | — | Publiées le 29/10/2026 : `openbot`, `lpic-1-lab` |
 | P09 | Journal | `/fr/journal/` | `/en/journal/` | `content/journal/_index.*` | section | Journal (40) | Publiée |
 | P10 | Entrée du journal | `/fr/journal/NNN-<slug>/` | idem | Archetype `journal` | page | — | Modèle seulement |
 | P11 | Incidents | `/fr/journal/incidents/` | `/en/journal/incidents/` | `content/journal/incidents/_index.*` | section | — | Brouillon |
@@ -53,7 +54,7 @@ Groupes de P04 : **à décider (D6, §8)**. Proposition de départ, tirée de l'
 
 | Dossier | Titre FR | Titre EN |
 |---|---|---|
-| `hardware` | Matériel | Hardware |
+| `hardware` | Infrastructure physique (Matériel jusqu'au 29/10/2026) | Physical infrastructure (Hardware jusqu'au 29/10/2026) |
 | `network` | Réseau | Network |
 | `virtualization` | Virtualisation | Virtualization |
 | `storage-backup` | Stockage et sauvegardes | Storage and backup |
@@ -102,7 +103,7 @@ Textes dans les fichiers i18n. Depuis le 28/10/2026, `extend_footer.html` rend t
 | `home` | Accueil | Home | P02 | 10 | Toujours |
 | `project` | Le projet | The project | P19 | 15 | Toujours (depuis le 28/10/2026) |
 | `infrastructure` | Infrastructure | Infrastructure | P03 | 20 | Toujours (depuis 1.6) |
-| `services` | Services | Services | P07 | 30 | À sa publication (brouillon depuis le 28/10/2026) |
+| `services` | Services | Services | P07 | 30 | Toujours (publiée le 29/10/2026) |
 | `journal` | Journal | Journal | P09 | 40 | Toujours (depuis 1.6) |
 | `about` | À propos de moi | About me | P13 | 50 | Toujours |
 
@@ -179,8 +180,8 @@ Format de chaque fiche : identité de la page, puis ses blocs dans l'ordre d'aff
 Un bloc sans donnée est masqué. Détail des contenus et des liens : architecture §5.1.
 
 1. **Le projet** : présentation (corps de la page) ; ligne d'identité (nom, `identity` du front matter) ; boutons « CV » (page CV) et « Me contacter » (P13, ancre `#contact`) ; liens vers P19 et P13. *(Firmin ; 5.2a, 28/10/2026)*
-2. **Le lab en un coup d'œil** : schéma `lab-overview` (« architecture cible » tant que rien n'est en service), phase en cours ; les compteurs par statut sont retirés tant qu'il n'y a pas de services ; liens vers P03 et P07. Pas de dernière semaine : le bloc 4 la montre déjà. *(données ; 5.1 pour le schéma, 5.2a)*
-3. **Stack** : les briques du lab par thème (Infrastructure, Réseau, Monitoring, Services), chacune avec son rôle en une ligne et son statut (En service, En cours, À venir) ; le titre d'un thème mène à sa page quand elle est publiée ; lien « Feuille de route complète » vers P03. *(`data/stack.yaml`, statuts lus dans le catalogue ou la feuille de route ; décision de Firmin du 29/10/2026)*
+2. **Le lab en un coup d'œil** : schéma `lab-overview` (« architecture cible » tant que rien n'est en service), phase en cours avec un lien vers P21 ; les compteurs par statut sont retirés tant qu'il n'y a pas de services ; liens vers P03 et P07. Pas de dernière semaine : le bloc 4 la montre déjà. *(données ; 5.1 pour le schéma, 5.2a)*
+3. **Stack** : les briques du lab par thème (Infrastructure, Réseau, Monitoring, Services), chacune avec son rôle en une ligne et son statut (En service, En cours, À venir) ; le titre d'un thème mène à sa page quand elle est publiée ; lien « Feuille de route complète » vers P21. *(`data/stack.yaml`, statuts lus dans le catalogue ou la feuille de route ; décision de Firmin du 29/10/2026)*
 4. **Dernières entrées du journal** : les 3 dernières entrées, P10 ou P12 (date, titre, numéro pour un post-mortem, description) ; liens vers P09, P11 (quand la section est publiée) et le flux RSS. *(5.2a)*
 
 ### P03 — Infrastructure
@@ -196,9 +197,9 @@ Un bloc sans donnée est masqué. Détail des contenus et des liens : architectu
 | Aujourd'hui | Publiée (1.6) : description et message « en construction » ; sous-pages en brouillon |
 
 1. **En-tête** : titre, description. *(thème)*
-2. **Introduction** : le lab aujourd'hui, en langage simple ; lien vers P05. Feuille de route (shortcode `roadmap`). *(Firmin)*
+2. **Introduction** : le lab aujourd'hui, en langage simple ; liens vers P05 et P21. La feuille de route n'est plus affichée ici depuis le 29/10/2026 : elle a sa page, P21. *(Firmin)*
 3. **Schéma** `lab-overview`. *(5.1)*
-4. **Composants par groupe** : un tableau par groupe, dans l'ordre de `data/groups.yaml`. Colonnes : nom (lien vers sa carte dans P04), rôle, statut, où il tourne, date de vérification. *(4.1)*
+4. **Cartes des pages** (29/10/2026) : une carte par page de la section (P04, puis P05), avec le badge de la feuille de route : Fait, En cours ou À venir (architecture §5.2). Les tableaux de composants par groupe restent la cible. *(Firmin, `roadmap` des pages)*
 5. **Dernières décisions** : les 5 ADR les plus récentes et un lien vers P05. *(4.1)*
 
 ### P04 — Page de groupe d'infrastructure (une par groupe, D6)
@@ -252,18 +253,18 @@ Un bloc sans donnée est masqué. Détail des contenus et des liens : architectu
 
 | | |
 |---|---|
-| Rôle | Tous les services du lab |
+| Rôle | Tous les services du lab, en service ou à venir |
 | URL | `/fr/services/` · `/en/services/` |
 | Fichiers | `content/services/_index.fr.md`, `_index.en.md` |
 | Type, template | section ; `layouts/services/section.html` (4.1) |
 | Menu | Services (30), dès sa publication |
 | Fil d'Ariane | Accueil › Services |
-| Aujourd'hui | Publiée (1.6) : description et message « en construction » ; sous-pages en brouillon |
+| Aujourd'hui | Publiée le 29/10/2026 avec deux pages P08 (décision de Firmin) |
 
 1. **En-tête.** *(thème)*
 2. **Introduction.** *(Firmin)*
-3. **Légende des statuts.** *(4.1)*
-4. **Un tableau par groupe de services.** Colonnes : nom (lien vers P08 si elle est publiée), rôle, statut, où il tourne, exposition, date de vérification. *(catalogue ; 4.1)*
+3. **Cartes des services** (29/10/2026) : une carte par P08, avec son badge : En service, En cours ou À venir (champ `status` de la page, architecture §5.4). *(Firmin)*
+4. **Un tableau par groupe de services**, cible, quand les services seront au catalogue. Colonnes : nom (lien vers P08 si elle est publiée), rôle, statut, où il tourne, exposition, date de vérification. *(catalogue ; 4.1)*
 
 ### P08 — Fiche service
 
@@ -273,7 +274,7 @@ Un bloc sans donnée est masqué. Détail des contenus et des liens : architectu
 | Fichiers | Créés par `hugo new content --kind services services/<id>` |
 | Type, template | page ; `layouts/services/page.html` (4.1) |
 | Fil d'Ariane | Accueil › Services › *Nom* |
-| Aujourd'hui | Archetype seulement (1.3) |
+| Aujourd'hui | Deux pages publiées le 29/10/2026, `openbot` et `lpic-1-lab`, sur la trame des pages de groupe (ouverture, puis Détails techniques et Limites et évolutions quand il y a lieu), avec le template par défaut. La fiche ci-dessous reste la cible |
 
 1. **En-tête** : nom, badge de statut, rôle. *(catalogue ; 4.1)*
 2. **Fiche technique** (architecture §5.4). *(catalogue ; 4.1)*
@@ -387,6 +388,23 @@ Un bloc sans donnée est masqué. Détail des contenus et des liens : architectu
 | Fil d'Ariane | Accueil › Le projet |
 | Aujourd'hui | Publiée (28/10/2026) |
 
+### P21 — Feuille de route
+
+| | |
+|---|---|
+| Rôle | Les étapes du lab dans l'ordre, avec leur statut, et ce qui vient ensuite |
+| URL | `/fr/roadmap/` · `/en/roadmap/` |
+| Fichiers | `content/roadmap/index.fr.md`, `index.en.md` |
+| Type, template | page ; template par défaut de PaperMod, sans date, temps de lecture ni navigation |
+| Menu | — (accès par des liens depuis P02, P03, P19 et P10, décision de Firmin du 29/10/2026) |
+| Fil d'Ariane | Accueil › Feuille de route |
+| Aujourd'hui | Publiée (29/10/2026, décision de Firmin) |
+
+1. **En-tête** : titre, description. *(thème)*
+2. **Introduction** : une étape à la fois, la chronologie dans P09. *(Firmin)*
+3. **Étapes** : shortcode `roadmap`, depuis `data/roadmap.yaml`. *(données)*
+4. **Plus loin** : la suite sans ordre fixé, et ce qui avance hors feuille de route. *(Firmin)*
+
 ### P14 et P15 — Taxonomies
 
 | | Tags | Certifications |
@@ -406,13 +424,16 @@ Fournie par PaperMod sous `/fr/404.html` et `/en/404.html`. GitHub Pages sert `/
 content/
 ├── _index.fr.md, _index.en.md                     P02 Accueil (publiée)
 ├── project/index.fr.md, index.en.md               P19 Le projet (publiée)
+├── roadmap/index.fr.md, index.en.md               P21 Feuille de route (publiée)
 ├── about-me/index.fr.md, index.en.md              P13 À propos de moi (publiée)
 ├── cv/index.fr.md, index.en.md                    P20 CV (publiée)
 ├── infrastructure/
 │   ├── _index.fr.md, _index.en.md                 P03 (publiée, en construction)
-│   ├── <groupe>/index.fr.md, index.en.md          P04, selon D6 (aucun aujourd'hui)
+│   ├── <groupe>/index.fr.md, index.en.md          P04 : hardware, network, virtualization, monitoring, automation
 │   └── decisions/_index.fr.md, _index.en.md       P05 (brouillon)
-├── services/_index.fr.md, _index.en.md            P07 (brouillon)
+├── services/
+│   ├── _index.fr.md, _index.en.md                 P07 (publiée)
+│   └── <id>/index.fr.md, index.en.md              P08 : openbot, lpic-1-lab
 └── journal/
     ├── _index.fr.md, _index.en.md                 P09 (publiée, en construction)
     └── incidents/_index.fr.md, _index.en.md       P11 (brouillon)

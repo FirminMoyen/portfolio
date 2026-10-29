@@ -4,6 +4,8 @@ description: "Le réseau du lab : séparé de la maison par un pare-feu OPNsense
 summary: "Le réseau du lab : séparé de la maison par un pare-feu OPNsense, découpé en zones, joignable à distance par VPN sans aucun port ouvert."
 draft: false
 weight: 2
+# Badge de la carte : étapes de data/roadmap.yaml (architecture §5.2).
+roadmap: [opnsense-network, remote-access, network-zones]
 ShowReadingTime: false
 ShowPostNavLinks: false
 ---
@@ -43,7 +45,7 @@ Pour administrer le lab depuis l'extérieur, j'utilise Tailscale, un VPN : un tu
   - Un réseau à plat.
   - Des zones limitées à PVE1.
   - Un autre adaptateur, exclu par le budget zéro.
-- **Zone isolée** : sortie sur Internet autorisée, réseau domestique et reste du lab injoignables, règles journalisées. Une VM Ubuntu Server 26.04 LTS y tourne, sur PVE2, joignable uniquement en SSH par clé. L'expérience y tourne sous un compte sans droits d'administration. Tests depuis la VM : Internet répond, ni le réseau domestique ni la zone d'infrastructure (administration d'OPNsense et des deux hôtes comprise) ne répondent, et une adresse usurpée est bloquée.
+- **Zone isolée** : sortie sur Internet autorisée, réseau domestique et reste du lab injoignables, règles journalisées. Une VM Ubuntu Server 26.04 LTS y tourne, sur PVE2, administrée en SSH, par clé uniquement. L'expérience y tourne sous un compte sans droits d'administration. Tests depuis la VM : Internet répond, ni le réseau domestique ni la zone d'infrastructure (administration d'OPNsense et des deux hôtes comprise) ne répondent, et une adresse usurpée est bloquée.
 - **VPN** : Tailscale tourne sur OPNsense en subnet router (le point d'entrée du VPN dans le réseau du lab) et annonce la seule route du lab, `10.42.0.0/16`.
 
 ## Limites et évolutions

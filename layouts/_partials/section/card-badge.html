@@ -1,0 +1,23 @@
+{{- /* Badge de statut d'une carte de section (architecture §5.2, §5.4), une seule source :
+       - `roadmap` (liste d'étapes de data/roadmap.yaml) : une étape en cours → En cours,
+         toutes faites → Fait, toutes à venir → À venir, un mélange de faites et d'à venir → En cours ;
+       - sinon `status` (running | building | planned) : vocabulaire du bloc Stack (En service,
+         En cours, À venir), pour une page hors feuille de route, un service par exemple.
+       Rien sans l'un ni l'autre (Décisions d'architecture). */ -}}
+{{- with .Params.roadmap }}
+  {{- $steps := dict }}
+  {{- range hugo.Data.roadmap }}{{ $steps = merge $steps (dict .id .status) }}{{ end }}
+  {{- $found := slice }}
+  {{- range . }}{{ with index $steps . }}{{ $found = $found | append . }}{{ end }}{{ end }}
+  {{- $status := "" }}
+  {{- if in $found "in-progress" }}{{ $status = "in-progress" }}
+  {{- else if and (in $found "done") (in $found "planned") }}{{ $status = "in-progress" }}
+  {{- else if in $found "done" }}{{ $status = "done" }}
+  {{- else if in $found "planned" }}{{ $status = "planned" }}
+  {{- end }}
+  {{- with $status }}<span class="badge badge-roadmap-{{ . }}">{{ i18n (printf "roadmap_%s" .) }}</span>{{ end }}
+{{- else }}
+  {{- with .Params.status }}
+    {{- if in (slice "running" "building" "planned") . }}<span class="badge badge-{{ . }}">{{ i18n (printf "stack_%s" .) }}</span>{{ end }}
+  {{- end }}
+{{- end }}

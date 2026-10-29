@@ -4,7 +4,8 @@
 # Statut d'une brique, une seule source :
 #   - `components` : statut du premier composant du catalogue (data/catalog/<id>.yaml) ;
 #   - `roadmap` : statut de l'étape de data/roadmap.yaml (done → en service, in-progress → en cours, planned → à venir) ;
-#   - `status` (running | building | planned) : seulement pour une brique absente du catalogue et de la feuille de route.
+#   - `page` : statut (`status`) d'une page hors feuille de route, un service par exemple (chemin de contenu) ;
+#   - `status` (running | building | planned) : seulement pour une brique absente du catalogue, de la feuille de route et des pages.
 # `link` : page du thème, chemin de contenu (facultatif, seulement si la page est publiée).
 - id: infrastructure
   label: {fr: "Infrastructure", en: "Infrastructure"}
@@ -37,6 +38,7 @@
       components: [tailscale]
 - id: monitoring
   label: {fr: "Monitoring", en: "Monitoring"}
+  link: /infrastructure/monitoring
   items:
     - name: "Prometheus"
       role: {fr: "Collecte des métriques", en: "Metrics collection"}
@@ -49,10 +51,11 @@
       roadmap: monitoring
 - id: services
   label: {fr: "Services", en: "Services"}
+  link: /services
   items:
     - name: "OpenBot server"
       role: {fr: "Agent IA, en zone isolée", en: "AI agent, in an isolated zone"}
-      status: running
+      page: /services/openbot
     - name: {fr: "Lab LPIC-1", en: "LPIC-1 lab"}
       role: {fr: "VM Linux d'entraînement", en: "Linux practice VMs"}
-      status: planned
+      page: /services/lpic-1-lab

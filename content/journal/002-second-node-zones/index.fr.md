@@ -43,7 +43,7 @@ En semaine 1, j'avais élargi la route annoncée par le VPN à tout le réseau d
 
 ## La suite
 
-Prochaine étape de la [feuille de route]({{< relref "/infrastructure" >}}#lab-roadmap) : mettre en place une stack de monitoring. Jusqu'ici, j'ai tout installé et configuré à la main : l'automatisation avec Ansible et Terraform viendra ensuite.
+Prochaine étape de la [feuille de route]({{< relref "/roadmap" >}}) : mettre en place une stack de monitoring. Jusqu'ici, j'ai tout installé et configuré à la main : l'automatisation avec Ansible et Terraform viendra ensuite.
 
 ## En bref {.brief}
 
@@ -58,3 +58,5 @@ Prochaine étape de la [feuille de route]({{< relref "/infrastructure" >}}#lab-r
   - Route du VPN corrigée en `10.42.0.0/16`.
 - **Décisions** : zones routées plutôt que VLAN, avec le pare-feu de Proxmox sur chaque VM des zones (voir [Réseau]({{< relref "/infrastructure/network" >}})). Deux votes pour PVE1, un pour PVE2 (voir [Virtualisation]({{< relref "/infrastructure/virtualization" >}})).
 - **Limites acceptées** : pas d'isolation de niveau 2 entre les zones. Un seul lien de cluster, avec peu de marge de latence.
+
+**Erratum (29 octobre 2026).** « Joignable uniquement en SSH par clé » allait trop loin : c'est l'administration de la VM qui passe par SSH, par clé uniquement.

@@ -1,9 +1,11 @@
 ---
-title: "Hardware"
+title: "Physical infrastructure"
 description: "The lab's two machines, PVE1 and PVE2: two Dell laptops connected by a small switch, administered entirely remotely."
 summary: "The lab's two machines, PVE1 and PVE2: two Dell laptops connected by a small switch, administered entirely remotely."
 draft: false
 weight: 1
+# Badge de la carte : étapes de data/roadmap.yaml (architecture §5.2).
+roadmap: [proxmox-pve1, proxmox-pve2]
 ShowReadingTime: false
 ShowPostNavLinks: false
 ---

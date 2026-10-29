@@ -1,7 +1,7 @@
 # Groupes de chaque couche (architecture §6.4). L'ordre de la liste est l'ordre d'affichage.
 # D6 tranchée le 25/10/2026.
 infrastructure:
-  - {id: hardware,       label: {fr: "Matériel",       en: "Hardware"}}
+  - {id: hardware,       label: {fr: "Infrastructure physique", en: "Physical infrastructure"}}
   - {id: network,        label: {fr: "Réseau",         en: "Network"}}
   - {id: virtualization, label: {fr: "Virtualisation", en: "Virtualization"}}
 # Aucun service pour l'instant : les groupes de services seront ajoutés avec le premier service.
