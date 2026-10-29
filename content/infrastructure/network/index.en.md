@@ -4,6 +4,8 @@ description: "The lab's network: separated from the home by an OPNsense firewall
 summary: "The lab's network: separated from the home by an OPNsense firewall, split into zones, reachable remotely through a VPN with no open port."
 draft: false
 weight: 2
+# Badge de la carte : étapes de data/roadmap.yaml (architecture §5.2).
+roadmap: [opnsense-network, remote-access, network-zones]
 ShowReadingTime: false
 ShowPostNavLinks: false
 ---

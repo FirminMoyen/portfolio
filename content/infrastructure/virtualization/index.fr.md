@@ -4,6 +4,8 @@ description: "Proxmox VE, l'hyperviseur du lab : PVE1 et PVE2 réunis dans un cl
 summary: "Proxmox VE, l'hyperviseur du lab : PVE1 et PVE2 réunis dans un cluster à deux nœuds, administrés entièrement à distance."
 draft: false
 weight: 3
+# Badge de la carte : étapes de data/roadmap.yaml (architecture §5.2).
+roadmap: [proxmox-cluster]
 ShowReadingTime: false
 ShowPostNavLinks: false
 ---

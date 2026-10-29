@@ -4,6 +4,8 @@ description: "Proxmox VE, the lab's hypervisor: PVE1 and PVE2 joined in a two-no
 summary: "Proxmox VE, the lab's hypervisor: PVE1 and PVE2 joined in a two-node cluster, administered entirely remotely."
 draft: false
 weight: 3
+# Badge de la carte : étapes de data/roadmap.yaml (architecture §5.2).
+roadmap: [proxmox-cluster]
 ShowReadingTime: false
 ShowPostNavLinks: false
 ---

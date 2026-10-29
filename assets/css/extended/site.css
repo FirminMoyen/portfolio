@@ -310,3 +310,7 @@ html[data-theme="dark"] .diagram-dark { display: block; }
     .cv-main li { margin-bottom: 1pt; }
     .cv-main p { margin-bottom: 1.5mm; }
 }
+
+/* --- Cartes des sections Infrastructure et Services : badge de statut à droite du titre (§5.2, §5.4) --- */
+.post-entry .entry-hint-parent { align-items: center; gap: 4px 12px; flex-wrap: wrap; }
+.post-entry .entry-hint-parent .badge { flex-shrink: 0; }

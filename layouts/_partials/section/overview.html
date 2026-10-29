@@ -1,0 +1,19 @@
+{{- /* Vue d'ensemble d'une section à cartes (architecture §5.2, §5.4) : en-tête et
+       introduction comme dans list.html de PaperMod, puis les cartes avec leur badge. */ -}}
+<header class="page-header">
+  {{- partial "breadcrumbs.html" . }}
+  <h1>{{ .Title }}</h1>
+  {{- with .Description }}
+  <div class="post-description">
+    {{ . | markdownify }}
+  </div>
+  {{- end }}
+</header>
+
+{{- with .Content }}
+<div class="post-content md-content">
+  {{- partial "anchored_headings.html" . -}}
+</div>
+{{- end }}
+
+{{- partial "section/cards.html" . }}

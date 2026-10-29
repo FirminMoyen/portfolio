@@ -4,6 +4,8 @@ description: "Les deux machines du lab, PVE1 et PVE2 : deux ordinateurs portable
 summary: "Les deux machines du lab, PVE1 et PVE2 : deux ordinateurs portables Dell reliés par un petit switch, administrés entièrement à distance."
 draft: false
 weight: 1
+# Badge de la carte : étapes de data/roadmap.yaml (architecture §5.2).
+roadmap: [proxmox-pve1, proxmox-pve2]
 ShowReadingTime: false
 ShowPostNavLinks: false
 ---
