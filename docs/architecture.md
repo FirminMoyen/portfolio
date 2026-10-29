@@ -142,7 +142,7 @@ Le site est la vitrine de ce travail. Chaque semaine, Firmin le met à jour et p
 /<lang>/certifications/<id>/                  Tout le travail lié à une certification (idem)
 ```
 
-Menu, dans cet ordre : Accueil · Le projet · Feuille de route · Infrastructure · Services · Journal · À propos de moi (EN : Home · The project · Roadmap · Infrastructure · Services · Journal · About me). Services est en brouillon depuis le 28/10/2026, tant qu'aucun service n'existe : son entrée reviendra seule à sa publication. Sur petit écran, les entrées passent à la ligne au lieu de défiler (§11.5).
+Menu, dans cet ordre : Accueil · Le projet · Infrastructure · Services · Journal · À propos de moi (EN : Home · The project · Infrastructure · Services · Journal · About me). La feuille de route n'y figure pas : on l'atteint par des liens (§5.10). Services est en brouillon depuis le 28/10/2026, tant qu'aucun service n'existe : son entrée reviendra seule à sa publication. Sur petit écran, les entrées passent à la ligne au lieu de défiler (§11.5).
 
 Règles :
 
@@ -251,11 +251,11 @@ Le projet (objectif, contraintes) est présenté côté projet, sur la page Le p
 
 ### 5.9 Le projet
 
-Une page, `/<lang>/project/` (« Le projet » / « The project »), au menu entre Accueil et Feuille de route (poids 15). Elle remplace la section Divers et son unique article, « Objectifs et contraintes du projet » (28/10/2026) ; les anciennes adresses `/<lang>/misc/` et `/<lang>/misc/project-goals-constraints/` y redirigent (alias). Page d'état, mise à jour en place : pourquoi un homelab, pourquoi repartir de zéro, où en est le lab, la suite, le cadre que Firmin s'est fixé. « La suite » donne seulement l'étape en cours et la suivante, puis renvoie à la feuille de route (§5.10) pour le reste, sans la répéter (décision de Firmin du 29/10/2026).
+Une page, `/<lang>/project/` (« Le projet » / « The project »), au menu entre Accueil et Infrastructure (poids 15). Elle remplace la section Divers et son unique article, « Objectifs et contraintes du projet » (28/10/2026) ; les anciennes adresses `/<lang>/misc/` et `/<lang>/misc/project-goals-constraints/` y redirigent (alias). Page d'état, mise à jour en place : pourquoi un homelab, pourquoi repartir de zéro, où en est le lab, la suite, le cadre que Firmin s'est fixé. « La suite » donne seulement l'étape en cours et la suivante, puis renvoie à la feuille de route (§5.10) pour le reste, sans la répéter (décision de Firmin du 29/10/2026).
 
 ### 5.10 Feuille de route
 
-Une page, `/<lang>/roadmap/` (« Feuille de route » / « Roadmap »), au menu entre Le projet et Infrastructure (poids 17). Décision de Firmin du 29/10/2026 : la feuille de route quitte la page Infrastructure, qui décrit le lab tel qu'il est, pour une page à elle. Page d'état, mise à jour en place, sans date, temps de lecture ni navigation. Elle contient une introduction, la liste des étapes (shortcode `roadmap`, §6.7), puis « Plus loin » : ce qui vient après la dernière étape, dans un ordre pas encore fixé, et ce qui avance en parallèle, hors feuille de route.
+Une page, `/<lang>/roadmap/` (« Feuille de route » / « Roadmap »), hors du menu. Décisions de Firmin du 29/10/2026 : la feuille de route quitte la page Infrastructure, qui décrit le lab tel qu'il est, pour une page à elle. Comme les décisions d'architecture, elle n'a pas d'entrée au menu : on l'atteint par des liens, là où le texte en parle. Page d'état, mise à jour en place, sans date, temps de lecture ni navigation. Elle contient une introduction, la liste des étapes (shortcode `roadmap`, §6.7), puis « Plus loin » : ce qui vient après la dernière étape, dans un ordre pas encore fixé, et ce qui avance en parallèle, hors feuille de route.
 
 Y renvoient : la phase en cours et le bloc Stack de l'accueil (§5.1), l'introduction d'Infrastructure, « La suite » de Le projet et des entrées du journal. L'ancienne ancre `/infrastructure/#lab-roadmap` n'existe plus : la page Infrastructure reste en place et renvoie vers la feuille de route.
 
@@ -1033,7 +1033,7 @@ Le site dépend de comptes et de services extérieurs au repo. C'est là qu'est 
 | 2026-10-29 | Accueil, bloc Stack (§5.1, §6.8) : briques par thème (Infrastructure, Réseau, Monitoring, Services) avec leur rôle et leur statut, depuis le nouveau `data/stack.yaml` ; partial `home/stack-list.html` supprimé. Monitoring avec Prometheus et Grafana passe « En cours » dans `data/roadmap.yaml` (décision de Firmin). Lab LPIC-1 annoncé « À venir », hors feuille de route. Libellé « À venir » au lieu de « Prévu » partout (badges, feuille de route, légendes des schémas) | PR `feat/refonte-site` |
 | 2026-10-29 | Bloc Stack : une brique par outil (Prometheus, Grafana, Uptime Kuma, Ansible, Terraform), rôles réduits à quelques mots, quatre thèmes côte à côte sur desktop (deux sur tablette, un sur mobile). Uptime Kuma ajouté à l'étape monitoring. La VM de la zone isolée s'affiche « OpenBot server » : nom du logiciel publiable (exception décidée par Firmin, §10) | PR `feat/refonte-site` |
 | 2026-10-29 | CV en PDF refaits depuis la page CV (styles d'impression, shortcode `site-link`) : adresse dédiée, contenu à jour, une page par langue ; les anciens PDF affichaient une adresse personnelle. Corrections de la relecture de publication : pare-feu de Proxmox « sur chaque VM des zones », plus de double authentification d'OPNsense « envisagée » (fait : aucune), monitoring « En cours » sur Le projet et le CV, légende anglaise des schémas « Running » | PR `feat/refonte-site` |
-| 2026-10-29 | Feuille de route sur sa propre page, `/<lang>/roadmap/` (§5.10), au menu entre Le projet et Infrastructure (décision de Firmin). La page Infrastructure n'affiche plus la liste et y renvoie. Liens de l'accueil, de Le projet et du journal vers la nouvelle page, ancre `#lab-roadmap` retirée | PR `feat/roadmap-page` |
+| 2026-10-29 | Feuille de route sur sa propre page, `/<lang>/roadmap/` (§5.10), hors du menu et atteinte par des liens, comme les décisions d'architecture (décision de Firmin). La page Infrastructure n'affiche plus la liste et y renvoie. Liens de l'accueil, de Le projet et du journal vers la nouvelle page, ancre `#lab-roadmap` retirée | PR `feat/roadmap-page` |
 
 ---
 

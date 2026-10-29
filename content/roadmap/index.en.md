@@ -4,10 +4,6 @@ description: "The homelab's steps, in order: what is done, what is in progress, 
 draft: false
 ShowReadingTime: false
 ShowPostNavLinks: false
-menus:
-  main:
-    identifier: roadmap
-    weight: 17
 ---
 
 The lab's steps, in order. I move forward one step at a time: each technology is learned, set up and documented before moving on to the next. The timeline lives in the [journal]({{< relref "/journal" >}}), week by week.

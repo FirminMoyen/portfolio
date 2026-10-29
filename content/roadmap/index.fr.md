@@ -4,10 +4,6 @@ description: "Les étapes du homelab, dans l'ordre : ce qui est fait, ce qui est
 draft: false
 ShowReadingTime: false
 ShowPostNavLinks: false
-menus:
-  main:
-    identifier: roadmap
-    weight: 17
 ---
 
 Les étapes du lab, dans l'ordre. J'avance une étape à la fois : chaque technologie est apprise, mise en place et documentée avant de passer à la suivante. La chronologie se lit dans le [journal]({{< relref "/journal" >}}), semaine par semaine.

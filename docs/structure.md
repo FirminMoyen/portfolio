@@ -31,7 +31,7 @@
 | P01 | Racine | `/` | — | Générée par Hugo | Redirection | — | Redirige vers la langue par défaut (D1) |
 | P02 | Accueil | `/fr/` | `/en/` | `content/_index.{fr,en}.md` | home | Accueil / Home (10) | Publiée (existante) |
 | P19 | Le projet | `/fr/project/` | `/en/project/` | `content/project/index.{fr,en}.md` | page | Le projet / The project (15) | Publiée (28/10/2026) ; remplace P17 et P18 |
-| P21 | Feuille de route | `/fr/roadmap/` | `/en/roadmap/` | `content/roadmap/index.{fr,en}.md` | page | Feuille de route / Roadmap (17) | Publiée (29/10/2026) ; reprend la feuille de route de P03 |
+| P21 | Feuille de route | `/fr/roadmap/` | `/en/roadmap/` | `content/roadmap/index.{fr,en}.md` | page | — | Publiée (29/10/2026), hors du menu ; reprend la feuille de route de P03 |
 | P03 | Infrastructure | `/fr/infrastructure/` | `/en/infrastructure/` | `content/infrastructure/_index.*` | section | Infrastructure (20) | Publiée |
 | P04 | Page de groupe (une par groupe, D6) | `/fr/infrastructure/<groupe>/` | `/en/infrastructure/<groupe>/` | `content/infrastructure/<groupe>/index.*` | page | — | Aucune tant que D6 n'est pas tranchée |
 | P05 | Décisions d'architecture | `/fr/infrastructure/decisions/` | `/en/infrastructure/decisions/` | `content/infrastructure/decisions/_index.*` | section | — | Publiée |
@@ -102,7 +102,6 @@ Textes dans les fichiers i18n. Depuis le 28/10/2026, `extend_footer.html` rend t
 |---|---|---|---|---|---|
 | `home` | Accueil | Home | P02 | 10 | Toujours |
 | `project` | Le projet | The project | P19 | 15 | Toujours (depuis le 28/10/2026) |
-| `roadmap` | Feuille de route | Roadmap | P21 | 17 | Toujours (depuis le 29/10/2026) |
 | `infrastructure` | Infrastructure | Infrastructure | P03 | 20 | Toujours (depuis 1.6) |
 | `services` | Services | Services | P07 | 30 | À sa publication (brouillon depuis le 28/10/2026) |
 | `journal` | Journal | Journal | P09 | 40 | Toujours (depuis 1.6) |
@@ -397,7 +396,7 @@ Un bloc sans donnée est masqué. Détail des contenus et des liens : architectu
 | URL | `/fr/roadmap/` · `/en/roadmap/` |
 | Fichiers | `content/roadmap/index.fr.md`, `index.en.md` |
 | Type, template | page ; template par défaut de PaperMod, sans date, temps de lecture ni navigation |
-| Menu | Feuille de route / Roadmap (17) |
+| Menu | — (accès par des liens depuis P02, P03, P19 et P10, décision de Firmin du 29/10/2026) |
 | Fil d'Ariane | Accueil › Feuille de route |
 | Aujourd'hui | Publiée (29/10/2026, décision de Firmin) |
 
