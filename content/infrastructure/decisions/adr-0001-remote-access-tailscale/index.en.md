@@ -29,7 +29,7 @@ All three options are WireGuard-based overlay networks, with a control plane tha
 ### Option 1 — Tailscale (control plane hosted by Tailscale)
 
 - **Pros**
-  - Simple setup: no coordination server to install or maintain; a plugin is available for OPNsense.
+  - Simple setup: no coordination server to install or maintain. A plugin is available for OPNsense.
   - Full access control in the VPN's access policy.
   - Official mobile apps (iOS, Android).
   - Free "Personal" plan for personal, non-commercial use, enough for a single user ([pricing](https://tailscale.com/pricing/), [FAQ](https://tailscale.com/kb/1251/pricing-faq)).
@@ -40,7 +40,7 @@ All three options are WireGuard-based overlay networks, with a control plane tha
 ### Option 2 — Headscale (self-hosted Tailscale control plane)
 
 - **Pros**
-  - Free software, a reimplementation of Tailscale's coordination server; uses the official Tailscale clients ([documentation](https://github.com/juanfont/headscale/blob/main/docs/about/features.md)).
+  - Free software, a reimplementation of Tailscale's coordination server. It uses the official Tailscale clients ([documentation](https://github.com/juanfont/headscale/blob/main/docs/about/features.md)).
   - No dependency on a SaaS for the control plane.
 - **Cons**
   - One more server to install, secure, back up and update.
@@ -50,15 +50,15 @@ All three options are WireGuard-based overlay networks, with a control plane tha
 ### Option 3 — NetBird (hosted or self-hosted)
 
 - **Pros**
-  - Free software (BSD-3 licence), self-hostable, with a hosted offering; access policies based on groups and rules, device posture checks; iOS and Android clients ([repository](https://github.com/netbirdio/netbird), [documentation](https://docs.netbird.io)).
+  - Free software (BSD-3 licence), self-hostable, with a hosted offering. Access policies based on groups and rules, device posture checks. iOS and Android clients ([repository](https://github.com/netbirdio/netbird), [documentation](https://docs.netbird.io)).
 - **Cons**
-  - Self-hosted: same problem as Headscale; the installation documentation requires a publicly reachable VM (domain name, TCP 80/443, UDP 3478).
+  - Self-hosted: same problem as Headscale. The installation documentation requires a publicly reachable VM (domain name, TCP 80/443, UDP 3478).
   - Hosted: same SaaS dependency as Tailscale.
 - **Why I ranked it behind Tailscale**:
-  1. self-hosted, NetBird requires a server reachable from the Internet (open ports or a VPS), which is contrary to "nothing exposed" and to the zero budget;
-  2. no OPNsense plugin, whereas Tailscale installs directly on OPNsense through a plugin;
-  3. maturity and community: Tailscale is more widespread and better documented, with more field reports.
-- **Factual note (checked on 25 October 2026)**: an `os-netbird` plugin now exists in OPNsense's official repository, included from OPNsense 25.7.3 according to the NetBird documentation ([OPNsense guide](https://docs.opnsense.org/manual/how-tos/netbird.html), [NetBird guide](https://docs.netbird.io/get-started/install/opnsense)). It creates a `wt0` interface that can be assigned and filtered by OPNsense's firewall rules; NetBird policies do not create these rules automatically. Reason 2 is kept as I gave it; it would need revisiting if remote access is reconsidered.
+  1. Self-hosted, NetBird requires a server reachable from the Internet (open ports or a VPS), which is contrary to "nothing exposed" and to the zero budget.
+  2. No OPNsense plugin, whereas Tailscale installs directly on OPNsense through a plugin.
+  3. Maturity and community: Tailscale is more widespread and better documented, with more field reports.
+- **Factual note (checked on 25 October 2026)**: an `os-netbird` plugin now exists in OPNsense's official repository, included from OPNsense 25.7.3 according to the NetBird documentation ([OPNsense guide](https://docs.opnsense.org/manual/how-tos/netbird.html), [NetBird guide](https://docs.netbird.io/get-started/install/opnsense)). It creates a `wt0` interface that can be assigned and filtered by OPNsense's firewall rules. NetBird policies do not create these rules automatically. Reason 2 is kept as I gave it. It would need revisiting if remote access is reconsidered.
 
 ## Decision
 
@@ -66,27 +66,27 @@ All three options are WireGuard-based overlay networks, with a control plane tha
 
 The criteria that tipped the balance:
 
-1. ease of setup;
-2. the access control features;
-3. the mobile apps.
+1. Ease of setup.
+2. The access control features.
+3. The mobile apps.
 
 ### Chosen implementation
 
-- **Subnet router on OPNsense** (Tailscale plugin), advertising only the lab's network, `10.42.0.0/16`; the home network is not advertised.
+- **Subnet router on OPNsense** (Tailscale plugin), advertising only the lab's network, `10.42.0.0/16`. The home network is not advertised.
 - **Access policy**: restrictive. Its content is not published.
-- **Validation**: tests over 4G succeeded; the lab is reachable, the home network is not.
+- **Validation**: tests over 4G succeeded. The lab is reachable, the home network is not.
 
 ## Consequences
 
 **Positive**
 
-- No inbound port open to the Internet; the exposed surface does not grow.
+- No inbound port open to the Internet: the exposed surface does not grow.
 - Access from the phone and the computer with no extra infrastructure.
 - The VPN gives access to the lab and only to the lab: only the `10.42.0.0/16` route is advertised.
 
 **Negative and risks**
 
-- **Dependency on a third-party service**: the control plane is hosted by Tailscale. An outage or a change in the service's terms can affect remote access; Headscale remains a possible way out, since it uses the same clients.
+- **Dependency on a third-party service**: the control plane is hosted by Tailscale. An outage or a change in the service's terms can affect remote access. Headscale remains a possible way out, since it uses the same clients.
 - **The firewall does not filter VPN traffic.** On FreeBSD, the Tailscale plugin runs in userspace, so OPNsense's firewall does not see traffic coming from the VPN. For now, isolation relies on the VPN's access policy and on advertising only the lab's route. One option is under study: moving the subnet router into a Linux VM, behind the firewall.
 
 **To revisit**

@@ -1,9 +1,8 @@
 ---
 title: "Architecture decisions"
-description: "The homelab's architecture decisions, with their context and consequences."
+description: "The lab's important choices, explained: the context, the options considered, what I chose and what it implies."
+summary: "The lab's important choices, explained: the context, the options considered, what I chose and what it implies."
 draft: false
 ---
 
-Every lasting choice in the lab, between real alternatives, gets an ADR (Architecture Decision Record): the context, the options considered, the decision and its consequences. ADRs are numbered sequentially.
-
-An ADR has one of the following statuses: proposed, accepted, rejected, deprecated or superseded. An accepted ADR is not rewritten: changing my mind means a new ADR, which supersedes the old one.
+When a choice commits the lab for the long term and there were real alternatives, I write it down: this is an ADR (Architecture Decision Record). Each one explains the context, the options I considered, what I chose and why, and what it implies, drawbacks included.
