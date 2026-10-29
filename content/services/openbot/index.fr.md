@@ -10,7 +10,7 @@ ShowReadingTime: false
 ShowPostNavLinks: false
 ---
 
-OpenBot fait tourner des agents IA autonomes : ils exécutent eux-mêmes des commandes sur la machine qui les héberge. J'y expérimente par curiosité, dans une zone du lab isolée du reste.
+OpenBot fait tourner des agents IA autonomes : ils exécutent eux-mêmes des commandes sur la machine qui les héberge. Je l'expérimente par curiosité, dans une zone du lab isolée du reste.
 
 ## Pourquoi une zone isolée
 
@@ -19,8 +19,8 @@ Le logiciel donne à ses agents un accès complet à la machine où il tourne. L
 ## Détails techniques
 
 - **Machine** : une VM Ubuntu Server sur PVE2, dans la zone isolée `10.42.50.0/24`.
-- **Accès** : administration uniquement en SSH par clé.
-- **Isolation** : vérifiée depuis la VM. Internet répond, le réseau domestique et le reste du lab ne répondent pas.
+- **Administration** : en SSH, par clé uniquement.
+- **Isolation** : vérifiée depuis la VM. Internet répond, ni le réseau domestique ni la zone d'infrastructure ne répondent.
 
 ## Limites et évolutions
 

@@ -19,8 +19,8 @@ The software gives its agents full access to the machine it runs on. Protection 
 ## Technical details
 
 - **Machine**: an Ubuntu Server VM on PVE2, in the isolated zone `10.42.50.0/24`.
-- **Access**: administration through key-based SSH only.
-- **Isolation**: checked from the VM. The internet answers, the home network and the rest of the lab do not.
+- **Administration**: over SSH, with keys only.
+- **Isolation**: checked from the VM. The internet answers, neither the home network nor the infrastructure zone does.
 
 ## Limits and next steps
 
