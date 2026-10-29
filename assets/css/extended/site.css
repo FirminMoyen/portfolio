@@ -282,3 +282,31 @@ html[data-theme="dark"] .diagram-dark { display: block; }
 .badge-roadmap-done { color: var(--ok); background: var(--ok-soft); }
 .badge-roadmap-in-progress { color: var(--warn); background: var(--warn-soft); }
 .badge-roadmap-planned { background: transparent; border: 1px dashed var(--tertiary); }
+
+/* --- Impression de la page CV : source des CV en PDF de static/cv/ (une page A4 par langue).
+   A4, sans en-tête, pied de page, fil d'Ariane ni bouton ; couleurs conservées. --- */
+@media print {
+    @page { size: A4; margin: 11mm 12mm; }
+    html, body { background: #fff !important; }
+    body { font-size: 10pt; line-height: 1.4; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .header, .footer, .top-link, .breadcrumbs, .construction-banner, .cv .profile-links { display: none !important; }
+    .main:has(> .cv) { max-width: none; margin: 0; padding: 0; }
+    .cv-header { margin-bottom: 4mm; }
+    .cv .profile-name { font-size: 20pt; margin: 0 0 1pt; }
+    .cv .profile-headline { font-size: 10.5pt; margin-bottom: 0; }
+    .cv-grid { grid-template-columns: 52mm minmax(0, 1fr); gap: 7mm; }
+    .cv-aside, .cv-aside li { font-size: 8pt; line-height: 1.35; }
+    .cv-aside { padding: 3.5mm; }
+    .cv-aside section + section { margin-top: 3mm; }
+    .cv-aside h2, .cv-main h2 { font-size: 8.5pt; margin-bottom: 3pt; }
+    .cv-aside li { margin-bottom: 2pt; }
+    .cv-main { margin: 0; }
+    .cv-main, .cv-main p, .cv-main li { font-size: 8.8pt; line-height: 1.36; }
+    .cv-main h2:not(:first-child) { margin-top: 4mm; }
+    .cv-main h3 { font-size: 10pt; margin: 2.5mm 0 0; break-after: avoid; }
+    .cv-main h3 + p { margin-bottom: 2pt; }
+    .cv-main h3 + p em { font-size: 8.5pt; }
+    .cv-main ul { margin: 0; break-inside: avoid; }
+    .cv-main li { margin-bottom: 1pt; }
+    .cv-main p { margin-bottom: 1.5mm; }
+}

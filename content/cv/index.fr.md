@@ -81,12 +81,12 @@ Administrateur systèmes junior, bachelier en technologie de l'informatique (EPH
 
 ### Reconstruction documentée
 
-*Depuis 10/2026 · [firminmoyen.dev]({{< relref "/" >}})*
+*Depuis 10/2026 · {{< site-link >}}*
 
 - Reconstruction de zéro, documentée chaque semaine en français et en anglais : journal, décisions d'architecture.
 - Deux nœuds Proxmox VE en cluster, pare-feu OPNsense qui isole le lab du réseau domestique et le découpe en zones.
 - Accès distant par Tailscale (VPN WireGuard), aucun service exposé publiquement.
-- Prochaine étape : une stack de monitoring, puis l'automatisation avec Ansible et Terraform.
+- En cours : monitoring avec Prometheus, Grafana et Uptime Kuma, puis automatisation avec Ansible et Terraform.
 
 ### Premier homelab
 

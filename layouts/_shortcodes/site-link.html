@@ -1,0 +1,4 @@
+{{- /* Lien vers l'accueil du site public, affiché par son domaine
+       (params.siteDomain) : fixe, pour que le serveur de dev ne mette pas
+       localhost dans un PDF imprimé depuis l'aperçu (CV). Usage : {{< site-link >}}. */ -}}
+{{- with site.Params.siteDomain }}<a href="https://{{ . }}{{ "" | relLangURL }}">{{ . }}</a>{{ end -}}

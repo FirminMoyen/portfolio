@@ -81,12 +81,12 @@ Junior systems administrator with a bachelor's degree in Information Technology 
 
 ### Documented rebuild
 
-*Since 10/2026 · [firminmoyen.dev]({{< relref "/" >}})*
+*Since 10/2026 · {{< site-link >}}*
 
 - Rebuilt from scratch, documented every week in French and English: journal, architecture decisions.
 - Two Proxmox VE nodes in a cluster, an OPNsense firewall that isolates the lab from the home network and splits it into zones.
 - Remote access via Tailscale (WireGuard VPN), with no services exposed to the internet.
-- Next step: a monitoring stack, then automation with Ansible and Terraform.
+- In progress: monitoring with Prometheus, Grafana and Uptime Kuma, then automation with Ansible and Terraform.
 
 ### First homelab
 
