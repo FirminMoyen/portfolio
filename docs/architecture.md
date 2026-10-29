@@ -251,7 +251,7 @@ Le projet (objectif, contraintes) est présenté côté projet, sur la page Le p
 
 ### 5.9 Le projet
 
-Une page, `/<lang>/project/` (« Le projet » / « The project »), au menu entre Accueil et Feuille de route (poids 15). Elle remplace la section Divers et son unique article, « Objectifs et contraintes du projet » (28/10/2026) ; les anciennes adresses `/<lang>/misc/` et `/<lang>/misc/project-goals-constraints/` y redirigent (alias). Page d'état, mise à jour en place : pourquoi un homelab, pourquoi repartir de zéro, où en est le lab, la suite, le cadre que Firmin s'est fixé.
+Une page, `/<lang>/project/` (« Le projet » / « The project »), au menu entre Accueil et Feuille de route (poids 15). Elle remplace la section Divers et son unique article, « Objectifs et contraintes du projet » (28/10/2026) ; les anciennes adresses `/<lang>/misc/` et `/<lang>/misc/project-goals-constraints/` y redirigent (alias). Page d'état, mise à jour en place : pourquoi un homelab, pourquoi repartir de zéro, où en est le lab, la suite, le cadre que Firmin s'est fixé. « La suite » donne seulement l'étape en cours et la suivante, puis renvoie à la feuille de route (§5.10) pour le reste, sans la répéter (décision de Firmin du 29/10/2026).
 
 ### 5.10 Feuille de route
 
