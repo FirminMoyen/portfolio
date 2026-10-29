@@ -1,7 +1,7 @@
 {{- /* Bloc 3 — Stack : les briques du lab par thème (data/stack.yaml), avec
        leur rôle et leur statut (architecture §5.1, §6.8). Le statut se lit
-       dans le catalogue ou la feuille de route ; `status` seulement pour une
-       brique absente des deux. Lien vers la page Feuille de route en bas. */ -}}
+       dans le catalogue, la feuille de route ou une page (`page`) ; `status`
+       seulement pour une brique absente des trois. Lien vers la page Feuille de route en bas. */ -}}
 {{- $roadmap := dict }}
 {{- range hugo.Data.roadmap }}{{ $roadmap = merge $roadmap (dict .id .status) }}{{ end }}
 {{- /* Statuts de la feuille de route ramenés au vocabulaire du catalogue. */}}
@@ -19,6 +19,7 @@
         {{- $status := .status | default "" }}
         {{- with .components }}{{ with index hugo.Data.catalog (index . 0) }}{{ $status = .status }}{{ end }}{{ end }}
         {{- with .roadmap }}{{ with index $roadmap . }}{{ $status = index $fromRoadmap . }}{{ end }}{{ end }}
+        {{- with .page }}{{ with site.GetPage . }}{{ with .Params.status }}{{ $status = . }}{{ end }}{{ end }}{{ end }}
         <li>
           <span class="stack-head">
             <span class="stack-name">{{ partial "l10n.html" .name }}</span>
