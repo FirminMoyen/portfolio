@@ -10,16 +10,21 @@ tags: []
 certifications: []
 ---
 
-## Goal of the week
+<!-- Title: a turning point or a question. Lead, without a heading: two or three sentences (where the lab stood, what changed this week). -->
 
-## Done
+<!--more-->
 
-## Problems and fixes
-<!-- For each problem: symptom, diagnosis, cause, fix. -->
+## Story
+<!-- One to three short stories, each under a telling heading. For each: the problem, what I tried, what I chose and why (link to the decision), the limit I accept. -->
 
-## Decisions
-<!-- One sentence per decision, with the link to its ADR. -->
+## What I take away
+<!-- Firmin's own words. Section removed until he has given them. -->
 
-## Learned
+## What's next
 
-## Next week
+## In brief {.brief}
+<!-- For technical readers. -->
+
+- **Components**: 
+- **Steps**: 
+- **Decisions**: 

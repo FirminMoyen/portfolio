@@ -10,6 +10,6 @@ description: ""
 ## Mise en œuvre
 
 ## Exploitation
-<!-- Mises à jour, sauvegarde et restauration, supervision : ce que la fiche technique ne dit pas. -->
+<!-- Mises à jour, sauvegarde et restauration, monitoring : ce que la fiche technique ne dit pas. -->
 
 ## Limites et évolutions
