@@ -36,5 +36,5 @@
 <text x="856" y="266.2" font-size="14" fill="#57606a">NAT), then reaches the OPNsense firewall on PVE1</text>
 <text x="856" y="286.2" font-size="14" fill="#57606a">(2nd NAT).</text>
 <text x="116" y="633.9" font-size="13" fill="#57606a">In service</text>
-<text x="116" y="665.9" font-size="13" fill="#57606a">Planned</text>
+<text x="116" y="665.9" font-size="13" fill="#57606a">Upcoming</text>
 </svg>

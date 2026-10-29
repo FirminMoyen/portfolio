@@ -35,5 +35,5 @@
 <text x="856" y="246.2" font-size="14" fill="#57606a">Internet arrive par la box domestique (1er NAT),</text>
 <text x="856" y="266.2" font-size="14" fill="#57606a">puis sur le pare-feu OPNsense de PVE1 (2ᵉ NAT).</text>
 <text x="116" y="633.9" font-size="13" fill="#57606a">En service</text>
-<text x="116" y="665.9" font-size="13" fill="#57606a">Prévu</text>
+<text x="116" y="665.9" font-size="13" fill="#57606a">À venir</text>
 </svg>
