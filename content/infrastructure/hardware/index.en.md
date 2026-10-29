@@ -1,5 +1,5 @@
 ---
-title: "Hardware"
+title: "Physical infrastructure"
 description: "The lab's two machines, PVE1 and PVE2: two Dell laptops connected by a small switch, administered entirely remotely."
 summary: "The lab's two machines, PVE1 and PVE2: two Dell laptops connected by a small switch, administered entirely remotely."
 draft: false

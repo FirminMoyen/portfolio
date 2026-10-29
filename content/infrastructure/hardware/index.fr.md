@@ -1,5 +1,5 @@
 ---
-title: "Matériel"
+title: "Infrastructure physique"
 description: "Les deux machines du lab, PVE1 et PVE2 : deux ordinateurs portables Dell reliés par un petit switch, administrés entièrement à distance."
 summary: "Les deux machines du lab, PVE1 et PVE2 : deux ordinateurs portables Dell reliés par un petit switch, administrés entièrement à distance."
 draft: false
