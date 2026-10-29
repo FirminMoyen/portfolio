@@ -1,6 +1,6 @@
 ---
 title: "Infrastructure"
-description: "L'infrastructure du homelab : matériel, réseau et virtualisation."
+description: "Le lab tel qu'il est aujourd'hui : deux nœuds Proxmox VE en cluster, un réseau découpé en zones derrière OPNsense, un accès à distance par VPN."
 draft: false
 menus:
   main:
@@ -8,14 +8,14 @@ menus:
     weight: 20
 ---
 
-Cette section décrit l'infrastructure du lab, c'est-à-dire ce dont le reste du lab dépend pour fonctionner. Ce qui est consommé sans que le reste en dépende relève des services. En cas de doute, une question tranche : si ce composant s'arrête, quels autres composants cessent de fonctionner ?
+Cette section décrit le lab tel qu'il est aujourd'hui : les machines, le réseau qui les relie, et la virtualisation qui les fait travailler ensemble. Le matériel est modeste, mais l'organisation est celle d'une entreprise : un pare-feu à l'entrée, des zones séparées, un accès à distance sans rien exposer sur Internet.
 
-Aujourd'hui, le lab tourne sur un seul nœud, PVE1, avec Proxmox VE. Un pare-feu OPNsense, en VM sur PVE1, isole le lab du réseau domestique. J'accède au lab à distance par Tailscale, sans aucun port ouvert sur Internet. Un second nœud, PVE2, puis un cluster Proxmox à deux nœuds sont prévus.
+Les deux machines, PVE1 et PVE2, font tourner Proxmox VE et sont réunies en cluster. Un pare-feu OPNsense, installé en machine virtuelle sur PVE1, sépare le lab du réseau de la maison et le découpe en zones. J'y accède à distance par Tailscale, un VPN. L'une des zones est isolée du reste : j'y expérimente, par curiosité, avec un agent IA autonome.
 
-L'infrastructure est répartie en trois groupes : matériel, réseau et virtualisation.
+Les choix importants sont expliqués dans les [décisions d'architecture]({{< relref "/infrastructure/decisions" >}}).
 
 ## Feuille de route
 
-Les étapes, dans l'ordre. La chronologie se lit dans le journal, semaine par semaine. Après le cluster, l'ordre n'est pas encore fixé.
+Les étapes du lab, dans l'ordre. La chronologie se lit dans le [journal]({{< relref "/journal" >}}), semaine par semaine.
 
 {{< roadmap >}}

@@ -4,7 +4,7 @@
 <rect x="360" y="168" width="400" height="288" rx="12" fill="#1f2a37" stroke="#2f4a6b" stroke-width="1"/>
 <svg x="264" y="268" overflow="visible" width="127" height="8" viewBox="0 0 127 8" preserveAspectRatio="none" style="fill: none; stroke: #9da7b3; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round"><defs><marker id="dc-arrow-head-filled-1" orient="auto" markerWidth="5" markerHeight="5" refX="2" refY="2" overflow="visible"><path d="M0 0 L4 2 L0 4 Z" fill="#9da7b3" stroke="none" style="stroke: none; fill: #9da7b3; fill: context-stroke"/></marker></defs><path d="M 0 4 L 123 4" marker-end="url(#dc-arrow-head-filled-1)"></path></svg>
 <svg x="556" y="456" overflow="visible" width="8" height="72" viewBox="0 0 8 72" preserveAspectRatio="none" style="fill: none; stroke: #4493f8; stroke-width: 3; stroke-linecap: round; stroke-linejoin: round"><path d="M 4 0 L 4 72"></path></svg>
-<svg x="728" y="568" overflow="visible" width="128" height="8" viewBox="0 0 128 8" preserveAspectRatio="none" style="fill: none; stroke: #6e7681; stroke-width: 3; stroke-dasharray: 6 6; stroke-linecap: round; stroke-linejoin: round"><path d="M 0 4 L 128 4"></path></svg>
+<svg x="728" y="568" overflow="visible" width="128" height="8" viewBox="0 0 128 8" preserveAspectRatio="none" style="fill: none; stroke: #4493f8; stroke-width: 3; stroke-linecap: round; stroke-linejoin: round"><path d="M 0 4 L 128 4"></path></svg>
 <svg x="64" y="628" overflow="visible" width="40" height="8" viewBox="0 0 40 8" preserveAspectRatio="none" style="fill: none; stroke: #4493f8; stroke-width: 3; stroke-linecap: round"><path d="M 0 4 L 40 4"></path></svg>
 <svg x="64" y="660" overflow="visible" width="40" height="8" viewBox="0 0 40 8" preserveAspectRatio="none" style="fill: none; stroke: #6e7681; stroke-width: 3; stroke-dasharray: 6 6; stroke-linecap: round"><path d="M 0 4 L 40 4"></path></svg>
 <rect x="64" y="224" width="200" height="96" rx="10" fill="#1d1e20" stroke="#4493f8" stroke-width="1.5"/>
@@ -12,9 +12,8 @@
 <text x="164" y="276.5" text-anchor="middle" font-size="15" fill="#e6edf3">domestique · 1er NAT</text>
 <text x="164" y="296.5" text-anchor="middle" font-size="15" fill="#e6edf3">aucun port ouvert</text>
 <rect x="392" y="232" width="336" height="80" rx="10" fill="#1d1e20" stroke="#4493f8" stroke-width="1.5"/>
-<text x="560" y="256.5" text-anchor="middle" font-size="15" font-weight="700" fill="#e6edf3">OPNsense (fw-01)</text>
-<text x="560" y="276.5" text-anchor="middle" font-size="15" fill="#e6edf3">VM pare-feu et routeur : tout le trafic du</text>
-<text x="560" y="296.5" text-anchor="middle" font-size="15" fill="#e6edf3">lab passe par elle</text>
+<text x="560" y="266.5" text-anchor="middle" font-size="15" font-weight="700" fill="#e6edf3">OPNsense (fw-01)</text>
+<text x="560" y="286.5" text-anchor="middle" font-size="15" fill="#e6edf3">VM pare-feu et routeur du lab</text>
 <rect x="392" y="344" width="336" height="80" rx="10" fill="#1d1e20" stroke="#4493f8" stroke-width="1.5"/>
 <text x="560" y="378.5" text-anchor="middle" font-size="15" font-weight="700" fill="#e6edf3">Proxmox VE 9.2</text>
 <text x="560" y="398.5" text-anchor="middle" font-size="15" fill="#e6edf3">hyperviseur, ZFS sur un seul disque</text>
@@ -22,20 +21,19 @@
 <text x="560" y="556.5" text-anchor="middle" font-size="15" font-weight="700" fill="#e6edf3">sw-01</text>
 <text x="560" y="576.5" text-anchor="middle" font-size="15" fill="#e6edf3">switch non manageable · 5 ports</text>
 <text x="560" y="596.5" text-anchor="middle" font-size="15" fill="#e6edf3">dédié au lab</text>
-<rect x="856" y="528" width="360" height="88" rx="10" fill="#1d1e20" stroke="#6e7681" stroke-width="1.5" stroke-dasharray="6 4"/>
-<text x="1036" y="556.5" text-anchor="middle" font-size="15" font-weight="700" fill="#9da7b3">PVE2 · Dell XPS 15</text>
-<text x="1036" y="576.5" text-anchor="middle" font-size="15" fill="#9da7b3">6 cœurs / 32 Go · prévu</text>
-<text x="1036" y="596.5" text-anchor="middle" font-size="15" fill="#9da7b3">rôle : VM et conteneurs des services</text>
+<rect x="856" y="528" width="360" height="88" rx="10" fill="#1d1e20" stroke="#4493f8" stroke-width="1.5"/>
+<text x="1036" y="556.5" text-anchor="middle" font-size="15" font-weight="700" fill="#e6edf3">PVE2 · Dell XPS 15</text>
+<text x="1036" y="576.5" text-anchor="middle" font-size="15" fill="#e6edf3">6 cœurs / 32 Go · adaptateur USB-Ethernet</text>
+<text x="1036" y="596.5" text-anchor="middle" font-size="15" fill="#e6edf3">rôle : VM et conteneurs des services</text>
 <text x="64" y="83.0" font-size="30" font-weight="700" fill="#e6edf3">Schéma physique du lab</text>
-<text x="64" y="114.5" font-size="15" fill="#9da7b3">Matériel et câblage · état au 25 octobre 2026</text>
+<text x="64" y="114.5" font-size="15" fill="#9da7b3">Matériel et câblage · état au 28 octobre 2026</text>
 <text x="384" y="198.5" font-size="15" font-weight="700" fill="#79b8ff">PVE1 · Dell Latitude 7490</text>
 <text x="384" y="215.9" font-size="13" fill="#9da7b3">4 cœurs / 16 Go · rôle : infrastructure du lab</text>
 <text x="312" y="255.9" text-anchor="middle" font-size="13" fill="#9da7b3">2ᵉ NAT</text>
 <text x="572" y="495.9" font-size="13" fill="#9da7b3">câble Ethernet</text>
-<text x="792" y="551.9" text-anchor="middle" font-size="13" fill="#9da7b3">câble prévu</text>
+<text x="792" y="551.9" text-anchor="middle" font-size="13" fill="#9da7b3">câble</text>
 <text x="856" y="246.2" font-size="14" fill="#9da7b3">Internet arrive par la box domestique (1er NAT),</text>
 <text x="856" y="266.2" font-size="14" fill="#9da7b3">puis sur le pare-feu OPNsense de PVE1 (2ᵉ NAT).</text>
-<text x="856" y="286.2" font-size="14" fill="#9da7b3">Tout le reste du lab est derrière lui.</text>
 <text x="116" y="633.9" font-size="13" fill="#9da7b3">En service</text>
 <text x="116" y="665.9" font-size="13" fill="#9da7b3">Prévu</text>
 </svg>

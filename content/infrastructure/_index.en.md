@@ -1,6 +1,6 @@
 ---
 title: "Infrastructure"
-description: "The homelab's infrastructure: hardware, network and virtualization."
+description: "The lab as it is today: two Proxmox VE nodes in a cluster, a network split into zones behind OPNsense, remote access through a VPN."
 draft: false
 menus:
   main:
@@ -8,14 +8,14 @@ menus:
     weight: 20
 ---
 
-This section describes the lab's infrastructure, that is, what the rest of the lab depends on to work. What is consumed without the rest depending on it belongs to services. When in doubt, one question decides: if this component stops, which other components stop working?
+This section describes the lab as it is today: the machines, the network that connects them, and the virtualization that makes them work together. The hardware is modest, but the organisation is a company's: a firewall at the entrance, separate zones, remote access with nothing exposed to the internet.
 
-Today, the lab runs on a single node, PVE1, with Proxmox VE. An OPNsense firewall, in a VM on PVE1, isolates the lab from the home network. I reach the lab remotely through Tailscale, with no port open to the internet. A second node, PVE2, then a two-node Proxmox cluster are planned.
+The two machines, PVE1 and PVE2, run Proxmox VE and are joined in a cluster. An OPNsense firewall, installed as a virtual machine on PVE1, separates the lab from the home network and splits it into zones. I reach it remotely through Tailscale, a VPN. One of the zones is isolated from the rest: there, out of curiosity, I experiment with an autonomous AI agent.
 
-The infrastructure is split into three groups: hardware, network and virtualization.
+The important choices are explained in the [architecture decisions]({{< relref "/infrastructure/decisions" >}}).
 
 ## Roadmap
 
-The steps, in order. The timeline lives in the journal, week by week. After the cluster, the order is not set yet.
+The lab's steps, in order. The timeline lives in the [journal]({{< relref "/journal" >}}), week by week.
 
 {{< roadmap >}}

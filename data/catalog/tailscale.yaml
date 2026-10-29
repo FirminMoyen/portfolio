@@ -15,4 +15,4 @@ auth:
   method: sso
   mfa: false
 depends_on: [fw-01]
-verified: 2026-10-25
+verified: 2026-10-28
