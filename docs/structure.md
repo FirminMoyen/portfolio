@@ -2,7 +2,7 @@
 
 | | |
 |---|---|
-| Statut | Validé (v0.1), 14 octobre 2026 |
+| Statut | Validé (v0.1), 14 octobre 2026 ; mis à jour le 29 octobre 2026 (refonte « regard recruteur », architecture §17.2) |
 | Date | 14 octobre 2026 |
 | Emplacement | `docs/structure.md` du repo `FirminMoyen/portfolio` |
 | Complète | `docs/architecture.md`, en particulier ses sections URL, Sections, Modèle de contenu, Implémentation Hugo et Plan d'implémentation |
@@ -10,7 +10,7 @@
 
 ## 0. Portée
 
-- Ce document fixe la **structure** du site : pages, URL, fichiers, types Hugo, templates, menus, fil d'Ariane, blocs de chaque page, redirections. Il ne contient **aucun contenu** : la prose appartient à Firmin (architecture §9).
+- Ce document fixe la **structure** du site : pages, URL, fichiers, types Hugo, templates, menus, fil d'Ariane, blocs de chaque page, redirections. Il ne contient **aucun contenu** : la prose est rédigée à partir des faits de Firmin et validée par lui (architecture §9.1).
 - En cas d'écart avec `docs/architecture.md`, Claude Code s'arrête et le signale (architecture §0.1).
 - Chaque bloc de page indique la phase du plan (architecture §15) où son rendu est implémenté.
 - Aujourd'hui (§7), seuls sont créés l'arborescence, la navigation, les redirections et les archetypes. Les pages s'affichent avec les templates par défaut de PaperMod.
@@ -30,21 +30,23 @@
 |---|---|---|---|---|---|---|---|
 | P01 | Racine | `/` | — | Générée par Hugo | Redirection | — | Redirige vers la langue par défaut (D1) |
 | P02 | Accueil | `/fr/` | `/en/` | `content/_index.{fr,en}.md` | home | Accueil / Home (10) | Publiée (existante) |
-| P03 | Infrastructure | `/fr/infrastructure/` | `/en/infrastructure/` | `content/infrastructure/_index.*` | section | Infrastructure (20) | Publiée, en construction (1.6) |
+| P19 | Le projet | `/fr/project/` | `/en/project/` | `content/project/index.{fr,en}.md` | page | Le projet / The project (15) | Publiée (28/10/2026) ; remplace P17 et P18 |
+| P03 | Infrastructure | `/fr/infrastructure/` | `/en/infrastructure/` | `content/infrastructure/_index.*` | section | Infrastructure (20) | Publiée |
 | P04 | Page de groupe (une par groupe, D6) | `/fr/infrastructure/<groupe>/` | `/en/infrastructure/<groupe>/` | `content/infrastructure/<groupe>/index.*` | page | — | Aucune tant que D6 n'est pas tranchée |
-| P05 | Décisions d'architecture | `/fr/infrastructure/decisions/` | `/en/infrastructure/decisions/` | `content/infrastructure/decisions/_index.*` | section | — | Brouillon |
+| P05 | Décisions d'architecture | `/fr/infrastructure/decisions/` | `/en/infrastructure/decisions/` | `content/infrastructure/decisions/_index.*` | section | — | Publiée |
 | P06 | ADR | `…/decisions/adr-NNNN-<slug>/` | idem | Archetype `adr` | page | — | Modèle seulement |
-| P07 | Services | `/fr/services/` | `/en/services/` | `content/services/_index.*` | section | Services (30) | Publiée, en construction (1.6) |
+| P07 | Services | `/fr/services/` | `/en/services/` | `content/services/_index.*` | section | Services (30) | Brouillon depuis le 28/10/2026, tant qu'aucun service n'existe (hors du menu) |
 | P08 | Fiche service | `/fr/services/<id>/` | `/en/services/<id>/` | Archetype `services` | page | — | Modèle seulement |
-| P09 | Journal | `/fr/journal/` | `/en/journal/` | `content/journal/_index.*` | section | Journal (40) | Publiée, en construction (1.6) |
+| P09 | Journal | `/fr/journal/` | `/en/journal/` | `content/journal/_index.*` | section | Journal (40) | Publiée |
 | P10 | Entrée du journal | `/fr/journal/NNN-<slug>/` | idem | Archetype `journal` | page | — | Modèle seulement |
 | P11 | Incidents | `/fr/journal/incidents/` | `/en/journal/incidents/` | `content/journal/incidents/_index.*` | section | — | Brouillon |
 | P12 | Post-mortem | `/fr/journal/incidents/pm-NNN-<slug>/` | idem | Archetype `postmortem` | page | — | Modèle seulement |
-| P17 | Divers | `/fr/misc/` | `/en/misc/` | `content/misc/_index.*` | section | Divers / Miscellaneous (45) | Publiée (25/10/2026) |
-| P18 | Article divers | `/fr/misc/<slug>/` | idem | Archetype `misc` | page | — | Premier article : objectifs et contraintes du projet |
+| P17 | Divers | `/fr/misc/` | `/en/misc/` | — | — | — | Supprimée le 28/10/2026 ; l'adresse redirige vers P19 (alias) |
+| P18 | Article divers | `/fr/misc/<slug>/` | idem | — | — | — | Supprimé le 28/10/2026 avec l'archetype `misc` ; `project-goals-constraints` redirige vers P19 |
 | P13 | À propos de moi | `/fr/about-me/` | `/en/about-me/` | `content/about-me/index.*` | page | À propos de moi / About me (50) | Publiée |
-| P14 | Tags | `/fr/tags/`, `/fr/tags/<tag>/` | idem | Générées par Hugo | taxonomie | — | Automatiques ; aucun tag aujourd'hui |
-| P15 | Certifications | `/fr/certifications/`, `/fr/certifications/<id>/` | idem | Générées par Hugo | taxonomie | — | Automatiques ; aucune aujourd'hui |
+| P20 | CV | `/fr/cv/` | `/en/cv/` | `content/cv/index.*` | page | — | Publiée |
+| P14 | Tags | `/fr/tags/`, `/fr/tags/<tag>/` | idem | Générées par Hugo | taxonomie | — | Index non généré tant qu'aucun tag n'est utilisé (`disableKinds`, 28/10/2026) |
+| P15 | Certifications | `/fr/certifications/`, `/fr/certifications/<id>/` | idem | Générées par Hugo | taxonomie | — | Idem |
 | P16 | Page 404 | `/fr/404.html`, `/404.html` | `/en/404.html` | Thème ; `static/404.html` à la racine | — | — | Racine : page autonome bilingue (1.1) |
 
 Groupes de P04 : **à décider (D6, §8)**. Proposition de départ, tirée de l'architecture §6.4 :
@@ -77,30 +79,34 @@ Affiché sur toutes les pages sauf l'accueil (`ShowBreadCrumbs`). Il suit l'arbo
 
 ### 3.3 Pied de page
 
-- Copyright.
-- Lien vers le code source du site.
-- Mention « ni cookies ni traceurs », dont le texte vient des fichiers i18n.
-- Lien vers le flux RSS du journal (`/<lang>/journal/index.xml`), sur toutes les pages, affiché seulement quand le journal est publié.
+- Copyright et nom (`params.profile.name`).
+- Contact : l'adresse de `params.contactEmail`.
+- Lien vers le code source du site (`params.siteRepo`).
+- Lien vers le flux RSS du journal (`/<lang>/journal/index.xml`), affiché seulement quand le journal est publié.
+- Mention « sans cookies ni traceurs ».
+- Crédit discret : « Construit avec Hugo et PaperMod », sans lien de suivi.
 
-Le lien RSS est en place depuis l'étape 1.4 : `extend_footer.html` l'ajoute sous le pied de page de PaperMod. Le reste est implémenté en phase 5.2 dans le même fichier. Aucun bouton RSS à côté des titres (`ShowRssButtonInSectionTermList` désactivé).
+Textes dans les fichiers i18n. Depuis le 28/10/2026, `extend_footer.html` rend tout le pied de page ; celui de PaperMod (« Powered by » avec lien de suivi) est masqué par `params.hideFooter` (architecture §11.7). Les éléments sont séparés par un point médian ; sur petit écran, ils passent à la ligne sans séparateur. Aucun bouton RSS à côté des titres (`ShowRssButtonInSectionTermList` désactivé).
 
 ### 3.4 Métadonnées
 
 - `<title>` et description de chaque page ;
 - liens `hreflang` vers la traduction (PaperMod) ;
-- balises OpenGraph, avec une image par défaut ajoutée en phase 3.1.
+- balise `author` (`params.author`) ;
+- balises OpenGraph, avec une image par défaut par langue (`static/og-image.<lang>.png`, 1200 × 630), ajoutée le 28/10/2026.
 
 ### 3.5 Menu
 
 | Identifiant | FR | EN | Cible | Poids | Apparaît |
 |---|---|---|---|---|---|
 | `home` | Accueil | Home | P02 | 10 | Toujours |
+| `project` | Le projet | The project | P19 | 15 | Toujours (depuis le 28/10/2026) |
 | `infrastructure` | Infrastructure | Infrastructure | P03 | 20 | Toujours (depuis 1.6) |
-| `services` | Services | Services | P07 | 30 | Toujours (depuis 1.6) |
+| `services` | Services | Services | P07 | 30 | À sa publication (brouillon depuis le 28/10/2026) |
 | `journal` | Journal | Journal | P09 | 40 | Toujours (depuis 1.6) |
 | `about` | À propos de moi | About me | P13 | 50 | Toujours |
 
-En production, le menu compte donc les cinq entrées depuis l'étape 1.6. Une entrée de menu n'existe que si sa page est construite : une section remise en brouillon en sortirait seule.
+En production, le menu compte aujourd'hui cinq entrées : Accueil · Le projet · Infrastructure · Journal · À propos de moi. Une entrée de menu n'existe que si sa page est construite : Services, remise en brouillon, en est sortie seule. Sur petit écran, les entrées passent à la ligne (architecture §11.5).
 
 ### 3.6 Redirections des anciennes URL
 
@@ -124,7 +130,9 @@ C'est le même format que les alias de Hugo, et une seule liste à tenir : ce ta
 | `/en/journal/` | — : c'est la section Journal | — | 1.6 : `static/en/journal/index.html` supprimé |
 | `/en/journal/proxmox-homelab-first-steps/` | `/en/journal/` | `/en/journal/` | — (1.6) |
 | `/en/projects/` | `/en/infrastructure/` | `/en/infrastructure/` | — (1.6) |
-| `/tags/` | `/fr/tags/` | `/fr/tags/` | — |
+| `/tags/` | `/fr/` (l'index `/fr/tags/` n'est plus généré, 28/10/2026) | `/fr/tags/` le jour où des tags existent | Premier tag utilisé |
+| `/fr/misc/`, `/en/misc/` | `/<lang>/project/` (alias Hugo de P19) | idem | — |
+| `/fr/misc/project-goals-constraints/`, `/en/misc/project-goals-constraints/` | `/<lang>/project/` (alias Hugo de P19) | idem | — |
 | `/categories/` | `/fr/` | `/fr/` | — |
 | `/en/categories/` | `/en/` | `/en/` | — |
 
@@ -170,7 +178,7 @@ Format de chaque fiche : identité de la page, puis ses blocs dans l'ordre d'aff
 
 Un bloc sans donnée est masqué. Détail des contenus et des liens : architecture §5.1.
 
-1. **Le projet** : présentation (corps de la page) et lien vers P13. *(Firmin ; 5.2a)*
+1. **Le projet** : présentation (corps de la page) ; ligne d'identité (nom, `identity` du front matter) ; boutons « CV » (page CV) et « Me contacter » (P13, ancre `#contact`) ; liens vers P19 et P13. *(Firmin ; 5.2a, 28/10/2026)*
 2. **Le lab en un coup d'œil** : schéma `lab-overview` (« architecture cible » tant que rien n'est en service), phase en cours ; les compteurs par statut sont retirés tant qu'il n'y a pas de services ; liens vers P03 et P07. Pas de dernière semaine : le bloc 4 la montre déjà. *(données ; 5.1 pour le schéma, 5.2a)*
 3. **Stack** : composants en service ou en construction, groupés, avec badge, sans lien ; seul le titre du groupe (« Matériel → ») mène à sa page ; les prévus sont seulement comptés (lien vers P03). *(catalogue ; 5.2a)*
 4. **Dernières entrées du journal** : les 3 dernières entrées, P10 ou P12 (date, titre, numéro pour un post-mortem, description) ; liens vers P09, P11 (quand la section est publiée) et le flux RSS. *(5.2a)*
@@ -188,7 +196,7 @@ Un bloc sans donnée est masqué. Détail des contenus et des liens : architectu
 | Aujourd'hui | Publiée (1.6) : description et message « en construction » ; sous-pages en brouillon |
 
 1. **En-tête** : titre, description. *(thème)*
-2. **Introduction**, dont la règle de frontière entre infrastructure et services. *(Firmin)*
+2. **Introduction** : le lab aujourd'hui, en langage simple ; lien vers P05. Feuille de route (shortcode `roadmap`). *(Firmin)*
 3. **Schéma** `lab-overview`. *(5.1)*
 4. **Composants par groupe** : un tableau par groupe, dans l'ordre de `data/groups.yaml`. Colonnes : nom (lien vers sa carte dans P04), rôle, statut, où il tourne, date de vérification. *(4.1)*
 5. **Dernières décisions** : les 5 ADR les plus récentes et un lien vers P05. *(4.1)*
@@ -206,7 +214,7 @@ Un bloc sans donnée est masqué. Détail des contenus et des liens : architectu
 | Aujourd'hui | Aucune. Une fois D6 tranchée, chaque groupe reçoit sa page en brouillon : titre, description `TODO(firmin)`, rubriques vides (§6) |
 
 1. **En-tête** : titre (libellé du groupe), description. *(thème)*
-2. **Rubriques** : Rôle dans le lab · Mise en œuvre · Exploitation · Limites et évolutions. *(Firmin)*
+2. **Prose** : ouverture sans titre (deux ou trois phrases) · sections en langage simple · Détails techniques · Limites et évolutions (architecture Annexe A.4, 28/10/2026). *(Firmin)*
 3. **Cartes des composants** : une par composant du groupe, ancrée sur `#<id>`. Chaque carte porte la fiche technique (architecture §5.4) et les liens vers le journal, les ADR et les incidents qui la concernent. *(catalogue ; 4.1)*
 
 ### P05 — Décisions d'architecture (index)
@@ -222,7 +230,7 @@ Un bloc sans donnée est masqué. Détail des contenus et des liens : architectu
 | Aujourd'hui | Brouillon |
 
 1. **En-tête.** *(thème)*
-2. **Introduction** : ce qu'est une ADR ici, les statuts. *(Firmin)*
+2. **Introduction** : ce qu'est une ADR ici (les statuts ne sont plus détaillés, 28/10/2026). *(Firmin)*
 3. **Tableau des ADR** : numéro, titre (lien), badge de statut, date, de la plus récente à la plus ancienne. *(3.2)*
 
 ### P06 — ADR
@@ -285,7 +293,7 @@ Un bloc sans donnée est masqué. Détail des contenus et des liens : architectu
 | Aujourd'hui | Publiée (1.6) : description et message « en construction » ; sous-pages en brouillon |
 
 1. **En-tête.** *(thème)* Le flux RSS est proposé dans le pied de page (§3.3).
-2. **Introduction.** *(Firmin)*
+2. **Introduction** : ce que raconte le journal, puis « L'histoire jusqu'ici » (le fil des semaines). *(Firmin)*
 3. **Accès rapides** : Incidents (P11), Tags (P14), Certifications (P15). *(3.1)*
 4. **Liste paginée par 10**, du plus récent au plus ancien : entrées P10 et P12, avec date, titre (« Semaine N — … » ; numéro PM-002 pour un post-mortem), description et tags. Un badge signale les post-mortems. *(3.1)*
 
@@ -301,7 +309,7 @@ Un bloc sans donnée est masqué. Détail des contenus et des liens : architectu
 
 1. **En-tête** : titre (« Semaine 7 — … »), date, description, tags, certifications. *(3.1)*
 2. **Composants concernés et ADR liées** (liens). *(3.1)*
-3. **Corps** : Objectif de la semaine · Réalisé · Problèmes et résolution · Décisions · Appris · Semaine prochaine. *(archetype)*
+3. **Corps** : chapeau · un à trois récits · Ce que j'en retiens · La suite · encadré En bref (architecture Annexe A.1, depuis le 28/10/2026). *(archetype)*
 4. **Erratum**, facultatif, en fin d'entrée. *(Firmin)*
 5. **Navigation** précédente / suivante. *(thème)*
 
@@ -339,18 +347,45 @@ Un bloc sans donnée est masqué. Détail des contenus et des liens : architectu
 
 | | |
 |---|---|
-| Rôle | Firmin, et lui seul : profil, présentation, CV, certifications, contact |
+| Rôle | Firmin, la personne : qui il est (parcours en récit, homelab, façon de travailler, ce qu'il cherche) et comment le joindre. Le CV dit *quoi*, cette page dit *qui* (architecture §5.7, 29/10/2026) |
 | URL | `/fr/about-me/` · `/en/about-me/` (anciennes `/about/` redirigées, §3.6) |
 | Fichiers | `content/about-me/index.fr.md`, `index.en.md` |
 | Type, template | page ; `layouts/about-me/page.html` et `_partials/profile/*` |
 | Menu | À propos de moi / About me (50) |
 | Fil d'Ariane | Accueil › À propos de moi |
-| Aujourd'hui | Profil, présentation (reprise du CV), boutons CV, GitHub, LinkedIn, certifications |
+| Aujourd'hui | Profil, boutons CV, GitHub, LinkedIn, présentation en récit, contact. Liste des compétences et bloc Certifications retirés le 29/10/2026 : ils sont dans le CV (P20) |
 
-1. **Profil** : nom (`params.profile.name`), `headline`, `availability` ; boutons CV, GitHub, LinkedIn. *(front matter et `hugo.toml`)*
-2. **Présentation** : corps de la page. *(Firmin)*
-3. **Certifications** : liste, statuts, lien vers la page de terme (P15) et la vérification. *(données)*
-4. **Contact** : shortcode `contact` sous un titre « Contact » (ancre `#contact`). *(5.2)*
+1. **Profil** : nom (`params.profile.name`), `headline`, `availability` ; boutons CV (P20), GitHub, LinkedIn. *(front matter et `hugo.toml`)*
+2. **Présentation** : corps de la page, en paragraphes courts, dans cet ordre : une introduction · Mon parcours (sans le détail des missions, renvoie à P20) · Mon homelab (le pourquoi, l'ancien lab au passé, les briques importantes en une phrase, liens vers P19 et P09) · Ma façon de travailler (liste courte de principes, sans exemples), toujours en dernier. Pas de section « Ce que je cherche » : `availability` porte le poste recherché. Aucune liste de compétences : elle vit dans P20. *(Firmin)*
+3. **Contact** : partial `profile/contact.html` rendu par le template en fin de page, titre « Contact » ancré sur `#contact` ; e-mail depuis `params.contactEmail`, LinkedIn depuis `params.profile`. *(28/10/2026)*
+
+### P20 — CV
+
+| | |
+|---|---|
+| Rôle | La seule référence factuelle sur Firmin : compétences, dates, missions, formation, langues, certifications. P13 ne les duplique pas, elle y renvoie (architecture §5.7, 29/10/2026) |
+| URL | `/fr/cv/` · `/en/cv/` |
+| Fichiers | `content/cv/index.fr.md`, `index.en.md` ; PDF dans `static/cv/` (`params.profile.cv`) |
+| Type, template | page ; `layouts/cv/page.html` |
+| Menu | — (accès par les boutons « CV » de P02 et de P13) |
+| Fil d'Ariane | Accueil › CV |
+| Aujourd'hui | Publiée |
+
+1. **En-tête** : nom, `headline`, bouton de téléchargement du PDF de la langue courante. *(front matter et `hugo.toml`)*
+2. **Colonne latérale** : rubriques du champ `sidebar` du front matter : Contact (e-mail, LinkedIn et site depuis `hugo.toml`, `kind`), Compétences, Formation, Certification, Langues. *(Firmin)*
+3. **Corps** : Profil · Expériences professionnelles (poste, employeur, dates, missions) · Projet personnel : homelab. *(Firmin)*
+
+### P19 — Le projet
+
+| | |
+|---|---|
+| Rôle | Pourquoi ce homelab, pourquoi repartir de zéro, où il en est, la suite, le cadre |
+| URL | `/fr/project/` · `/en/project/` (anciennes `/<lang>/misc/` et `/<lang>/misc/project-goals-constraints/` redirigées par alias) |
+| Fichiers | `content/project/index.fr.md`, `index.en.md` |
+| Type, template | page ; template par défaut de PaperMod, sans date, temps de lecture ni navigation |
+| Menu | Le projet / The project (15) |
+| Fil d'Ariane | Accueil › Le projet |
+| Aujourd'hui | Publiée (28/10/2026) |
 
 ### P14 et P15 — Taxonomies
 
@@ -370,14 +405,14 @@ Fournie par PaperMod sous `/fr/404.html` et `/en/404.html`. GitHub Pages sert `/
 ```
 content/
 ├── _index.fr.md, _index.en.md                     P02 Accueil (publiée)
+├── project/index.fr.md, index.en.md               P19 Le projet (publiée)
 ├── about-me/index.fr.md, index.en.md              P13 À propos de moi (publiée)
+├── cv/index.fr.md, index.en.md                    P20 CV (publiée)
 ├── infrastructure/
 │   ├── _index.fr.md, _index.en.md                 P03 (publiée, en construction)
 │   ├── <groupe>/index.fr.md, index.en.md          P04, selon D6 (aucun aujourd'hui)
 │   └── decisions/_index.fr.md, _index.en.md       P05 (brouillon)
-├── services/_index.fr.md, _index.en.md            P07 (publiée, en construction)
-├── misc/_index.fr.md, _index.en.md                P17 Divers (publiée)
-│   └── <slug>/index.fr.md, index.en.md            P18
+├── services/_index.fr.md, _index.en.md            P07 (brouillon)
 └── journal/
     ├── _index.fr.md, _index.en.md                 P09 (publiée, en construction)
     └── incidents/_index.fr.md, _index.en.md       P11 (brouillon)
@@ -385,8 +420,7 @@ archetypes/
 ├── journal/index.fr.md, index.en.md                P10
 ├── postmortem/index.fr.md, index.en.md            P12
 ├── adr/index.fr.md, index.en.md                   P06
-├── services/index.fr.md, index.en.md              P08
-└── misc/index.fr.md, index.en.md                  P18
+└── services/index.fr.md, index.en.md              P08
 static/
 ├── CNAME                                          existant
 └── <7 redirections du §3.6>/index.html
@@ -425,16 +459,14 @@ ShowReadingTime: false
 ShowPostNavLinks: false
 ---
 
-## Rôle dans le lab
+<!-- Ouverture : deux ou trois phrases, sans titre. Puis une à quatre sections en langage simple, sous des titres parlants. -->
 
-## Mise en œuvre
-
-## Exploitation
+## Détails techniques
 
 ## Limites et évolutions
 ```
 
-Rubriques en anglais : Role in the lab · Implementation · Operations · Limits and next steps.
+Rubriques en anglais : Technical details · Limits and next steps. Trame en vigueur depuis le 28/10/2026 (architecture Annexe A.4) ; l'ancienne était Rôle dans le lab · Mise en œuvre · Exploitation · Limites et évolutions.
 
 **Accueil** (P02) : on ajoute seulement ceci au front matter existant.
 

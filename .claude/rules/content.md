@@ -28,11 +28,13 @@ Détail : `docs/architecture.md` §6, §7, §9, §10.
 - Archetypes : aucun appel de shortcode (`{{<`) (§7.3).
 
 ## Rédaction (§9)
-- Claude Code crée la structure de `content/` (dossiers, front matter, rubriques vides, libellés de `docs/structure.md`, `TODO(firmin)` dans les brouillons) ; il met en forme, traduit et corrige ce que Firmin fournit ; il ne rédige jamais de prose de lui-même (C8, §9.1).
+- Claude Code crée la structure de `content/` (dossiers, front matter, rubriques vides, libellés de `docs/structure.md`, `TODO(firmin)` dans les brouillons) ; il rédige la prose à partir des faits fournis par Firmin ou vérifiables dans le repo du lab, sous la validation de Firmin, et il traduit et corrige (décision du 28/10/2026, C8, §9.1). « Ce que j'en retiens » reste dans les mots de Firmin.
 - Aucun fait inventé : ni commande, ni version, ni chiffre, ni résultat, ni leçon. Information manquante : demander ou `TODO(firmin): <question>` (§9.2).
 - Historique immuable : journal (erratum daté), ADR acceptée (seuls `status` et `superseded_by`), post-mortem (seul l'état des actions) (§9.3).
 - Traduction : le sens, même structure ; ne jamais traduire code, commandes, identifiants, noms de produits, champs structurés ; ne rien ajouter ni retirer (§9.4).
 - Style : première personne, passé composé, phrases courtes, aucun superlatif (§9.5).
+- Aucun point-virgule dans la prose du site, en français comme en anglais : couper en deux phrases, ou utiliser une virgule, un deux-points ou une liste (décision de Firmin du 29/10/2026, §9.5).
+- En français, écrire « monitoring » (ou « observabilité »), jamais « supervision » (décision de Firmin du 29/10/2026, §9.5). Les noms de champs du catalogue ne changent pas.
 - Toute modification de `index.fr.md` se reporte dans `index.en.md`, dans la même PR (§8).
 
 ## Publication (§10)
