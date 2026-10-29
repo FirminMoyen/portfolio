@@ -37,7 +37,7 @@ Pour administrer le lab depuis l'extérieur, j'utilise Tailscale, un VPN : un tu
 - **Adressage** : le lab utilise la plage `10.42.0.0/16`, avec un /24 par zone. La zone d'infrastructure, `10.42.0.0/24`, accueille OPNsense, PVE1 et PVE2. La zone isolée est `10.42.50.0/24`.
 - **Sortie sur Internet** : double NAT (traduction d'adresses, qui fait sortir des adresses privées sous une seule adresse), par la box de la maison puis par OPNsense, sans aucune redirection de port vers le lab.
 - **DNS** : le domaine interne est un sous-domaine de firminmoyen.dev, résolu uniquement dans le lab.
-- **Zones** : un sous-réseau /24 par zone, sur le même réseau physique. OPNsense route entre les zones avec une adresse de passerelle par zone. Le pare-feu de Proxmox est activé sur chaque VM : il filtre les adresses IP et MAC et applique un groupe de règles propre à la zone.
+- **Zones** : un sous-réseau /24 par zone, sur le même réseau physique. OPNsense route entre les zones avec une adresse de passerelle par zone. Le pare-feu de Proxmox est activé sur chaque VM des zones : il filtre les adresses IP et MAC et applique un groupe de règles propre à la zone.
 - **Pourquoi pas de VLAN** : surtout, absence de trames VLAN en sortie de l'adaptateur USB-Ethernet de PVE2, constatée par des captures de trames, et aucun lien dans son mode propre au fabricant. Switch sw-01 non manageable. Options écartées :
   - Un réseau virtuel VXLAN, gardé comme évolution possible.
   - Un réseau à plat.
@@ -50,4 +50,4 @@ Pour administrer le lab depuis l'extérieur, j'utilise Tailscale, un VPN : un tu
 
 - Les zones partagent le même réseau physique : elles ne sont pas isolées au niveau 2, celui des trames Ethernet. C'est une limite assumée. Un réseau virtuel VXLAN reste une évolution possible.
 - Sous FreeBSD, le système d'OPNsense, le plugin Tailscale fonctionne en espace utilisateur : le pare-feu d'OPNsense ne voit donc pas le trafic venu du VPN. Pour l'instant, le cloisonnement de ce trafic repose sur la politique d'accès du VPN et sur l'annonce de la seule route du lab. Une piste est à l'étude : déplacer le subnet router dans une VM Linux, derrière le pare-feu.
-- Amélioration envisagée : la double authentification sur l'interface d'administration d'OPNsense.
+- L'interface d'administration d'OPNsense n'a pas de double authentification.

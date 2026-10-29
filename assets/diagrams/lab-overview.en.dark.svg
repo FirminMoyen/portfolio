@@ -43,6 +43,6 @@
 <text x="352" y="291.9" text-anchor="middle" font-size="13" fill="#9da7b3">encrypted tunnel</text>
 <text x="880" y="383.9" font-size="13" fill="#9da7b3">lab LAN</text>
 <text x="64" y="597.0" font-size="14" font-weight="600" fill="#e6edf3">Nothing is exposed to the internet.</text>
-<text x="116" y="633.9" font-size="13" fill="#9da7b3">In service</text>
+<text x="116" y="633.9" font-size="13" fill="#9da7b3">Running</text>
 <text x="116" y="665.9" font-size="13" fill="#9da7b3">Upcoming</text>
 </svg>

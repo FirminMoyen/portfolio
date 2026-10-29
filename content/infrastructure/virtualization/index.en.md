@@ -27,7 +27,7 @@ I do not need to be in front of the machines to administer them: I have rebooted
 - **PVE1**: Proxmox VE 9.2 (kernel 7.0), installed directly on the hardware. ZFS (a file system that checks data integrity) on the machine's single disk, with its in-memory cache, the ARC, capped at 1 GB. No-subscription repository (Proxmox updates without a subscription).
 - **PVE2**: Proxmox VE, installed directly on the hardware.
 - **Cluster**: two nodes, without HA or QDevice. PVE1 has two votes, PVE2 one. Quorum test passed.
-- **Proxmox firewall**: active on both hosts, with an inbound policy that denies by default. Also enabled on each VM (see [Network]({{< relref "/infrastructure/network" >}})). The rules themselves are not published.
+- **Proxmox firewall**: active on both hosts, with an inbound policy that denies by default. Also enabled on each zone VM (see [Network]({{< relref "/infrastructure/network" >}})). The rules themselves are not published.
 - **Access**: administration interfaces not exposed to the internet, reachable through the VPN.
 
 ## Limits and next steps

@@ -37,7 +37,7 @@ To administer the lab from outside, I use Tailscale, a VPN: an encrypted tunnel 
 - **Addressing**: the lab uses the `10.42.0.0/16` range, with one /24 per zone. The infrastructure zone, `10.42.0.0/24`, hosts OPNsense, PVE1 and PVE2. The isolated zone is `10.42.50.0/24`.
 - **Internet access**: double NAT (network address translation, which lets private addresses go out under a single address), through the home router and then OPNsense, with no port forwarded to the lab.
 - **DNS**: the internal domain is a subdomain of firminmoyen.dev, resolved only inside the lab.
-- **Zones**: one /24 subnet per zone, on the same physical network. OPNsense routes between the zones with one gateway address per zone. The Proxmox firewall is enabled on each VM: it filters IP and MAC addresses and applies a rule group specific to the zone.
+- **Zones**: one /24 subnet per zone, on the same physical network. OPNsense routes between the zones with one gateway address per zone. The Proxmox firewall is enabled on each zone VM: it filters IP and MAC addresses and applies a rule group specific to the zone.
 - **Why no VLANs**: above all, no VLAN frames leaving PVE2's USB-Ethernet adapter, confirmed with frame captures, and no link in its vendor-specific mode. Unmanaged sw-01 switch. Options set aside:
   - A VXLAN virtual network, kept as a possible next step.
   - A flat network.
@@ -50,4 +50,4 @@ To administer the lab from outside, I use Tailscale, a VPN: an encrypted tunnel 
 
 - The zones share the same physical network: they are not isolated at layer 2, the layer of Ethernet frames. This is an accepted limit. A VXLAN virtual network remains a possible next step.
 - On FreeBSD, the system OPNsense is built on, the Tailscale plugin runs in userspace, so OPNsense's firewall does not see traffic coming from the VPN. For now, isolation of that traffic relies on the VPN's access policy and on advertising only the lab's route. One option is under study: moving the subnet router into a Linux VM, behind the firewall.
-- Improvement under consideration: two-factor authentication on OPNsense's administration interface.
+- OPNsense's administration interface has no two-factor authentication.

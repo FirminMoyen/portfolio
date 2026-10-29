@@ -27,7 +27,7 @@ Je n'ai pas besoin d'être devant les machines pour les administrer : je les ai 
 - **PVE1** : Proxmox VE 9.2 (noyau 7.0), installé directement sur le matériel. ZFS (un système de fichiers qui vérifie l'intégrité des données) sur le seul disque de la machine, avec son cache en mémoire, l'ARC, plafonné à 1 Go. Dépôt no-subscription (les mises à jour de Proxmox sans abonnement).
 - **PVE2** : Proxmox VE, installé directement sur le matériel.
 - **Cluster** : deux nœuds, sans HA ni QDevice. PVE1 a deux votes, PVE2 un seul. Test de quorum réussi.
-- **Pare-feu de Proxmox** : actif sur les deux hôtes, avec une politique entrante qui refuse par défaut. Activé aussi sur chaque VM (voir [Réseau]({{< relref "/infrastructure/network" >}})). Le détail des règles n'est pas publié.
+- **Pare-feu de Proxmox** : actif sur les deux hôtes, avec une politique entrante qui refuse par défaut. Activé aussi sur chaque VM des zones (voir [Réseau]({{< relref "/infrastructure/network" >}})). Le détail des règles n'est pas publié.
 - **Accès** : interfaces d'administration non exposées sur Internet, joignables par le VPN.
 
 ## Limites et évolutions

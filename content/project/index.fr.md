@@ -31,7 +31,7 @@ Le détail est sur la page [Infrastructure]({{< relref "/infrastructure" >}}), e
 
 ## La suite
 
-Prochaine étape : mettre en place une stack de monitoring. Jusqu'ici, j'ai tout installé et configuré à la main : l'étape suivante sera d'automatiser le lab avec Ansible et Terraform. Plus loin, dans un ordre qui n'est pas encore fixé : Kubernetes, une approche GitOps complète, et un environnement mixte Windows et Linux qui reprend des pratiques d'entreprise. La [feuille de route]({{< relref "/infrastructure" >}}#lab-roadmap) montre où j'en suis.
+En cours : le monitoring du lab, avec Prometheus, Grafana et Uptime Kuma. Jusqu'ici, j'ai tout installé et configuré à la main : l'étape suivante sera d'automatiser le lab avec Ansible et Terraform. Plus loin, dans un ordre qui n'est pas encore fixé : Kubernetes, une approche GitOps complète, et un environnement mixte Windows et Linux qui reprend des pratiques d'entreprise. La [feuille de route]({{< relref "/infrastructure" >}}#lab-roadmap) montre où j'en suis.
 
 ## Le cadre que je me suis fixé
 

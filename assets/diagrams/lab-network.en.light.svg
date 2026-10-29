@@ -51,7 +51,7 @@
 <text x="352" y="391.9" text-anchor="middle" font-size="13" fill="#57606a">VPN tunnel</text>
 <text x="744" y="279.9" text-anchor="middle" font-size="13" fill="#57606a">LAN</text>
 <text x="676" y="571.9" text-anchor="middle" font-size="13" fill="#57606a">next zones (upcoming)</text>
-<text x="116" y="633.9" font-size="13" fill="#57606a">In service</text>
+<text x="116" y="633.9" font-size="13" fill="#57606a">Running</text>
 <text x="116" y="665.9" font-size="13" fill="#57606a">Upcoming</text>
 <text x="744" y="399.9" text-anchor="middle" font-size="13" fill="#57606a">routing</text>
 <text x="744" y="415.9" text-anchor="middle" font-size="13" fill="#57606a">between zones</text>

@@ -33,7 +33,7 @@ J'ai écarté les autres options :
 - Des zones limitées à PVE1.
 - Un autre adaptateur, exclu par le budget zéro.
 
-J'ai choisi des zones routées. Chaque zone a son propre sous-réseau, sur le même réseau physique, et OPNsense route entre elles avec une passerelle par zone. Le pare-feu de Proxmox, activé sur chaque VM, fait respecter les frontières : il filtre les adresses IP et MAC de la machine et lui applique les règles de sa zone. Le détail est sur la page [Réseau]({{< relref "/infrastructure/network" >}}). La limite que j'accepte : sans VLAN, les zones ne sont pas isolées au niveau 2, celui des trames Ethernet.
+J'ai choisi des zones routées. Chaque zone a son propre sous-réseau, sur le même réseau physique, et OPNsense route entre elles avec une passerelle par zone. Le pare-feu de Proxmox, activé sur chaque VM des zones, fait respecter les frontières : il filtre les adresses IP et MAC de la machine et lui applique les règles de sa zone. Le détail est sur la page [Réseau]({{< relref "/infrastructure/network" >}}). La limite que j'accepte : sans VLAN, les zones ne sont pas isolées au niveau 2, celui des trames Ethernet.
 
 La première zone créée est une zone isolée, où j'expérimente, par curiosité, avec un agent IA autonome. Elle sort sur Internet, mais la maison et le reste du lab lui sont injoignables, et ses règles sont journalisées. J'y ai installé une VM Ubuntu Server 26.04 LTS sur PVE2, joignable uniquement en SSH par clé. L'expérience y tourne sous un compte sans droits d'administration. Depuis cette VM, j'ai vérifié que tout tient : Internet répond, ni le réseau domestique ni la zone d'infrastructure (administration d'OPNsense et des deux hôtes comprise) ne répondent, et une adresse usurpée est bloquée.
 
@@ -56,5 +56,5 @@ Prochaine étape de la [feuille de route]({{< relref "/infrastructure" >}}#lab-r
   - Zones routées sans VLAN, un /24 par zone.
   - Zone isolée `10.42.50.0/24` et sa VM Ubuntu Server 26.04 LTS, tests d'isolation réussis.
   - Route du VPN corrigée en `10.42.0.0/16`.
-- **Décisions** : zones routées plutôt que VLAN, avec le pare-feu de Proxmox sur chaque VM (voir [Réseau]({{< relref "/infrastructure/network" >}})). Deux votes pour PVE1, un pour PVE2 (voir [Virtualisation]({{< relref "/infrastructure/virtualization" >}})).
+- **Décisions** : zones routées plutôt que VLAN, avec le pare-feu de Proxmox sur chaque VM des zones (voir [Réseau]({{< relref "/infrastructure/network" >}})). Deux votes pour PVE1, un pour PVE2 (voir [Virtualisation]({{< relref "/infrastructure/virtualization" >}})).
 - **Limites acceptées** : pas d'isolation de niveau 2 entre les zones. Un seul lien de cluster, avec peu de marge de latence.

@@ -30,7 +30,7 @@
       role: {fr: "Pare-feu et routeur du lab", en: "The lab's firewall and router"}
       components: [fw-01]
     - name: {fr: "Pare-feu Proxmox", en: "Proxmox firewall"}
-      role: {fr: "Filtrage de chaque VM", en: "Filtering for each VM"}
+      role: {fr: "Filtrage des VM des zones", en: "Filtering for zone VMs"}
       status: running
     - name: "Tailscale"
       role: {fr: "VPN, aucun port ouvert", en: "VPN, no open port"}
