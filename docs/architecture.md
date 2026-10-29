@@ -125,6 +125,7 @@ Le site est la vitrine de ce travail. Chaque semaine, Firmin le met à jour et p
 /                                             redirection vers /<langue par défaut>/ (D1)
 /<lang>/                                      Accueil
 /<lang>/project/                              Le projet : pourquoi, où il en est, où il va, le cadre (§5.9)
+/<lang>/roadmap/                              Feuille de route : les étapes du lab et leur statut (§5.10)
 /<lang>/infrastructure/                       Vue d'ensemble : schéma, composants, dernières décisions
 /<lang>/infrastructure/<groupe>/              Une page par groupe d'infrastructure (§5.2)
 /<lang>/infrastructure/decisions/             Index des ADR
@@ -141,7 +142,7 @@ Le site est la vitrine de ce travail. Chaque semaine, Firmin le met à jour et p
 /<lang>/certifications/<id>/                  Tout le travail lié à une certification (idem)
 ```
 
-Menu, dans cet ordre : Accueil · Le projet · Infrastructure · Services · Journal · À propos de moi (EN : Home · The project · Infrastructure · Services · Journal · About me). Services est en brouillon depuis le 28/10/2026, tant qu'aucun service n'existe : son entrée reviendra seule à sa publication. Sur petit écran, les entrées passent à la ligne au lieu de défiler (§11.5).
+Menu, dans cet ordre : Accueil · Le projet · Feuille de route · Infrastructure · Services · Journal · À propos de moi (EN : Home · The project · Roadmap · Infrastructure · Services · Journal · About me). Services est en brouillon depuis le 28/10/2026, tant qu'aucun service n'existe : son entrée reviendra seule à sa publication. Sur petit écran, les entrées passent à la ligne au lieu de défiler (§11.5).
 
 Règles :
 
@@ -158,8 +159,8 @@ Règles :
 Objectif : présenter le **projet**, et dire en une ligne **qui** le mène (décision de Firmin du 28/10/2026 : un recruteur doit savoir chez qui il est sans quitter l'accueil). Le détail sur Firmin reste sur la page À propos de moi (§5.7). L'essentiel en un écran sur desktop, en deux sur mobile. Un bloc sans donnée est masqué plutôt qu'affiché vide. Les blocs, dans l'ordre :
 
 1. **Le projet.** Deux ou trois phrases (corps de `content/_index.<lang>.md`) : un homelab reconstruit de zéro, documenté chaque semaine, ce qu'il sert à apprendre et à démontrer. Juste en dessous, une ligne d'identité : nom (`params.profile.name`), poste visé et pays recherchés (champ `identity` du front matter de l'accueil). Puis deux boutons : « CV » (page CV, ou le PDF à défaut) et « Me contacter » (ancre `#contact` de la page À propos de moi). Puis les liens « Le projet » et « À propos de moi ».
-2. **Le lab en un coup d'œil.** Schéma `lab-overview` (§11.6), marqué « architecture cible » tant qu'aucun composant n'est en service ; phase en cours de la feuille de route. Les compteurs de composants par statut sont retirés (25/10/2026) : ils reviendront avec les services. Liens : Infrastructure, Services. La dernière entrée du journal n'y figure pas : le bloc 4 la montre déjà.
-3. **Stack.** Les briques du lab par thème (Infrastructure, Réseau, Monitoring, Services), dans l'ordre de `data/stack.yaml` (§6.8) : pour chacune, son nom, son rôle dans le lab en une ligne, et son statut (« En service », « En cours » ou « À venir »). Le statut se lit dans le catalogue ou la feuille de route. Le titre d'un thème mène à sa page quand elle est publiée, et un lien « Feuille de route complète » ferme le bloc. Quatre colonnes côte à côte sur desktop, deux sur tablette, une sur mobile, avec un rôle de quelques mots (décision de Firmin du 29/10/2026 : montrer ce qui tourne et ce qui vient, plutôt qu'une liste de composants qui répétait le schéma).
+2. **Le lab en un coup d'œil.** Schéma `lab-overview` (§11.6), marqué « architecture cible » tant qu'aucun composant n'est en service ; phase en cours de la feuille de route, avec un lien vers sa page (§5.10). Les compteurs de composants par statut sont retirés (25/10/2026) : ils reviendront avec les services. Liens : Infrastructure, Services. La dernière entrée du journal n'y figure pas : le bloc 4 la montre déjà.
+3. **Stack.** Les briques du lab par thème (Infrastructure, Réseau, Monitoring, Services), dans l'ordre de `data/stack.yaml` (§6.8) : pour chacune, son nom, son rôle dans le lab en une ligne, et son statut (« En service », « En cours » ou « À venir »). Le statut se lit dans le catalogue ou la feuille de route. Le titre d'un thème mène à sa page quand elle est publiée, et un lien « Feuille de route complète » vers sa page (§5.10) ferme le bloc. Quatre colonnes côte à côte sur desktop, deux sur tablette, une sur mobile, avec un rôle de quelques mots (décision de Firmin du 29/10/2026 : montrer ce qui tourne et ce qui vient, plutôt qu'une liste de composants qui répétait le schéma).
 4. **Journal.** Les trois dernières entrées, comptes rendus et post-mortems confondus : numéro (S06, PM-001), date, titre, description. Liens : le journal complet, les incidents, le flux RSS.
 
 Ne figurent pas sur l'accueil : le reste de ce qui concerne Firmin (À propos de moi ; compétences et certifications dans le CV), le détail technique (Infrastructure et Services), les ADR (Infrastructure), la liste complète des incidents (Journal).
@@ -170,7 +171,7 @@ Ne figurent pas sur l'accueil : le reste de ce qui concerne Firmin (À propos de
 
 La règle de frontière sert au classement (champ `layer`) ; elle n'est pas expliquée aux visiteurs (28/10/2026).
 
-- **Vue d'ensemble** (`/infrastructure/`) : une introduction humaine (ce qu'est le lab aujourd'hui, en deux paragraphes), schéma, tableau des composants d'infrastructure par groupe avec liens vers les pages de groupe, cinq dernières ADR, feuille de route.
+- **Vue d'ensemble** (`/infrastructure/`) : une introduction humaine (ce qu'est le lab aujourd'hui, en deux paragraphes), schéma, tableau des composants d'infrastructure par groupe avec liens vers les pages de groupe, cinq dernières ADR. L'introduction renvoie vers la feuille de route, qui a sa propre page depuis le 29/10/2026 (§5.10).
 - **Pages de groupe** (`/infrastructure/<groupe>/`) : une par groupe d'infrastructure déclaré dans `data/groups.yaml`, obligatoire dès qu'un composant du groupe est en construction ou en service (V10). Trame (28/10/2026) : deux ou trois phrases d'ouverture (ce que c'est, pourquoi ça compte), quelques sections en langage simple où chaque terme technique est expliqué une fois, puis « Détails techniques » et « Limites et évolutions » (Annexe A.4). Ensuite, une carte par composant du groupe : la fiche technique (§5.4), ancrée sur `#<id>`.
 
 ### 5.3 Décisions (ADR)
@@ -238,7 +239,7 @@ Le bloc Certifications (partial `profile/certifications.html`, depuis `data/cert
 
 `params.contactEmail` est l'unique source de l'adresse de contact : page À propos de moi, rubrique Contact du CV HTML, pied de page.
 
-Le projet (objectif, contraintes, feuille de route) est présenté côté projet, sur la page Le projet (§5.9) ; la fabrication du site (code source, « sans cookies ni traceurs », crédit Hugo et PaperMod) dans le pied de page.
+Le projet (objectif, contraintes) est présenté côté projet, sur la page Le projet (§5.9), et ses étapes sur la page Feuille de route (§5.10) ; la fabrication du site (code source, « sans cookies ni traceurs », crédit Hugo et PaperMod) dans le pied de page.
 
 ### 5.8 Taxonomies
 
@@ -250,7 +251,13 @@ Le projet (objectif, contraintes, feuille de route) est présenté côté projet
 
 ### 5.9 Le projet
 
-Une page, `/<lang>/project/` (« Le projet » / « The project »), au menu entre Accueil et Infrastructure (poids 15). Elle remplace la section Divers et son unique article, « Objectifs et contraintes du projet » (28/10/2026) ; les anciennes adresses `/<lang>/misc/` et `/<lang>/misc/project-goals-constraints/` y redirigent (alias). Page d'état, mise à jour en place : pourquoi un homelab, pourquoi repartir de zéro, où en est le lab, la suite, le cadre que Firmin s'est fixé.
+Une page, `/<lang>/project/` (« Le projet » / « The project »), au menu entre Accueil et Feuille de route (poids 15). Elle remplace la section Divers et son unique article, « Objectifs et contraintes du projet » (28/10/2026) ; les anciennes adresses `/<lang>/misc/` et `/<lang>/misc/project-goals-constraints/` y redirigent (alias). Page d'état, mise à jour en place : pourquoi un homelab, pourquoi repartir de zéro, où en est le lab, la suite, le cadre que Firmin s'est fixé.
+
+### 5.10 Feuille de route
+
+Une page, `/<lang>/roadmap/` (« Feuille de route » / « Roadmap »), au menu entre Le projet et Infrastructure (poids 17). Décision de Firmin du 29/10/2026 : la feuille de route quitte la page Infrastructure, qui décrit le lab tel qu'il est, pour une page à elle. Page d'état, mise à jour en place, sans date, temps de lecture ni navigation. Elle contient une introduction, la liste des étapes (shortcode `roadmap`, §6.7), puis « Plus loin » : ce qui vient après la dernière étape, dans un ordre pas encore fixé, et ce qui avance en parallèle, hors feuille de route.
+
+Y renvoient : la phase en cours et le bloc Stack de l'accueil (§5.1), l'introduction d'Infrastructure, « La suite » de Le projet et des entrées du journal. L'ancienne ancre `/infrastructure/#lab-roadmap` n'existe plus : la page Infrastructure reste en place et renvoie vers la feuille de route.
 
 ---
 
@@ -391,7 +398,7 @@ Depuis le 29/10/2026, aucun template ne lit ce fichier : le bloc Certifications 
     - {fr: "…", en: "…"}
 ```
 
-La feuille de route ne porte pas de dates (décision de Firmin du 25/10/2026) : la chronologie se lit dans le journal, semaine par semaine. Les étapes donnent seulement l'ordre et le statut. Elle s'affiche sur la page Infrastructure par le shortcode `roadmap` (ancre `#lab-roadmap`, visée par la phase en cours de l'accueil et par le journal) ; l'étape en cours montre ses objectifs. Une étape `planned` s'affiche dans la liste comme « À venir » (libellé du 29/10/2026, qui remplace « Prévu » partout sur le site, badges et légendes des schémas compris) ; seule une étape `in-progress` apparaît sur l'accueil comme « Phase en cours ».
+La feuille de route ne porte pas de dates (décision de Firmin du 25/10/2026) : la chronologie se lit dans le journal, semaine par semaine. Les étapes donnent seulement l'ordre et le statut. Elle s'affiche sur la page Feuille de route (§5.10) par le shortcode `roadmap` ; l'étape en cours montre ses objectifs. Une étape `planned` s'affiche dans la liste comme « À venir » (libellé du 29/10/2026, qui remplace « Prévu » partout sur le site, badges et légendes des schémas compris) ; seule une étape `in-progress` apparaît sur l'accueil comme « Phase en cours ».
 
 ### 6.8 `data/stack.yaml`
 
@@ -1026,6 +1033,7 @@ Le site dépend de comptes et de services extérieurs au repo. C'est là qu'est 
 | 2026-10-29 | Accueil, bloc Stack (§5.1, §6.8) : briques par thème (Infrastructure, Réseau, Monitoring, Services) avec leur rôle et leur statut, depuis le nouveau `data/stack.yaml` ; partial `home/stack-list.html` supprimé. Monitoring avec Prometheus et Grafana passe « En cours » dans `data/roadmap.yaml` (décision de Firmin). Lab LPIC-1 annoncé « À venir », hors feuille de route. Libellé « À venir » au lieu de « Prévu » partout (badges, feuille de route, légendes des schémas) | PR `feat/refonte-site` |
 | 2026-10-29 | Bloc Stack : une brique par outil (Prometheus, Grafana, Uptime Kuma, Ansible, Terraform), rôles réduits à quelques mots, quatre thèmes côte à côte sur desktop (deux sur tablette, un sur mobile). Uptime Kuma ajouté à l'étape monitoring. La VM de la zone isolée s'affiche « OpenBot server » : nom du logiciel publiable (exception décidée par Firmin, §10) | PR `feat/refonte-site` |
 | 2026-10-29 | CV en PDF refaits depuis la page CV (styles d'impression, shortcode `site-link`) : adresse dédiée, contenu à jour, une page par langue ; les anciens PDF affichaient une adresse personnelle. Corrections de la relecture de publication : pare-feu de Proxmox « sur chaque VM des zones », plus de double authentification d'OPNsense « envisagée » (fait : aucune), monitoring « En cours » sur Le projet et le CV, légende anglaise des schémas « Running » | PR `feat/refonte-site` |
+| 2026-10-29 | Feuille de route sur sa propre page, `/<lang>/roadmap/` (§5.10), au menu entre Le projet et Infrastructure (décision de Firmin). La page Infrastructure n'affiche plus la liste et y renvoie. Liens de l'accueil, de Le projet et du journal vers la nouvelle page, ancre `#lab-roadmap` retirée | PR `feat/roadmap-page` |
 
 ---
 

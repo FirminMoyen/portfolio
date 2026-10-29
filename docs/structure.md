@@ -31,6 +31,7 @@
 | P01 | Racine | `/` | — | Générée par Hugo | Redirection | — | Redirige vers la langue par défaut (D1) |
 | P02 | Accueil | `/fr/` | `/en/` | `content/_index.{fr,en}.md` | home | Accueil / Home (10) | Publiée (existante) |
 | P19 | Le projet | `/fr/project/` | `/en/project/` | `content/project/index.{fr,en}.md` | page | Le projet / The project (15) | Publiée (28/10/2026) ; remplace P17 et P18 |
+| P21 | Feuille de route | `/fr/roadmap/` | `/en/roadmap/` | `content/roadmap/index.{fr,en}.md` | page | Feuille de route / Roadmap (17) | Publiée (29/10/2026) ; reprend la feuille de route de P03 |
 | P03 | Infrastructure | `/fr/infrastructure/` | `/en/infrastructure/` | `content/infrastructure/_index.*` | section | Infrastructure (20) | Publiée |
 | P04 | Page de groupe (une par groupe, D6) | `/fr/infrastructure/<groupe>/` | `/en/infrastructure/<groupe>/` | `content/infrastructure/<groupe>/index.*` | page | — | Aucune tant que D6 n'est pas tranchée |
 | P05 | Décisions d'architecture | `/fr/infrastructure/decisions/` | `/en/infrastructure/decisions/` | `content/infrastructure/decisions/_index.*` | section | — | Publiée |
@@ -101,6 +102,7 @@ Textes dans les fichiers i18n. Depuis le 28/10/2026, `extend_footer.html` rend t
 |---|---|---|---|---|---|
 | `home` | Accueil | Home | P02 | 10 | Toujours |
 | `project` | Le projet | The project | P19 | 15 | Toujours (depuis le 28/10/2026) |
+| `roadmap` | Feuille de route | Roadmap | P21 | 17 | Toujours (depuis le 29/10/2026) |
 | `infrastructure` | Infrastructure | Infrastructure | P03 | 20 | Toujours (depuis 1.6) |
 | `services` | Services | Services | P07 | 30 | À sa publication (brouillon depuis le 28/10/2026) |
 | `journal` | Journal | Journal | P09 | 40 | Toujours (depuis 1.6) |
@@ -179,8 +181,8 @@ Format de chaque fiche : identité de la page, puis ses blocs dans l'ordre d'aff
 Un bloc sans donnée est masqué. Détail des contenus et des liens : architecture §5.1.
 
 1. **Le projet** : présentation (corps de la page) ; ligne d'identité (nom, `identity` du front matter) ; boutons « CV » (page CV) et « Me contacter » (P13, ancre `#contact`) ; liens vers P19 et P13. *(Firmin ; 5.2a, 28/10/2026)*
-2. **Le lab en un coup d'œil** : schéma `lab-overview` (« architecture cible » tant que rien n'est en service), phase en cours ; les compteurs par statut sont retirés tant qu'il n'y a pas de services ; liens vers P03 et P07. Pas de dernière semaine : le bloc 4 la montre déjà. *(données ; 5.1 pour le schéma, 5.2a)*
-3. **Stack** : les briques du lab par thème (Infrastructure, Réseau, Monitoring, Services), chacune avec son rôle en une ligne et son statut (En service, En cours, À venir) ; le titre d'un thème mène à sa page quand elle est publiée ; lien « Feuille de route complète » vers P03. *(`data/stack.yaml`, statuts lus dans le catalogue ou la feuille de route ; décision de Firmin du 29/10/2026)*
+2. **Le lab en un coup d'œil** : schéma `lab-overview` (« architecture cible » tant que rien n'est en service), phase en cours avec un lien vers P21 ; les compteurs par statut sont retirés tant qu'il n'y a pas de services ; liens vers P03 et P07. Pas de dernière semaine : le bloc 4 la montre déjà. *(données ; 5.1 pour le schéma, 5.2a)*
+3. **Stack** : les briques du lab par thème (Infrastructure, Réseau, Monitoring, Services), chacune avec son rôle en une ligne et son statut (En service, En cours, À venir) ; le titre d'un thème mène à sa page quand elle est publiée ; lien « Feuille de route complète » vers P21. *(`data/stack.yaml`, statuts lus dans le catalogue ou la feuille de route ; décision de Firmin du 29/10/2026)*
 4. **Dernières entrées du journal** : les 3 dernières entrées, P10 ou P12 (date, titre, numéro pour un post-mortem, description) ; liens vers P09, P11 (quand la section est publiée) et le flux RSS. *(5.2a)*
 
 ### P03 — Infrastructure
@@ -196,7 +198,7 @@ Un bloc sans donnée est masqué. Détail des contenus et des liens : architectu
 | Aujourd'hui | Publiée (1.6) : description et message « en construction » ; sous-pages en brouillon |
 
 1. **En-tête** : titre, description. *(thème)*
-2. **Introduction** : le lab aujourd'hui, en langage simple ; lien vers P05. Feuille de route (shortcode `roadmap`). *(Firmin)*
+2. **Introduction** : le lab aujourd'hui, en langage simple ; liens vers P05 et P21. La feuille de route n'est plus affichée ici depuis le 29/10/2026 : elle a sa page, P21. *(Firmin)*
 3. **Schéma** `lab-overview`. *(5.1)*
 4. **Composants par groupe** : un tableau par groupe, dans l'ordre de `data/groups.yaml`. Colonnes : nom (lien vers sa carte dans P04), rôle, statut, où il tourne, date de vérification. *(4.1)*
 5. **Dernières décisions** : les 5 ADR les plus récentes et un lien vers P05. *(4.1)*
@@ -387,6 +389,23 @@ Un bloc sans donnée est masqué. Détail des contenus et des liens : architectu
 | Fil d'Ariane | Accueil › Le projet |
 | Aujourd'hui | Publiée (28/10/2026) |
 
+### P21 — Feuille de route
+
+| | |
+|---|---|
+| Rôle | Les étapes du lab dans l'ordre, avec leur statut, et ce qui vient ensuite |
+| URL | `/fr/roadmap/` · `/en/roadmap/` |
+| Fichiers | `content/roadmap/index.fr.md`, `index.en.md` |
+| Type, template | page ; template par défaut de PaperMod, sans date, temps de lecture ni navigation |
+| Menu | Feuille de route / Roadmap (17) |
+| Fil d'Ariane | Accueil › Feuille de route |
+| Aujourd'hui | Publiée (29/10/2026, décision de Firmin) |
+
+1. **En-tête** : titre, description. *(thème)*
+2. **Introduction** : une étape à la fois, la chronologie dans P09. *(Firmin)*
+3. **Étapes** : shortcode `roadmap`, depuis `data/roadmap.yaml`. *(données)*
+4. **Plus loin** : la suite sans ordre fixé, et ce qui avance hors feuille de route. *(Firmin)*
+
 ### P14 et P15 — Taxonomies
 
 | | Tags | Certifications |
@@ -406,6 +425,7 @@ Fournie par PaperMod sous `/fr/404.html` et `/en/404.html`. GitHub Pages sert `/
 content/
 ├── _index.fr.md, _index.en.md                     P02 Accueil (publiée)
 ├── project/index.fr.md, index.en.md               P19 Le projet (publiée)
+├── roadmap/index.fr.md, index.en.md               P21 Feuille de route (publiée)
 ├── about-me/index.fr.md, index.en.md              P13 À propos de moi (publiée)
 ├── cv/index.fr.md, index.en.md                    P20 CV (publiée)
 ├── infrastructure/
