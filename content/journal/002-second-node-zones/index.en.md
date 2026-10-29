@@ -58,3 +58,5 @@ Next step on the [roadmap]({{< relref "/roadmap" >}}): setting up a monitoring s
   - VPN route fixed to `10.42.0.0/16`.
 - **Decisions**: routed zones rather than VLANs, with the Proxmox firewall on each zone VM (see [Network]({{< relref "/infrastructure/network" >}})). Two votes for PVE1, one for PVE2 (see [Virtualization]({{< relref "/infrastructure/virtualization" >}})).
 - **Limits accepted**: no layer 2 isolation between zones. A single cluster link, with little latency margin.
+
+**Erratum (29 October 2026).** "Reachable only over SSH with a key" went too far: it is the VM's administration that goes over SSH, with keys only.

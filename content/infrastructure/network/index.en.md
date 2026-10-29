@@ -45,7 +45,7 @@ To administer the lab from outside, I use Tailscale, a VPN: an encrypted tunnel 
   - A flat network.
   - Zones limited to PVE1.
   - Another adapter, ruled out by the zero budget.
-- **Isolated zone**: outbound internet access allowed, home network and the rest of the lab unreachable, rules logged. An Ubuntu Server 26.04 LTS VM runs there, on PVE2, reachable only over SSH with a key. The experiment runs in it under an account without administrator rights. Tests from the VM: the internet answers, neither the home network nor the infrastructure zone (including the administration of OPNsense and of both hosts) answers, and a spoofed address is blocked.
+- **Isolated zone**: outbound internet access allowed, home network and the rest of the lab unreachable, rules logged. An Ubuntu Server 26.04 LTS VM runs there, on PVE2, administered over SSH, with keys only. The experiment runs in it under an account without administrator rights. Tests from the VM: the internet answers, neither the home network nor the infrastructure zone (including the administration of OPNsense and of both hosts) answers, and a spoofed address is blocked.
 - **VPN**: Tailscale runs on OPNsense as a subnet router (the VPN's entry point into the lab network) and advertises only the lab's route, `10.42.0.0/16`.
 
 ## Limits and next steps

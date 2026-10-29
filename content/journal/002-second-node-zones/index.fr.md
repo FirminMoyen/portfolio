@@ -58,3 +58,5 @@ Prochaine étape de la [feuille de route]({{< relref "/roadmap" >}}) : mettre en
   - Route du VPN corrigée en `10.42.0.0/16`.
 - **Décisions** : zones routées plutôt que VLAN, avec le pare-feu de Proxmox sur chaque VM des zones (voir [Réseau]({{< relref "/infrastructure/network" >}})). Deux votes pour PVE1, un pour PVE2 (voir [Virtualisation]({{< relref "/infrastructure/virtualization" >}})).
 - **Limites acceptées** : pas d'isolation de niveau 2 entre les zones. Un seul lien de cluster, avec peu de marge de latence.
+
+**Erratum (29 octobre 2026).** « Joignable uniquement en SSH par clé » allait trop loin : c'est l'administration de la VM qui passe par SSH, par clé uniquement.
