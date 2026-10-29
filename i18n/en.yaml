@@ -10,17 +10,18 @@ homeDiagramAlt: "Logical diagram of the homelab"
 diagramFullSize: "Click the diagram to open it full size."
 homeCurrentPhase: "Current phase:"
 homeStack: "Stack"
-homeOtherGroup: "Other"
-homePlannedMore:
-  one: "+ {{ .Count }} planned component"
-  other: "+ {{ .Count }} planned components"
+homeRoadmapLink: "Full roadmap →"
+# Stack block statuses (data/stack.yaml): catalog vocabulary, "building" shown as "In progress".
+stack_running: "Running"
+stack_building: "In progress"
+stack_planned: "Upcoming"
 homeJournal: "Latest journal entries"
 homePostmortem: "Post-mortem"
 homeAllEntries: "All journal entries"
 homeRss: "RSS feed"
 
 # Component statuses (architecture §6.2)
-status_planned: "Planned"
+status_planned: "Upcoming"
 status_building: "Building"
 status_running: "Running"
 status_retired: "Retired"
@@ -36,14 +37,14 @@ metric_building:
   one: "building"
   other: "building"
 metric_planned:
-  one: "planned"
-  other: "planned"
+  one: "upcoming"
+  other: "upcoming"
 
 # Resume page
 cvDownload: "Download PDF"
 roadmap_done: "Done"
 roadmap_in-progress: "In progress"
-roadmap_planned: "Planned"
+roadmap_planned: "Upcoming"
 
 # Home page: identity line and buttons (architecture §5.1)
 homeContactMe: "Contact me"

@@ -1,5 +1,5 @@
 # Feuille de route du lab (architecture §6.7). Après l'étape 9 (automatisation), l'ordre n'est pas fixé.
-# Monitoring avant l'automatisation : décision de Firmin du 29/10/2026.
+# Monitoring avant l'automatisation, avec Prometheus, Grafana et Uptime Kuma : décisions de Firmin du 29/10/2026.
 # Une étape `planned` s'affiche sur la page Infrastructure ; seule une étape `in-progress`
 # apparaît comme « Phase en cours » sur l'accueil.
 - id: proxmox-pve1
@@ -27,8 +27,8 @@
   title: {fr: "Zones réseau et zone isolée", en: "Network zones and an isolated zone"}
   status: done
 - id: monitoring
-  title: {fr: "Mettre en place une stack de monitoring", en: "Set up a monitoring stack"}
-  status: planned
+  title: {fr: "Monitoring avec Prometheus, Grafana et Uptime Kuma", en: "Monitoring with Prometheus, Grafana and Uptime Kuma"}
+  status: in-progress
 - id: ansible
   title: {fr: "Automatiser le lab avec Ansible et Terraform", en: "Automate the lab with Ansible and Terraform"}
   status: planned

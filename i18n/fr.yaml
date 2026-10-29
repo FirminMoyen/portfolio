@@ -10,17 +10,18 @@ homeDiagramAlt: "Schéma logique du homelab"
 diagramFullSize: "Cliquer sur le schéma pour l'ouvrir en pleine taille."
 homeCurrentPhase: "Phase en cours :"
 homeStack: "Stack"
-homeOtherGroup: "Autres"
-homePlannedMore:
-  one: "+ {{ .Count }} composant prévu"
-  other: "+ {{ .Count }} composants prévus"
+homeRoadmapLink: "Feuille de route complète →"
+# Statuts du bloc Stack (data/stack.yaml) : vocabulaire du catalogue, « building » lu « En cours ».
+stack_running: "En service"
+stack_building: "En cours"
+stack_planned: "À venir"
 homeJournal: "Dernières entrées du journal"
 homePostmortem: "Post-mortem"
 homeAllEntries: "Tout le journal"
 homeRss: "Flux RSS"
 
 # Statuts des composants (architecture §6.2)
-status_planned: "Prévu"
+status_planned: "À venir"
 status_building: "En construction"
 status_running: "En service"
 status_retired: "Retiré"
@@ -36,14 +37,14 @@ metric_building:
   one: "en construction"
   other: "en construction"
 metric_planned:
-  one: "prévu"
-  other: "prévus"
+  one: "à venir"
+  other: "à venir"
 
 # Page CV
 cvDownload: "Télécharger le PDF"
 roadmap_done: "Fait"
 roadmap_in-progress: "En cours"
-roadmap_planned: "Prévu"
+roadmap_planned: "À venir"
 
 # Accueil : ligne d'identité et boutons (architecture §5.1)
 homeContactMe: "Me contacter"

@@ -152,13 +152,18 @@ html[data-theme="dark"] .diagram-dark { display: block; }
     html[data-theme="auto"] .diagram-dark { display: block; }
 }
 
-.stack-groups { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 12px 28px; }
+/* Quatre thèmes côte à côte sur desktop, deux sur tablette, un sur mobile. */
+.stack-groups { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 20px 24px; }
+@media (max-width: 900px) { .stack-groups { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 560px) { .stack-groups { grid-template-columns: minmax(0, 1fr); } }
 /* Le titre du groupe (seul élément cliquable) se distingue nettement des composants listés dessous. */
 .home-block .stack-group h3 { font-size: 16px; font-weight: 600; color: var(--primary); margin-bottom: 4px; padding-bottom: 8px; border-bottom: 2px solid var(--border); }
 .home-block .stack-group h3 a { color: var(--primary); text-decoration: none; }
 .home-block .stack-group h3 a:hover { color: var(--accent); }
-.stack-name { color: var(--secondary); }
-.stack-group li { display: flex; justify-content: space-between; align-items: center; gap: 8px; padding: 6px 0; border-bottom: 1px solid var(--border); font-size: 15px; }
+.stack-group li { padding: 8px 0; border-bottom: 1px solid var(--border); font-size: 15px; }
+.stack-head { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 4px 8px; }
+.stack-name { color: var(--primary); font-weight: 500; }
+.stack-role { display: block; margin-top: 2px; color: var(--secondary); font-size: 13px; line-height: 1.4; }
 .stack-group li:last-child { border-bottom: none; }
 
 .journal-list li { padding: 14px 0; border-bottom: 1px solid var(--border); }
