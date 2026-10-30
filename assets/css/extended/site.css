@@ -177,6 +177,11 @@ html[data-theme="dark"] .diagram-dark { display: block; }
 
 /* --- Page À propos de moi (architecture §5.7) --- */
 .profile-header { margin-bottom: calc(var(--gap) * 1.25); }
+/* Photo de profil ronde, à gauche du nom (À propos de moi, CV). */
+.profile-id { display: flex; align-items: center; gap: 24px; margin: 8px 0 10px; }
+.profile-id .profile-name { margin-top: 0; }
+.profile-id .profile-headline { margin-bottom: 0; }
+.profile-photo { flex-shrink: 0; width: 120px; height: 120px; border-radius: 50%; object-fit: cover; }
 .profile-name { font-size: 44px; line-height: 1.1; letter-spacing: -0.03em; margin: 8px 0 6px; }
 .profile-headline { font-size: 20px; font-weight: 500; color: var(--primary); margin-bottom: 10px; }
 .profile-availability { color: var(--secondary); font-size: 15px; margin-bottom: 18px; }
@@ -265,6 +270,8 @@ html[data-theme="dark"] .diagram-dark { display: block; }
     .home-pitch { font-size: 20px; }
     .page-header h1, .post-title { font-size: 30px; }
     .profile-name { font-size: 32px; }
+    .profile-id { gap: 16px; }
+    .profile-photo { width: 88px; height: 88px; }
     .home-block { padding: 18px; }
     .metric-value { font-size: 24px; }
     /* Pied de page sur plusieurs lignes : pas de point médian en début de ligne. */
@@ -290,10 +297,14 @@ html[data-theme="dark"] .diagram-dark { display: block; }
     html, body { background: #fff !important; }
     body { font-size: 10pt; line-height: 1.4; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
     .header, .footer, .top-link, .breadcrumbs, .construction-banner, .cv .profile-links { display: none !important; }
+    /* LinkedIn : utile en ligne, inutile sur papier (décision de Firmin du 30/10/2026). */
+    .cv-aside .cv-linkedin { display: none; }
     .main:has(> .cv) { max-width: none; margin: 0; padding: 0; }
     .cv-header { margin-bottom: 4mm; }
     .cv .profile-name { font-size: 20pt; margin: 0 0 1pt; }
     .cv .profile-headline { font-size: 10.5pt; margin-bottom: 0; }
+    .cv .profile-id { gap: 5mm; margin: 0; }
+    .cv .profile-photo { width: 22mm; height: 22mm; }
     .cv-grid { grid-template-columns: 52mm minmax(0, 1fr); gap: 7mm; }
     .cv-aside, .cv-aside li { font-size: 8pt; line-height: 1.35; }
     .cv-aside { padding: 3.5mm; }

@@ -9,4 +9,4 @@ menus:
     weight: 10
 ---
 
-Welcome to the showcase of my Proxmox homelab! Step by step, I'm rebuilding a small infrastructure at home with hardware I already had. The goal is to simulate a company's infrastructure, so I can learn by doing and prepare for certifications. Every week, I share what I built, the choices I made and what I take away from them.
+Welcome to the showcase of my Proxmox homelab! Step by step, I'm rebuilding a small lab at home with hardware I already had. The goal is to simulate a company's infrastructure, so I can learn by doing and prepare for certifications. Every week, I share what I built, the choices I made and what I take away from them.

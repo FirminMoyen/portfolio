@@ -109,6 +109,8 @@ disableKinds = ["taxonomy"]
   name = "Firmin Moyen"
   github = "https://github.com/FirminMoyen"
   linkedin = "https://www.linkedin.com/in/firmin-moyen-01724b264/"
+  # Photo de profil (À propos de moi, CV) : image de assets/, carrée, sans métadonnées.
+  photo = "images/profile.jpg"
   [params.profile.cv]
     fr = "/cv/cv-firmin-moyen-fr.pdf"
     en = "/cv/cv-firmin-moyen-en.pdf"

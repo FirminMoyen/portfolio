@@ -1,13 +1,18 @@
-{{- /* En-tête du profil (page À propos de moi) : nom, poste visé, ligne
+{{- /* En-tête du profil (page À propos de moi) : photo, nom, poste visé, ligne
        pratique, liens. Les liens viennent de params.profile ; un lien vide
        masque son bouton. */ -}}
 {{- $p := site.Params.profile }}
 <header class="profile-header">
   {{- partial "breadcrumbs.html" . }}
-  <h1 class="profile-name">{{ $p.name | default .Title }}</h1>
-  {{- with .Params.headline }}
-  <p class="profile-headline">{{ . }}</p>
-  {{- end }}
+  <div class="profile-id">
+    {{- partial "profile/photo.html" . }}
+    <div>
+      <h1 class="profile-name">{{ $p.name | default .Title }}</h1>
+      {{- with .Params.headline }}
+      <p class="profile-headline">{{ . }}</p>
+      {{- end }}
+    </div>
+  </div>
   {{- with .Params.availability }}
   <p class="profile-availability">{{ . }}</p>
   {{- end }}

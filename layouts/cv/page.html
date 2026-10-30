@@ -3,17 +3,23 @@
        (`sidebar`), parcours depuis le corps de la page. Un élément de la colonne
        peut porter `kind` : `email` (params.contactEmail), `linkedin`
        (params.profile.linkedin) ou `website` (accueil du site) ; la valeur vient
-       alors de hugo.toml, jamais du front matter. */ -}}
+       alors de hugo.toml, jamais du front matter. Chaque élément porte la classe
+       `cv-<kind>` : l'impression masque `cv-linkedin`, inutile sur papier. */ -}}
 {{- define "main" }}
 {{- $p := site.Params.profile }}
 {{- $pdf := "" }}{{ with $p.cv }}{{ $pdf = index . site.Language.Lang }}{{ end }}
 <article class="post-single cv">
   <header class="cv-header">
     {{- partial "breadcrumbs.html" . }}
-    <h1 class="profile-name">{{ $p.name | default .Title }}</h1>
-    {{- with .Params.headline }}
-    <p class="profile-headline">{{ . }}</p>
-    {{- end }}
+    <div class="profile-id">
+      {{- partial "profile/photo.html" . }}
+      <div>
+        <h1 class="profile-name">{{ $p.name | default .Title }}</h1>
+        {{- with .Params.headline }}
+        <p class="profile-headline">{{ . }}</p>
+        {{- end }}
+      </div>
+    </div>
     {{- with $pdf }}
     <p class="profile-links">
       <a class="button" href="{{ . | relURL }}" download>{{ i18n "cvDownload" }}</a>
@@ -27,14 +33,17 @@
         <h2>{{ .title }}</h2>
         <ul>
           {{- range .items }}
-          <li{{ if .strong }} class="cv-strong"{{ end }}>
+          {{- $class := slice }}
+          {{- with .kind }}{{ $class = $class | append (printf "cv-%s" .) }}{{ end }}
+          {{- if .strong }}{{ $class = $class | append "cv-strong" }}{{ end }}
+          <li{{ with $class }} class="{{ delimit . " " }}"{{ end }}>
             {{- with .label }}<span class="cv-label">{{ . }}</span>{{ end }}
             {{- if eq .kind "email" }}
               {{- with site.Params.contactEmail }}<span class="cv-text"><a href="mailto:{{ . }}">{{ . }}</a></span>{{ end }}
             {{- else if eq .kind "linkedin" }}
               {{- with $p.linkedin }}<span class="cv-text"><a href="{{ . }}" rel="noopener">LinkedIn</a></span>{{ end }}
             {{- else if eq .kind "website" }}
-              {{- with site.Params.siteDomain }}<span class="cv-text"><a href="https://{{ . }}{{ "" | relLangURL }}">{{ . }}</a></span>{{ end }}
+              {{- with site.Params.siteDomain }}<span class="cv-text">{{ i18n "cvPortfolio" }} <a href="https://{{ . }}{{ "" | relLangURL }}">{{ . }}</a></span>{{ end }}
             {{- end }}
             {{- with .text }}<span class="cv-text">{{ . }}</span>{{ end }}
           </li>

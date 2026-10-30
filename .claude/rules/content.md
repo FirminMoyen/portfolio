@@ -38,6 +38,6 @@ Détail : `docs/architecture.md` §6, §7, §9, §10.
 - Toute modification de `index.fr.md` se reporte dans `index.en.md`, dans la même PR (§8).
 
 ## Publication (§10)
-- Interdits : IP publique (v4 et v6), adresses VPN (100.64.0.0/10), nom du tailnet, ports et règles d'accès, tout secret même révoqué, métadonnées GPS, données personnelles hors nom, région, e-mail dédié et liens professionnels.
+- Interdits : IP publique (v4 et v6), adresses VPN (100.64.0.0/10), nom du tailnet, ports et règles d'accès, tout secret même révoqué, métadonnées GPS, données personnelles hors nom, région, e-mail dédié, liens professionnels et photo de profil (À propos de moi et CV, exception du 30/10/2026, image sans métadonnées).
 - Ouvrir chaque image ajoutée et signaler tout contenu sensible visible.
 - Fuite publiée : révoquer d'abord (§16.8).
