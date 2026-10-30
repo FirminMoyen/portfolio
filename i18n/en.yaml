@@ -44,6 +44,8 @@ metric_planned:
 cvDownload: "Download PDF"
 # Resume Contact column: before the site domain (kind: website).
 cvPortfolio: "Portfolio:"
+# Profile photo alt text (partial profile/photo.html).
+profilePhotoAlt: "Photo of {{ .name }}"
 roadmap_done: "Done"
 roadmap_in-progress: "In progress"
 roadmap_planned: "Upcoming"

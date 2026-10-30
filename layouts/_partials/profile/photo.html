@@ -1,0 +1,7 @@
+{{- /* Photo de profil, ronde (architecture §5.7, exception de publication §10 du
+       30/10/2026) : À propos de moi et CV. Source : params.profile.photo, une image
+       de assets/ déjà recadrée au carré et sans métadonnées. Rien si elle manque. */ -}}
+{{- $p := site.Params.profile }}
+{{- with $p.photo }}{{ with resources.Get . }}
+<img class="profile-photo" src="{{ .RelPermalink }}" width="{{ .Width }}" height="{{ .Height }}" alt="{{ i18n "profilePhotoAlt" (dict "name" $p.name) }}">
+{{- end }}{{ end }}

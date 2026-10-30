@@ -11,10 +11,15 @@
 <article class="post-single cv">
   <header class="cv-header">
     {{- partial "breadcrumbs.html" . }}
-    <h1 class="profile-name">{{ $p.name | default .Title }}</h1>
-    {{- with .Params.headline }}
-    <p class="profile-headline">{{ . }}</p>
-    {{- end }}
+    <div class="profile-id">
+      {{- partial "profile/photo.html" . }}
+      <div>
+        <h1 class="profile-name">{{ $p.name | default .Title }}</h1>
+        {{- with .Params.headline }}
+        <p class="profile-headline">{{ . }}</p>
+        {{- end }}
+      </div>
+    </div>
     {{- with $pdf }}
     <p class="profile-links">
       <a class="button" href="{{ . | relURL }}" download>{{ i18n "cvDownload" }}</a>

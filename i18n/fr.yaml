@@ -44,6 +44,8 @@ metric_planned:
 cvDownload: "Télécharger le PDF"
 # Colonne Contact du CV : devant le domaine du site (kind: website).
 cvPortfolio: "Portfolio :"
+# Texte alternatif de la photo de profil (partial profile/photo.html).
+profilePhotoAlt: "Photo de {{ .name }}"
 roadmap_done: "Fait"
 roadmap_in-progress: "En cours"
 roadmap_planned: "À venir"
