@@ -42,6 +42,8 @@ metric_planned:
 
 # Resume page
 cvDownload: "Download PDF"
+# Resume Contact column: before the site domain (kind: website).
+cvPortfolio: "Portfolio:"
 roadmap_done: "Done"
 roadmap_in-progress: "In progress"
 roadmap_planned: "Upcoming"

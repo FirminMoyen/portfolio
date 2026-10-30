@@ -42,6 +42,8 @@ metric_planned:
 
 # Page CV
 cvDownload: "Télécharger le PDF"
+# Colonne Contact du CV : devant le domaine du site (kind: website).
+cvPortfolio: "Portfolio :"
 roadmap_done: "Fait"
 roadmap_in-progress: "En cours"
 roadmap_planned: "À venir"

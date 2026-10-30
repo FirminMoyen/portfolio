@@ -290,6 +290,8 @@ html[data-theme="dark"] .diagram-dark { display: block; }
     html, body { background: #fff !important; }
     body { font-size: 10pt; line-height: 1.4; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
     .header, .footer, .top-link, .breadcrumbs, .construction-banner, .cv .profile-links { display: none !important; }
+    /* LinkedIn : utile en ligne, inutile sur papier (décision de Firmin du 30/10/2026). */
+    .cv-aside .cv-linkedin { display: none; }
     .main:has(> .cv) { max-width: none; margin: 0; padding: 0; }
     .cv-header { margin-bottom: 4mm; }
     .cv .profile-name { font-size: 20pt; margin: 0 0 1pt; }
