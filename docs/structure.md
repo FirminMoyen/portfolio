@@ -197,7 +197,7 @@ Un bloc sans donnée est masqué. Détail des contenus et des liens : architectu
 | Aujourd'hui | Publiée (1.6) : description et message « en construction » ; sous-pages en brouillon |
 
 1. **En-tête** : titre, description. *(thème)*
-2. **Introduction** : le lab aujourd'hui, en langage simple ; liens vers P05 et P21. La feuille de route n'est plus affichée ici depuis le 29/10/2026 : elle a sa page, P21. *(Firmin)*
+2. **Introduction** : le lab aujourd'hui, en langage simple et en un seul paragraphe (02/11/2026) ; liens vers P05 et P21. La feuille de route n'est plus affichée ici depuis le 29/10/2026 : elle a sa page, P21. *(Firmin)*
 3. **Schéma** `lab-overview`. *(5.1)*
 4. **Cartes des pages** (29/10/2026) : une carte par page de la section (P04, puis P05), avec le badge de la feuille de route : Fait, En cours ou À venir (architecture §5.2). Les tableaux de composants par groupe restent la cible. *(Firmin, `roadmap` des pages)*
 5. **Dernières décisions** : les 5 ADR les plus récentes et un lien vers P05. *(4.1)*
