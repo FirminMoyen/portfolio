@@ -540,7 +540,8 @@ Le dossier est créé avec les deux fichiers en brouillon, selon les gabarits de
 ### 9.3 Historique immuable
 
 - Journal : une entrée publiée n'est pas réécrite. Une faute de frappe se corrige directement ; une erreur de fond se signale par un bloc « Erratum (date) » en fin d'entrée.
-- **Exception (décidée par Firmin le 28/10/2026).** L'entrée de la semaine 1 est réécrite en récit selon le nouveau gabarit (Annexe A.1), avec les mêmes faits et son erratum conservé en fin d'entrée : le site n'avait pas encore été partagé. Les rubriques « Ce que j'en retiens » des semaines 1 et 2 attendent les mots de Firmin.
+- **Exception (décidée par Firmin le 28/10/2026).** L'entrée de la semaine 1 est réécrite en récit selon le nouveau gabarit (Annexe A.1), avec les mêmes faits et son erratum conservé en fin d'entrée (cet erratum a été retiré le 02/11/2026, exception suivante) : le site n'avait pas encore été partagé. Les rubriques « Ce que j'en retiens » des semaines 1 et 2 attendent les mots de Firmin.
+- **Exception (décidée par Firmin le 02/11/2026).** Les entrées des semaines 1 et 2 ne mentionnent plus l'erreur sur la route annoncée par le VPN. Sont retirés : dans la semaine 1, la phrase qui disait la route élargie, l'élément correspondant de l'« En bref » et l'erratum du 28/10/2026, dans la semaine 2, la section « La route que je croyais élargie » et l'élément correspondant de l'« En bref ». Tailscale, qui n'apparaît plus dans le corps de la semaine 2, sort de ses `components`. L'erratum du 29/10/2026 sur SSH, dans la semaine 2, est conservé.
 - ADR acceptée : seuls `status` et `superseded_by` changent.
 - **Exception (décidée par Firmin le 29/10/2026).** Le retrait des points-virgules (§9.5) s'applique aussi aux ADR acceptées et aux entrées du journal déjà écrites, sans changement de sens.
 - **Exception (décidée par Firmin le 29/10/2026).** Le remplacement de « supervision » par « monitoring » (§9.5) s'applique aussi aux ADR acceptées (ADR-0002), sans changement de sens.
@@ -1049,6 +1050,7 @@ Le site dépend de comptes et de services extérieurs au repo. C'est là qu'est 
 | 2026-11-02 | Infrastructure (§5.2) : l'introduction de la vue d'ensemble tient en un seul paragraphe. Décision de Firmin | PR `fix/site-tweaks` |
 | 2026-11-02 | Pages Monitoring, Automatisation (§5.2) et Lab LPIC-1 (§5.4) : rubrique « Où j'en suis » retirée. Elles présentent ce qui est prévu, l'avancement est donné par le badge de leur carte. Décision de Firmin | PR `fix/site-tweaks` |
 | 2026-11-02 | Journal (§5.5) : navigation en bas des entrées dans l'ordre chronologique, « Précédent » vers l'entrée plus ancienne, « Suivant » vers la plus récente. Nouvelle surcharge `layouts/_partials/post_nav_links.html`, inscrite au registre (§11.7). Décision de Firmin | PR `fix/site-tweaks` |
+| 2026-11-02 | Exception à §9.3 : les entrées des semaines 1 et 2 ne mentionnent plus l'erreur sur la route annoncée par le VPN (phrase, élément de l'« En bref » et erratum du 28/10/2026 de la semaine 1, section et élément de l'« En bref » de la semaine 2 retirés). Tailscale sort des composants de la semaine 2. L'erratum SSH du 29/10/2026 est conservé. Décision de Firmin | PR `fix/site-tweaks` |
 
 ---
 

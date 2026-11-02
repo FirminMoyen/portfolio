@@ -4,7 +4,7 @@ date: 2026-10-28
 draft: false
 description: "PVE2 rejoint le lab, les deux nœuds forment un cluster, et le réseau se découpe en zones sans VLAN, faute de matériel compatible."
 week: 2
-components: [pve2, proxmox-pve2, proxmox-cluster, fw-01, tailscale]
+components: [pve2, proxmox-pve2, proxmox-cluster, fw-01]
 adrs: [2]
 tags: []
 certifications: []
@@ -37,17 +37,13 @@ J'ai choisi des zones routées. Chaque zone a son propre sous-réseau, sur le m�
 
 La première zone créée est une zone isolée, où j'expérimente, par curiosité, avec un agent IA autonome. Elle sort sur Internet, mais la maison et le reste du lab lui sont injoignables, et ses règles sont journalisées. J'y ai installé une VM Ubuntu Server 26.04 LTS sur PVE2, joignable uniquement en SSH par clé. L'expérience y tourne sous un compte sans droits d'administration. Depuis cette VM, j'ai vérifié que tout tient : Internet répond, ni le réseau domestique ni la zone d'infrastructure (administration d'OPNsense et des deux hôtes comprise) ne répondent, et une adresse usurpée est bloquée.
 
-## La route que je croyais élargie
-
-En semaine 1, j'avais élargi la route annoncée par le VPN à tout le réseau du lab, `10.42.0.0/16`. Du moins, je le croyais : elle était restée limitée à la zone d'infrastructure, `10.42.0.0/24`. Je l'ai corrigée le 28 octobre. Elle couvre maintenant tout le lab, et un erratum le signale dans l'[entrée de la semaine 1]({{< relref "/journal/001-rebuild" >}}).
-
 ## La suite
 
 Prochaine étape de la [feuille de route]({{< relref "/roadmap" >}}) : mettre en place une stack de monitoring. Jusqu'ici, j'ai tout installé et configuré à la main : l'automatisation avec Ansible et Terraform viendra ensuite.
 
 ## En bref {.brief}
 
-- **Composants** : PVE2 (Dell XPS 15 9570, 6 cœurs, 32 Go), Proxmox VE sur PVE2, cluster Proxmox à deux nœuds, pare-feu de Proxmox, OPNsense, Tailscale.
+- **Composants** : PVE2 (Dell XPS 15 9570, 6 cœurs, 32 Go), Proxmox VE sur PVE2, cluster Proxmox à deux nœuds, pare-feu de Proxmox, OPNsense.
 - **Étapes** :
   - Proxmox VE sur PVE2.
   - Pare-feu de Proxmox actif sur les deux hôtes, entrées refusées par défaut.
@@ -55,7 +51,6 @@ Prochaine étape de la [feuille de route]({{< relref "/roadmap" >}}) : mettre en
   - Cluster à deux nœuds (PVE1 : deux votes, PVE2 : un), test de quorum réussi.
   - Zones routées sans VLAN, un /24 par zone.
   - Zone isolée `10.42.50.0/24` et sa VM Ubuntu Server 26.04 LTS, tests d'isolation réussis.
-  - Route du VPN corrigée en `10.42.0.0/16`.
 - **Décisions** : zones routées plutôt que VLAN, avec le pare-feu de Proxmox sur chaque VM des zones (voir [Réseau]({{< relref "/infrastructure/network" >}})). Deux votes pour PVE1, un pour PVE2 (voir [Virtualisation]({{< relref "/infrastructure/virtualization" >}})).
 - **Limites acceptées** : pas d'isolation de niveau 2 entre les zones. Un seul lien de cluster, avec peu de marge de latence.
 

@@ -32,7 +32,7 @@ La limite que j'accepte : le plan de contrôle de Tailscale est hébergé par un
 
 ## Préparer les zones
 
-Le réseau du lab est prévu en zones : une zone /24 par usage, dont le numéro de VLAN reprend le troisième octet. La route annoncée par le VPN couvrait `10.42.0.0/24`. Je l'ai élargie à `10.42.0.0/16`, pour couvrir les futures zones.
+Le réseau du lab est prévu en zones : une zone /24 par usage, dont le numéro de VLAN reprend le troisième octet.
 
 ## La suite
 
@@ -41,7 +41,5 @@ Terminer l'étape 4 de la [feuille de route]({{< relref "/roadmap" >}}) : admini
 ## En bref {.brief}
 
 - **Composants** : PVE1, Proxmox VE 9.2, OPNsense, Tailscale.
-- **Étapes** : Proxmox VE 9.2 sur PVE1, OPNsense en VM sur PVE1 et réseau du lab `10.42.0.0/24`, Tailscale en subnet router sur OPNsense, route annoncée élargie à `10.42.0.0/16` (voir l'erratum), tests depuis la 4G.
+- **Étapes** : Proxmox VE 9.2 sur PVE1, OPNsense en VM sur PVE1 et réseau du lab `10.42.0.0/24`, Tailscale en subnet router sur OPNsense, tests depuis la 4G.
 - **Décisions** : lab isolé de la maison derrière OPNsense ([ADR-0002]({{< relref "/infrastructure/decisions/adr-0002-lab-isolated-opnsense" >}})) et accès distant par Tailscale ([ADR-0001]({{< relref "/infrastructure/decisions/adr-0001-remote-access-tailscale" >}})).
-
-**Erratum (28 octobre 2026).** La route annoncée était en réalité restée limitée à `10.42.0.0/24`. Je l'ai corrigée le 28 octobre 2026 : elle couvre maintenant `10.42.0.0/16`.
