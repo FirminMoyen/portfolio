@@ -16,7 +16,3 @@ So far, I have installed and configured everything by hand. Automation is the st
 
 - **Ansible**, first: the machines' configuration, written down in files and repeatable.
 - **Terraform**, then: the infrastructure itself, described as code (Infrastructure as Code).
-
-## Where I am
-
-Nothing has started yet: the step will begin once monitoring is in place.

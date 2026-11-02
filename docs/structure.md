@@ -33,7 +33,7 @@
 | P19 | Le projet | `/fr/project/` | `/en/project/` | `content/project/index.{fr,en}.md` | page | Le projet / The project (15) | Publiée (28/10/2026) ; remplace P17 et P18 |
 | P21 | Feuille de route | `/fr/roadmap/` | `/en/roadmap/` | `content/roadmap/index.{fr,en}.md` | page | — | Publiée (29/10/2026), hors du menu ; reprend la feuille de route de P03 |
 | P03 | Infrastructure | `/fr/infrastructure/` | `/en/infrastructure/` | `content/infrastructure/_index.*` | section | Infrastructure (20) | Publiée |
-| P04 | Page de groupe (une par groupe, D6) | `/fr/infrastructure/<groupe>/` | `/en/infrastructure/<groupe>/` | `content/infrastructure/<groupe>/index.*` | page | — | Publiées : Infrastructure physique (`hardware`), Réseau, Virtualisation, et depuis le 29/10/2026 Monitoring et Automatisation |
+| P04 | Page de groupe (une par groupe, D6) | `/fr/infrastructure/<groupe>/` | `/en/infrastructure/<groupe>/` | `content/infrastructure/<groupe>/index.*` | page | — | Publiées : Infrastructure physique (`hardware`), Réseau, Virtualisation, et depuis le 29/10/2026 Monitoring et Automatisation, qui présentent ce qui est prévu, l'avancement étant donné par le badge de leur carte dans P03 (sans rubrique « Où j'en suis » depuis le 02/11/2026) |
 | P05 | Décisions d'architecture | `/fr/infrastructure/decisions/` | `/en/infrastructure/decisions/` | `content/infrastructure/decisions/_index.*` | section | — | Publiée |
 | P06 | ADR | `…/decisions/adr-NNNN-<slug>/` | idem | Archetype `adr` | page | — | Modèle seulement |
 | P07 | Services | `/fr/services/` | `/en/services/` | `content/services/_index.*` | section | Services (30) | Publiée le 29/10/2026 (brouillon depuis le 28/10/2026) |
@@ -274,7 +274,7 @@ Un bloc sans donnée est masqué. Détail des contenus et des liens : architectu
 | Fichiers | Créés par `hugo new content --kind services services/<id>` |
 | Type, template | page ; `layouts/services/page.html` (4.1) |
 | Fil d'Ariane | Accueil › Services › *Nom* |
-| Aujourd'hui | Deux pages publiées le 29/10/2026, `openbot` et `lpic-1-lab`, sur la trame des pages de groupe (ouverture, puis Détails techniques et Limites et évolutions quand il y a lieu), avec le template par défaut. La fiche ci-dessous reste la cible |
+| Aujourd'hui | Deux pages publiées le 29/10/2026, `openbot` et `lpic-1-lab`, sur la trame des pages de groupe (ouverture, puis Détails techniques et Limites et évolutions quand il y a lieu), avec le template par défaut. Une page à venir (`lpic-1-lab`) présente ce qui est prévu, l'avancement étant donné par le badge de sa carte dans P07 (sans rubrique « Où j'en suis » depuis le 02/11/2026). La fiche ci-dessous reste la cible |
 
 1. **En-tête** : nom, badge de statut, rôle. *(catalogue ; 4.1)*
 2. **Fiche technique** (architecture §5.4). *(catalogue ; 4.1)*

@@ -16,7 +16,3 @@ Jusqu'ici, j'ai tout installé et configuré à la main. L'automatisation est l'
 
 - **Ansible**, d'abord : la configuration des machines, décrite dans des fichiers et rejouable.
 - **Terraform**, ensuite : l'infrastructure elle-même, décrite sous forme de code (Infrastructure as Code).
-
-## Où j'en suis
-
-Rien n'est commencé : l'étape démarrera une fois le monitoring en place.

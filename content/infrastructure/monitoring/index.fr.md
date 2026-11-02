@@ -19,7 +19,3 @@ Le monitoring est l'étape en cours de la [feuille de route]({{< relref "/roadma
 - **Uptime Kuma** : la disponibilité des services, vérifiée en continu.
 
 J'ai déjà utilisé Prometheus et Grafana dans mon premier homelab.
-
-## Où j'en suis
-
-Les outils sont choisis. Il me reste à décider où les installer dans le lab, puis à les mettre en place. Le [journal]({{< relref "/journal" >}}) racontera l'installation.
