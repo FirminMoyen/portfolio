@@ -19,7 +19,3 @@ Monitoring is the step in progress on the [roadmap]({{< relref "/roadmap" >}}), 
 - **Uptime Kuma**: service availability, checked continuously.
 
 I have already used Prometheus and Grafana in my first homelab.
-
-## Where I am
-
-The tools are chosen. I still have to decide where to install them in the lab, then set them up. The [journal]({{< relref "/journal" >}}) will tell how the installation goes.

@@ -1,0 +1,24 @@
+{{- /* Surcharge de post_nav_links.html de PaperMod (registre, architecture §11.7) :
+       navigation en bas des entrées du journal. Le thème met l'entrée plus
+       récente à gauche sous « Précédent » et la plus ancienne à droite sous
+       « Suivant ». Ici, le sens suit la chronologie (décision de Firmin du
+       02/11/2026) : à gauche, « Précédent » mène à l'entrée plus ancienne
+       ($pages.Prev), à droite, « Suivant » à la plus récente ($pages.Next).
+       Condition et balisage identiques à ceux du thème. */ -}}
+{{- $pages := where site.RegularPages "Type" "in" site.Params.mainSections }}
+{{- if and (gt (len $pages) 1) (in $pages . ) }}
+<nav class="paginav">
+  {{- with $pages.Prev . }}
+  <a class="prev" href="{{ .Permalink }}">
+    <span class="title">« {{ i18n "prev_page" }}</span>
+    <span>{{- .Name -}}</span>
+  </a>
+  {{- end }}
+  {{- with $pages.Next . }}
+  <a class="next" href="{{ .Permalink }}">
+    <span class="title">{{ i18n "next_page" }} »</span>
+    <span>{{- .Name -}}</span>
+  </a>
+  {{- end }}
+</nav>
+{{- end }}

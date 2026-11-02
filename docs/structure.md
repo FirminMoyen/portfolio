@@ -33,7 +33,7 @@
 | P19 | Le projet | `/fr/project/` | `/en/project/` | `content/project/index.{fr,en}.md` | page | Le projet / The project (15) | Publiée (28/10/2026) ; remplace P17 et P18 |
 | P21 | Feuille de route | `/fr/roadmap/` | `/en/roadmap/` | `content/roadmap/index.{fr,en}.md` | page | — | Publiée (29/10/2026), hors du menu ; reprend la feuille de route de P03 |
 | P03 | Infrastructure | `/fr/infrastructure/` | `/en/infrastructure/` | `content/infrastructure/_index.*` | section | Infrastructure (20) | Publiée |
-| P04 | Page de groupe (une par groupe, D6) | `/fr/infrastructure/<groupe>/` | `/en/infrastructure/<groupe>/` | `content/infrastructure/<groupe>/index.*` | page | — | Publiées : Infrastructure physique (`hardware`), Réseau, Virtualisation, et depuis le 29/10/2026 Monitoring et Automatisation |
+| P04 | Page de groupe (une par groupe, D6) | `/fr/infrastructure/<groupe>/` | `/en/infrastructure/<groupe>/` | `content/infrastructure/<groupe>/index.*` | page | — | Publiées : Infrastructure physique (`hardware`), Réseau, Virtualisation, et depuis le 29/10/2026 Monitoring et Automatisation, qui présentent ce qui est prévu, l'avancement étant donné par le badge de leur carte dans P03 (sans rubrique « Où j'en suis » depuis le 02/11/2026) |
 | P05 | Décisions d'architecture | `/fr/infrastructure/decisions/` | `/en/infrastructure/decisions/` | `content/infrastructure/decisions/_index.*` | section | — | Publiée |
 | P06 | ADR | `…/decisions/adr-NNNN-<slug>/` | idem | Archetype `adr` | page | — | Modèle seulement |
 | P07 | Services | `/fr/services/` | `/en/services/` | `content/services/_index.*` | section | Services (30) | Publiée le 29/10/2026 (brouillon depuis le 28/10/2026) |
@@ -170,7 +170,7 @@ Format de chaque fiche : identité de la page, puis ses blocs dans l'ordre d'aff
 
 | | |
 |---|---|
-| Rôle | Le projet, et lui seul : quoi, où il en est, preuve d'activité. Tout ce qui concerne Firmin est sur P13 |
+| Rôle | Le projet, et lui seul : quoi, où il en est, preuve d'activité. Tout ce qui concerne Firmin est sur P13, sauf le bloc Contact, repris en bas de page |
 | URL | `/fr/` · `/en/` |
 | Fichiers | `content/_index.fr.md`, `content/_index.en.md` |
 | Type, template | home ; `layouts/home.html` et `_partials/home/*` (5.2a). Remplace la liste par défaut de PaperMod : `mainSections` n'est plus utilisé sur l'accueil |
@@ -179,10 +179,11 @@ Format de chaque fiche : identité de la page, puis ses blocs dans l'ordre d'aff
 
 Un bloc sans donnée est masqué. Détail des contenus et des liens : architecture §5.1.
 
-1. **Le projet** : présentation (corps de la page) ; ligne d'identité (nom, `identity` du front matter) ; boutons « CV » (page CV) et « Me contacter » (P13, ancre `#contact`) ; liens vers P19 et P13. *(Firmin ; 5.2a, 28/10/2026)*
+1. **Le projet** : présentation (corps de la page) ; ligne d'identité (nom, `identity` du front matter) ; boutons « CV » (P20) et « Me contacter » (bloc 5, ancre `#contact` de l'accueil depuis le 02/11/2026 ; avant : P13, ancre `#contact`) ; liens vers P19 et P13. *(Firmin ; 5.2a, 28/10/2026)*
 2. **Le lab en un coup d'œil** : schéma `lab-overview` (« architecture cible » tant que rien n'est en service), phase en cours avec un lien vers P21 ; les compteurs par statut sont retirés tant qu'il n'y a pas de services ; liens vers P03 et P07. Pas de dernière semaine : le bloc 4 la montre déjà. *(données ; 5.1 pour le schéma, 5.2a)*
 3. **Stack** : les briques du lab par thème (Infrastructure, Réseau, Monitoring, Services), chacune avec son rôle en une ligne et son statut (En service, En cours, À venir) ; le titre d'un thème mène à sa page quand elle est publiée ; lien « Feuille de route complète » vers P21. *(`data/stack.yaml`, statuts lus dans le catalogue ou la feuille de route ; décision de Firmin du 29/10/2026)*
 4. **Dernières entrées du journal** : les 3 dernières entrées, P10 ou P12 (date, titre, numéro pour un post-mortem, description) ; liens vers P09, P11 (quand la section est publiée) et le flux RSS. *(5.2a)*
+5. **Contact** : le partial `profile/contact.html` de P13, titre « Contact » ancré sur `#contact`, cible du bouton « Me contacter ». *(décision de Firmin du 02/11/2026)*
 
 ### P03 — Infrastructure
 
@@ -197,7 +198,7 @@ Un bloc sans donnée est masqué. Détail des contenus et des liens : architectu
 | Aujourd'hui | Publiée (1.6) : description et message « en construction » ; sous-pages en brouillon |
 
 1. **En-tête** : titre, description. *(thème)*
-2. **Introduction** : le lab aujourd'hui, en langage simple ; liens vers P05 et P21. La feuille de route n'est plus affichée ici depuis le 29/10/2026 : elle a sa page, P21. *(Firmin)*
+2. **Introduction** : le lab aujourd'hui, en langage simple et en un seul paragraphe (02/11/2026) ; liens vers P05 et P21. La feuille de route n'est plus affichée ici depuis le 29/10/2026 : elle a sa page, P21. *(Firmin)*
 3. **Schéma** `lab-overview`. *(5.1)*
 4. **Cartes des pages** (29/10/2026) : une carte par page de la section (P04, puis P05), avec le badge de la feuille de route : Fait, En cours ou À venir (architecture §5.2). Les tableaux de composants par groupe restent la cible. *(Firmin, `roadmap` des pages)*
 5. **Dernières décisions** : les 5 ADR les plus récentes et un lien vers P05. *(4.1)*
@@ -274,7 +275,7 @@ Un bloc sans donnée est masqué. Détail des contenus et des liens : architectu
 | Fichiers | Créés par `hugo new content --kind services services/<id>` |
 | Type, template | page ; `layouts/services/page.html` (4.1) |
 | Fil d'Ariane | Accueil › Services › *Nom* |
-| Aujourd'hui | Deux pages publiées le 29/10/2026, `openbot` et `lpic-1-lab`, sur la trame des pages de groupe (ouverture, puis Détails techniques et Limites et évolutions quand il y a lieu), avec le template par défaut. La fiche ci-dessous reste la cible |
+| Aujourd'hui | Deux pages publiées le 29/10/2026, `openbot` et `lpic-1-lab`, sur la trame des pages de groupe (ouverture, puis Détails techniques et Limites et évolutions quand il y a lieu), avec le template par défaut. Une page à venir (`lpic-1-lab`) présente ce qui est prévu, l'avancement étant donné par le badge de sa carte dans P07 (sans rubrique « Où j'en suis » depuis le 02/11/2026). La fiche ci-dessous reste la cible |
 
 1. **En-tête** : nom, badge de statut, rôle. *(catalogue ; 4.1)*
 2. **Fiche technique** (architecture §5.4). *(catalogue ; 4.1)*
@@ -312,7 +313,7 @@ Un bloc sans donnée est masqué. Détail des contenus et des liens : architectu
 2. **Composants concernés et ADR liées** (liens). *(3.1)*
 3. **Corps** : chapeau · un à trois récits · Ce que j'en retiens · La suite · encadré En bref (architecture Annexe A.1, depuis le 28/10/2026). *(archetype)*
 4. **Erratum**, facultatif, en fin d'entrée. *(Firmin)*
-5. **Navigation** précédente / suivante. *(thème)*
+5. **Navigation** précédente / suivante, dans l'ordre chronologique : « Précédent » mène à l'entrée plus ancienne, « Suivant » à la plus récente. *(thème, surcharge de `post_nav_links.html`, architecture §11.7, 02/11/2026)*
 
 ### P11 — Incidents (liste)
 
@@ -342,7 +343,7 @@ Un bloc sans donnée est masqué. Détail des contenus et des liens : architectu
 
 1. **En-tête** : « PM-003 · titre », gravité, date de l'incident, durée d'impact, composants. *(3.1)*
 2. **Corps** : Résumé · Impact · Chronologie · Détection · Cause racine · Résolution · Actions correctives · Ce que j'en retiens. *(archetype)*
-3. **Navigation** précédente / suivante. *(thème)*
+3. **Navigation** précédente / suivante, comme P10 : « Précédent » mène à l'entrée plus ancienne, « Suivant » à la plus récente. *(thème, surcharge de `post_nav_links.html`, architecture §11.7, 02/11/2026)*
 
 ### P13 — À propos de moi
 
@@ -358,7 +359,7 @@ Un bloc sans donnée est masqué. Détail des contenus et des liens : architectu
 
 1. **Profil** : nom (`params.profile.name`), `headline`, `availability` ; boutons CV (P20), GitHub, LinkedIn. *(front matter et `hugo.toml`)*
 2. **Présentation** : corps de la page, en paragraphes courts, dans cet ordre : une introduction · Mon parcours (sans le détail des missions, renvoie à P20) · Mon homelab (le pourquoi, l'ancien lab au passé, les briques importantes en une phrase, liens vers P19 et P09) · Ma façon de travailler (liste courte de principes, sans exemples), toujours en dernier. Pas de section « Ce que je cherche » : `availability` porte le poste recherché. Aucune liste de compétences : elle vit dans P20. *(Firmin)*
-3. **Contact** : partial `profile/contact.html` rendu par le template en fin de page, titre « Contact » ancré sur `#contact` ; e-mail depuis `params.contactEmail`, LinkedIn depuis `params.profile`. *(28/10/2026)*
+3. **Contact** : partial `profile/contact.html` rendu par le template en fin de page, titre « Contact » ancré sur `#contact` (le même partial ferme P02, bloc 5, depuis le 02/11/2026) ; e-mail depuis `params.contactEmail`, LinkedIn depuis `params.profile`. *(28/10/2026)*
 
 ### P20 — CV
 

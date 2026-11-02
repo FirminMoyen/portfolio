@@ -4,7 +4,7 @@ date: 2026-10-28
 draft: false
 description: "PVE2 joins the lab, the two nodes form a cluster, and the network is split into zones without VLANs, for lack of compatible hardware."
 week: 2
-components: [pve2, proxmox-pve2, proxmox-cluster, fw-01, tailscale]
+components: [pve2, proxmox-pve2, proxmox-cluster, fw-01]
 adrs: [2]
 tags: []
 certifications: []
@@ -37,17 +37,13 @@ I chose routed zones. Each zone has its own subnet, on the same physical network
 
 The first zone I created is an isolated zone, where I experiment, out of curiosity, with an autonomous AI agent. It can reach the internet, but the home and the rest of the lab are unreachable from it, and its rules are logged. I installed an Ubuntu Server 26.04 LTS VM in it, on PVE2, reachable only over SSH with a key. The experiment runs in it under an account without administrator rights. From this VM, I checked that everything holds: the internet answers, neither the home network nor the infrastructure zone (including the administration of OPNsense and of both hosts) answers, and a spoofed address is blocked.
 
-## The route I thought I had widened
-
-In week 1, I had widened the route advertised by the VPN to the whole lab network, `10.42.0.0/16`. Or so I thought: it had remained limited to the infrastructure zone, `10.42.0.0/24`. I fixed it on 28 October. It now covers the whole lab, and an erratum says so in the [week 1 entry]({{< relref "/journal/001-rebuild" >}}).
-
 ## What's next
 
 Next step on the [roadmap]({{< relref "/roadmap" >}}): setting up a monitoring stack. So far, I have installed and configured everything by hand: automation with Ansible and Terraform will come after that.
 
 ## In brief {.brief}
 
-- **Components**: PVE2 (Dell XPS 15 9570, 6 cores, 32 GB), Proxmox VE on PVE2, two-node Proxmox cluster, Proxmox firewall, OPNsense, Tailscale.
+- **Components**: PVE2 (Dell XPS 15 9570, 6 cores, 32 GB), Proxmox VE on PVE2, two-node Proxmox cluster, Proxmox firewall, OPNsense.
 - **Steps**:
   - Proxmox VE on PVE2.
   - Proxmox firewall active on both hosts, inbound denied by default.
@@ -55,7 +51,6 @@ Next step on the [roadmap]({{< relref "/roadmap" >}}): setting up a monitoring s
   - Two-node cluster (PVE1: two votes, PVE2: one), quorum test passed.
   - Routed zones without VLANs, one /24 per zone.
   - Isolated zone `10.42.50.0/24` and its Ubuntu Server 26.04 LTS VM, isolation tests passed.
-  - VPN route fixed to `10.42.0.0/16`.
 - **Decisions**: routed zones rather than VLANs, with the Proxmox firewall on each zone VM (see [Network]({{< relref "/infrastructure/network" >}})). Two votes for PVE1, one for PVE2 (see [Virtualization]({{< relref "/infrastructure/virtualization" >}})).
 - **Limits accepted**: no layer 2 isolation between zones. A single cluster link, with little latency margin.
 

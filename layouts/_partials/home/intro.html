@@ -1,9 +1,11 @@
 {{- /* Bloc 1 — Le projet (architecture §5.1) : présentation (corps de la page
        d'accueil), puis ligne d'identité (nom et `identity` du front matter) et
-       boutons CV et « Me contacter » (ancre #contact de la page À propos de
-       moi), puis liens vers « Le projet » et « À propos de moi ». */ -}}
+       boutons CV (page CV, ou le PDF à défaut, partial profile/cv-url.html) et
+       « Me contacter » (ancre #contact du bloc Contact, en bas de l'accueil).
+       Puis liens vers « Le projet » et « À propos de moi ». */ -}}
 {{- $about := site.GetPage "/about-me" }}
 {{- $cv := partial "profile/cv-url.html" . }}
+{{- $contact := or site.Params.contactEmail site.Params.profile.linkedin }}
 <section class="home-intro">
   {{- with .Content }}
   <div class="home-pitch">{{ . }}</div>
@@ -11,13 +13,13 @@
   {{- with .Params.identity }}
   <p class="home-identity"><strong>{{ site.Params.profile.name }}</strong> · {{ . }}</p>
   {{- end }}
-  {{- if or $cv $about }}
+  {{- if or $cv $contact }}
   <p class="profile-links home-actions">
     {{- with $cv }}
     <a class="button" href="{{ . }}">{{ i18n "profileCv" }}</a>
     {{- end }}
-    {{- with $about }}
-    <a class="button" href="{{ .RelPermalink }}#contact">{{ i18n "homeContactMe" }}</a>
+    {{- if $contact }}
+    <a class="button" href="#contact">{{ i18n "homeContactMe" }}</a>
     {{- end }}
   </p>
   {{- end }}
