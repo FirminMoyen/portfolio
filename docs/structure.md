@@ -312,7 +312,7 @@ Un bloc sans donnée est masqué. Détail des contenus et des liens : architectu
 2. **Composants concernés et ADR liées** (liens). *(3.1)*
 3. **Corps** : chapeau · un à trois récits · Ce que j'en retiens · La suite · encadré En bref (architecture Annexe A.1, depuis le 28/10/2026). *(archetype)*
 4. **Erratum**, facultatif, en fin d'entrée. *(Firmin)*
-5. **Navigation** précédente / suivante. *(thème)*
+5. **Navigation** précédente / suivante, dans l'ordre chronologique : « Précédent » mène à l'entrée plus ancienne, « Suivant » à la plus récente. *(thème, surcharge de `post_nav_links.html`, architecture §11.7, 02/11/2026)*
 
 ### P11 — Incidents (liste)
 
@@ -342,7 +342,7 @@ Un bloc sans donnée est masqué. Détail des contenus et des liens : architectu
 
 1. **En-tête** : « PM-003 · titre », gravité, date de l'incident, durée d'impact, composants. *(3.1)*
 2. **Corps** : Résumé · Impact · Chronologie · Détection · Cause racine · Résolution · Actions correctives · Ce que j'en retiens. *(archetype)*
-3. **Navigation** précédente / suivante. *(thème)*
+3. **Navigation** précédente / suivante, comme P10 : « Précédent » mène à l'entrée plus ancienne, « Suivant » à la plus récente. *(thème, surcharge de `post_nav_links.html`, architecture §11.7, 02/11/2026)*
 
 ### P13 — À propos de moi
 

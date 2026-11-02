@@ -214,7 +214,7 @@ Fiche technique, rendue par le même partial pour les services et pour les carte
 - Le journal raconte une histoire (décision de Firmin du 28/10/2026). Gabarit narratif (Annexe A.1) : un titre en forme de tournant ou de question ; un chapeau de deux ou trois phrases ; un à trois récits courts (le problème, ce que j'ai essayé, ce que j'ai choisi et pourquoi avec le lien vers la décision, la limite que j'accepte) ; « Ce que j'en retiens », dans les mots de Firmin ; « La suite » ; un encadré « En bref » pour les techniciens (composants, étapes, décisions). Le chapeau sert de résumé dans les listes (`<!--more-->`). Les entrées d'avant le 28/10/2026 suivaient l'ancien gabarit (Objectif, Réalisé, Problèmes et résolution, Décisions, Appris, Semaine prochaine).
 - Chaque entrée déclare `components`, `adrs`, `tags` et `certifications`.
 - Liste (`/journal/`) : toutes les entrées, post-mortems compris, de la plus récente à la plus ancienne. Pour chacune : date, titre (une entrée hebdomadaire commence par « Semaine N — » / « Week N — », un post-mortem garde son numéro PM-002), description, tags. Pagination par 10, flux RSS.
-- Page : numéro et titre, date, description, tags et certifications, composants concernés, ADR liées, corps, navigation précédente/suivante.
+- Page : numéro et titre, date, description, tags et certifications, composants concernés, ADR liées, corps, navigation précédente/suivante dans l'ordre chronologique : « Précédent » mène à l'entrée plus ancienne, « Suivant » à la plus récente (surcharge de `post_nav_links.html`, §11.7, décision de Firmin du 02/11/2026).
 - Le post LinkedIn de la semaine résume l'entrée et y renvoie (§16.1).
 
 ### 5.6 Incidents (post-mortems)
@@ -641,6 +641,7 @@ layouts/
 │   └── incidents/{section,page}.html      post-mortems
 ├── _partials/
 │   ├── header.html                        surcharge existante (registre §11.7)
+│   ├── post_nav_links.html                surcharge (registre §11.7) : Précédent = plus ancienne, Suivant = plus récente
 │   ├── extend_head.html                   point d'extension PaperMod : appelle les validations (§12)
 │   ├── extend_footer.html                 point d'extension PaperMod : pied de page du site (nom, contact, source, RSS, crédit)
 │   ├── validate/{data,page}.html
@@ -655,7 +656,7 @@ layouts/
 
 Règles :
 
-- Les templates définissent le bloc `main` et réutilisent les partials de PaperMod (`breadcrumbs`, `post_meta`, `post_nav_links`…) pour garder un rendu homogène.
+- Les templates définissent le bloc `main` et réutilisent les partials de PaperMod (`breadcrumbs`, `post_meta`, `post_nav_links`…) pour garder un rendu homogène. `post_nav_links` est surchargé depuis le 02/11/2026 pour suivre l'ordre chronologique (registre §11.7) : « Précédent » mène à l'entrée plus ancienne, « Suivant » à la plus récente.
 - Aucun calcul dupliqué : un partial par calcul (liens inverses, compteurs, lien vers un composant), réutilisé partout.
 - Vérifier la résolution des templates dans la documentation de la version de Hugo épinglée avant de créer un fichier.
 
@@ -698,6 +699,7 @@ Style retenu le 15/10/2026 : « éditorial ». Fond papier, grande typographie, 
 |---|---|---|---|
 | `layouts/_partials/header.html` | Surcharge | Bascule de langue vers la page traduite (`.Translations`) plutôt que vers l'accueil ; bandeau « site en construction » en tête (`construction-banner.html`) | Comparer l'ancienne et la nouvelle version du `header.html` du thème ; reporter les changements |
 | `layouts/taxonomy.html` | Surcharge | Libellés des termes depuis `data/` | Idem avec `taxonomy.html` |
+| `layouts/_partials/post_nav_links.html` | Surcharge | Navigation en bas des entrées du journal dans l'ordre chronologique : à gauche, « Précédent » mène à l'entrée plus ancienne (`$pages.Prev`), à droite, « Suivant » à la plus récente (`$pages.Next`). Le thème fait l'inverse. Condition et balisage inchangés (décision de Firmin du 02/11/2026) | Idem avec `post_nav_links.html` |
 | `layouts/_partials/extend_head.html` | Point d'extension prévu par le thème | Appel des validations | Vérifier qu'il est toujours inclus par `head.html` |
 | `layouts/_partials/extend_footer.html` | Point d'extension prévu par le thème | Pied de page complet du site (nom, contact, code source, flux RSS du journal, « sans cookies ni traceurs », crédit discret à Hugo et PaperMod, sans lien de suivi) ; celui de PaperMod est masqué par `params.hideFooter` (28/10/2026) | Vérifier que `footer.html` respecte toujours `hideFooter` et inclut toujours ce partial et ses scripts |
 
@@ -1046,6 +1048,7 @@ Le site dépend de comptes et de services extérieurs au repo. C'est là qu'est 
 | 2026-11-02 | Accueil (§5.1) : le bouton « Me contacter » mène à la page CV, comme le bouton « CV », et non plus à l'ancre `#contact` d'À propos de moi, qui reste en place (§5.7). Décision de Firmin | PR `fix/site-tweaks` |
 | 2026-11-02 | Infrastructure (§5.2) : l'introduction de la vue d'ensemble tient en un seul paragraphe. Décision de Firmin | PR `fix/site-tweaks` |
 | 2026-11-02 | Pages Monitoring, Automatisation (§5.2) et Lab LPIC-1 (§5.4) : rubrique « Où j'en suis » retirée. Elles présentent ce qui est prévu, l'avancement est donné par le badge de leur carte. Décision de Firmin | PR `fix/site-tweaks` |
+| 2026-11-02 | Journal (§5.5) : navigation en bas des entrées dans l'ordre chronologique, « Précédent » vers l'entrée plus ancienne, « Suivant » vers la plus récente. Nouvelle surcharge `layouts/_partials/post_nav_links.html`, inscrite au registre (§11.7). Décision de Firmin | PR `fix/site-tweaks` |
 
 ---
 
