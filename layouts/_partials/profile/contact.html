@@ -1,6 +1,7 @@
 {{- /* Contact (page À propos de moi, architecture §5.7) : titre « Contact »
-       ancré sur #contact (visé par le bouton « Me contacter » de l'accueil),
-       e-mail depuis params.contactEmail, LinkedIn depuis params.profile. */ -}}
+       ancré sur #contact, e-mail depuis params.contactEmail, LinkedIn depuis
+       params.profile. Le bouton « Me contacter » de l'accueil ne vise plus
+       cette ancre depuis le 02/11/2026 : il mène à la page CV. */ -}}
 {{- $email := site.Params.contactEmail }}
 {{- $linkedin := site.Params.profile.linkedin }}
 {{- if or $email $linkedin }}
