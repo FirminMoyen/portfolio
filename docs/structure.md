@@ -170,7 +170,7 @@ Format de chaque fiche : identité de la page, puis ses blocs dans l'ordre d'aff
 
 | | |
 |---|---|
-| Rôle | Le projet, et lui seul : quoi, où il en est, preuve d'activité. Tout ce qui concerne Firmin est sur P13 |
+| Rôle | Le projet, et lui seul : quoi, où il en est, preuve d'activité. Tout ce qui concerne Firmin est sur P13, sauf le bloc Contact, repris en bas de page |
 | URL | `/fr/` · `/en/` |
 | Fichiers | `content/_index.fr.md`, `content/_index.en.md` |
 | Type, template | home ; `layouts/home.html` et `_partials/home/*` (5.2a). Remplace la liste par défaut de PaperMod : `mainSections` n'est plus utilisé sur l'accueil |
@@ -179,10 +179,11 @@ Format de chaque fiche : identité de la page, puis ses blocs dans l'ordre d'aff
 
 Un bloc sans donnée est masqué. Détail des contenus et des liens : architecture §5.1.
 
-1. **Le projet** : présentation (corps de la page) ; ligne d'identité (nom, `identity` du front matter) ; boutons « CV » et « Me contacter », qui mènent tous deux à la page CV (P20), « Me contacter » depuis le 02/11/2026 (avant : P13, ancre `#contact`) ; liens vers P19 et P13. *(Firmin ; 5.2a, 28/10/2026)*
+1. **Le projet** : présentation (corps de la page) ; ligne d'identité (nom, `identity` du front matter) ; boutons « CV » (P20) et « Me contacter » (bloc 5, ancre `#contact` de l'accueil depuis le 02/11/2026 ; avant : P13, ancre `#contact`) ; liens vers P19 et P13. *(Firmin ; 5.2a, 28/10/2026)*
 2. **Le lab en un coup d'œil** : schéma `lab-overview` (« architecture cible » tant que rien n'est en service), phase en cours avec un lien vers P21 ; les compteurs par statut sont retirés tant qu'il n'y a pas de services ; liens vers P03 et P07. Pas de dernière semaine : le bloc 4 la montre déjà. *(données ; 5.1 pour le schéma, 5.2a)*
 3. **Stack** : les briques du lab par thème (Infrastructure, Réseau, Monitoring, Services), chacune avec son rôle en une ligne et son statut (En service, En cours, À venir) ; le titre d'un thème mène à sa page quand elle est publiée ; lien « Feuille de route complète » vers P21. *(`data/stack.yaml`, statuts lus dans le catalogue ou la feuille de route ; décision de Firmin du 29/10/2026)*
 4. **Dernières entrées du journal** : les 3 dernières entrées, P10 ou P12 (date, titre, numéro pour un post-mortem, description) ; liens vers P09, P11 (quand la section est publiée) et le flux RSS. *(5.2a)*
+5. **Contact** : le partial `profile/contact.html` de P13, titre « Contact » ancré sur `#contact`, cible du bouton « Me contacter ». *(décision de Firmin du 02/11/2026)*
 
 ### P03 — Infrastructure
 
@@ -358,7 +359,7 @@ Un bloc sans donnée est masqué. Détail des contenus et des liens : architectu
 
 1. **Profil** : nom (`params.profile.name`), `headline`, `availability` ; boutons CV (P20), GitHub, LinkedIn. *(front matter et `hugo.toml`)*
 2. **Présentation** : corps de la page, en paragraphes courts, dans cet ordre : une introduction · Mon parcours (sans le détail des missions, renvoie à P20) · Mon homelab (le pourquoi, l'ancien lab au passé, les briques importantes en une phrase, liens vers P19 et P09) · Ma façon de travailler (liste courte de principes, sans exemples), toujours en dernier. Pas de section « Ce que je cherche » : `availability` porte le poste recherché. Aucune liste de compétences : elle vit dans P20. *(Firmin)*
-3. **Contact** : partial `profile/contact.html` rendu par le template en fin de page, titre « Contact » ancré sur `#contact` (plus visé par le bouton « Me contacter » de P02 depuis le 02/11/2026) ; e-mail depuis `params.contactEmail`, LinkedIn depuis `params.profile`. *(28/10/2026)*
+3. **Contact** : partial `profile/contact.html` rendu par le template en fin de page, titre « Contact » ancré sur `#contact` (le même partial ferme P02, bloc 5, depuis le 02/11/2026) ; e-mail depuis `params.contactEmail`, LinkedIn depuis `params.profile`. *(28/10/2026)*
 
 ### P20 — CV
 
@@ -368,7 +369,7 @@ Un bloc sans donnée est masqué. Détail des contenus et des liens : architectu
 | URL | `/fr/cv/` · `/en/cv/` |
 | Fichiers | `content/cv/index.fr.md`, `index.en.md` ; PDF dans `static/cv/` (`params.profile.cv`) |
 | Type, template | page ; `layouts/cv/page.html` |
-| Menu | — (accès par les boutons « CV » de P02 et de P13, et « Me contacter » de P02 depuis le 02/11/2026) |
+| Menu | — (accès par les boutons « CV » de P02 et de P13) |
 | Fil d'Ariane | Accueil › CV |
 | Aujourd'hui | Publiée |
 
